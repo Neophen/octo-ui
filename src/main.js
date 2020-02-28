@@ -1,8 +1,19 @@
-import Vue from "vue";
-import App from "./App.vue";
+import * as components from "./components";
 
-Vue.config.productionTip = false;
+const OctoUI = {
+  // install(Vue, options = {}) {
+  install(Vue) {
+    // components
+    for (const componentName in components) {
+      const component = components[componentName];
 
-new Vue({
-  render: h => h(App)
-}).$mount("#app");
+      Vue.component(component.name, component);
+    }
+  }
+};
+
+export default OctoUI;
+
+if (typeof window !== "undefined" && window.Vue) {
+  window.Vue.use(OctoUI);
+}
