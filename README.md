@@ -1,5 +1,9 @@
 # octo-ui
 
+## Docs
+
+(https://octo-ui.netlify.com/)[octo-ui.com]
+
 ## Project setup
 ```
 npm install

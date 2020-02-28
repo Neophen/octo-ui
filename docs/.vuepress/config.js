@@ -9,8 +9,7 @@ module.exports = {
 
   themeConfig: {
     repoLabel: 'Contribute!',
-    // git repo here... gitlab, github
-    repo: '',
+    repo: 'https://github.com/Neophen/octo-ui',
     docsDir: 'docs',
     editLinks: true,
     docsBranch: 'dev',
@@ -31,8 +30,7 @@ module.exports = {
         nav: [
           { text: 'Getting Started', link: '/guide' },
           { text: 'Components', link: '/components/' },
-          // external link to git repo...again
-          { text: 'GitHub', link: '' }
+          { text: 'GitHub', link: 'https://github.com/Neophen/octo-ui' }
         ],
         sidebar: {
           '/components/': [
