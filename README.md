@@ -2,7 +2,7 @@
 
 ## Docs
 
-(https://octo-ui.netlify.com/)[octo-ui.com]
+[octo-ui.com](https://octo-ui.netlify.com/)
 
 ## Project setup
 ```
