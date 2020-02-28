@@ -1,5 +1,5 @@
 {
-  "name": "octo-ui",
+  "name": "@mykolasm/octo-ui",
   "version": "0.1.0",
   "private": false,
   "main": "dist/octo-ui.umd.min.js",
