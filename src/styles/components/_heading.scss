@@ -1,0 +1,48 @@
+.octo-title {
+  font-family: "Gilroy", sans-serif;
+  font-weight: 800;
+
+  &.is-1 {
+    font-size: 2.5rem;
+  }
+
+  &.is-2 {
+    font-size: 1.875rem;
+  }
+
+  &.is-3 {
+    font-size: 1.25rem;
+  }
+
+  &.is-4 {
+    font-size: 1.125rem;
+  }
+
+  &.is-5 {
+    font-size: 0.875rem;
+  }
+
+  &.is-default {
+    color: var(--text-default);
+  }
+
+  &.is-muted {
+    color: var(--text-muted);
+  }
+
+  &.is-primary {
+    color: var(--text-primary);
+  }
+
+  &.is-error {
+    color: var(--text-error);
+  }
+
+  &.is-inverted {
+    color: var(--text-inverted);
+  }
+  
+  &.is-inherit {
+    color: inherit;
+  }
+}

@@ -1,0 +1,180 @@
+.octo-button {
+  display: block;
+  box-sizing: border-box;
+  line-height: 18px;
+  padding: 10px;
+
+  &.is-small {
+  }
+
+  &.is-normal {
+    min-width: 200px;
+  }
+  &.is-medium {
+  }
+  &.is-large {
+  }
+
+  &.is-fullwidth {
+  }
+
+  &.is-white {
+  }
+  &.is-light {
+  }
+  &.is-dark {
+  }
+  &.is-black {
+  }
+  &.is-text {
+  }
+
+  &.is-default {
+  }
+  &.is-primary {
+  }
+  &.is-link {
+  }
+  &.is-info {
+  }
+  &.is-success {
+  }
+  &.is-warning {
+  }
+  &.is-danger {
+  }
+
+  &.is-outlined {
+  }
+
+  &.is-inverted {
+  }
+
+  &.is-rounded {
+  }
+
+  &.is-loading {
+  }
+
+  border-radius: 999px; //rounded-full
+  font-size: 0.875rem; //text-sm
+  font-family: "Gilroy", sans-serif;
+  font-weight: 800;
+
+  &.--small {
+    min-width: 100px;
+  }
+
+  // @apply rounded-full text-sm font-label outline-none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.positive {
+    background: var(--btn-positive);
+    color: var(--btn-on-positive);
+    &:hover,
+    &:focus {
+      background: var(--btn-positive-hover);
+      // @apply shadow-positive;
+    }
+    &:active {
+      background: var(--btn-positive-active);
+    }
+  }
+
+  &.secondary {
+    background: var(--btn-secondary);
+    color: var(--btn-on-secondary);
+    border: 1px solid var(--btn-on-secondary);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--btn-secondary-hover);
+      color: var(--btn-secondary-hover);
+      // @apply shadow-secondary;
+    }
+    &:active {
+      border: 1px solid var(--btn-secondary-hover);
+      background: var(--btn-secondary-active);
+    }
+  }
+
+  &.negative {
+    background: var(--btn-negative);
+    color: var(--btn-on-negative);
+    &:hover,
+    &:focus {
+      background: var(--btn-negative-hover);
+      // @apply shadow-negative;
+    }
+    &:active {
+      background: var(--btn-negative-active);
+    }
+  }
+
+  &:disabled {
+    background: var(--muted-200);
+    color: var(--muted-500);
+
+    cursor: not-allowed;
+
+    &:hover,
+    &:active {
+      background: var(--muted-200);
+      box-shadow: none;
+    }
+
+    .icon {
+      fill: var(--muted-500);
+    }
+  }
+}
+
+.octo-loader {
+  display: flex;
+  justify-content: center;
+}
+
+.octo-loader__bars {
+  $width: 8px;
+  $offset: 4px;
+  position: relative;
+  width: 40px;
+  height: 18px;
+
+  div {
+    display: inline-block;
+    position: absolute;
+    left: $offset;
+    width: $width;
+
+    animation: octo-loader__bars--animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+
+  div:nth-child(1) {
+    left: $offset;
+    animation-delay: -0.24s;
+  }
+  div:nth-child(2) {
+    left: 16px;
+    animation-delay: -0.12s;
+  }
+  div:nth-child(3) {
+    left: 28px;
+    animation-delay: 0;
+  }
+}
+
+@keyframes octo-loader__bars--animation {
+  0% {
+    top: 2px;
+    height: 14px;
+  }
+  50%,
+  100% {
+    top: 5px;
+    height: 8px;
+  }
+}

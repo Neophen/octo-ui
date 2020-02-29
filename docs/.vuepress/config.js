@@ -37,7 +37,7 @@ module.exports = {
             {
               title: 'Components',
               collapsable: false,
-              children: ['button']
+              children: ['heading', 'button']
             }
           ]
         }

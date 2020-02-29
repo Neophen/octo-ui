@@ -9,8 +9,7 @@
   "license": "MIT",
   "description": "",
   "files": [
-    "dist/*",
-    "src/*"
+    "dist/*"
   ],
   "homepage": "https://octo-ui.netlify.com/",
   "repository": {
