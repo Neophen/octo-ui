@@ -41,8 +41,52 @@
   &.is-inverted {
     color: var(--text-inverted);
   }
-  
+
   &.is-inherit {
     color: inherit;
+  }
+}
+
+.octo-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 1.125rem;
+
+  &.is-default {
+    color: var(--text-default);
+  }
+
+  &.is-muted {
+    color: var(--text-muted);
+  }
+
+  &.is-primary {
+    color: var(--text-primary);
+  }
+
+  &.is-error {
+    color: var(--text-error);
+  }
+
+  &.is-inverted {
+    color: var(--text-inverted);
+  }
+
+  &.is-inherit {
+    color: inherit;
+  }
+
+  // Sizes
+
+  &.is-semi {
+    font-weight: 500;
+  }
+
+  &.is-xs {
+    font-size: 0.75rem;
+  }
+
+  &.is-sm {
+    font-size: 1rem;
   }
 }

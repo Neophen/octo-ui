@@ -51,14 +51,14 @@ export const Heading = {
       type: String,
       validator(value) {
         const types = [
-          "is-default",
-          "is-muted",
-          "is-primary",
-          "is-error",
-          "is-inverted",
-          "is-inherit"
+          "default",
+          "muted",
+          "primary",
+          "error",
+          "inverted",
+          "inherit"
         ];
-        return types.includes(`is-${value}`);
+        return types.includes(value);
       }
     }
   }
