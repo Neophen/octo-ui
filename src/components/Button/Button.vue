@@ -45,6 +45,7 @@
       v-if="disabled && ($slots.default || label)"
       icon="lock"
       class="ml-auto"
+      :size="iconSize"
     />
   </component>
 </template>
