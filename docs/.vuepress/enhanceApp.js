@@ -7,8 +7,6 @@ import "../../src/styles/app.scss";
 // export default ({ Vue, options, router, siteData }) => {
 export default ({ Vue, options, siteData }) => {
 
-  // console.log(Vue);
-  // console.log(siteData);
   Vue.use(VueCompositionApi);
   Vue.use(OctoUI, {
     iconPacks: {

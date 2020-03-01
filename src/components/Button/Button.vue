@@ -46,12 +46,6 @@
       icon="lock"
       class="ml-auto"
     />
-    <!-- <b-icon
-      v-if="iconRight"
-      :pack="iconPack"
-      :icon="iconRight"
-      :size="iconSize"
-    />-->
   </component>
 </template>
 

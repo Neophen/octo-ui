@@ -13,6 +13,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+// DEMO
 @font-face {
   font-family: "Gilroy";
   src: url("/fonts/gilroy-extrabold-webfont.woff2") format("woff2"),
