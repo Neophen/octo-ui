@@ -53,12 +53,10 @@
 <script>
 // import Icon from "../icon/Icon";
 import config from "../../utils/config.js";
+import { computed } from "@vue/composition-api";
 
 export default {
   name: "o-button",
-  components: {
-    // [Icon.name]: Icon
-  },
   inheritAttrs: false,
   props: {
     type: {
@@ -112,27 +110,17 @@ export default {
       }
     }
   },
-  computed: {
-    computedTag() {
-      if (
-        this.$attrs.disabled !== undefined &&
-        this.$attrs.disabled !== false
-      ) {
+  setup(props, { attrs }) {
+    const iconSize = computed(() => props.size);
+    const fontSize = computed(() => (props.size === "lg" ? "4" : "5"));
+    const computedTag = computed(() => {
+      if (attrs.disabled !== undefined && attrs.disabled !== false) {
         return "button";
       }
-      return this.tag;
-    },
-    iconSize() {
-      // if (!this.size || this.size === "md") {
-      //   return "md";
-      // } else if (this.size === "lg") {
-      //   return "md";
-      // }
-      return this.size;
-    },
-    fontSize() {
-      return this.size === "lg" ? "4" : "5";
-    }
+      return props.tag;
+    });
+
+    return { iconSize, fontSize, computedTag };
   }
 };
 </script>
