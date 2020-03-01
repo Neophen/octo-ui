@@ -1,6 +1,6 @@
 <template functional>
   <component
-    :is="tag"
+    :is="props.tag"
     :ref="data.ref"
     class="octo-text"
     :class="[
