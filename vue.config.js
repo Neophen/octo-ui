@@ -6,7 +6,9 @@ module.exports = {
       preProcessor: "scss",
       patterns: [path.resolve(__dirname, "./src/styles/app.scss")]
     }
-  }
+  },
+
+  configureWebpack: { externals: ["vue", "@vue/composition-api"] }
   // css: {
   //   loaderOptions: {
   //     sass: {
