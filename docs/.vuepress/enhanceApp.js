@@ -5,7 +5,7 @@ import "../../src/styles/app.scss";
 
 
 // export default ({ Vue, options, router, siteData }) => {
-export default ({ Vue, options, siteData }) => {
+export default ({ Vue }) => {
 
   Vue.use(VueCompositionApi);
   Vue.use(OctoUI, {
