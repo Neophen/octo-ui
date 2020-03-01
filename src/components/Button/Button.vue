@@ -3,12 +3,13 @@
     :is="computedTag"
     class="octo-button"
     v-bind="$attrs"
+    :disabled="disabled"
     :type="nativeType"
     :class="[
-      size,
-      type,
+      `is-${size}`,
+      `is-${type}`,
       {
-        'is-rounded': rounded,
+        'is-squared': squared,
         'is-loading': loading,
         'is-outlined': outlined,
         'is-fullwidth': expanded,
@@ -16,28 +17,35 @@
         'is-focused': focused,
         'is-active': active,
         'is-hovered': hovered,
-        'is-selected': selected
+        'is-selected': selected,
+        'has-content': $slots.default || label
       }
     ]"
     v-on="$listeners"
   >
-    <!-- <b-icon
-      v-if="iconLeft"
+    <o-icon
+      v-if="icon"
       :pack="iconPack"
-      :icon="iconLeft"
+      :icon="icon"
       :size="iconSize"
-    />-->
+      :class="{ 'is-icon': $slots.default || label }"
+    />
     <div v-if="loading" class="octo-loader">
       <div class="octo-loader__bars">
-        <div :style="loaderStyle"></div>
-        <div :style="loaderStyle"></div>
-        <div :style="loaderStyle"></div>
+        <div class="octo-loader__bar"></div>
+        <div class="octo-loader__bar"></div>
+        <div class="octo-loader__bar"></div>
       </div>
     </div>
-    <span v-else-if="label">{{ label }}</span>
-    <span v-else-if="$slots.default">
+    <o-h :size="fontSize" type="inherit" v-else-if="label">{{ label }}</o-h>
+    <o-h :size="fontSize" type="inherit" v-else-if="$slots.default">
       <slot />
-    </span>
+    </o-h>
+    <o-icon
+      v-if="disabled && ($slots.default || label)"
+      icon="lock"
+      class="ml-auto"
+    />
     <!-- <b-icon
       v-if="iconRight"
       :pack="iconPack"
@@ -52,23 +60,39 @@
 import config from "../../utils/config.js";
 
 export default {
-  name: "OButton",
+  name: "o-button",
   components: {
     // [Icon.name]: Icon
   },
   inheritAttrs: false,
   props: {
-    type: [String, Object],
-    size: String,
-    label: String,
-    iconPack: String,
-    iconLeft: String,
-    iconRight: String,
-    rounded: {
-      type: Boolean,
-      default: () => {
-        return config.defaultButtonRounded;
+    type: {
+      type: String,
+      default: "default",
+      validator: value => {
+        return ["default", "primary", "link", "danger", "dashed"].includes(
+          value
+        );
       }
+    },
+    size: {
+      type: String,
+      default: "md",
+      validator: value => {
+        return ["sm", "md", "lg"].includes(value);
+      }
+    },
+    label: String,
+    iconPack: {
+      type: String,
+      default: "dashboard"
+    },
+    icon: String,
+    iconRight: String,
+    disabled: Boolean,
+    squared: {
+      type: Boolean,
+      default: false
     },
     loading: Boolean,
     outlined: Boolean,
@@ -104,15 +128,16 @@ export default {
       return this.tag;
     },
     iconSize() {
-      if (!this.size || this.size === "is-medium") {
-        return "is-small";
-      } else if (this.size === "is-large") {
-        return "is-medium";
-      }
+      // if (!this.size || this.size === "md") {
+      //   return "md";
+      // } else if (this.size === "lg") {
+      //   return "md";
+      // }
       return this.size;
+    },
+    fontSize() {
+      return this.size === "lg" ? "4" : "5";
     }
   }
 };
 </script>
-
-<style lang="scss"></style>

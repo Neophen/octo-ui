@@ -11,3 +11,68 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/gilroy-extrabold-webfont.woff2") format("woff2"),
+    url("/fonts/gilroy-extrabold-webfont.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+.octo-title {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  // padding: 1rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: -1rem;
+}
+
+[class*="col-"] {
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.col-1\/2 {
+  width: 50%;
+}
+
+.col-1\/3 {
+  width: 33.3%;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.b-0 {
+  border: none;
+}
+
+.bg-black {
+  background: black;
+}
+</style>

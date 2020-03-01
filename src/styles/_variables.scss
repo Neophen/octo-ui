@@ -1,56 +1,62 @@
+$shadow-size-xs: 0px 0px 4px;
+$shadow-size-md: 0px 0px 10px;
+$shadow-size-lg: 0px 0px 30px;
+
+$octo-alpha-xs: 0.1;
+$octo-alpha-md: 0.25;
+$octo-alpha-lg: 0.4;
+
 :root {
+  // Typography
+  --octo-title-font: "Gilroy", sans-serif;
+  --octo-text-font: "Roboto", sans-serif;
+
+  --octo-text-default: #000;
+  --octo-text-muted: #c6c6c6;
+  --octo-text-primary: #1844e0;
+  --octo-text-error: #fe4587;
+  --octo-text-inverted: #fff;
+
   // Colors
-  --primary: #1844e0;
-  --inverted: #fff;
+  --octo-primary-100: rgba(24, 68, 224, 0.4);
+  --octo-primary-200: #ced6f0;
+  --octo-primary-500: #1844e0;
+  --octo-primary-600: #2757ff;
+  --octo-primary-700: #0f33b3;
 
-  --secondary: #fe4587;
+  --octo-inverted: #fff;
 
-  --muted-100: #f4f4f4;
-  --muted-200: #ececec;
-  --muted-300: #f1f1f1;
-  --muted-500: #c6c6c6;
-  --muted-600: #949494;
-  --muted-700: #7a7a7a;
+  --octo-secondary-500: #fe4587;
+  --octo-secondary-600: #ff324b;
+  --octo-secondary-700: #cd0019;
 
-  --text-default: #000;
-  --text-muted: #c6c6c6;
-  --text-primary: #1844e0;
-  --text-error: #fa356d;
-  --text-inverted: #fff;
+  --octo-muted-100: #f4f4f4;
+  --octo-muted-200: #ececec;
+  --octo-muted-300: #f1f1f1;
+  --octo-muted-500: #c6c6c6;
+  --octo-muted-600: #949494;
+  --octo-muted-700: #7a7a7a;
 
   // Shadows
-  --shadow-focus: 0px 0px 10px rgba(24, 68, 224, 0.4);
-  --shadow-default: 0px 0px 10px rgba(120, 120, 120, 0.4);
-  --shadow-modal: 0px 0px 20px rgba(0, 0, 0, 0.25);
-  --shadow-sidebar: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  --shadow-card: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  // --octo-shadow-focus: 0px 0px 10px rgba(24, 68, 224, 1);
+  // --octo-shadow-default: 0px 0px 10px rgba(120, 120, 120, 1);
+  // --octo-shadow-modal: 0px 0px 20px rgba(0, 0, 0, 1);
+  // --octo-shadow-sidebar: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  // --octo-shadow-card: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  // --octo-shadow-focus: 0px 0px 10px rgba(24, 68, 224, 0.4);
+  // --octo-shadow-default: 0px 0px 10px rgba(120, 120, 120, 0.4);
+  // --octo-shadow-modal: 0px 0px 20px rgba(0, 0, 0, 0.25);
+  // --octo-shadow-sidebar: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  // --octo-shadow-card: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
   // Checkbox
-  --shadow-check-empty: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  --shadow-check-hover: 0px 0px 10px rgba(64, 46, 245, 0.4);
-  --shadow-check-idle: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  --shadow-check-error-hover: 0px 0px 10px rgba(250, 53, 109, 0.4);
+  // --octo-shadow-check-empty: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  // // --octo-shadow-check-hover: 0px 0px 10px rgba(62, 46, 245, 0.4);
+  // --octo-shadow-check-hover: 0px 0px 10px #3e2ef5;
+  // --octo-shadow-check-idle: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  // --octo-shadow-check-error-hover: 0px 0px 10px rgba(250, 53, 109, 0.4);
 
-  // border-radius
-  --b-default: 10px;
-  --b-large: 20px;
-
-  // Buttons
-  --btn-positive: var(--primary);
-  --btn-on-positive: white;
-  --btn-positive-hover: #2757ff;
-  --btn-positive-active: #0f33b3;
-  --btn-shadow-positive: 0px 0px 10px rgba(0, 0, 0, 0.4);
-
-  --btn-secondary: white;
-  --btn-on-secondary: black;
-  --btn-secondary-hover: var(--primary);
-  --btn-secondary-active: #ced6f0;
-  --btn-shadow-secondary: 0px 0px 10px rgba(24, 68, 224, 0.4);
-
-  --btn-negative: var(--secondary);
-  --btn-on-negative: white;
-  --btn-negative-hover: #ff324b;
-  --btn-negative-active: #cd0019;
-  --btn-shadow-negative: 0px 0px 10px rgba(255, 50, 75, 0.4);
+  // // border-radius
+  // --octo-b-default: 10px;
+  // --octo-b-large: 20px;
 }

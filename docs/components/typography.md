@@ -13,10 +13,10 @@ A component which creates a header.
 <o-h size="3" type="primary">H3: primary</o-h>
 <o-h size="4" type="primary">H4: primary</o-h>
 <o-h size="5" type="primary">H5: primary</o-h>
-<o-p type="primary" size="semi">primary semi-bold paragraph text</o-p>
-<o-p type="primary">primary paragraph text</o-p>
-<o-p type="primary" size="sm">primary menu paragraph text</o-p>
-<o-p type="primary" size="xs">primary subtext paragraph text</o-p>
+<<o-text type="primary" size="semi">primary semi-bold paragraph text</<o-text>
+<<o-text type="primary">primary paragraph text</<o-text>
+<<o-text type="primary" size="sm">primary menu paragraph text</<o-text>
+<<o-text type="primary" size="xs">primary subtext paragraph text</<o-text>
 ```
 
 ## slots

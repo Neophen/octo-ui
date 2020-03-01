@@ -1,6 +1,11 @@
 .octo-title {
-  font-family: "Gilroy", sans-serif;
+  font-family: var(--octo-title-font);
   font-weight: 800;
+
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 
   &.is-1 {
     font-size: 2.5rem;
@@ -23,23 +28,23 @@
   }
 
   &.is-default {
-    color: var(--text-default);
+    color: var(--octo-text-default);
   }
 
   &.is-muted {
-    color: var(--text-muted);
+    color: var(--octo-text-muted);
   }
 
   &.is-primary {
-    color: var(--text-primary);
+    color: var(--octo-text-primary);
   }
 
   &.is-error {
-    color: var(--text-error);
+    color: var(--octo-text-error);
   }
 
   &.is-inverted {
-    color: var(--text-inverted);
+    color: var(--octo-text-inverted);
   }
 
   &.is-inherit {
@@ -48,28 +53,28 @@
 }
 
 .octo-text {
-  font-family: "Roboto", sans-serif;
+  font-family: var(--octo-text-font);
   font-weight: normal;
   font-size: 1.125rem;
 
   &.is-default {
-    color: var(--text-default);
+    color: var(--octo-text-default);
   }
 
   &.is-muted {
-    color: var(--text-muted);
+    color: var(--octo-text-muted);
   }
 
   &.is-primary {
-    color: var(--text-primary);
+    color: var(--octo-text-primary);
   }
 
   &.is-error {
-    color: var(--text-error);
+    color: var(--octo-text-error);
   }
 
   &.is-inverted {
-    color: var(--text-inverted);
+    color: var(--octo-text-inverted);
   }
 
   &.is-inherit {

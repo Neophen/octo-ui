@@ -1,47 +1,95 @@
 .octo-button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
-  line-height: 18px;
-  padding: 10px;
+  cursor: pointer;
+  border-radius: 100px;
 
-  &.is-small {
+  .is-icon {
+    margin-right: 0.875rem;
   }
 
-  &.is-normal {
+  &.is-sm {
+    height: 1.75rem;
+    width: 1.75rem;
+  }
+
+  &.is-md {
+    height: 2.375rem;
+    width: 2.375rem;
+  }
+
+  &.is-lg {
+    height: 3.125rem;
+    width: 3.125rem;
+  }
+
+  &.has-content {
+    width: auto;
     min-width: 200px;
-  }
-  &.is-medium {
-  }
-  &.is-large {
+    padding: 0 1.25rem;
+
+    &.is-squared {
+      width: auto;
+      min-width: 0;
+      padding: 0 0.875rem;
+      border-radius: 10px;
+    }
   }
 
   &.is-fullwidth {
+    width: 100%;
   }
 
-  &.is-white {
+  &.is-default,
+  &.is-dashed {
+    background: white;
+    border: 0.5px solid black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    .octo-loader__bar {
+      background: black;
+    }
   }
-  &.is-light {
+
+  &.is-dashed {
+    border: 0.5px solid var(--octo-muted-500);
+    color: var(--octo-muted-500);
+    border-style: dashed !important;
   }
-  &.is-dark {
+
+  &.is-primary {
+    border: none;
+    color: #fff;
+    background: var(--octo-primary-500);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    .octo-loader__bar {
+      background: #fff;
+    }
   }
-  &.is-black {
+
+  &.is-link {
   }
   &.is-text {
   }
-
-  &.is-default {
-  }
-  &.is-primary {
-  }
-  &.is-link {
-  }
-  &.is-info {
-  }
-  &.is-success {
-  }
-  &.is-warning {
-  }
   &.is-danger {
+    border: none;
+    color: #fff;
+    background: var(--octo-secondary-500);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    .octo-loader__bar {
+      background: #fff;
+    }
+
+    &.is-inverted {
+      color: var(--octo-secondary-500);
+      background: white;
+      border: 0.5px solid var(--octo-secondary-500);
+
+      .octo-loader__bar {
+        background: var(--octo-secondary-500);
+      }
+    }
   }
 
   &.is-outlined {
@@ -50,84 +98,100 @@
   &.is-inverted {
   }
 
-  &.is-rounded {
-  }
-
   &.is-loading {
+    pointer-events: none;
   }
 
-  border-radius: 999px; //rounded-full
-  font-size: 0.875rem; //text-sm
-  font-family: "Gilroy", sans-serif;
-  font-weight: 800;
+  &.is-hovered,
+  &:hover {
+    &.is-default,
+    &.is-dashed {
+      border: 0.5px solid var(--octo-primary-500);
+      box-shadow: 0px 0px 10px var(--octo-primary-100);
+      color: var(--octo-primary-500);
+    }
 
-  &.--small {
-    min-width: 100px;
+    &.is-primary {
+      background: var(--octo-primary-600);
+    }
+
+    &.is-danger {
+      background: var(--octo-secondary-600);
+      box-shadow: 0px 0px 10px rgba(255, 50, 75, 0.4);
+      &.is-inverted {
+        color: var(--octo-secondary-500);
+        background: white;
+        border: 0.5px solid var(--octo-secondary-500);
+      }
+    }
   }
 
-  // @apply rounded-full text-sm font-label outline-none;
-
+  &.is-focused,
   &:focus {
     outline: none;
-  }
-
-  &.positive {
-    background: var(--btn-positive);
-    color: var(--btn-on-positive);
-    &:hover,
-    &:focus {
-      background: var(--btn-positive-hover);
-      // @apply shadow-positive;
+    &.is-default,
+    &.is-dashed {
+      border: 0.5px solid var(--octo-primary-700);
+      box-shadow: none;
+      color: var(--octo-primary-700);
     }
-    &:active {
-      background: var(--btn-positive-active);
-    }
-  }
 
-  &.secondary {
-    background: var(--btn-secondary);
-    color: var(--btn-on-secondary);
-    border: 1px solid var(--btn-on-secondary);
-
-    &:hover,
-    &:focus {
-      border: 1px solid var(--btn-secondary-hover);
-      color: var(--btn-secondary-hover);
-      // @apply shadow-secondary;
+    &.is-primary {
+      background: var(--octo-primary-600);
     }
-    &:active {
-      border: 1px solid var(--btn-secondary-hover);
-      background: var(--btn-secondary-active);
+
+    &.is-danger {
+      background: var(--octo-secondary-600);
+      &.is-inverted {
+        color: var(--octo-secondary-600);
+        border: 0.5px solid var(--octo-secondary-600);
+        background: white;
+      }
     }
   }
 
-  &.negative {
-    background: var(--btn-negative);
-    color: var(--btn-on-negative);
-    &:hover,
-    &:focus {
-      background: var(--btn-negative-hover);
-      // @apply shadow-negative;
+  &.is-active,
+  &:active {
+    &.is-default,
+    &.is-dashed {
+      background: var(--octo-primary-200);
+      border: 0.5px solid var(--octo-primary-500);
+      box-shadow: none;
+      color: var(--octo-primary-500);
     }
-    &:active {
-      background: var(--btn-negative-active);
+    &.is-primary {
+      background: var(--octo-primary-700);
+    }
+
+    &.is-danger {
+      background: var(--octo-secondary-700);
+      &.is-inverted {
+        color: white;
+        background:  var(--octo-secondary-500);
+        border: 0.5px solid var(--octo-secondary-700);
+      }
     }
   }
 
   &:disabled {
-    background: var(--muted-200);
-    color: var(--muted-500);
+    background: var(--octo-muted-200) !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--octo-muted-500) !important;
+
+    .octo-loader__bar {
+      background: var(--octo-muted-500) !important;
+    }
 
     cursor: not-allowed;
 
     &:hover,
+    &:focus,
     &:active {
-      background: var(--muted-200);
+      background: var(--octo-muted-200);
+      border: none;
       box-shadow: none;
-    }
-
-    .icon {
-      fill: var(--muted-500);
+      color: var(--octo-muted-500);
     }
   }
 }
@@ -144,7 +208,7 @@
   width: 40px;
   height: 18px;
 
-  div {
+  .octo-loader__bar {
     display: inline-block;
     position: absolute;
     left: $offset;
@@ -153,15 +217,15 @@
     animation: octo-loader__bars--animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   }
 
-  div:nth-child(1) {
+  .octo-loader__bar:nth-child(1) {
     left: $offset;
     animation-delay: -0.24s;
   }
-  div:nth-child(2) {
+  .octo-loader__bar:nth-child(2) {
     left: 16px;
     animation-delay: -0.12s;
   }
-  div:nth-child(3) {
+  .octo-loader__bar:nth-child(3) {
     left: 28px;
     animation-delay: 0;
   }

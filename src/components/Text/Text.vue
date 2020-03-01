@@ -1,5 +1,6 @@
 <template functional>
-  <p
+  <component
+    :is="tag"
     :ref="data.ref"
     class="octo-text"
     :class="[
@@ -13,26 +14,34 @@
     v-on="listeners"
   >
     <slot />
-  </p>
+  </component>
 </template>
 
 <script>
 export const Text = {
-  name: "o-p",
+  name: "o-text",
   props: {
+    tag: {
+      default: "p",
+      type: String,
+      validator(value) {
+        const tags = ["p", "span"];
+        return tags.includes(value);
+      }
+    },
     type: {
       default: "default",
       type: String,
       validator(value) {
         const types = [
-          "is-default",
-          "is-muted",
-          "is-primary",
-          "is-error",
-          "is-inverted",
-          "is-inherit"
+          "default",
+          "muted",
+          "primary",
+          "error",
+          "inverted",
+          "inherit"
         ];
-        return types.includes(`is-${value}`);
+        return types.includes(value);
       }
     },
     size: {
