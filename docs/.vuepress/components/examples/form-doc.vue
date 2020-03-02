@@ -46,6 +46,11 @@
                 <o-switch name="can-toggle" v-model="testCanToggle"></o-switch>
               </o-field>
             </div>
+            <div class="col-1/3">
+              <o-field label="Password reveal" class="mb-2">
+                <o-switch name="password-reveal" v-model="testPassword"></o-switch>
+              </o-field>
+            </div>
           </div>
         </div>
         <div class="control-box mb-2">
@@ -66,6 +71,7 @@
             <o-input
               name="test-input"
               :native-type="testNativeType"
+              :password-reveal="testPassword"
               v-model="testField"
               :maxlength="testMaxlength"
               :type="testIsDanger ? 'danger' : 'default'"
@@ -244,6 +250,7 @@ export default {
       testNativeType: "text",
       testIsDanger: false,
       testCanToggle: false,
+      testPassword: false,
       testType: "default"
     });
 
