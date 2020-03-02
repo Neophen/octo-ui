@@ -18,6 +18,12 @@
         <slot v-if="$slots.label" name="label" />
         <template v-else>{{ label }}</template>
       </o-h>
+      <o-switch
+        v-if="canToggle"
+        :name="`switch-${labelFor}`"
+        v-model="canInput"
+        class="octo_field__switch"
+      />
       <o-h
         v-if="maxlength"
         size="5"
@@ -26,7 +32,10 @@
         >{{ value ? value.length : 0 }} / {{ maxlength }} Symbols</o-h
       >
     </label>
-    <slot />
+    <template v-if="canToggle">
+      <slot v-if="canInput" />
+    </template>
+    <slot v-else />
     <o-text
       v-if="newMessage"
       class="octo-field__help"
@@ -49,6 +58,7 @@ export default {
     focused: Boolean,
     message: [String, Array, Object],
     expanded: Boolean,
+    canToggle: Boolean,
     customClass: String,
     maxlength: [String, Number],
     icon: String,
@@ -58,6 +68,7 @@ export default {
     return {
       newType: this.type,
       newMessage: this.message,
+      canInput: this.value ? true : false,
       // eslint-disable-next-line vue/no-reserved-keys
       _isField: true // Used internally by Input and Select
     };

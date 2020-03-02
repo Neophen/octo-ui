@@ -36,6 +36,16 @@
                 <o-input v-model="testNativeType"></o-input>
               </o-field>
             </div>
+            <div class="col-1/3">
+              <o-field label="Has error" class="mb-2">
+                <o-switch name="is-danger" v-model="testIsDanger"></o-switch>
+              </o-field>
+            </div>
+            <div class="col-1/3">
+              <o-field label="Can toggle" class="mb-2">
+                <o-switch name="can-toggle" v-model="testCanToggle"></o-switch>
+              </o-field>
+            </div>
           </div>
         </div>
         <div class="control-box mb-2">
@@ -48,9 +58,19 @@
             :value="testField"
             :maxlength="testMaxlength"
             :message="testHelper"
+            :canToggle="testCanToggle"
+            label-for="test-input"
+            :type="testIsDanger ? 'danger' : 'default'"
             class="mb-4"
           >
-            <o-input :native-type="testNativeType" v-model="testField" :maxlength="testMaxlength" placeholder="Placeholder..."></o-input>
+            <o-input
+              name="test-input"
+              :native-type="testNativeType"
+              v-model="testField"
+              :maxlength="testMaxlength"
+              :type="testIsDanger ? 'danger' : 'default'"
+              placeholder="Placeholder..."
+            ></o-input>
           </o-field>
         </div>
       </div>
@@ -222,6 +242,8 @@ export default {
       testHelper: "",
       testMaxlength: "",
       testNativeType: "text",
+      testIsDanger: false,
+      testCanToggle: false,
       testType: "default"
     });
 
