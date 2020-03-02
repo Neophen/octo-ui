@@ -37,7 +37,7 @@ export const Text = {
           "default",
           "muted",
           "primary",
-          "error",
+          "danger",
           "inverted",
           "inherit"
         ];

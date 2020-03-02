@@ -35,15 +35,15 @@
         <o-text type="primary" size="xs" class="mb-2">primary subtext paragraph text</o-text>
       </div>
       <div class="col-1/2">
-        <o-h size="1" type="error" class="mb-2">H1: error</o-h>
-        <o-h size="2" type="error" class="mb-2">H2: error</o-h>
-        <o-h size="3" type="error" class="mb-2">H3: error</o-h>
-        <o-h size="4" type="error" class="mb-2">H4: error</o-h>
-        <o-h size="5" type="error" class="mb-2">H5: error</o-h>
-        <o-text type="error" size="semi" class="mb-2">error semi-bold paragraph text</o-text>
-        <o-text type="error" class="mb-2">error paragraph text</o-text>
-        <o-text type="error" size="sm" class="mb-2">error menu paragraph text</o-text>
-        <o-text type="error" size="xs" class="mb-2">error subtext paragraph text</o-text>
+        <o-h size="1" type="danger" class="mb-2">H1: danger</o-h>
+        <o-h size="2" type="danger" class="mb-2">H2: danger</o-h>
+        <o-h size="3" type="danger" class="mb-2">H3: danger</o-h>
+        <o-h size="4" type="danger" class="mb-2">H4: danger</o-h>
+        <o-h size="5" type="danger" class="mb-2">H5: danger</o-h>
+        <o-text type="danger" size="semi" class="mb-2">danger semi-bold paragraph text</o-text>
+        <o-text type="danger" class="mb-2">danger paragraph text</o-text>
+        <o-text type="danger" size="sm" class="mb-2">danger menu paragraph text</o-text>
+        <o-text type="danger" size="xs" class="mb-2">danger subtext paragraph text</o-text>
       </div>
       <div class="col-1/2 bg-black">
         <o-h size="1" type="inverted" class="mb-2">H1: inverted</o-h>

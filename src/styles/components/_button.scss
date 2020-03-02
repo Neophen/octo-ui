@@ -47,7 +47,7 @@
     color: black;
     background: white;
     border: 0.5px solid black;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
       background: black;
     }
@@ -61,11 +61,11 @@
 
   &.is-primary {
     border: none;
-    color: #fff;
+    color: white;
     background: var(--octo-primary-500);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
-      background: #fff;
+      background: white;
     }
   }
 
@@ -75,17 +75,17 @@
   }
   &.is-danger {
     border: none;
-    color: #fff;
+    color: white;
     background: var(--octo-secondary-500);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
-      background: #fff;
+      background: white;
     }
 
     &.is-inverted {
       color: var(--octo-secondary-500);
       background: white;
-      border: 0.5px solid var(--octo-secondary-500);
+      border: var(--octo-border-danger);
 
       .octo-loader__bar {
         background: var(--octo-secondary-500);
@@ -107,8 +107,8 @@
   &:hover {
     &.is-default,
     &.is-dashed {
-      border: 0.5px solid var(--octo-primary-500);
-      box-shadow: 0px 0px 10px var(--octo-primary-100);
+      border: var(--octo-border-primary);
+      box-shadow: var(--octo-shadow-focus);
       color: var(--octo-primary-500);
     }
 
@@ -118,11 +118,11 @@
 
     &.is-danger {
       background: var(--octo-secondary-600);
-      box-shadow: 0px 0px 10px rgba(255, 50, 75, 0.4);
+      box-shadow: var(--octo-shadow-danger);
       &.is-inverted {
         color: var(--octo-secondary-500);
         background: white;
-        border: 0.5px solid var(--octo-secondary-500);
+        border: var(--octo-border-danger);
       }
     }
   }
@@ -156,7 +156,7 @@
     &.is-default,
     &.is-dashed {
       background: var(--octo-primary-200);
-      border: 0.5px solid var(--octo-primary-500);
+      border: var(--octo-border-primary);
       box-shadow: none;
       color: var(--octo-primary-500);
     }
@@ -168,7 +168,7 @@
       background: var(--octo-secondary-700);
       &.is-inverted {
         color: white;
-        background:  var(--octo-secondary-500);
+        background: var(--octo-secondary-500);
         border: 0.5px solid var(--octo-secondary-700);
       }
     }

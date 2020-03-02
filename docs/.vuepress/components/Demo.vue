@@ -46,6 +46,16 @@ export default {
   padding: 1rem;
 }
 
+.control-box {
+  border: 1px dashed black;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.col-1 {
+  width: 100%;
+}
+
 .col-1\/2 {
   width: 50%;
 }

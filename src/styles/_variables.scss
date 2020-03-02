@@ -14,7 +14,7 @@ $octo-alpha-lg: 0.4;
   --octo-text-default: #000;
   --octo-text-muted: #c6c6c6;
   --octo-text-primary: #1844e0;
-  --octo-text-error: #fe4587;
+  --octo-text-danger: #fe4587;
   --octo-text-inverted: #fff;
 
   // Colors
@@ -26,6 +26,8 @@ $octo-alpha-lg: 0.4;
 
   --octo-inverted: #fff;
 
+  --octo-secondary-100: rgba(254, 69, 135, 0.1);
+  --octo-secondary-200: rgba(254, 69, 135, 0.4);
   --octo-secondary-500: #fe4587;
   --octo-secondary-600: #ff324b;
   --octo-secondary-700: #cd0019;
@@ -36,6 +38,20 @@ $octo-alpha-lg: 0.4;
   --octo-muted-500: #c6c6c6;
   --octo-muted-600: #949494;
   --octo-muted-700: #7a7a7a;
+  --octo-muted-800: #78787866;
+
+  --octo-shadow-black: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  --octo-shadow-idle: 0px 0px 10px rgba(120, 120, 120, 0.4);
+  --octo-shadow-focus: 0px 0px 10px var(--octo-primary-100);
+  --octo-shadow-danger: 0px 0px 10px var(--octo-secondary-200);
+
+  // border
+
+  --octo-border-primary: 0.5px solid var(--octo-primary-500);
+  --octo-border-danger: 0.5px solid var(--octo-secondary-500);
+  // border-radius
+  --octo-radius-default: 10px;
+  --octo-radius-large: 20px;
 
   // Shadows
   // --octo-shadow-focus: 0px 0px 10px rgba(24, 68, 224, 1);

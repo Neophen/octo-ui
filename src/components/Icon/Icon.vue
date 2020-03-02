@@ -1,5 +1,5 @@
 <template>
-  <svg class="octo-icon" :class="iconSize" :style="iconRotation">
+  <svg class="octo-icon" :class="`is-${size}`" :style="iconRotation">
     <use :href="iconPath" :xlink:href="iconPath" />
   </svg>
 </template>
@@ -16,10 +16,10 @@ export default {
     },
     size: {
       type: String,
-      default: null,
+      default: "custom",
       validator: value => {
         if (!value) return;
-        return ["sm", "md", "lg", "xl"].includes(value);
+        return ["sm", "md", "lg", "xl", "custom"].includes(value);
       }
     },
     dir: {
@@ -50,9 +50,7 @@ export default {
       return `transform: rotateZ(${rotations[props.dir]});`;
     });
 
-    const iconSize = computed(() => (props.size ? `is-${props.size}` : null));
-
-    return { iconPath, iconRotation, iconSize };
+    return { iconPath, iconRotation };
   }
 };
 </script>

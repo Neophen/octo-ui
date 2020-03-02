@@ -38,8 +38,7 @@ export const Heading = {
       default: "1",
       type: String,
       validator(value) {
-        const sizes = ["1", "2", "3", "4", "5"];
-        return sizes.includes(value);
+        return ["1", "2", "3", "4", "5"].includes(value);
       }
     },
     truncateLines: {
@@ -54,7 +53,7 @@ export const Heading = {
           "default",
           "muted",
           "primary",
-          "error",
+          "danger",
           "inverted",
           "inherit"
         ];
