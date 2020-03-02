@@ -45,6 +45,7 @@
 
 <script>
 import FormElementMixin from "../../utils/FormElementMixin";
+import { reactive, toRefs, computed, ref } from "@vue/composition-api";
 
 export default {
   name: "o-input",
@@ -70,52 +71,87 @@ export default {
     iconClickable: Boolean,
     icon: String
   },
-  data() {
-    return {
-      newValue: this.value,
-      newType: this.type,
-      newNativeType: this.nativeType,
-      newAutocomplete: this.autocomplete || false,
-      isPasswordVisible: false,
-      // eslint-disable-next-line vue/no-reserved-keys
-      _elementRef: this.type === "textarea" ? "textarea" : "input"
-    };
-  },
-  computed: {
-    computedValue: {
-      get() {
-        return this.newValue;
-      },
-      set(value) {
-        this.newValue = value;
-        this.$emit("input", value);
-        !this.isValid && this.checkHtml5Validity();
-      }
-    },
-    inputClasses() {
-      return [
-        `is-${this.type}`,
-        { "is-focused": this.focused },
-        { "is-hovered": this.hovered },
-        { "has-icon": this.hasIcon }
-      ];
-    },
-    hasIcon() {
-      return this.passwordReveal || this.icon;
-    },
-    rightIcon() {
-      if (this.passwordReveal) {
-        return this.passwordVisibleIcon;
-      }
-      return this.icon;
-    },
+  setup(props, { emit, root }) {
+    const input = ref(null);
+    const textarea = ref(null);
 
-    /**
-     * Current password-reveal icon name.
-     */
-    passwordVisibleIcon() {
-      return !this.isPasswordVisible ? "eye" : "eye-off";
-    }
+    const state = reactive({
+      newValue: props.value,
+      newType: props.type,
+      newNativeType: props.nativeType,
+      newAutocomplete: props.autocomplete || false,
+      isPasswordVisible: false,
+      _elementRef: props.type === "textarea" ? "textarea" : "input"
+    });
+
+    const computedValue = computed({
+      get: () => state.newValue,
+      set: value => {
+        state.newValue = value;
+        emit("input", value);
+        // !this.isValid && this.checkHtml5Validity();
+      }
+    });
+
+    const inputClasses = computed(() => [
+      `is-${props.type}`,
+      { "is-focused": props.focused },
+      { "is-hovered": props.hovered },
+      { "has-icon": props.hasIcon }
+    ]);
+
+    const hasIcon = computed(() => props.passwordReveal || props.icon);
+
+    const passwordVisibleIcon = computed(() =>
+      !state.isPasswordVisible ? "eye" : "eye-off"
+    );
+
+    const rightIcon = computed(() =>
+      props.passwordReveal ? passwordVisibleIcon.value : props.icon
+    );
+
+    const togglePasswordVisibility = () => {
+      state.isPasswordVisible = !state.isPasswordVisible;
+      state.newNativeType = state.isPasswordVisible ? "text" : "password";
+      root.$nextTick(() => {
+        input.value.focus();
+      });
+    };
+
+    const onInput = event => {
+      root.$nextTick(() => {
+        if (event.target) {
+          computedValue.value = event.target.value;
+        }
+      });
+    };
+
+    const iconClick = (emitEvent, event) => {
+      emit(emitEvent, event);
+      root.$nextTick(() => input.value && input.value.focus());
+    };
+
+    const rightIconClick = event => {
+      if (props.passwordReveal) {
+        togglePasswordVisibility();
+      } else if (props.iconClickable) {
+        iconClick("icon-click", event);
+      }
+    };
+
+    return {
+      ...toRefs(state),
+      input,
+      textarea,
+      computedValue,
+      inputClasses,
+      hasIcon,
+      rightIcon,
+      togglePasswordVisibility,
+      onInput,
+      iconClick,
+      rightIconClick
+    };
   },
   watch: {
     /**
@@ -127,45 +163,6 @@ export default {
     },
     nativeType(value) {
       this.newNativeType = value;
-    }
-  },
-  methods: {
-    /**
-     * Toggle the visibility of a password-reveal input
-     * by changing the type and focus the input right away.
-     */
-    togglePasswordVisibility() {
-      this.isPasswordVisible = !this.isPasswordVisible;
-      this.newNativeType = this.isPasswordVisible ? "text" : "password";
-      this.$nextTick(() => {
-        this.$refs.input.focus();
-      });
-    },
-    /**
-     * Input's 'input' event listener, 'nextTick' is used to prevent event firing
-     * before ui update, helps when using masks (Cleavejs and potentially others).
-     */
-    onInput(event) {
-      this.$nextTick(() => {
-        if (event.target) {
-          this.computedValue = event.target.value;
-        }
-      });
-    },
-    iconClick(emit, event) {
-      this.$emit(emit, event);
-      this.$nextTick(() => {
-        if (this.$refs.input) {
-          this.$refs.input.focus();
-        }
-      });
-    },
-    rightIconClick(event) {
-      if (this.passwordReveal) {
-        this.togglePasswordVisibility();
-      } else if (this.iconClickable) {
-        this.iconClick("icon-click", event);
-      }
     }
   }
 };
