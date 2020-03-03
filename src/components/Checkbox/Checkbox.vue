@@ -46,7 +46,6 @@ export default {
     disabled: Boolean,
     required: Boolean,
     name: String,
-    size: String,
     trueValue: {
       type: [String, Number, Boolean, Function, Object, Array],
       default: true
@@ -70,13 +69,6 @@ export default {
         this.newValue = value;
         this.$emit("input", value);
       }
-    },
-    inputClass() {
-      // return "is-default";
-      console.log(this.computedValue);
-      if (this.error) return "is-error";
-
-      return this.value ? "is-default" : "is-empty";
     }
   },
   watch: {
