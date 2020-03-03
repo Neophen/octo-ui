@@ -1,35 +1,31 @@
 <template>
   <label
+    class="octo-radio__label"
     ref="label"
-    class="octo-checkbox__label"
+    :disabled="disabled"
     :class="`is-${type}`"
     @click="focus"
     @keydown.prevent.enter="$refs.label.click()"
   >
     <input
-      class="octo-checkbox"
       v-model="computedValue"
-      type="checkbox"
+      class="octo-radio"
+      type="radio"
       ref="input"
       @click.stop
       :disabled="disabled"
       :required="required"
       :name="name"
       :value="nativeValue"
-      :true-value="trueValue"
-      :false-value="falseValue"
     />
-    <div class="octo-checkbox__mark">
-      <o-icon icon="check-mark" size="sm" />
-    </div>
-    <slot />
+    <span class="octo-radio__mark" :class="type" />
+    <span class="control-label"><slot /></span>
   </label>
 </template>
 
 <script>
 export default {
-  name: "o-checkbox",
-  inheritAttrs: false,
+  name: "o-radio",
   props: {
     value: [String, Number, Boolean, Function, Object, Array],
     nativeValue: [String, Number, Boolean, Function, Object, Array],
@@ -44,14 +40,7 @@ export default {
     disabled: Boolean,
     required: Boolean,
     name: String,
-    trueValue: {
-      type: [String, Number, Boolean, Function, Object, Array],
-      default: true
-    },
-    falseValue: {
-      type: [String, Number, Boolean, Function, Object, Array],
-      default: false
-    }
+    size: String
   },
   data() {
     return {

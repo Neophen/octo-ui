@@ -1,0 +1,19 @@
+.octo-tags {
+  box-sizing: border-box;
+  border-radius: var(--octo-radius-default);
+  padding: 0.5rem;
+
+  // @apply font-body text-base leading-input p-2 rounded outline-none;
+
+
+  .tag-input-tag {
+    background: var(--octo-muted-200);
+    color: black;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    &:hover {
+      background: var(--octo-primary-200);
+      color: var(--octo-text-inverted);
+    }
+  }
+}

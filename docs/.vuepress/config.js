@@ -37,7 +37,7 @@ module.exports = {
             {
               title: 'Components',
               collapsable: false,
-              children: ['typography', 'button', 'form', 'checkbox', 'tabs']
+              children: ['typography', 'button', 'form', 'checkbox', 'radio', 'tags', 'tabs', 'autocomplete']
             }
           ]
         }
