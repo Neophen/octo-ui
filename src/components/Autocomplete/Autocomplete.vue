@@ -73,7 +73,6 @@ export default {
     const open = () => {
       state.isOpen = true;
       root.$nextTick(() => {
-        console.log(refSearch.value);
         refSearch.value.focus();
       });
     };
