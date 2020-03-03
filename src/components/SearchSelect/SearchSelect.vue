@@ -156,12 +156,6 @@ export default {
       close();
     };
 
-    // const filteredOptions = computed(() => {
-    //   return props.options.filter(option =>
-    //     option.toLowerCase().startsWith(state.search.toLowerCase())
-    //   );
-    // });
-
     const scrollToHighlighted = () => {
       refOptions.value.children[state.highlightedIndex].scrollIntoView({
         block: "nearest"
