@@ -7,13 +7,13 @@
         @click="toggle"
         class="octo-search-select__input"
       >
-        <span v-if="newValue">{{ newValue }}</span>
-        <span v-else class="octo-search-select__placeholder"
-          >Select a brand...</span
-        >
+        <span v-if="newValue">{{ getOptionLabel(newValue) }}</span>
+        <span v-else class="octo-search-select__placeholder">{{
+          placeholder
+        }}</span>
         <o-icon icon="arrow-collapsible" dir="down" size="md" />
       </button>
-      <div v-if="isOpen" class="octo-search-select__dropdown">
+      <div ref="refDropdown" v-if="isOpen" class="octo-search-select__dropdown">
         <input
           ref="refSearch"
           v-model="search"
@@ -32,11 +32,11 @@
           <li
             v-for="(option, i) in filteredOptions"
             :class="{ 'is-active': i === highlightedIndex }"
-            :key="option"
+            :key="getOptionValue(option)"
             @click="select(option)"
             class="octo-search-select__option"
           >
-            {{ option }}
+            {{ getOptionLabel(option) }}
           </li>
         </ul>
         <div
@@ -51,7 +51,15 @@
 </template>
 
 <script>
-import { reactive, toRefs, computed, ref } from "@vue/composition-api";
+import {
+  reactive,
+  toRefs,
+  computed,
+  ref,
+  onBeforeUnmount
+} from "@vue/composition-api";
+import { createPopper } from "@popperjs/core";
+
 export default {
   name: "o-search-select",
   props: {
@@ -63,15 +71,25 @@ export default {
       type: Array,
       required: true
     },
+    placeholder: {
+      type: String,
+      default: "Please select an option..."
+    },
+    isObject: {
+      type: Boolean,
+      default: false
+    },
     filterFunction: null
   },
   setup(props, { root, emit }) {
     const refSearch = ref(null);
     const refButton = ref(null);
     const refOptions = ref(null);
+    const refDropdown = ref(null);
 
     const state = reactive({
       isOpen: false,
+      popper: null,
       search: "",
       newValue: props.value,
       highlightedIndex: 0
@@ -89,10 +107,32 @@ export default {
       props.filterFunction(state.search, props.options)
     );
 
+    const setupPopper = () => {
+      state.popper = createPopper(refButton.value, refDropdown.value, {
+        placement: "bottom",
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 7]
+            }
+          }
+        ]
+      });
+    };
+
+    const destroyPopper = () => {
+      if (state.popper) {
+        state.popper.destroy();
+        state.popper = null;
+      }
+    };
+
     const open = () => {
       if (state.isOpen) return;
       state.isOpen = true;
       root.$nextTick(() => {
+        setupPopper();
         refSearch.value.focus();
         scrollToHighlighted();
       });
@@ -104,6 +144,7 @@ export default {
       state.search = "";
       state.highlightedIndex = 0;
       refButton.value.focus();
+      destroyPopper();
     };
 
     const toggle = () => {
@@ -150,11 +191,19 @@ export default {
       select(filteredOptions.value[state.highlightedIndex]);
     };
 
+    const getOptionValue = object => (props.isObject ? object.value : object);
+    const getOptionLabel = object => (props.isObject ? object.label : object);
+
+    onBeforeUnmount(() => {
+      destroyPopper();
+    });
+
     return {
       ...toRefs(state),
       refSearch,
       refButton,
       refOptions,
+      refDropdown,
       computedValue,
       filteredOptions,
       open,
@@ -163,7 +212,9 @@ export default {
       select,
       highlightNext,
       highlightPrev,
-      selectHighlighted
+      selectHighlighted,
+      getOptionValue,
+      getOptionLabel
     };
   }
 };

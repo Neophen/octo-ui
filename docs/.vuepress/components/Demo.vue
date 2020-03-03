@@ -87,4 +87,8 @@ export default {
 .bg-black {
   background: black;
 }
+
+.h-500 {
+  height: 500px;
+}
 </style>

@@ -39,11 +39,9 @@
     color: #8795a1;
   }
   .octo-search-select__dropdown {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
     position: absolute;
-    right: 0;
-    left: 0;
+    right: 0 !important;
+    left: 0 !important;
     background-color: white;
     border: var(--octo-border-black);
     padding: 0.5rem;
@@ -72,6 +70,14 @@
     position: relative;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+
+    /* Hide scrollbar */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE and Edge */
+    -ms-overflow-style: none;
+
     max-height: 14rem;
   }
   .octo-search-select__option {
