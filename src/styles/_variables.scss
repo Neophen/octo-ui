@@ -47,6 +47,7 @@ $octo-alpha-lg: 0.4;
 
   // border
 
+  --octo-border-black: 0.5px solid black;
   --octo-border-primary: 0.5px solid var(--octo-primary-500);
   --octo-border-danger: 0.5px solid var(--octo-secondary-500);
   // border-radius
@@ -67,7 +68,7 @@ $octo-alpha-lg: 0.4;
 
   // Checkbox
   // --octo-shadow-check-empty: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  // // --octo-shadow-check-hover: 0px 0px 10px rgba(62, 46, 245, 0.4);
+  // --octo-shadow-check-hover: 0px 0px 10px rgba(62, 46, 245, 0.4);
   // --octo-shadow-check-hover: 0px 0px 10px #3e2ef5;
   // --octo-shadow-check-idle: 0px 0px 10px rgba(0, 0, 0, 0.1);
   // --octo-shadow-check-error-hover: 0px 0px 10px rgba(250, 53, 109, 0.4);
