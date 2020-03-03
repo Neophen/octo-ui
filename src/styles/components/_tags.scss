@@ -2,18 +2,51 @@
   box-sizing: border-box;
   border-radius: var(--octo-radius-default);
   padding: 0.5rem;
+  overflow: hidden;
 
-  // @apply font-body text-base leading-input p-2 rounded outline-none;
+  .octo-tags__grid {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    margin-top: -0.5rem;
+  }
+  .octo-tags__container {
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+  }
 
-  .tag-input-tag {
+  .octo-tags__tag-remove {
+    &:focus {
+      outline: none;
+    }
+    margin-left: 0.5rem;
+    .octo-tags__tag-remove-icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .octo-tags__tag {
     background: var(--octo-muted-200);
     color: black;
     padding: 0.25rem 0.5rem;
     border-radius: 8px;
+    display: flex;
     &:hover {
-      background: var(--octo-primary-200);
+      background: var(--octo-primary-500);
       color: var(--octo-text-inverted);
+    }
+  }
+
+  .octo-tags__tag-input {
+    flex: 1;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    &:focus {
+      outline: none;
     }
   }
 }

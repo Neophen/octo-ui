@@ -57,7 +57,8 @@
     }
 
     &.is-focused,
-    &:focus {
+    &:focus,
+    &:focus-within {
       outline: none;
       border: var(--octo-border-primary);
       box-shadow: none;

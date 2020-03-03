@@ -16,7 +16,7 @@
           <o-h size="3" class="mb-2">Tags</o-h>
           <div class="row">
             <div class="col-1">
-              <o-tags v-model="tags" />
+              <o-autocomplete v-model="tags" />
             </div>
           </div>
         </div>

@@ -1,21 +1,21 @@
 <template>
-  <div>
-    <div class="input-field w-full" :class="error ? '-error' : '-idle'">
-      <div class="flex flex-wrap items-center -mx-2 -mt-2">
-        <div v-for="tag in value" :key="tag" class="pt-2 pl-2 tag-container">
-          <div class="tag-input-tag">
-            <span>{{ tag }}</span>
+  <div class="octo-control">
+    <div class="octo-input octo-tags">
+      <div class="octo-tags__grid">
+        <div v-for="tag in value" :key="tag" class="octo-tags__container">
+          <div class="octo-tags__tag">
+            <o-text size="xs" type="inherit">{{ tag }}</o-text>
             <button
               type="button"
-              class="ml-2 text-base leading-base"
+              class="octo-tags__tag-remove"
               @click="removeTag(tag)"
             >
-              &times;
+              <o-icon icon="close" class="octo-tags__tag-remove-icon" />
             </button>
           </div>
         </div>
         <input
-          class="tag-input-text flex-1 ml-2 mt-2 focus:outline-none"
+          class="octo-tags__tag-input"
           placeholder="Add..."
           v-model="input"
           @keydown.backspace="handleBackspace"
@@ -34,11 +34,7 @@ export default {
   name: "OTags",
   inheritAttrs: false,
   props: {
-    name: String,
-    field: Object,
-    disabled: Boolean,
-    error: String,
-    value: null
+    value: Array
   },
   setup(props, { emit }) {
     const state = reactive({
@@ -50,8 +46,7 @@ export default {
     const removeTag = tag => {
       emit(
         "input",
-        tag
-        // props.value.filter(t => t !== tag)
+        props.value.filter(t => t !== tag)
       );
     };
 
