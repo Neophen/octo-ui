@@ -1,9 +1,9 @@
 import * as components from "./components";
+import closeMenu from "./directives/o-close-menu.js";
 import "./styles/app.scss";
 
 const OctoUI = {
-  // install(Vue, options = {}) {
-  install(Vue, { iconPacks }) {
+  install(Vue, { iconPacks, closeDirective = "close-menu" }) {
     // components
     for (const componentName in components) {
       const component = components[componentName];
@@ -14,6 +14,8 @@ const OctoUI = {
     if (iconPacks) {
       Vue.prototype.$octoIconPacks = iconPacks;
     }
+
+    Vue.directive(closeDirective, closeMenu);
   }
 };
 

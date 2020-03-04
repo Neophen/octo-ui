@@ -1,5 +1,5 @@
 <template>
-  <div class="octo-dropdown">
+  <div ref="refDropdown" class="octo-dropdown">
     <div
       ref="refButton"
       class="octo-dropdown__trigger"
@@ -11,7 +11,7 @@
     </div>
     <transition name="octo-fade-out-quick">
       <ul
-        ref="refDropdown"
+        ref="refDropdownMenu"
         v-show="isOpen"
         class="octo-dropdown__menu"
         :class="`is-${type}`"
@@ -28,7 +28,8 @@ import {
   toRefs,
   watch,
   onBeforeUnmount,
-  ref
+  ref,
+  onMounted
 } from "@vue/composition-api";
 
 import { createPopper } from "@popperjs/core";
@@ -47,6 +48,7 @@ export default {
   setup(_, { root }) {
     const refButton = ref(null);
     const refDropdown = ref(null);
+    const refDropdownMenu = ref(null);
 
     const state = reactive({
       isOpen: false,
@@ -55,7 +57,7 @@ export default {
     });
 
     const setupPopper = () => {
-      state.popper = createPopper(refButton.value, refDropdown.value, {
+      state.popper = createPopper(refButton.value, refDropdownMenu.value, {
         placement: "bottom-start",
         modifiers: [
           {
@@ -117,15 +119,41 @@ export default {
       }
     );
 
+    const handleGlobalClick = event => {
+      const containedInDropdown = refDropdown.value.contains(event.target);
+      const containedInMenu = refDropdownMenu.value.contains(event.target);
+      requestAnimationFrame(() => {
+        if (event.closeOctoMenu && containedInMenu) {
+          close();
+        } else {
+          if (!containedInDropdown) {
+            close();
+          }
+        }
+      });
+    };
+
+    onMounted(() => {
+      window.addEventListener("click", handleGlobalClick, true);
+    });
+
     onBeforeUnmount(() => {
       if (state.clickListener) {
         document.removeEventListener("click", state.clickListener);
         state.clickListener = null;
       }
       destroyPopper();
+      window.removeEventListener("click", handleGlobalClick, true);
     });
 
-    return { ...toRefs(state), refButton, refDropdown, toggle, close };
+    return {
+      ...toRefs(state),
+      refButton,
+      refDropdown,
+      refDropdownMenu,
+      toggle,
+      close
+    };
   }
 };
 </script>

@@ -3,20 +3,12 @@
     <div class="row">
       <div class="col-1">
         <div class="control-box">
-          <o-h size="3" class="mb-2">Dropdown pprimary</o-h>
+          <o-h size="3" class="mb-2">Dropdown primary</o-h>
           <o-dropdown type="primary">
-            <template v-slot:trigger>
-              <o-button icon="gear" />
-            </template>
-            <li>
-              <o-button>Edit</o-button>
-            </li>
-            <li>
-              <o-button>Hide</o-button>
-            </li>
-            <li>
-              <o-button type="danger">Delete</o-button>
-            </li>
+            <o-button slot="trigger" icon="gear" />
+            <o-dropdown-item @click="testClick">Edit</o-dropdown-item>
+            <o-dropdown-item @click="testClick">Hide</o-dropdown-item>
+            <o-dropdown-item @click="testClick" type="danger">Delete</o-dropdown-item>
           </o-dropdown>
         </div>
       </div>
@@ -27,22 +19,12 @@
       </div>
       <div class="col-1">
         <div class="control-box">
-          <o-h size="3" class="mb-2">Dropdown pprimary</o-h>
-          <o-dropdown type="primary">
-            <template v-slot:trigger>
-              <o-button icon="gear" />
-            </template>
-            <template v-slot="{ closeMenu }">
-              <li>
-                <o-button @click="closeMenu">Edit</o-button>
-              </li>
-              <li>
-                <o-button @click="closeMenu">Hide</o-button>
-              </li>
-              <li>
-                <o-button type="danger" @click="closeMenu">Delete</o-button>
-              </li>
-            </template>
+          <o-h size="3" class="mb-2">Dropdown default</o-h>
+          <o-dropdown>
+            <o-button slot="trigger" icon="gear" />
+            <o-dropdown-item @click="testClick">Edit</o-dropdown-item>
+            <o-dropdown-item @click="testClick">Hide</o-dropdown-item>
+            <o-dropdown-item @click="testClick" type="danger">Delete</o-dropdown-item>
           </o-dropdown>
         </div>
       </div>
@@ -59,7 +41,11 @@ export default {
       someState: false
     });
 
-    return { ...toRefs(state) };
+    const testClick = () => {
+      console.log("testing");
+    };
+
+    return { ...toRefs(state), testClick };
   }
 };
 </script>

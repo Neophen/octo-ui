@@ -8,22 +8,23 @@
       </div>
       <div class="col-1">
         <o-button @click="isOpen = true" class="mt-6">open modal</o-button>
-
-        <o-modal :active.sync="isOpen">
-          <div class="octo-box">
+        <ClientOnly>
+          <o-modal :active.sync="isOpen">
+            <div class="octo-box">
               <o-h class="mb-4">First modal</o-h>
               <div class="row">
-              <o-button @click="isOpen = false" class="mt-6">Cancel</o-button>
-              <o-button type="primary" @click="isOtherOpen = true" class="mt-6">open other modal</o-button>
+                <o-button @click="isOpen = false" class="mt-6">Cancel</o-button>
+                <o-button type="primary" @click="isOtherOpen = true" class="mt-6">open other modal</o-button>
               </div>
-          </div>
-        </o-modal>
+            </div>
+          </o-modal>
 
-        <o-modal :active.sync="isOtherOpen">
-          <div class="octo-box">
+          <o-modal :active.sync="isOtherOpen">
+            <div class="octo-box">
               <o-h>Other modal</o-h>
-          </div>
-        </o-modal>
+            </div>
+          </o-modal>
+        </ClientOnly>
       </div>
     </div>
   </div>

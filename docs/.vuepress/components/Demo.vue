@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  name: "Demo",
   props: {
     componentName: { type: String, required: true }
   }

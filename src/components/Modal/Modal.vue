@@ -70,12 +70,20 @@ export default {
       !props.preventClickOutside && close("cancel");
     };
 
+    const changeHash = hash => {
+      if (window.history) {
+        history.replaceState(undefined, undefined, modalHash.value);
+      } else {
+        window.location.hash = hash;
+      }
+    };
+
     const manageModalHash = active => {
       if (active) {
         state.previousHash = window.location.hash;
-        history.replaceState(undefined, undefined, modalHash.value);
+        changeHash(modalHash.value);
       } else {
-        history.replaceState(undefined, undefined, state.previousHash);
+        changeHash(state.previousHash);
       }
     };
 
