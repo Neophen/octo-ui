@@ -5,9 +5,11 @@
         <div class="control-box">
           <o-h size="3" class="mb-2">Sample</o-h>
           <o-autocomplete :data="bands" v-model="searchItem" :filter-function="filterFuction" />
+
+          <o-h size="3" class="mt-6 mb-2">Output</o-h>
+          <p>{{ JSON.stringify(searchItem) }}</p>
         </div>
       </div>
-      <div class="col-1"></div>
     </div>
   </div>
 </template>

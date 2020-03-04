@@ -55,7 +55,7 @@ export default {
           title: "third entry"
         }
       ],
-      tags: []
+      tags: ['test tag']
     });
 
     return { ...toRefs(state) };

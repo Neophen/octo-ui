@@ -156,10 +156,12 @@ export default {
 
     const select = option => {
       computedValue.value = option;
+      emit("selected", option);
       close();
     };
 
     const scrollToHighlighted = () => {
+      if (refOptions.value.children.length === 0) return;
       refOptions.value.children[state.highlightedIndex].scrollIntoView({
         block: "nearest"
       });
@@ -185,7 +187,9 @@ export default {
     };
 
     const selectHighlighted = () => {
-      select(filteredOptions.value[state.highlightedIndex]);
+      if (filteredOptions.value.length > 0) {
+        select(filteredOptions.value[state.highlightedIndex]);
+      }
     };
 
     const getOptionValue = object => (props.isObject ? object.value : object);

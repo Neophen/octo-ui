@@ -9,11 +9,12 @@
         v-model="newValue"
         @focus="open"
         @blue="close"
+        @input="open"
         @keydown.esc="close"
         @keydown.down="highlightNext"
         @keydown.up="highlightPrev"
         @keydown.enter.prevent="selectHighlighted"
-        @keydown.tab.prevent="highlightNext"
+        @keydown.tab="highlightNext"
         class="octo-autocomplete__search octo-input"
       />
       <div ref="refDropdown" v-if="isOpen" class="octo-autocomplete__dropdown">
@@ -33,7 +34,7 @@
           </li>
         </ul>
         <div v-if="filteredData.length === 0" class="octo-autocomplete__empty">
-          No results found for "{{ search }}"
+          No results found for "{{ newValue }}"
         </div>
       </div>
     </div>
@@ -138,10 +139,12 @@ export default {
 
     const select = option => {
       computedValue.value = option;
+      emit("selected", option);
       close();
     };
 
     const scrollToHighlighted = () => {
+      if (refOptions.value.children.length === 0) return;
       refOptions.value.children[state.highlightedIndex].scrollIntoView({
         block: "nearest"
       });
@@ -158,8 +161,11 @@ export default {
       scrollToHighlighted();
     };
 
-    const highlightNext = () => {
-      highlight(state.highlightedIndex + 1);
+    const highlightNext = event => {
+      if (state.isOpen) {
+        event.preventDefault();
+        highlight(state.highlightedIndex + 1);
+      }
     };
 
     const highlightPrev = () => {
@@ -167,7 +173,9 @@ export default {
     };
 
     const selectHighlighted = () => {
-      select(filteredData.value[state.highlightedIndex]);
+      if (filteredData.value.length > 0 && state.isOpen) {
+        select(filteredData.value[state.highlightedIndex]);
+      }
     };
 
     const getOptionValue = object => (props.isObject ? object.value : object);
