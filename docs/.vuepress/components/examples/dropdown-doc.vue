@@ -33,19 +33,13 @@
 </template>
 
 <script>
-import { reactive, toRefs } from "@vue/composition-api";
-
 export default {
   setup() {
-    const state = reactive({
-      someState: false
-    });
-
     const testClick = () => {
       console.log("testing");
     };
 
-    return { ...toRefs(state), testClick };
+    return { testClick };
   }
 };
 </script>

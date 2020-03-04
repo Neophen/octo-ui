@@ -15,7 +15,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 // DEMO
 @font-face {
   font-family: "Gilroy";
@@ -92,5 +91,20 @@ export default {
 
 .h-500 {
   height: 500px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mr-4 {
+  margin-right: 1rem;
 }
 </style>

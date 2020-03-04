@@ -12,9 +12,9 @@
           <o-modal :active.sync="isOpen">
             <div class="octo-box">
               <o-h class="mb-4">First modal</o-h>
-              <div class="row">
-                <o-button @click="isOpen = false" class="mt-6">Cancel</o-button>
-                <o-button type="primary" @click="isOtherOpen = true" class="mt-6">open other modal</o-button>
+              <div class="flex mt-6">
+                <o-button @click="isOpen = false" class="mr-4">Cancel</o-button>
+                <o-button type="primary" @click="isOtherOpen = true" >open other modal</o-button>
               </div>
             </div>
           </o-modal>

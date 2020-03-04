@@ -71,8 +71,8 @@ export default {
     };
 
     const changeHash = hash => {
-      if (window.history) {
-        history.replaceState(undefined, undefined, modalHash.value);
+      if (history) {
+        history.replaceState(undefined, undefined, hash);
       } else {
         window.location.hash = hash;
       }
@@ -107,7 +107,8 @@ export default {
         } else if (!state.isAnotherModalOpen) {
           document.body.classList.remove("octo-modal__stop-scroll");
         }
-      }
+      },
+      { lazy: true }
     );
 
     onMounted(() => {
