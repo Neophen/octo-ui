@@ -23,6 +23,8 @@
   }
   /* Hide scrollbar for IE and Edge */
   -ms-overflow-style: none;
+
+  will-change: opacity;
 }
 
 .octo-modal__overlay-close {
@@ -38,34 +40,26 @@
 
 .octo-modal__content {
   position: relative;
-
+  will-change: transform;
 }
 
 .octo-modal-transition-enter-active {
-  will-change: opacity;
   transition: opacity 0.4s; // trick
   .octo-modal__content {
-    will-change: transform;
     animation: octo-modal-transition-up 0.4s;
   }
 }
 
 .octo-modal-transition-leave-active {
-  will-change: opacity;
   transition: opacity 0.4s; // trick
   .octo-modal__content {
-    will-change: transform;
     animation: octo-modal-transition-down 0.4s;
   }
 }
 
 .octo-modal-transition-enter,
 .octo-modal-transition-leave-active {
-  will-change: opacity;
   opacity: 0;
-  .octo-modal__content {
-    will-change: transform;
-  }
 }
 
 @keyframes octo-modal-transition-up {
