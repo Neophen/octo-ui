@@ -57,9 +57,6 @@ export default {
 
 default: enter your text here.
 
-## Heading props
-
-
-## Text props
+## props
 
 

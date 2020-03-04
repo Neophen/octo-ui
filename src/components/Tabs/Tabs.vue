@@ -40,8 +40,6 @@ export default {
       state.tabs.forEach(tab => {
         tab.isActive = tab.name == selectedTab.name;
       });
-
-      if (!instance) return;
       emit("change-tab", selectedTab.type);
     };
 
