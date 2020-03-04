@@ -2,25 +2,19 @@
 
 <Demo componentName="examples-autocomplete-doc" />
 
-## Sample
+
+## Code
 ```html
 ```
 
+## props
+
+|Name|Description|Type|Values|Default|
+|---|---|---|---|---|
+|**prop_name**|description|type|values|default|
+
 ## slots
 
-default: enter your text here.
-
-## Heading props
-|Name|Description|Type|Values|Default|
-|---|---|---|---|---|
-|**size**|heading size|String|`1`,`2`,`3`,`4`,`5`,|`5`|
-|**type**|heading style|String|`default`, `muted`, `primary`, `danger`, `inverted`, `inherit`,|`default`|
-|**truncateLines**|add this if you want to truncate at a certain number of lines|Number|-|0|
-
-## Text props
-|Name|Description|Type|Values|Default|
-|---|---|---|---|---|
-|**size**|text size|String|`default`,`xs`,`sm`,`semi`,|`default`|
-|**type**|text style|String|`default`, `muted`, `primary`, `danger`, `inverted`, `inherit`,|`default`|
-|**truncateLines**|add this if you want to truncate at a certain number of lines|Number|-|0|
-
+|Name|Description|
+|---|---|
+|**slot_name**|description|

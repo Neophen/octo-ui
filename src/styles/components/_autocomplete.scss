@@ -1,29 +1,5 @@
-.octo-search-select {
-  position: relative;
-
-  .octo-search-select__input {
-    appearance: none;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 14px;
-    font-size: 18px;
-    line-height: 21px;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  &.is-active {
-    .octo-search-select__input {
-      border: var(--octo-border-primary);
-    }
-  }
-
-  .octo-search-select__placeholder {
-    color: #8795a1;
-  }
-  .octo-search-select__dropdown {
+.octo-autocomplete {
+  .octo-autocomplete__dropdown {
     position: absolute;
     right: 0 !important;
     left: 0 !important;
@@ -34,7 +10,7 @@
     box-shadow: var(--octo-shadow-black);
     z-index: 50;
   }
-  .octo-search-select__search {
+  .octo-autocomplete__search {
     display: block;
     width: 100%;
     padding: 0.5rem 0.75rem;
@@ -49,7 +25,7 @@
       outline: none;
     }
   }
-  .octo-search-select__options {
+  .octo-autocomplete__options {
     list-style: none;
     padding: 0;
     position: relative;
@@ -65,7 +41,7 @@
 
     max-height: 14rem;
   }
-  .octo-search-select__option {
+  .octo-autocomplete__option {
     padding: 0.5rem 0.75rem;
     color: var(--octo-text-default);
     cursor: pointer;
@@ -81,7 +57,7 @@
     }
   }
 
-  .octo-search-select__empty {
+  .octo-autocomplete__empty {
     padding: 0.5rem 0.75rem;
     color: var(--octo-text-default);
   }

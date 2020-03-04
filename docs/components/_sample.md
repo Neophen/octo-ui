@@ -16,6 +16,6 @@
 
 ## slots
 
-|Name|Description|Type|Values|Default|
-|---|---|---|---|---|
-|**slot_name**|description|type|values|default|
+|Name|Description|
+|---|---|
+|**slot_name**|this will display the text|

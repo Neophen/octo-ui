@@ -4,7 +4,7 @@
 
 <Demo componentName="examples-modal-doc" />
 
-## Sample
+## Code
 ```html
 <template>
   <div class="container">
@@ -53,10 +53,14 @@ export default {
 </script>
 ```
 
-## slots
-
-default: enter your text here.
-
 ## props
 
+|Name|Description|Type|Values|Default|
+|---|---|---|---|---|
+|**prop_name**|description|type|values|default|
 
+## slots
+
+|Name|Description|
+|---|---|
+|**slot_name**|description|

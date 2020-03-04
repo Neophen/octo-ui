@@ -6,18 +6,19 @@ A component which creates a header.
 
 <Demo componentName="examples-form-doc" />
 
-## Sample
+## Code
 ```html
 something will go here
 ```
 
+## props
+
+|Name|Description|Type|Values|Default|
+|---|---|---|---|---|
+|**prop_name**|description|type|values|default|
+
 ## slots
 
-default: enter your text here.
-
-## Heading props
-
-
-## Text props
-
-
+|Name|Description|
+|---|---|
+|**slot_name**|description|

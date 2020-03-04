@@ -47,6 +47,6 @@ export default {
 
 ## slots
 
-|Name|Description|Type|Values|Default|
-|---|---|---|---|---|
-|**slot_name**|description|type|values|default|
+|Name|Description|
+|---|---|
+|**slot_name**|description|

@@ -6,7 +6,7 @@ A component which creates a header.
 
 <Demo componentName="examples-typography-doc" />
 
-## Sample
+## Code
 ```html
 <o-h size="1" type="primary">H1: primary</o-h>
 <o-h size="2" type="primary">H2: primary</o-h>
@@ -18,10 +18,6 @@ A component which creates a header.
 <o-text type="primary" size="sm">primary menu paragraph text</<o-text>
 <o-text type="primary" size="xs">primary subtext paragraph text</<o-text>
 ```
-
-## slots
-
-default: enter your text here.
 
 ## Heading props
 |Name|Description|Type|Values|Default|
@@ -37,3 +33,8 @@ default: enter your text here.
 |**type**|text style|String|`default`, `muted`, `primary`, `danger`, `inverted`, `inherit`,|`default`|
 |**truncateLines**|add this if you want to truncate at a certain number of lines|Number|-|0|
 
+## slots
+
+|Name|Description|
+|---|---|
+|**default**|this will display the text|

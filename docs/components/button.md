@@ -5,7 +5,7 @@
 <Demo componentName="examples-button-doc" />
 
 
-## Sample
+## Code
 ```html
   <div class="container">
     <div class="row">
@@ -133,10 +133,15 @@
     </div>
   </div>
 ```
-## slots
-
-...
 
 ## props
 
-...
+|Name|Description|Type|Values|Default|
+|---|---|---|---|---|
+|**prop_name**|description|type|values|default|
+
+## slots
+
+|Name|Description|
+|---|---|
+|**slot_name**|description|
