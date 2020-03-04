@@ -1,11 +1,14 @@
 <template>
   <o-on-click-outside :do="close">
-    <div class="octo-search-select" :class="{ 'is-active': isOpen }">
+    <div
+      class="octo-search-select octo-control"
+      :class="{ 'is-active': isOpen }"
+    >
       <button
         ref="refButton"
         type="button"
         @click="toggle"
-        class="octo-search-select__input"
+        class="octo-search-select__input octo-input"
       >
         <span v-if="newValue">{{ getOptionLabel(newValue) }}</span>
         <span v-else class="octo-search-select__placeholder">{{

@@ -8,7 +8,9 @@ module.exports = {
     }
   },
 
-  configureWebpack: { externals: ["vue", "@vue/composition-api"] }
+  configureWebpack: {
+    externals: ["vue", "@vue/composition-api", "@popperjs/core", "portal-vue"]
+  }
   // css: {
   //   loaderOptions: {
   //     sass: {

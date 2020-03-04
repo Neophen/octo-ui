@@ -1,6 +1,7 @@
 <template>
   <div>
     <component :is="componentName" />
+    <portal-target name="octo-modals" transition="o-modal-transition" multiple></portal-target>
   </div>
 </template>
 

@@ -11,4 +11,5 @@ export { default as Switch } from "./Switch";
 export { default as Checkbox } from "./Checkbox";
 export { default as Radio } from "./Radio";
 export { default as Tags } from "./Tags";
+export { OModal, OModalTransition } from "./Modal";
 export { OTabs, OTab } from "./Tabs";
