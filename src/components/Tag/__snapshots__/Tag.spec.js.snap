@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OTag render correctly 1`] = `
+<span class="octo-tag"><span class=""></span>
+<!----></span>
+`;

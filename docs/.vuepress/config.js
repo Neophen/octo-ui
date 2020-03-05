@@ -42,7 +42,7 @@ module.exports = {
                 'search-select',
                 'typography',
                 'button',
-                'form',
+                'field',
                 'checkbox',
                 'radio',
                 'tag',
@@ -51,6 +51,8 @@ module.exports = {
                 'switch',
                 'modal',
                 'dropdown',
+                'icon',
+                'input',
               ]
             }
           ]

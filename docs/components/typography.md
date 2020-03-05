@@ -8,15 +8,15 @@ A component which creates a header.
 
 ## Code
 ```html
-<o-h size="1" type="primary">H1: primary</o-h>
-<o-h size="2" type="primary">H2: primary</o-h>
-<o-h size="3" type="primary">H3: primary</o-h>
-<o-h size="4" type="primary">H4: primary</o-h>
-<o-h size="5" type="primary">H5: primary</o-h>
-<o-text type="primary" size="semi">primary semi-bold paragraph text</<o-text>
-<o-text type="primary">primary paragraph text</<o-text>
-<o-text type="primary" size="sm">primary menu paragraph text</<o-text>
-<o-text type="primary" size="xs">primary subtext paragraph text</<o-text>
+<o-h size="1" type="is-primary">H1: primary</o-h>
+<o-h size="2" type="is-primary">H2: primary</o-h>
+<o-h size="3" type="is-primary">H3: primary</o-h>
+<o-h size="4" type="is-primary">H4: primary</o-h>
+<o-h size="5" type="is-primary">H5: primary</o-h>
+<o-text type="is-primary" size="is-semi">primary semi-bold paragraph text</<o-text>
+<o-text type="is-primary">primary paragraph text</<o-text>
+<o-text type="is-primary" size="is-sm">primary menu paragraph text</<o-text>
+<o-text type="is-primary" size="is-xs">primary subtext paragraph text</<o-text>
 ```
 
 ## Heading props

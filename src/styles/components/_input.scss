@@ -1,27 +1,17 @@
 .octo-control {
   position: relative;
 
-  .octo-input__icon-container {
+  .help {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    &:focus {
-      outline: none;
+    top: -26px;
+    right: 10px;
+    &.is-invisible {
+      display: none;
     }
   }
 
-  .octo-input__icon {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  .octo-input {
+  .input,
+  .textarea {
     box-sizing: border-box;
     background: white;
     border: 0.5px solid transparent;
@@ -32,10 +22,6 @@
     font-size: 18px;
     line-height: 21px;
     width: 100%;
-
-    &.has-icon {
-      padding-right: 3rem;
-    }
 
     &::placeholder {
       color: var(--octo-muted-600);
@@ -66,6 +52,53 @@
         border: var(--octo-border-danger);
         box-shadow: none;
       }
+    }
+
+    &:disabled {
+      border: 0.5px solid var(--octo-muted-500);
+      box-shadow: none;
+      border-radius: var(--octo-radius-default);
+      cursor: not-allowed;
+    }
+  }
+
+  &.has-icons-left {
+    .input,
+    .textarea {
+      padding-left: 3rem;
+    }
+  }
+
+  &.has-icons-right {
+    .input,
+    .textarea {
+      padding-right: 3rem;
+    }
+  }
+
+  .octo-input__icon-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.is-right {
+      right: 0;
+    }
+    &.is-left {
+      left: 0;
+    }
+  }
+
+  .octo-input__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &.is-clickable {
+      cursor: pointer;
     }
   }
 }

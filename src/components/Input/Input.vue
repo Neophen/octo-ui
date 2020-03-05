@@ -1,11 +1,11 @@
 <template>
-  <div class="octo-control">
+  <div class="octo-control" :class="rootClasses">
     <input
-      v-if="newNativeType !== 'textarea'"
+      v-if="type !== 'textarea'"
       ref="input"
-      class="octo-input"
-      :class="inputClasses"
-      :type="newNativeType"
+      class="input"
+      :class="[inputClasses, customClass]"
+      :type="newType"
       :autocomplete="newAutocomplete"
       :maxlength="maxlength"
       :value="computedValue"
@@ -18,8 +18,8 @@
     <textarea
       v-else
       ref="textarea"
-      class="octo-input"
-      :class="inputClasses"
+      class="textarea"
+      :class="[inputClasses, customClass]"
       :maxlength="maxlength"
       :value="computedValue"
       v-bind="$attrs"
@@ -27,131 +27,190 @@
       @blur="onBlur"
       @focus="onFocus"
     />
-    <button
-      type="button"
-      @click.stop="rightIconClick"
-      class="octo-input__icon-container"
-    >
+
+    <div class="octo-input__icon-container is-left">
       <o-icon
-        v-if="hasIcon"
+        v-if="icon"
         class="octo-input__icon"
-        :class="{ 'is-clickable': passwordReveal || iconClickable }"
+        :class="{ 'is-clickable': iconClickable }"
+        :icon="icon"
+        :pack="iconPack"
+        :size="iconSize"
+        @click.native="iconClick('icon-click', $event)"
+      />
+    </div>
+
+    <div class="octo-input__icon-container is-right">
+      <o-icon
+        v-if="!loading && hasIconRight"
+        class="octo-input__icon"
+        :class="{ 'is-clickable': passwordReveal || iconRightClickable }"
         :icon="rightIcon"
         :pack="iconPack"
+        :size="iconSize"
+        :type="rightIconType"
+        both
+        @click.native="rightIconClick"
       />
-    </button>
+    </div>
+    <o-h
+      size="5"
+      v-if="maxlength && hasCounter && type !== 'number'"
+      class="help counter"
+      :class="{ 'is-invisible': !isFocused }"
+      >{{ valueLength }} / {{ maxlength }}</o-h
+    >
   </div>
 </template>
 
 <script>
+import Icon from "../Icon/Icon.vue";
+import Heading from "../Heading/Heading.vue";
+import config from "../../utils/config";
 import FormElementMixin from "../../utils/FormElementMixin";
-import { reactive, toRefs, computed, ref } from "@vue/composition-api";
 
 export default {
   name: "OInput",
+  components: {
+    [Icon.name]: Icon,
+    [Heading.name]: Heading
+  },
   mixins: [FormElementMixin],
   inheritAttrs: false,
   props: {
     value: [Number, String],
     type: {
       type: String,
-      default: "default",
-      validator(value) {
-        const types = ["default", "danger"];
-        return types.includes(value);
-      }
-    },
-    hovered: Boolean,
-    focused: Boolean,
-    nativeType: {
-      type: String,
       default: "text"
     },
     passwordReveal: Boolean,
     iconClickable: Boolean,
-    icon: String
+    hasCounter: {
+      type: Boolean,
+      default: () => config.defaultInputHasCounter
+    },
+    customClass: {
+      type: String,
+      default: ""
+    },
+    iconRight: String,
+    iconRightClickable: Boolean
   },
-  setup(props, { emit, root }) {
-    const input = ref(null);
-    const textarea = ref(null);
-
-    const state = reactive({
-      newValue: props.value,
-      newType: props.type,
-      newNativeType: props.nativeType,
-      newAutocomplete: props.autocomplete || false,
-      isPasswordVisible: false,
-      _elementRef: props.type === "textarea" ? "textarea" : "input"
-    });
-
-    const computedValue = computed({
-      get: () => state.newValue,
-      set: value => {
-        state.newValue = value;
-        emit("input", value);
-        // !this.isValid && this.checkHtml5Validity();
-      }
-    });
-
-    const inputClasses = computed(() => [
-      `is-${props.type}`,
-      { "is-focused": props.focused },
-      { "is-hovered": props.hovered },
-      { "has-icon": props.hasIcon }
-    ]);
-
-    const hasIcon = computed(() => props.passwordReveal || props.icon);
-
-    const passwordVisibleIcon = computed(() =>
-      !state.isPasswordVisible ? "eye" : "eye-off"
-    );
-
-    const rightIcon = computed(() =>
-      props.passwordReveal ? passwordVisibleIcon.value : props.icon
-    );
-
-    const togglePasswordVisibility = () => {
-      state.isPasswordVisible = !state.isPasswordVisible;
-      state.newNativeType = state.isPasswordVisible ? "text" : "password";
-      root.$nextTick(() => {
-        input.value.focus();
-      });
-    };
-
-    const onInput = event => {
-      root.$nextTick(() => {
-        if (event.target) {
-          computedValue.value = event.target.value;
-        }
-      });
-    };
-
-    const iconClick = (emitEvent, event) => {
-      emit(emitEvent, event);
-      root.$nextTick(() => input.value && input.value.focus());
-    };
-
-    const rightIconClick = event => {
-      if (props.passwordReveal) {
-        togglePasswordVisibility();
-      } else if (props.iconClickable) {
-        iconClick("icon-click", event);
-      }
-    };
-
+  data() {
     return {
-      ...toRefs(state),
-      input,
-      textarea,
-      computedValue,
-      inputClasses,
-      hasIcon,
-      rightIcon,
-      togglePasswordVisibility,
-      onInput,
-      iconClick,
-      rightIconClick
+      newValue: this.value,
+      newType: this.type,
+      newAutocomplete: this.autocomplete || config.defaultInputAutocomplete,
+      isPasswordVisible: false,
+      // eslint-disable-next-line vue/no-reserved-keys
+      _elementRef: this.type === "textarea" ? "textarea" : "input"
     };
+  },
+  computed: {
+    computedValue: {
+      get() {
+        return this.newValue;
+      },
+      set(value) {
+        this.newValue = value;
+        this.$emit("input", value);
+        !this.isValid && this.checkHtml5Validity();
+      }
+    },
+    rootClasses() {
+      return [
+        this.iconPosition,
+        this.size,
+        {
+          "is-expanded": this.expanded,
+          "is-loading": this.loading,
+          "is-clearfix": !this.hasMessage
+        }
+      ];
+    },
+    inputClasses() {
+      return [this.statusType, this.size, { "is-rounded": this.rounded }];
+    },
+    hasIconRight() {
+      return (
+        this.passwordReveal ||
+        this.loading ||
+        this.statusTypeIcon ||
+        this.iconRight
+      );
+    },
+    rightIcon() {
+      if (this.passwordReveal) {
+        return this.passwordVisibleIcon;
+      } else if (this.statusTypeIcon) {
+        return this.statusTypeIcon;
+      }
+      return this.iconRight;
+    },
+    rightIconType() {
+      if (this.passwordReveal) {
+        return "is-default";
+      } else if (this.statusTypeIcon) {
+        return this.statusType;
+      }
+      return null;
+    },
+
+    /**
+     * Position of the icon or if it's both sides.
+     */
+    // eslint-disable-next-line vue/return-in-computed-property
+    iconPosition() {
+      if (this.icon && this.hasIconRight) {
+        return "has-icons-left has-icons-right";
+      } else if (!this.icon && this.hasIconRight) {
+        return "has-icons-right";
+      } else if (this.icon) {
+        return "has-icons-left";
+      }
+    },
+
+    /**
+     * Icon name (MDI) based on the type.
+     */
+    statusTypeIcon() {
+      return null;
+      // switch (this.statusType) {
+      //   case "is-success":
+      //     return "check-mark";
+      //   case "is-danger":
+      //     return "alert-circle";
+      //   case "is-info":
+      //     return "info-circle";
+      //   case "is-warning":
+      //     return "alert";
+      // }
+    },
+
+    /**
+     * Check if have any message prop from parent if it's a Field.
+     */
+    hasMessage() {
+      return !!this.statusMessage;
+    },
+
+    /**
+     * Current password-reveal icon name.
+     */
+    passwordVisibleIcon() {
+      return !this.isPasswordVisible ? "eye" : "eye-off";
+    },
+    /**
+     * Get value length
+     */
+    valueLength() {
+      if (typeof this.computedValue === "string") {
+        return this.computedValue.length;
+      } else if (typeof this.computedValue === "number") {
+        return this.computedValue.toString().length;
+      }
+      return 0;
+    }
   },
   watch: {
     /**
@@ -160,9 +219,49 @@ export default {
      */
     value(value) {
       this.newValue = value;
+    }
+  },
+  methods: {
+    /**
+     * Toggle the visibility of a password-reveal input
+     * by changing the type and focus the input right away.
+     */
+    togglePasswordVisibility() {
+      this.isPasswordVisible = !this.isPasswordVisible;
+      this.newType = this.isPasswordVisible ? "text" : "password";
+
+      this.$nextTick(() => {
+        this.$refs.input.focus();
+      });
     },
-    nativeType(value) {
-      this.newNativeType = value;
+
+    /**
+     * Input's 'input' event listener, 'nextTick' is used to prevent event firing
+     * before ui update, helps when using masks (Cleavejs and potentially others).
+     */
+    onInput(event) {
+      this.$nextTick(() => {
+        if (event.target) {
+          this.computedValue = event.target.value;
+        }
+      });
+    },
+
+    iconClick(emit, event) {
+      this.$emit(emit, event);
+      this.$nextTick(() => {
+        if (this.$refs.input) {
+          this.$refs.input.focus();
+        }
+      });
+    },
+
+    rightIconClick(event) {
+      if (this.passwordReveal) {
+        this.togglePasswordVisibility();
+      } else if (this.iconRightClickable) {
+        this.iconClick("icon-right-click", event);
+      }
     }
   }
 };

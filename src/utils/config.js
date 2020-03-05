@@ -1,6 +1,6 @@
 let config = {
   defaultContainerElement: null,
-  defaultIconPack: "mdi",
+  defaultIconPack: "dashboard",
   defaultIconComponent: null,
   defaultIconPrev: "chevron-left",
   defaultIconNext: "chevron-right",

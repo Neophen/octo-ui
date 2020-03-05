@@ -20,8 +20,13 @@
 </template>
 
 <script>
+import Icon from "../Icon/Icon";
+
 export default {
   name: "OTag",
+  components: {
+    [Icon.name]: Icon
+  },
   props: {
     closable: Boolean,
     type: String,

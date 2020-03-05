@@ -1,14 +1,9 @@
-# Form
+# Input
 
-A component which creates a header.
-
-## Example
-
-<Demo componentName="examples-form-doc" />
+<Demo componentName="examples-input-doc" />
 
 ## Code
 ```html
-something will go here
 ```
 
 ## props
@@ -21,4 +16,4 @@ something will go here
 
 |Name|Description|
 |---|---|
-|**slot_name**|description|
+|**slot_name**|this will display the text|

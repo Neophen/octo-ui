@@ -10,7 +10,11 @@
       .octo_field__icon {
         color: black;
       }
+      .octo-field__number {
+        background: black;
+      }
     }
+
     .octo_field__icon {
       color: var(--octo-muted-500);
     }
@@ -43,9 +47,6 @@
     justify-content: center;
     margin-right: 7px;
     background: var(--octo-muted-500);
-    &.has-value {
-      background: black;
-    }
     color: white;
   }
 
@@ -56,9 +57,9 @@
       .octo_field__icon {
         color: var(--octo-secondary-500);
       }
-    }
-    .octo-field__number {
-      background: var(--octo-secondary-500);
+      .octo-field__number {
+        background: var(--octo-secondary-500);
+      }
     }
   }
 
@@ -70,20 +71,20 @@
       .octo_field__icon {
         color: var(--octo-primary-500);
       }
+      .octo-field__number {
+        background: var(--octo-primary-500);
+      }
     }
-    .octo-field__number {
-      background: var(--octo-primary-500);
-    }
+    
     &.is-danger {
       .octo-field__label {
         color: var(--octo-secondary-500);
         .octo_field__icon {
           color: var(--octo-secondary-500);
         }
-      }
-
-      .octo-field__number {
-        background: var(--octo-secondary-500);
+        .octo-field__number {
+          background: var(--octo-secondary-500);
+        }
       }
     }
   }

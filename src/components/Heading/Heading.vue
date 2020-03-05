@@ -3,12 +3,7 @@
     :is="`h${props.size}`"
     :ref="data.ref"
     class="octo-title"
-    :class="[
-      `is-${props.size}`,
-      `is-${props.type}`,
-      data.class,
-      data.staticClass
-    ]"
+    :class="[`is-${props.size}`, props.type, data.class, data.staticClass]"
     :style="[
       data.style,
       data.staticStyle,
@@ -45,21 +40,7 @@ export const Heading = {
       default: 0,
       type: Number
     },
-    type: {
-      default: "default",
-      type: String,
-      validator(value) {
-        const types = [
-          "default",
-          "muted",
-          "primary",
-          "danger",
-          "inverted",
-          "inherit"
-        ];
-        return types.includes(value);
-      }
-    }
+    type: [String, Object]
   }
 };
 

@@ -1,5 +1,5 @@
 <template>
-  <svg class="octo-icon" :class="`is-${size}`" :style="iconRotation">
+  <svg class="octo-icon" :class="[size, type]" :style="iconRotation">
     <use :href="iconPath" :xlink:href="iconPath" />
   </svg>
 </template>
@@ -10,17 +10,27 @@ import { computed } from "@vue/composition-api";
 export default {
   name: "OIcon",
   props: {
-    icon: {
+    type: [String, Object],
+    pack: {
       type: String,
-      required: true
+      default: "dashboard"
     },
+    icon: String,
     size: {
       type: String,
-      default: "custom",
-      validator: value => {
-        if (!value) return;
-        return ["sm", "md", "lg", "xl", "custom"].includes(value);
-      }
+      default: "is-custom",
+      validator: value =>
+        [
+          "is-sm",
+          "is-small",
+          "is-medium",
+          "is-md",
+          "is-large",
+          "is-lg",
+          "is-xl",
+          "is-custom",
+          "is-undefined"
+        ].includes(value)
     },
     dir: {
       type: String,
@@ -28,10 +38,6 @@ export default {
       validator: value => {
         return ["up", "left", "right", "down"].includes(value);
       }
-    },
-    pack: {
-      type: String,
-      default: "dashboard"
     }
   },
   setup(props, { root }) {

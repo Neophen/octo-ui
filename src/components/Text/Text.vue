@@ -3,12 +3,7 @@
     :is="props.tag"
     :ref="data.ref"
     class="octo-text"
-    :class="[
-      `is-${props.type}`,
-      `is-${props.size}`,
-      data.class,
-      data.staticClass
-    ]"
+    :class="[props.type, props.size, data.class, data.staticClass]"
     :style="[data.style, data.staticStyle]"
     v-bind="data.attrs"
     v-on="listeners"
@@ -29,28 +24,12 @@ export const Text = {
         return tags.includes(value);
       }
     },
-    type: {
-      default: "default",
-      type: String,
-      validator(value) {
-        const types = [
-          "default",
-          "muted",
-          "primary",
-          "danger",
-          "inverted",
-          "inherit"
-        ];
-        return types.includes(value);
-      }
-    },
+    type: [String, Object],
     size: {
-      default: "default",
+      default: "is-default",
       type: String,
-      validator(value) {
-        const types = ["default", "xs", "sm", "semi"];
-        return types.includes(value);
-      }
+      validator: value =>
+        ["is-default", "is-xs", "is-sm", "is-semi"].includes(value)
     }
   }
 };

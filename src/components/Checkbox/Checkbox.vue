@@ -23,7 +23,7 @@
     />
 
     <div class="octo-checkbox__mark" :class="type">
-      <o-icon icon="check-mark" size="sm" />
+      <o-icon icon="check-mark" size="is-sm" />
     </div>
     <span class="octo-checkbox__label">
       <slot />
@@ -33,13 +33,13 @@
 
 <script>
 import CheckRadioMixin from "../../utils/CheckRadioMixin.js";
-import OIcon from "../Icon";
+import Icon from "../Icon/Icon.vue";
 
 export default {
   name: "OCheckbox",
   mixins: [CheckRadioMixin],
   components: {
-    OIcon
+    [Icon.name]: Icon
   },
   props: {
     indeterminate: Boolean,

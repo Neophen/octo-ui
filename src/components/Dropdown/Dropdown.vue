@@ -14,7 +14,7 @@
         ref="refDropdownMenu"
         v-show="isOpen"
         class="octo-dropdown__menu"
-        :class="`is-${type}`"
+        :class="type"
       >
         <slot v-bind:closeMenu="close" />
       </ul>
@@ -39,10 +39,8 @@ export default {
   props: {
     type: {
       type: String,
-      default: "default",
-      validator: value => {
-        return ["default", "primary"].includes(value);
-      }
+      default: "is-default",
+      validator: value => ["is-default", "is-primary"].includes(value)
     }
   },
   setup(_, { root }) {

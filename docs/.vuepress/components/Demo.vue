@@ -108,6 +108,13 @@ export default {
   margin-right: 1rem;
 }
 
+.mr-2 {
+  margin-right: .5rem;
+}
+
+.ml-2 {
+  margin-left: .5rem;
+}
 .field {
   margin-bottom: .5rem;
 }

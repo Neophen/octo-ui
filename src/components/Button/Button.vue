@@ -6,8 +6,8 @@
     :disabled="disabled"
     :type="nativeType"
     :class="[
-      `is-${size}`,
-      `is-${type}`,
+      size,
+      type,
       {
         'is-squared': squared,
         'is-loading': loading,
@@ -51,29 +51,41 @@
 </template>
 
 <script>
-// import Icon from "../icon/Icon";
+import Icon from "../Icon/Icon";
 import config from "../../utils/config.js";
 import { computed } from "@vue/composition-api";
 
 export default {
   name: "OButton",
+  components: {
+    [Icon.name]: Icon
+  },
   inheritAttrs: false,
   props: {
     type: {
       type: String,
-      default: "default",
-      validator: value => {
-        return ["default", "primary", "link", "danger", "dashed"].includes(
-          value
-        );
-      }
+      default: "is-default",
+      validator: value =>
+        [
+          "is-default",
+          "is-primary",
+          "is-link",
+          "is-danger",
+          "is-dashed"
+        ].includes(value)
     },
     size: {
       type: String,
-      default: "md",
-      validator: value => {
-        return ["sm", "md", "lg"].includes(value);
-      }
+      default: "is-md",
+      validator: value =>
+        [
+          "is-sm",
+          "is-small",
+          "is-medium",
+          "is-md",
+          "is-large",
+          "is-lg"
+        ].includes(value)
     },
     label: String,
     iconPack: {
@@ -112,7 +124,7 @@ export default {
   },
   setup(props, { attrs }) {
     const iconSize = computed(() => props.size);
-    const fontSize = computed(() => (props.size === "lg" ? "4" : "5"));
+    const fontSize = computed(() => (props.size === "is-lg" ? "4" : "5"));
     const computedTag = computed(() => {
       if (attrs.disabled !== undefined && attrs.disabled !== false) {
         return "button";
