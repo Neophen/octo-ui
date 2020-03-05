@@ -14,3 +14,4 @@ export { default as Tags } from "./Tags";
 export { OModal, OModalTransition } from "./Modal";
 export { OTabs, OTab } from "./Tabs";
 export { ODropdown, ODropdownItem } from "./Dropdown";
+export { OTagList, OTag } from "./Tag";

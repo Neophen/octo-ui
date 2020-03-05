@@ -21,6 +21,8 @@ import {
   onMounted
 } from "@vue/composition-api";
 
+import { generateID } from "../../utils/id-generator.js";
+
 export default {
   name: "o-modal",
   props: {
@@ -47,16 +49,8 @@ export default {
       previousHash: ""
     });
 
-    const getUUID = () =>
-      (
-        Date.now().toString(36) +
-        Math.random()
-          .toString(36)
-          .substr(2, 5)
-      ).toUpperCase();
-
     const modalHash = computed(() =>
-      props.name ? `#${props.name}` : `#modal-${getUUID().toLowerCase()}`
+      props.name ? `#${props.name}` : `#modal-${generateID()}`
     );
 
     const close = message => {

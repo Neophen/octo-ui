@@ -1,49 +1,104 @@
 <template>
-  <div class="octo-switch__container">
+  <label
+    class="switch"
+    :class="newClass"
+    ref="label"
+    :disabled="disabled"
+    @click="focus"
+    @keydown.prevent.enter="$refs.label.click()"
+    @mousedown="isMouseDown = true"
+    @mouseup="isMouseDown = false"
+    @mouseout="isMouseDown = false"
+    @blur="isMouseDown = false"
+  >
     <input
+      v-model="computedValue"
       type="checkbox"
-      :id="name"
+      ref="input"
+      @click.stop
+      :disabled="disabled"
       :name="name"
-      class="octo-switch"
-      v-model="isChecked"
+      :required="required"
+      :value="nativeValue"
+      :true-value="trueValue"
+      :false-value="falseValue"
     />
-    <label class="octo-switch__label" :for="name">{{ name }}</label>
-  </div>
+    <span
+      class="check"
+      :class="[{ 'is-elastic': isMouseDown && !disabled }, type]"
+    />
+    <span class="control-label">
+      <slot />
+    </span>
+  </label>
 </template>
 
 <script>
-import { reactive, toRefs, watch } from "@vue/composition-api";
 export default {
-  name: "o-switch",
-  inheritAttrs: false,
+  name: "BSwitch",
   props: {
-    value: [Boolean, String],
-    name: {
-      type: String,
-      default: "octo-switch"
+    value: [String, Number, Boolean, Function, Object, Array, Date],
+    nativeValue: [String, Number, Boolean, Function, Object, Array, Date],
+    disabled: Boolean,
+    type: String,
+    name: String,
+    required: Boolean,
+    size: String,
+    trueValue: {
+      type: [String, Number, Boolean, Function, Object, Array, Date],
+      default: true
+    },
+    falseValue: {
+      type: [String, Number, Boolean, Function, Object, Array, Date],
+      default: false
+    },
+    rounded: {
+      type: Boolean,
+      default: true
+    },
+    outlined: {
+      type: Boolean,
+      default: false
     }
   },
-  setup(props, { emit }) {
-    const state = reactive({
-      isChecked: props.value
-    });
-
-    watch(
-      () => state.isChecked,
-      isChecked => {
-        emit("input", isChecked);
+  data() {
+    return {
+      newValue: this.value,
+      isMouseDown: false
+    };
+  },
+  computed: {
+    computedValue: {
+      get() {
+        return this.newValue;
       },
-      { lazy: true }
-    );
-
-    watch(
-      () => props.value,
-      isChecked => {
-        state.isChecked = isChecked;
+      set(value) {
+        this.newValue = value;
+        this.$emit("input", value);
       }
-    );
-
-    return { ...toRefs(state) };
+    },
+    newClass() {
+      return [
+        this.size,
+        { "is-disabled": this.disabled },
+        { "is-rounded": this.rounded },
+        { "is-outlined": this.outlined }
+      ];
+    }
+  },
+  watch: {
+    /**
+     * When v-model change, set internal value.
+     */
+    value(value) {
+      this.newValue = value;
+    }
+  },
+  methods: {
+    focus() {
+      // MacOS FireFox and Safari do not focus when clicked
+      this.$refs.input.focus();
+    }
   }
 };
 </script>
