@@ -10,7 +10,7 @@
                 <o-h class="mb-4">First modal</o-h>
                 <div class="flex mt-6">
                   <o-button @click="isOpen = false" class="mr-4">Cancel</o-button>
-                  <o-button type="primary" @click="isOtherOpen = true">open other modal</o-button>
+                  <o-button type="is-primary" @click="isOtherOpen = true">open other modal</o-button>
                 </div>
               </div>
             </o-modal>
