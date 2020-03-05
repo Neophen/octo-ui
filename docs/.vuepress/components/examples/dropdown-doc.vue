@@ -4,11 +4,11 @@
       <div class="col-1">
         <div class="control-box">
           <o-h size="3" class="mb-2">Dropdown primary</o-h>
-          <o-dropdown type="primary">
+          <o-dropdown type="is-primary">
             <o-button slot="trigger" icon="gear" />
             <o-dropdown-item @click="testClick">Edit</o-dropdown-item>
             <o-dropdown-item @click="testClick">Hide</o-dropdown-item>
-            <o-dropdown-item @click="testClick" type="danger">Delete</o-dropdown-item>
+            <o-dropdown-item @click="testClick" type="is-danger">Delete</o-dropdown-item>
           </o-dropdown>
         </div>
       </div>
@@ -24,7 +24,7 @@
             <o-button slot="trigger" icon="gear" />
             <o-dropdown-item @click="testClick">Edit</o-dropdown-item>
             <o-dropdown-item @click="testClick">Hide</o-dropdown-item>
-            <o-dropdown-item @click="testClick" type="danger">Delete</o-dropdown-item>
+            <o-dropdown-item @click="testClick" type="is-danger">Delete</o-dropdown-item>
           </o-dropdown>
         </div>
       </div>
