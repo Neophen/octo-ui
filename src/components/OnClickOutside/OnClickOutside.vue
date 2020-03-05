@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "o-on-click-outside",
+  name: "OOnClickOutside",
   props: ["do"],
   mounted() {
     const listener = e => {

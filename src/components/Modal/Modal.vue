@@ -24,7 +24,7 @@ import {
 import { generateID } from "../../utils/id-generator.js";
 
 export default {
-  name: "o-modal",
+  name: "OModal",
   props: {
     name: {
       type: String,

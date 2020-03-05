@@ -52,7 +52,7 @@ import {
 import { createPopper } from "@popperjs/core";
 
 export default {
-  name: "o-autocomplete",
+  name: "OAutocomplete",
   props: {
     value: {
       type: [String, Object],

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "o-dropdown-item",
+  name: "ODropdown-item",
   inheritAttrs: false
 };
 </script>

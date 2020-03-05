@@ -8,7 +8,7 @@
 import { computed } from "@vue/composition-api";
 
 export default {
-  name: "o-icon",
+  name: "OIcon",
   props: {
     icon: {
       type: String,

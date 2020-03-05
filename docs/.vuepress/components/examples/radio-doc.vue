@@ -1,41 +1,28 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-1">
-        <div class="control-box mb-4">
-          <o-h size="3" class="mb-2">Field controls</o-h>
-          <div class="row">
-            <div class="col-1">
-              <o-field label="Is danger" class="mb-2">
-                <o-switch v-model="testDanger"></o-switch>
-              </o-field>
-            </div>
-          </div>
-        </div>
-        <div class="control-box mb-4">
-          <o-h size="3" class="mb-2">Checkboxes</o-h>
-          <div class="row">
-            <div class="col-1">
-              <div v-for="entry in options" :key="entry.id" class="field">
-                <o-radio
-                  v-model="selectedOption"
-                  :type="testDanger ? 'danger' : 'default'"
-                  :name="`${key}[]`"
-                  class="mb-2"
-                  :native-value="entry.id"
-                >{{ entry.title }}</o-radio>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="control-box mb-4">
-          <o-h size="3" class="mb-2">Output</o-h>
-          <div class="row">
-            <div class="col-1">
-              <p>{{ JSON.stringify(selectedOption) }}</p>
-            </div>
-          </div>
-        </div>
+    <div class="control-box mb-4">
+      <o-h size="3" class="mb-2">Radios</o-h>
+      <div v-for="option in options" :key="option.id" class="field">
+        <o-radio
+          v-model="selectedOption"
+          :type="testDanger ? 'is-danger' : 'is-default'"
+          class="mb-2"
+          :native-value="option.title"
+        >{{ option.title }}</o-radio>
+      </div>
+      <div class="field">
+        <o-radio disabled>Disabled</o-radio>
+      </div>
+
+      <o-h size="5" class="mb-2 mt-6">Selection</o-h>
+      <p>{{ selectedOption }}</p>
+
+      <o-h size="3" class="mb-2 mt-6">Types</o-h>
+      <div class="field">
+        <o-radio v-model="type" native-value="default">Default</o-radio>
+      </div>
+      <div class="field">
+        <o-radio v-model="type" native-value="danger" type="is-danger">Danger</o-radio>
       </div>
     </div>
   </div>
@@ -48,7 +35,10 @@ export default {
   setup() {
     const state = reactive({
       key: "checked-entries",
+      checkbox: false,
+      checkboxCustom: "Yes",
       testDanger: false,
+      type: 'default',
       options: [
         {
           id: "first-id",
@@ -56,14 +46,14 @@ export default {
         },
         {
           id: "second-id",
-          title: "second entry"
+          title: "Second entry"
         },
         {
           id: "third-id",
-          title: "third entry"
+          title: "Third entry"
         }
       ],
-      selectedOption: ''
+      selectedOption: "Second entry"
     });
 
     return { ...toRefs(state) };

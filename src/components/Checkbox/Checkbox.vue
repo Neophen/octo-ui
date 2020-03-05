@@ -1,16 +1,18 @@
 <template>
   <label
+    class="octo-checkbox"
+    :class="[size, { 'is-disabled': disabled }]"
     ref="label"
-    class="octo-checkbox__label"
-    :class="`is-${type}`"
+    :disabled="disabled"
     @click="focus"
     @keydown.prevent.enter="$refs.label.click()"
   >
     <input
-      class="octo-checkbox"
       v-model="computedValue"
+      :indeterminate.prop="indeterminate"
       type="checkbox"
       ref="input"
+      class="octo-checkbox__input"
       @click.stop
       :disabled="disabled"
       :required="required"
@@ -19,31 +21,28 @@
       :true-value="trueValue"
       :false-value="falseValue"
     />
-    <div class="octo-checkbox__mark">
+
+    <div class="octo-checkbox__mark" :class="type">
       <o-icon icon="check-mark" size="sm" />
     </div>
-    <slot />
+    <span class="octo-checkbox__label">
+      <slot />
+    </span>
   </label>
 </template>
 
 <script>
+import CheckRadioMixin from "../../utils/CheckRadioMixin.js";
+import OIcon from "../Icon";
+
 export default {
-  name: "o-checkbox",
-  inheritAttrs: false,
+  name: "OCheckbox",
+  mixins: [CheckRadioMixin],
+  components: {
+    OIcon
+  },
   props: {
-    value: [String, Number, Boolean, Function, Object, Array],
-    nativeValue: [String, Number, Boolean, Function, Object, Array],
-    type: {
-      type: String,
-      default: "default",
-      validator(value) {
-        const types = ["default", "danger"];
-        return types.includes(value);
-      }
-    },
-    disabled: Boolean,
-    required: Boolean,
-    name: String,
+    indeterminate: Boolean,
     trueValue: {
       type: [String, Number, Boolean, Function, Object, Array],
       default: true
@@ -51,36 +50,6 @@ export default {
     falseValue: {
       type: [String, Number, Boolean, Function, Object, Array],
       default: false
-    }
-  },
-  data() {
-    return {
-      newValue: this.value
-    };
-  },
-  computed: {
-    computedValue: {
-      get() {
-        return this.newValue;
-      },
-      set(value) {
-        this.newValue = value;
-        this.$emit("input", value);
-      }
-    }
-  },
-  watch: {
-    /**
-     * When v-model change, set internal value.
-     */
-    value(value) {
-      this.newValue = value;
-    }
-  },
-  methods: {
-    focus() {
-      // MacOS FireFox and Safari do not focus when clicked
-      this.$refs.input.focus();
     }
   }
 };

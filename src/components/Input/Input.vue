@@ -48,7 +48,7 @@ import FormElementMixin from "../../utils/FormElementMixin";
 import { reactive, toRefs, computed, ref } from "@vue/composition-api";
 
 export default {
-  name: "o-input",
+  name: "OInput",
   mixins: [FormElementMixin],
   inheritAttrs: false,
   props: {

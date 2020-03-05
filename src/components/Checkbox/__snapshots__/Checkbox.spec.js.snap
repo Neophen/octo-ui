@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OCheckbox render correctly 1`] = `
+<label class="octo-checkbox"><input type="checkbox" true-value="true" class="octo-checkbox__input" value="false">
+  <div class="octo-checkbox__mark">
+    <o-icon-stub icon="check-mark" size="sm" dir="right" pack="dashboard"></o-icon-stub>
+  </div> <span class="octo-checkbox__label"></span>
+</label>
+`;

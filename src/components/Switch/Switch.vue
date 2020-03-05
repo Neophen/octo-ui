@@ -1,6 +1,6 @@
 <template>
   <label
-    class="switch"
+    class="octo-switch"
     :class="newClass"
     ref="label"
     :disabled="disabled"
@@ -11,10 +11,14 @@
     @mouseout="isMouseDown = false"
     @blur="isMouseDown = false"
   >
+    <span v-if="labelLeft" class="octo-switch__label is-left">
+      <slot />
+    </span>
     <input
       v-model="computedValue"
       type="checkbox"
       ref="input"
+      class="octo-switch__input"
       @click.stop
       :disabled="disabled"
       :name="name"
@@ -24,10 +28,10 @@
       :false-value="falseValue"
     />
     <span
-      class="check"
+      class="octo-switch__check"
       :class="[{ 'is-elastic': isMouseDown && !disabled }, type]"
     />
-    <span class="control-label">
+    <span v-if="!labelLeft" class="octo-switch__label is-right">
       <slot />
     </span>
   </label>
@@ -35,7 +39,7 @@
 
 <script>
 export default {
-  name: "BSwitch",
+  name: "OSwitch",
   props: {
     value: [String, Number, Boolean, Function, Object, Array, Date],
     nativeValue: [String, Number, Boolean, Function, Object, Array, Date],
@@ -57,6 +61,10 @@ export default {
       default: true
     },
     outlined: {
+      type: Boolean,
+      default: false
+    },
+    labelLeft: {
       type: Boolean,
       default: false
     }

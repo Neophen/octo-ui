@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "o-tag",
+  name: "OTag",
   props: {
     closable: Boolean,
     type: String,

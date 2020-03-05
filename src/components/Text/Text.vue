@@ -19,7 +19,7 @@
 
 <script>
 export const Text = {
-  name: "o-text",
+  name: "OText",
   props: {
     tag: {
       default: "p",

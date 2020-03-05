@@ -35,7 +35,7 @@ import {
 import { createPopper } from "@popperjs/core";
 
 export default {
-  name: "o-dropdown",
+  name: "ODropdown",
   props: {
     type: {
       type: String,

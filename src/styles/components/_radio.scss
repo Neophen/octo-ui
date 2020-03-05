@@ -1,9 +1,9 @@
-.octo-radio__label {
+.octo-radio {
   display: flex;
   align-items: center;
   cursor: pointer;
 
-  .octo-radio {
+  .octo-radio__input {
     position: absolute;
     opacity: 0;
   }
@@ -29,9 +29,13 @@
       border-radius: 50%;
       background: var(--octo-primary-500);
     }
+
+    &.is-danger {
+      border: 2px solid var(--octo-secondary-500);
+    }
   }
 
-  .octo-radio:checked + .octo-radio__mark {
+  .octo-radio__input:checked + .octo-radio__mark {
     border: 2px solid var(--octo-primary-500);
     box-shadow: var(--octo-shadow-idle);
 
@@ -39,14 +43,8 @@
       display: block;
       background: var(--octo-primary-500);
     }
-  }
 
-  &.is-danger {
-    .octo-radio__mark {
-      border: 2px solid var(--octo-secondary-500);
-    }
-
-    .octo-radio:checked + .octo-radio__mark {
+    &.is-danger {
       border: 2px solid var(--octo-secondary-500);
       box-shadow: none;
       &:after {
@@ -62,14 +60,7 @@
         display: block;
         background: var(--octo-muted-500);
       }
-    }
-
-    .octo-radio:checked + .octo-radio__mark {
-      box-shadow: var(--octo-shadow-focus);
-    }
-
-    &.is-danger {
-      .octo-radio__mark {
+      &.is-danger {
         border: 2px solid var(--octo-secondary-500);
         color: var(--octo-text-default);
         background: white;
@@ -79,15 +70,31 @@
           background: var(--octo-muted-500);
         }
       }
+    }
 
-      .octo-radio:checked + .octo-radio__mark {
+    .octo-radio__input:checked + .octo-radio__mark {
+      box-shadow: var(--octo-shadow-focus);
+      &.is-danger {
         border: 2px solid var(--octo-secondary-500);
+        box-shadow: var(--octo-shadow-danger);
 
         &:after {
           display: block;
           background: var(--octo-secondary-500);
         }
-        box-shadow: var(--octo-shadow-danger);
+      }
+    }
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+    .octo-radio__mark {
+      background: white;
+      border: 2px solid var(--octo-muted-500) !important;
+      background: white;
+      box-shadow: none !important;
+      &:after {
+        display: none !important;
       }
     }
   }

@@ -28,7 +28,7 @@ import {
 } from "@vue/composition-api";
 
 export default {
-  name: "o-tabs",
+  name: "OTabs",
   setup(_, { emit }) {
     const instance = getCurrentInstance();
 

@@ -56,7 +56,7 @@ import config from "../../utils/config.js";
 import { computed } from "@vue/composition-api";
 
 export default {
-  name: "o-button",
+  name: "OButton",
   inheritAttrs: false,
   props: {
     type: {

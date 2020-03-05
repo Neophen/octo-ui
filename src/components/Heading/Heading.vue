@@ -32,7 +32,7 @@
 
 <script>
 export const Heading = {
-  name: "o-h",
+  name: "OH",
   props: {
     size: {
       default: "1",

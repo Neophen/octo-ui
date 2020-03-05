@@ -107,4 +107,8 @@ export default {
 .mr-4 {
   margin-right: 1rem;
 }
+
+.field {
+  margin-bottom: .5rem;
+}
 </style>

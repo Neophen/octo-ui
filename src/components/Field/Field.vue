@@ -49,7 +49,7 @@
 
 <script>
 export default {
-  name: "o-field",
+  name: "OField",
   props: {
     type: [String, Object],
     label: String,

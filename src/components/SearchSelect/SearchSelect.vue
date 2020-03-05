@@ -64,7 +64,7 @@ import {
 import { createPopper } from "@popperjs/core";
 
 export default {
-  name: "o-search-select",
+  name: "OSearchSelect",
   props: {
     value: {
       type: [String, Object],

@@ -8,7 +8,7 @@
 import { reactive, onMounted, toRefs } from "@vue/composition-api";
 
 export default {
-  name: "o-tab",
+  name: "OTab",
   props: {
     name: {
       type: String,

@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "o-modal-transition",
+  name: "OModalTransition",
   functional: true,
   render: function(createElement, context) {
     var data = {
