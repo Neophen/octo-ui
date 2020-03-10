@@ -9,6 +9,7 @@
     border-radius: var(--octo-radius-default);
     box-shadow: var(--octo-shadow-black);
     z-index: 50;
+    margin-top: 7px;
   }
   .octo-autocomplete__search {
     display: block;
@@ -42,18 +43,32 @@
     max-height: 14rem;
   }
   .octo-autocomplete__option {
+    display: block;
     padding: 0.5rem 0.75rem;
     color: var(--octo-text-default);
     cursor: pointer;
     border-radius: var(--octo-radius-default);
     user-select: none;
+    width: 100%;
+    text-align: left;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     &:hover {
+      text-decoration: none !important;
       background-color: var(--octo-muted-300);
     }
-    &.is-active,
-    &.is-active:hover {
+    
+    &.is-hovered,
+    &.is-hovered:hover {
       background-color: var(--octo-primary-500);
       color: var(--octo-text-inverted);
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 

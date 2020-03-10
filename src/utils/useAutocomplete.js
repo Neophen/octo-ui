@@ -79,7 +79,7 @@ export const useAutocomplete = (props, { root, emit, slots }) => {
   };
 
   const open = () => {
-    if (state.isOpen) return;
+    if (state.isOpen || filteredData.value.length === 0) return;
     state.isOpen = true;
     root.$nextTick(() => {
       setupPopper(popperOffset);

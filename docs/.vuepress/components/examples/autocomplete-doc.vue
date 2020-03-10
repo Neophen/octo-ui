@@ -10,35 +10,39 @@
         <o-autocomplete
           rounded
           v-model="name"
-          :data="bands"
-          :filter-function="filterBandsFuction"
+          :data="filteredDataArray"
           placeholder="e.g. Anthrax"
-          icon="magnify"
+          icon="search"
           clearable
           @select="option => selected = option"
         >
+          <template slot="empty">No results found</template>
         </o-autocomplete>
       </o-field>
     </div>
     <div class="control-box mb-4">
       <o-h size="3" class="mb-2">Object array</o-h>
+      <div class="block mb-4">
+        <o-switch v-model="openOnFocus">Open dropdown on focus</o-switch>
+        <o-switch v-model="keepFirst">
+          Keep-first
+          <small>(will always have first option pre-selected)</small>
+        </o-switch>
+      </div>
       <p class="mb-4">
         <b>Selected:</b>
         {{ selectedPerson }}
       </p>
       <o-field label="Find a name">
         <o-autocomplete
-          rounded
           v-model="personsName"
-          :data="people"
-          :filter-function="filterPeopleFuction"
-          placeholder="e.g. Diana"
-          icon="magnify"
+          placeholder="e.g. Anne"
+          :keep-first="keepFirst"
+          :open-on-focus="openOnFocus"
+          :data="filteredDataObj"
           field="user.first_name"
-          clearable
           @select="option => selectedPerson = option"
         >
-          <template slot="empty">No results found</template>
         </o-autocomplete>
       </o-field>
     </div>
@@ -68,6 +72,8 @@ export default {
         "Slayer",
         "Testament"
       ],
+      keepFirst: false,
+      openOnFocus: false,
       personsName: "",
       selectedPerson: null,
       people: [
@@ -110,19 +116,29 @@ export default {
       ]
     });
 
-    const filterBandsFuction = (search, options) => {
-      return options.filter(option =>
-        option.toLowerCase().startsWith(search.toLowerCase())
-      );
-    };
+    const filteredDataArray = computed(() => {
+      return state.bands.filter(option => {
+        return (
+          option
+            .toString()
+            .toLowerCase()
+            .indexOf(state.name.toLowerCase()) >= 0
+        );
+      });
+    });
 
-    const filterPeopleFuction = (search, options) => {
-      return options.filter(option =>
-        option.user.first_name.toLowerCase().startsWith(search.toLowerCase())
-      );
-    };
+    const filteredDataObj = computed(() => {
+      return state.people.filter(option => {
+        return (
+          option.user.first_name
+            .toString()
+            .toLowerCase()
+            .indexOf(state.personsName.toLowerCase()) >= 0
+        );
+      });
+    });
 
-    return { ...toRefs(state), filterBandsFuction, filterPeopleFuction };
+    return { ...toRefs(state), filteredDataArray, filteredDataObj };
   }
 };
 </script>

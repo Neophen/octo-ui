@@ -11,8 +11,8 @@
       class="octo-tag__remove"
       :disabled="disabled"
       :tabindex="tabstop ? 0 : false"
-      @click="close()"
-      @keyup.delete.prevent="close()"
+      @click="close"
+      @keyup.delete.prevent="close"
     >
       <o-icon icon="close" class="octo-tag__remove-icon" />
     </button>
@@ -45,10 +45,10 @@ export default {
      * Emit close event when delete button is clicked
      * or delete key is pressed.
      */
-    close() {
+    close(event) {
       if (this.disabled) return;
 
-      this.$emit("close");
+      this.$emit("close", event);
     }
   }
 };
