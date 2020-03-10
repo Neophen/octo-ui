@@ -8,7 +8,7 @@
         ref="refButton"
         type="button"
         @click="toggle"
-        class="octo-search-select__input octo-input"
+        class="octo-search-select__input input"
       >
         <span v-if="newValue">{{ getOptionLabel(newValue) }}</span>
         <span v-else class="octo-search-select__placeholder">
