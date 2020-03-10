@@ -49,6 +49,7 @@
         :pack="iconPack"
         :size="iconSize"
         :type="rightIconType"
+        :dir="iconRightDir"
         both
         @click.native="rightIconClick"
       />
@@ -94,6 +95,10 @@ export default {
       default: ""
     },
     iconRight: String,
+    iconRightDir: {
+      type: String,
+      default: "right"
+    },
     iconRightClickable: Boolean
   },
   data() {
@@ -261,6 +266,10 @@ export default {
         this.togglePasswordVisibility();
       } else if (this.iconRightClickable) {
         this.iconClick("icon-right-click", event);
+      } else {
+        if (this.$refs.input) {
+          this.$refs.input.focus();
+        }
       }
     }
   }

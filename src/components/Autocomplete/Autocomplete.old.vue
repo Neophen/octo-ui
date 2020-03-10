@@ -4,19 +4,23 @@
       class="octo-autocomplete octo-control"
       :class="{ 'is-active': isOpen }"
     >
-      <input
-        ref="refSearch"
+      <o-input
+        ref="refTrigger"
         v-model="newValue"
+        v-bind="$attrs"
+        type="text"
+        icon-right="arrow-collapsible"
+        icon-right-dir="down"
         @focus="open"
-        @blue="close"
-        @input="open"
-        @keydown.esc="close"
-        @keydown.down="highlightNext"
-        @keydown.up="highlightPrev"
-        @keydown.enter.prevent="selectHighlighted"
-        @keydown.tab="highlightNext"
-        class="octo-autocomplete__search octo-input"
+        @blur="close"
+        @input="onInput"
+        @keydown.native.esc="close"
+        @keydown.native.down="highlightNext"
+        @keydown.native.up="highlightPrev"
+        @keydown.native.enter.prevent="selectHighlighted"
+        @keydown.native.tab="highlightNextIfOpen"
       />
+      <!-- class="octo-autocomplete__search input" -->
       <div ref="refDropdown" v-if="isOpen" class="octo-autocomplete__dropdown">
         <ul
           ref="refOptions"
@@ -26,15 +30,18 @@
           <li
             v-for="(option, i) in filteredData"
             :class="{ 'is-active': i === highlightedIndex }"
-            :key="getOptionValue(option)"
+            :key="i"
             @click="select(option)"
             class="octo-autocomplete__option"
           >
-            {{ getOptionLabel(option) }}
+            {{ getValue(option) }}
           </li>
         </ul>
         <div v-if="filteredData.length === 0" class="octo-autocomplete__empty">
-          No results found for "{{ newValue }}"
+          <template v-if="hasEmptySlot">
+            <slot name="empty" />
+          </template>
+          <span v-else>No results found for "{{ newValue }}"</span>
         </div>
       </div>
     </div>
@@ -42,105 +49,119 @@
 </template>
 
 <script>
-import {
-  reactive,
-  toRefs,
-  computed,
-  ref,
-  onBeforeUnmount
-} from "@vue/composition-api";
-import { createPopper } from "@popperjs/core";
+import { reactive, toRefs, computed, ref, watch } from "@vue/composition-api";
+
+import { usePopper } from "../../utils/usePopper.js";
+import { getValueByPath } from "../../utils/helpers";
+import FormElementMixin from "../../utils/FormElementMixin";
 
 export default {
   name: "OAutocomplete",
+  mixins: [FormElementMixin],
   props: {
-    value: {
-      type: [String, Object],
-      required: true
-    },
+    value: [Number, String],
     data: {
       type: Array,
-      required: true
+      default: () => []
     },
     placeholder: {
       type: String,
       default: "Please select an option..."
     },
-    isObject: {
-      type: Boolean,
-      default: false
+    field: {
+      type: String,
+      default: "value"
     },
-    filterFunction: null
+    filterFunction: null,
+    clearOnSelect: Boolean
   },
-  setup(props, { root, emit }) {
-    const refSearch = ref(null);
+  setup(props, { root, emit, slots }) {
+    const { setupPopper, destroyPopper, refTrigger, refDropdown } = usePopper();
+    const popperOffset = [0, 7];
     const refOptions = ref(null);
-    const refDropdown = ref(null);
 
     const state = reactive({
       isOpen: false,
-      popper: null,
       newValue: props.value,
-      highlightedIndex: 0
+      highlightedIndex: 0,
+      selected: null,
+      // eslint-disable-next-line vue/no-reserved-keys
+      _isAutocomplete: true,
+      // eslint-disable-next-line vue/no-reserved-keys
+      _elementRef: "input"
     });
 
-    const computedValue = computed({
-      get: () => state.newValue,
-      set: value => {
-        state.newValue = value;
+    watch(
+      () => state.newValue,
+      value => {
         emit("input", value);
       }
-    });
-
-    const filteredData = computed(() =>
-      props.filterFunction(state.newValue, props.data)
     );
 
-    const setupPopper = () => {
-      state.popper = createPopper(refSearch.value, refDropdown.value, {
-        placement: "bottom",
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset: [0, 7]
-            }
-          }
-        ]
-      });
+    watch(
+      () => props.value,
+      value => {
+        state.newValue = value;
+      }
+    );
+
+    const select = option => {
+      state.selected = option;
+      emit("select", state.selected);
+      if (props.clearOnSelect) {
+        state.newValue = "";
+      } else {
+        state.newValue = getValue(option);
+      }
+      close();
     };
 
-    const destroyPopper = () => {
-      if (state.popper) {
-        state.popper.destroy();
-        state.popper = null;
-      }
+    const filteredData = computed(() =>
+      props.filterFunction
+        ? props.filterFunction(state.newValue, props.data)
+        : props.data
+    );
+
+    const getValue = option => {
+      if (option === null) return;
+
+      // if (typeof this.customFormatter !== "undefined") {
+      //   return this.customFormatter(option);
+      // }
+      return typeof option === "object"
+        ? getValueByPath(option, props.field)
+        : option;
+    };
+
+    const onInput = () => {
+      open();
+      const currentValue = getValue(state.selected);
+      if (currentValue && currentValue === state.newValue) return;
+      emit("typing", state.newValue);
+    };
+
+    const clearInputText = () => {
+      state.newValue = "";
     };
 
     const open = () => {
       if (state.isOpen) return;
       state.isOpen = true;
       root.$nextTick(() => {
-        setupPopper();
+        setupPopper(popperOffset);
         scrollToHighlighted();
       });
     };
 
     const close = () => {
       if (!state.isOpen) return;
+      destroyPopper();
       state.isOpen = false;
       state.highlightedIndex = 0;
-      destroyPopper();
     };
 
     const toggle = () => {
       state.isOpen ? close() : open();
-    };
-
-    const select = option => {
-      computedValue.value = option;
-      emit("selected", option);
-      close();
     };
 
     const scrollToHighlighted = () => {
@@ -165,11 +186,22 @@ export default {
       if (state.isOpen) {
         event.preventDefault();
         highlight(state.highlightedIndex + 1);
+      } else {
+        open();
+      }
+    };
+    const highlightNextIfOpen = event => {
+      if (state.isOpen) {
+        event.preventDefault();
+        highlight(state.highlightedIndex + 1);
       }
     };
 
     const highlightPrev = () => {
-      highlight(state.highlightedIndex - 1);
+      if (state.isOpen) {
+        event.preventDefault();
+        highlight(state.highlightedIndex - 1);
+      }
     };
 
     const selectHighlighted = () => {
@@ -178,29 +210,26 @@ export default {
       }
     };
 
-    const getOptionValue = object => (props.isObject ? object.value : object);
-    const getOptionLabel = object => (props.isObject ? object.label : object);
-
-    onBeforeUnmount(() => {
-      destroyPopper();
-    });
+    const hasEmptySlot = computed(() => !!slots.empty);
 
     return {
       ...toRefs(state),
-      refSearch,
-      refOptions,
+      refTrigger,
       refDropdown,
-      computedValue,
+      refOptions,
       filteredData,
       open,
       close,
       toggle,
       select,
       highlightNext,
+      highlightNextIfOpen,
       highlightPrev,
       selectHighlighted,
-      getOptionValue,
-      getOptionLabel
+      clearInputText,
+      onInput,
+      getValue,
+      hasEmptySlot
     };
   }
 };

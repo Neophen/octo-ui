@@ -60,10 +60,6 @@ export default {
       type: Boolean,
       default: false
     },
-    defaultToggleInput: {
-      type: Boolean,
-      default: false
-    },
     // original
     type: [String, Object],
     label: String,
@@ -91,7 +87,7 @@ export default {
       newType: this.type,
       newMessage: this.message,
       fieldLabelSize: null,
-      canInput: this.defaultToggleInput,
+      canInput: this.hasValue,
       // eslint-disable-next-line vue/no-reserved-keys
       _isField: true // Used internally by Input and Select
     };

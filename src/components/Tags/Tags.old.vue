@@ -1,30 +1,20 @@
 <template>
-  <div ref="refContainer" class="octo-control" :class="{ 'is-active': isOpen }">
+  <div class="octo-control">
     <div class="input octo-tags">
       <div class="octo-tags__grid">
         <div v-for="tag in value" :key="tag" class="octo-tags__container">
-          <o-tag @close="removeTag(tag)" closable>{{
-            getNormalizedTagText(tag)
-          }}</o-tag>
+          <o-tag @close="removeTag(tag)" closable>
+            {{ getNormalizedTagText(tag) }}
+          </o-tag>
         </div>
         <!-- <div class="octo-tags__container"> -->
         <input
           class="octo-tags__tag-input"
           placeholder="Add..."
-          v-model="newValue"
+          v-model="input"
+          @keydown.backspace="handleBackspace"
           @keydown.enter.prevent="addTag"
           @blur="addTag"
-          ref="refTrigger"
-          v-bind="$attrs"
-          type="text"
-          @focus="open"
-          @input="onInput"
-          @keydown.native.backspace="handleBackspace"
-          @keydown.native.esc="close"
-          @keydown.native.down="highlightNext"
-          @keydown.native.up="highlightPrev"
-          @keydown.native.enter.prevent="selectHighlighted"
-          @keydown.native.tab="highlightNextIfOpen"
         />
         <!-- </div> -->
       </div>

@@ -1,7 +1,7 @@
 <template>
-  <div ref="refDropdown" class="octo-dropdown">
+  <div ref="refContainer" class="octo-dropdown">
     <div
-      ref="refButton"
+      ref="refTrigger"
       class="octo-dropdown__trigger"
       @click.prevent="toggle"
       aria-haspopup="true"
@@ -11,12 +11,12 @@
     </div>
     <transition name="octo-fade-out-quick">
       <ul
-        ref="refDropdownMenu"
+        ref="refDropdown"
         v-show="isOpen"
         class="octo-dropdown__menu"
         :class="type"
       >
-        <slot v-bind:closeMenu="close" />
+        <slot />
       </ul>
     </transition>
   </div>
@@ -32,7 +32,7 @@ import {
   onMounted
 } from "@vue/composition-api";
 
-import { createPopper } from "@popperjs/core";
+import { usePopper } from "../../utils/usePopper.js";
 
 export default {
   name: "ODropdown",
@@ -44,39 +44,22 @@ export default {
     }
   },
   setup(_, { root }) {
-    const refButton = ref(null);
-    const refDropdown = ref(null);
-    const refDropdownMenu = ref(null);
+    const {
+      setupPopperWithTimeout,
+      destroyPopperWithTimeout,
+      refTrigger,
+      refDropdown
+    } = usePopper(root);
+
+    const popperOffset = [-7, 7];
+    const popperPlacement = "bottom-start";
+
+    const refContainer = ref(null);
 
     const state = reactive({
       isOpen: false,
-      clickListener: null,
-      destroyPopperTimeout: null
+      clickListener: null
     });
-
-    const setupPopper = () => {
-      state.popper = createPopper(refButton.value, refDropdownMenu.value, {
-        placement: "bottom-start",
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset: [-7, 7]
-            }
-          }
-        ]
-      });
-    };
-
-    const destroyPopper = () => {
-      if (state.popper) {
-        state.destroyPopperTimeout = setTimeout(function() {
-          state.popper.destroy();
-          state.popper = null;
-          state.destroyPopperTimeout = null;
-        }, 200);
-      }
-    };
 
     const closeOnClickOutside = event => {
       if (!event.target.closest(".octo-dropdown")) {
@@ -84,25 +67,16 @@ export default {
       }
     };
 
-    const toggle = () => {
-      if (state.isOpen) {
-        state.isOpen = false;
-        destroyPopper();
-      } else {
-        state.isOpen = true;
-        if (state.destroyPopperTimeout) {
-          clearTimeout(state.destroyPopperTimeout);
-          state.destroyPopperTimeout = null;
-        }
-        root.$nextTick(() => {
-          setupPopper();
-        });
-      }
+    const toggle = () => (state.isOpen ? close() : open());
+
+    const open = () => {
+      state.isOpen = true;
+      setupPopperWithTimeout(popperOffset, popperPlacement);
     };
 
     const close = () => {
       state.isOpen = false;
-      destroyPopper();
+      destroyPopperWithTimeout(200);
     };
 
     watch(
@@ -118,15 +92,11 @@ export default {
     );
 
     const handleGlobalClick = event => {
-      const containedInDropdown = refDropdown.value.contains(event.target);
-      const containedInMenu = refDropdownMenu.value.contains(event.target);
+      const containedInDropdown = refContainer.value.contains(event.target);
+      const containedInMenu = refDropdown.value.contains(event.target);
       requestAnimationFrame(() => {
-        if (event.closeOctoMenu && containedInMenu) {
+        if (!containedInDropdown || (event.closeOctoMenu && containedInMenu)) {
           close();
-        } else {
-          if (!containedInDropdown) {
-            close();
-          }
         }
       });
     };
@@ -140,15 +110,15 @@ export default {
         document.removeEventListener("click", state.clickListener);
         state.clickListener = null;
       }
-      destroyPopper();
+      close();
       window.removeEventListener("click", handleGlobalClick, true);
     });
 
     return {
       ...toRefs(state),
-      refButton,
+      refTrigger,
+      refContainer,
       refDropdown,
-      refDropdownMenu,
       toggle,
       close
     };
