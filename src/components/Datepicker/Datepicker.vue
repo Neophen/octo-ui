@@ -15,19 +15,16 @@
       @keyup.native.enter="openCalendar"
       @click.native="toggleCalendar"
     />
-    <div
-      v-if="showCalendar"
-      ref="refDropdown"
-      class="octo-datepicker__dropdown"
-      key="octo-datepicker__dropdown"
-    >
-      <o-calendar
-        v-model="computedValue"
-        @select="closeCalendar"
-        :min-date="minDate"
-        :max-date="maxDate"
-      />
-    </div>
+    <portal v-if="showCalendar" to="octo-datepicker" slim>
+      <div ref="refDropdown" class="octo-datepicker__dropdown">
+        <o-calendar
+          v-model="computedValue"
+          @select="closeCalendar"
+          :min-date="minDate"
+          :max-date="maxDate"
+        />
+      </div>
+    </portal>
   </div>
 </template>
 
@@ -130,9 +127,10 @@ export default {
     });
 
     const handleClickOutside = event => {
-      const containedInDropdown = refContainer.value.contains(event.target);
+      const containedInContainer = refContainer.value.contains(event.target);
+      const containedInDropdown = refDropdown.value.contains(event.target);
       requestAnimationFrame(() => {
-        if (!containedInDropdown) {
+        if (!containedInDropdown && !containedInContainer) {
           closeCalendar();
         }
       });

@@ -38,3 +38,6 @@ A component which creates a header.
 |Name|Description|
 |---|---|
 |**default**|this will display the text|
+
+<portal-target name="octo-modals" transition="o-modal-transition" multiple />
+<portal-target name="octo-datepicker" />

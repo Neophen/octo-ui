@@ -15,14 +15,15 @@
 
 <script>
 import { reactive, toRefs } from "@vue/composition-api";
-
+import addDays from 'date-fns/addDays'
 export default {
   setup() {
+     const date = new Date();
     const state = reactive({
       normalDate: new Date(),
-      date: new Date(),
-      minDate: new Date('2020-12-07'),
-      maxDate: new Date('2021-01-21'),
+      date: date,
+      minDate: addDays(date, -8),
+      maxDate: addDays(date, 8),
     });
 
     return { ...toRefs(state) };
