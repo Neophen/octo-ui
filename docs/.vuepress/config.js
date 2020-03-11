@@ -50,9 +50,12 @@ module.exports = {
                 'tabs',
                 'switch',
                 'modal',
-                'dropdown',
+                'dropdown-menu',
                 'icon',
                 'input',
+                'calendar',
+                'datepicker',
+                'select',
               ]
             }
           ]

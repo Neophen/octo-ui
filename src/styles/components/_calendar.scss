@@ -1,0 +1,183 @@
+$border-small: 10px;
+$border-large: 20px;
+$border-full: 999px;
+$white: #fff;
+$shadow-idle: 0px 0px 10px rgba(0, 0, 0, 0.1);
+$shadow-active: 0px 0px 10px rgba(24, 68, 224, 0.4);
+
+$color-primary: #1844e0;
+$color-secondary: #ced6f0;
+$color-muted-200: #ececec;
+$color-muted-300: #f6f4f6;
+
+$text-primary: #000;
+$text-secondary: #c6c6c6;
+$text-highlight: #1844e0;
+
+.octo-calendar {
+  border-radius: $border-small;
+  background-color: $white;
+  padding: 22px 20px;
+  width: 390px;
+
+  .arrow {
+    box-shadow: $shadow-idle;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 1px;
+    border-color: $white;
+    border-radius: $border-full;
+
+    .arrow-icon {
+      width: 10px;
+      height: 10px;
+
+      &.--rotated {
+        transform: rotateZ(180deg);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      box-shadow: $shadow-active;
+      border-color: $color-primary;
+      color: $text-primary;
+      outline: none;
+    }
+
+    &:active {
+      background: $color-secondary;
+    }
+  }
+
+  .header {
+    margin-bottom: 1.25rem;
+  }
+
+  .header__year-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .header__year-label {
+    min-width: 2.5rem;
+    text-align: center;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .header__month-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .header__month-label {
+    min-width: 5.25rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    text-align: center;
+  }
+
+  .month__label {
+    text-align: center;
+  }
+
+  .bg-white {
+    background-color: $white;
+  }
+
+  .weekdays {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -0.5rem;
+    margin-bottom: 1rem;
+
+    .weekday {
+      width: calc(100% / 7);
+      padding: 0.5rem;
+      text-align: center;
+    }
+  }
+
+  .months__dropdown-container {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.5rem;
+
+    background: white;
+    border: 1px solid black;
+
+    width: 200px;
+  }
+  .months__dropdown-month {
+    padding: 0.5rem;
+    width: 33.333333%;
+    border-radius: $border-large;
+    padding: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      background-color: $color-muted-300;
+    }
+    &.--active {
+      color: $text-highlight;
+      background-color: $color-muted-300;
+    }
+  }
+
+  .week {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -0.5rem;
+
+    .day {
+      width: calc(100% / 7);
+      padding: 0.5rem;
+      width: 33.333333%;
+      &.not-in-month {
+        color: $text-secondary;
+      }
+
+      .day-button {
+        width: 2.375rem;
+        height: 2.375rem;
+        display: flex;
+        align-items: center;
+        border-width: 1px;
+        border-color: $color-muted-200;
+        border-radius: $border-full;
+        &:hover {
+          background: $color-muted-200;
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+        }
+      }
+      &.today {
+        .day-button {
+          border-color: $color-primary;
+        }
+      }
+
+      .day-text {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
-# Dropdown
+# Dropdown Menu
 
 ## Example
 
-<Demo componentName="examples-dropdown-doc" />
+<Demo componentName="examples-dropdown-menu-doc" />
 
 ## Code
 ```html
