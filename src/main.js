@@ -1,7 +1,6 @@
 import * as components from "./components";
 import closeMenu from "./directives/o-close-menu.js";
 import "./styles/app.scss";
-import VCalendar from "v-calendar";
 
 const OctoUI = {
   install(Vue, { iconPacks, closeDirective = "close-menu" }) {
@@ -17,11 +16,6 @@ const OctoUI = {
     }
 
     Vue.directive(closeDirective, closeMenu);
-    // Use v-calendar & v-date-picker components
-    Vue.use(VCalendar, {
-      componentPrefix: "oc" // Use <vc-calendar /> instead of <v-calendar />
-      // ...,                // ...other defaults
-    });
   }
 };
 
