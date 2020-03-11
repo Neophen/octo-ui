@@ -14,24 +14,26 @@ export const usePopper = (root = null) => {
     element instanceof Element || element instanceof HTMLDocument;
 
   const setupPopper = (offset = [0, 0], placement = "bottom") => {
-    const reference = isElement(refTrigger.value)
-      ? refTrigger.value
-      : refTrigger.value.$el;
+    root.$nextTick(() => {
+      const reference = isElement(refTrigger.value)
+        ? refTrigger.value
+        : refTrigger.value.$el;
 
-    const dropdown = isElement(refDropdown.value)
-      ? refDropdown.value
-      : refDropdown.value.$el;
+      const dropdown = isElement(refDropdown.value)
+        ? refDropdown.value
+        : refDropdown.value.$el;
 
-    state.popper = createPopper(reference, dropdown, {
-      placement,
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset
+      state.popper = createPopper(reference, dropdown, {
+        placement,
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset
+            }
           }
-        }
-      ]
+        ]
+      });
     });
   };
 

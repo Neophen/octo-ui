@@ -1,0 +1,9 @@
+.octo-datepicker {
+  z-index: 1;
+  position: relative;
+  .octo-datepicker__dropdown {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

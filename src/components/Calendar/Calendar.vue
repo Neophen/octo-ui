@@ -2,38 +2,44 @@
   <div class="octo-calendar">
     <div class="header">
       <div class="header__year-row">
-        <button class="arrow" @click="movePreviousYear">
+        <button :disabled="!showPrevYear" class="arrow" @click="movePrevYear">
           <o-icon icon="arrow-right" dir="left" class="arrow-icon" />
         </button>
-        <o-h size="5" class="header__year-label">{{ header.year }}</o-h>
-        <button class="arrow" @click="moveNextYear">
+        <o-h size="4" class="header__year-label">{{ header.year }}</o-h>
+        <button :disabled="!showNextYear" class="arrow" @click="moveNextYear">
           <o-icon icon="arrow-right" class="arrow-icon" />
         </button>
       </div>
       <div class="header__month-row">
-        <button class="arrow" @click="movePreviousMonth">
+        <button :disabled="!showPrevMonth" class="arrow" @click="movePrevMonth">
           <o-icon icon="arrow-right" dir="left" class="arrow-icon" />
         </button>
-        <button type="button">
-          <o-h size="5" class="header__month-label">{{
-            header.month.label
-          }}</o-h>
+        <button
+          ref="refTrigger"
+          @click="toggleMonths"
+          type="button"
+          class="header__open-months-btn"
+        >
+          <o-h size="5" class="header__month-label">
+            {{ header.month.label }}
+          </o-h>
         </button>
-
-        <div class="months__dropdown-container">
-          <button
-            v-for="monthOption in months"
-            class="months__dropdown-month"
-            :class="{ '--active': month === monthOption.number }"
-            @click="selectMonth(monthOption.number)"
-            :key="monthOption.number"
-            v-close-popover
-          >
-            <o-h size="5" class="month__label">{{ monthOption.label_3 }}</o-h>
-          </button>
+        <div v-if="showMonths" ref="refDropdown" class="months__dropdown">
+          <div class="months__dropdown-container">
+            <button
+              v-for="monthOption in months"
+              class="months__dropdown-month"
+              :class="{ '--active': month === monthOption.number }"
+              @click="selectMonth(monthOption.number)"
+              :disabled="monthOption.isDisabled"
+              :key="monthOption.number"
+            >
+              <o-h size="5" class="month__label">{{ monthOption.label_3 }}</o-h>
+            </button>
+          </div>
         </div>
 
-        <button class="arrow" @click="moveNextMonth">
+        <button :disabled="!showNextMonth" class="arrow" @click="moveNextMonth">
           <o-icon icon="arrow-right" class="arrow-icon" />
         </button>
       </div>
@@ -52,12 +58,16 @@
         class="day"
         v-for="(day, dayIndex) in week"
         :key="dayIndex"
-        :class="{ today: day.isToday, 'not-in-month': !day.inMonth }"
+        :class="{
+          'is-today': day.isToday,
+          'is-selected': day.isSelected,
+          'is-disabled': day.isDisabled
+        }"
       >
         <button
           class="day-button"
-          :disabled="!day.inMonth"
-          @click="submitDate(day.day)"
+          :disabled="day.isDisabled"
+          @click="seletDay(day)"
         >
           <p class="day-text">{{ day.day }}</p>
         </button>
@@ -67,38 +77,75 @@
 </template>
 
 <script>
-import { computed, reactive, toRefs } from "@vue/composition-api";
+import {
+  computed,
+  reactive,
+  toRefs,
+  onBeforeUnmount
+} from "@vue/composition-api";
 
 import {
   _todayComps,
   _monthLabels,
-  // _transformLabel,
-  // _monthLength,
-  // _monthCasing,
-  // _weekdayLength,
-  // _weekdayCasing,
   _weekdayLabels,
   _daysInMonths
 } from "../../utils/CalendarData.js";
+import { usePopper } from "../../utils/usePopper";
+
+import Heading from "../Heading/Heading.vue";
+import Icon from "../Icon/Icon.vue";
 
 export default {
   name: "OCalendar",
-  props: {
-    minDate: null,
-    _year: {
-      type: Number,
-      default: 2020
-    },
-    _month: {
-      type: Number,
-      default: 1
-    }
+  components: {
+    [Heading.name]: Heading,
+    [Icon.name]: Icon
   },
-  setup(props, { emit }) {
+  props: {
+    minDate: [String, Date],
+    maxDate: [String, Date],
+    value: [String, Date]
+  },
+  setup(props, { emit, root }) {
+    const { setupPopper, destroyPopper, refTrigger, refDropdown } = usePopper(
+      root
+    );
+    const popperOffset = [0, 10];
+
     const state = reactive({
-      year: _todayComps.year,
-      month: _todayComps.month,
-      day: _todayComps.day
+      newValue: props.value ? props.value : new Date(),
+      year: props.value ? props.value.getFullYear() : new Date().getFullYear(),
+      month: props.value
+        ? props.value.getMonth() + 1
+        : new Date().getMonth() + 1,
+      day: props.value ? props.value.getDate() : new Date().getDate(),
+      showMonths: false
+    });
+
+    const computedValue = computed({
+      get: () => {
+        if (props.value instanceof Date) {
+          return props.value;
+        } else {
+          return props.value ? new Date(props.value) : new Date();
+        }
+      }
+    });
+
+    const computedMinDate = computed(() => {
+      if (!props.minDate) return null;
+
+      return props.minDate instanceof Date
+        ? props.minDate
+        : new Date(props.minDate);
+    });
+
+    const computedMaxDate = computed(() => {
+      if (!props.maxDate) return null;
+
+      return props.maxDate instanceof Date
+        ? props.maxDate
+        : new Date(props.maxDate);
     });
 
     // Our component exposes month as 1-based, but sometimes we need 0-based
@@ -114,17 +161,13 @@ export default {
       );
     });
 
-    // const myMinDate = computed(() => {
-    //   if (!props.minDate) return null;
-    // });
-
     const months = computed(() =>
       _monthLabels.map((monthLabel, i) => ({
         label: monthLabel,
         label_1: monthLabel.substring(0, 1),
         label_2: monthLabel.substring(0, 2),
         label_3: monthLabel.substring(0, 3),
-        canSelect: monthLabel.substring(0, 3),
+        isDisabled: isMonthDisabled(i),
         number: i + 1
       }))
     );
@@ -208,7 +251,6 @@ export default {
         const week = [];
         for (let d = 1; d <= 7; d++) {
           // We need to know when to start counting actual month days
-          // We need to know when to start counting actual month days
           if (previousMonth && d >= firstWeekdayInMonth.value) {
             // Reset day/month/year counters
             day = 1;
@@ -222,6 +264,15 @@ export default {
           // Note: this might or might not be an actual month day
           //  We don't know how the UI wants to display various days,
           //  so we'll supply all the data we can
+          const dayDate = new Date(year, month - 1, day);
+          const isSelected =
+            computedValue.value.toDateString() === dayDate.toDateString();
+          const isBeforeMinDate = computedMinDate.value
+            ? computedMinDate.value > dayDate
+            : false;
+          const isAfterMaxDate = computedMaxDate.value
+            ? dayDate > computedMaxDate.value
+            : false;
           week.push({
             label: day && thisMonth ? day.toString() : "",
             day,
@@ -229,14 +280,16 @@ export default {
             week: w,
             month,
             year,
-            date: new Date(year, month - 1, day),
+            date: dayDate,
             beforeMonth: previousMonth,
             afterMonth: nextMonth,
             inMonth: thisMonth,
+            isDisabled: isBeforeMinDate || isAfterMaxDate || !thisMonth,
             isToday:
               day === _todayComps.day &&
               month === _todayComps.month &&
               year === _todayComps.year,
+            isSelected,
             isFirstDay: thisMonth && day === 1,
             isLastDay: thisMonth && day === daysInMonth.value
           });
@@ -272,7 +325,7 @@ export default {
       emit("update:year", year);
     };
 
-    const movePreviousMonth = () => {
+    const movePrevMonth = () => {
       const { month, year } = previousMonthComps.value;
       state.month = month;
       state.year = year;
@@ -283,19 +336,127 @@ export default {
     const moveNextYear = () => {
       state.year++;
       emit("update:year", state.year + 1);
+      if (!computedMaxDate.value) return;
+      selectMonth(computedMaxDate.value.getMonth() + 1);
     };
 
-    const movePreviousYear = () => {
+    const movePrevYear = () => {
       state.year--;
       emit("update:year", state.year - 1);
+      if (!computedMinDate.value) return;
+      selectMonth(computedMinDate.value.getMonth() + 1);
     };
 
     const selectMonth = month => {
       state.month = month;
+      closeMonths();
     };
 
-    const submitDate = day => {
-      alert(`${state.year}-${state.month}-${day}`);
+    const seletDay = day => {
+      emit("input", day.date);
+      emit("select", day.date);
+    };
+
+    const toggleMonths = () =>
+      state.showMonths ? closeMonths() : openMonths();
+
+    const openMonths = () => {
+      if (state.showMonths) return;
+      state.showMonths = true;
+      setupPopper(popperOffset);
+      window.addEventListener("click", handleClickOutside, true);
+    };
+
+    const closeMonths = () => {
+      if (!state.showMonths) return;
+      state.showMonths = false;
+      destroyPopper();
+      window.removeEventListener("click", handleClickOutside, true);
+    };
+
+    const handleClickOutside = event => {
+      const containedInDropdown = refDropdown.value.contains(event.target);
+      requestAnimationFrame(() => {
+        if (!containedInDropdown) {
+          closeMonths();
+        }
+      });
+    };
+
+    onBeforeUnmount(() => {
+      window.removeEventListener("click", handleClickOutside, true);
+    });
+
+    // header year
+    const showNextYear = computed(() => {
+      if (!computedMaxDate.value) return true;
+
+      const maxYear = computedMaxDate.value.getFullYear();
+      return state.year + 1 <= maxYear;
+    });
+
+    const showPrevYear = computed(() => {
+      if (!computedMinDate.value) return true;
+
+      const minYear = computedMinDate.value.getFullYear();
+      return state.year - 1 >= minYear;
+    });
+
+    // Header month
+    const showNextMonth = computed(() => {
+      if (!computedMaxDate.value) return true;
+      let year = state.year;
+      let nextMonth = monthIndex.value + 1;
+      if (nextMonth > 12) {
+        year++;
+        nextMonth = 1;
+      }
+      const maxDate = computedMaxDate.value;
+      const nextMonthDate = new Date(year, nextMonth, maxDate.getDate());
+      return nextMonthDate <= maxDate;
+    });
+
+    const showPrevMonth = computed(() => {
+      if (!computedMinDate.value) return true;
+      let year = state.year;
+      let prevMonth = monthIndex.value - 1;
+
+      if (prevMonth < 1) {
+        year--;
+        prevMonth = 12;
+      }
+
+      const minDate = computedMinDate.value;
+      const prevMonthDate = new Date(
+        year,
+        prevMonth,
+        minDate.getDate(),
+        23,
+        59
+      );
+      return prevMonthDate >= minDate;
+    });
+
+    const isMonthDisabled = month => {
+      return getIsMonthBeforeMin(month) || getIsMonthAfterMax(month);
+    };
+
+    const getIsMonthBeforeMin = month => {
+      if (!computedMinDate.value) return false;
+      let year = state.year;
+
+      const minDate = computedMinDate.value;
+      const monthDate = new Date(year, month, minDate.getDate(), 23, 59);
+      return monthDate <= minDate;
+    };
+
+    const getIsMonthAfterMax = month => {
+      if (!computedMaxDate.value) return false;
+      let year = state.year;
+
+      const maxDate = computedMaxDate.value;
+      const monthDate = new Date(year, month, maxDate.getDate());
+      return monthDate >= maxDate;
     };
 
     return {
@@ -312,11 +473,21 @@ export default {
       weeks,
       moveThisMonth,
       moveNextMonth,
-      movePreviousMonth,
+      movePrevMonth,
       moveNextYear,
-      movePreviousYear,
+      movePrevYear,
       selectMonth,
-      submitDate
+      seletDay,
+      toggleMonths,
+      refTrigger,
+      refDropdown,
+
+      // Year header
+      showNextYear,
+      showPrevYear,
+      // Month header
+      showNextMonth,
+      showPrevMonth
     };
   }
 };
