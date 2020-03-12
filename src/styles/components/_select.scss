@@ -39,9 +39,12 @@
       width: 100%;
     }
 
-    &::placeholder {
-      color: var(--octo-muted-600);
+    &::placeholder,
+    &:invalid {
+      color: var(--octo-muted-500);
     }
+    
+
 
     &::-ms-expand {
       display: none;
@@ -84,6 +87,12 @@
       box-shadow: none;
       border-radius: var(--octo-radius-default);
       cursor: not-allowed;
+    }
+  }
+
+  &.is-empty {
+    select {
+      color: var(--octo-muted-500) !important;
     }
   }
 }

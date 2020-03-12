@@ -18,20 +18,14 @@
     padding-left: 0.5rem;
   }
 
-  // .octo-tags__tag-input {
-  //   flex: 1;
-  //   // margin-left: 0.5rem;
-  //   // margin-top: 0.5rem;
-  //   &:focus {
-  //     outline: none;
-  //   }
-  // }
-
   .octo-tags__autocomplete {
+    margin-top: 0.5rem;
     margin-left: 0.5rem;
     .input {
       border: none;
       box-shadow: none;
+      padding: 0;
+      border-radius: 0;
     }
   }
 }
@@ -40,9 +34,6 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  // .octo-tag + .octo-tag {
-  //   margin-left: 0.5rem;
-  // }
 }
 
 .octo-tag {

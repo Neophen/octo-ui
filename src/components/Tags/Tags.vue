@@ -29,49 +29,48 @@
             </o-tag>
           </div>
         </slot>
+        <o-autocomplete
+          ref="autocomplete"
+          class="octo-tags__autocomplete"
+          v-if="hasInput"
+          v-model="newTag"
+          v-bind="$attrs"
+          :data="data"
+          :field="field"
+          :icon="icon"
+          :icon-pack="iconPack"
+          :maxlength="maxlength"
+          :has-counter="false"
+          :size="size"
+          :disabled="disabled"
+          :loading="loading"
+          :autocomplete="nativeAutocomplete"
+          :open-on-focus="openOnFocus"
+          :keep-open="openOnFocus"
+          :keep-first="!allowNew"
+          :use-html5-validation="useHtml5Validation"
+          :check-infinite-scroll="checkInfiniteScroll"
+          @typing="onTyping"
+          @focus="onFocus"
+          @blur="customOnBlur"
+          @keydown.native="keydown"
+          @select="onSelect"
+          @infinite-scroll="emitInfiniteScroll"
+        >
+          <template :slot="headerSlotName">
+            <slot name="header" />
+          </template>
+          <template :slot="defaultSlotName" slot-scope="props">
+            <slot :option="props.option" :index="props.index" />
+          </template>
+          <template :slot="emptySlotName">
+            <slot name="empty" />
+          </template>
+          <template :slot="footerSlotName">
+            <slot name="footer" />
+          </template>
+        </o-autocomplete>
       </div>
-
-      <o-autocomplete
-        ref="autocomplete"
-        class="octo-tags__autocomplete"
-        v-if="hasInput"
-        v-model="newTag"
-        v-bind="$attrs"
-        :data="data"
-        :field="field"
-        :icon="icon"
-        :icon-pack="iconPack"
-        :maxlength="maxlength"
-        :has-counter="false"
-        :size="size"
-        :disabled="disabled"
-        :loading="loading"
-        :autocomplete="nativeAutocomplete"
-        :open-on-focus="openOnFocus"
-        :keep-open="openOnFocus"
-        :keep-first="!allowNew"
-        :use-html5-validation="useHtml5Validation"
-        :check-infinite-scroll="checkInfiniteScroll"
-        @typing="onTyping"
-        @focus="onFocus"
-        @blur="customOnBlur"
-        @keydown.native="keydown"
-        @select="onSelect"
-        @infinite-scroll="emitInfiniteScroll"
-      >
-        <template :slot="headerSlotName">
-          <slot name="header" />
-        </template>
-        <template :slot="defaultSlotName" slot-scope="props">
-          <slot :option="props.option" :index="props.index" />
-        </template>
-        <template :slot="emptySlotName">
-          <slot name="empty" />
-        </template>
-        <template :slot="footerSlotName">
-          <slot name="footer" />
-        </template>
-      </o-autocomplete>
     </div>
 
     <small v-if="hasCounter && (maxtags || maxlength)" class="help counter">
