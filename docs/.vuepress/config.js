@@ -38,7 +38,6 @@ module.exports = {
               title: 'Components',
               collapsable: false,
               children: [
-                'menu',
                 'autocomplete',
                 'button',
                 'calendar',
@@ -51,6 +50,9 @@ module.exports = {
                 'icon',
                 'info',
                 'input',
+                'menu-header',
+                'menu-user',
+                'menu',
                 'modal',
                 'radio',
                 'search-select',

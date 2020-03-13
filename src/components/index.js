@@ -25,3 +25,5 @@ export { OMenuItem, OMenu } from "./Menu";
 export { OModal, OModalTransition } from "./Modal";
 export { OTabs, OTab } from "./Tabs";
 export { OTagList, OTag } from "./Tag";
+export { default as MenuHeader } from "./MenuHeader";
+export { default as MenuUser } from "./MenuUser";

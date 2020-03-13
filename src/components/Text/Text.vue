@@ -21,15 +21,22 @@ export const Text = {
       type: String,
       validator(value) {
         const tags = ["p", "span"];
-        return tags.includes(value);
+        const isValid = tags.includes(value);
+        if (!isValid) {
+          const message = `[Vue warn]: <OText> tag "${value}", is not a valid tag`;
+          console.error(message);
+        }
+
+        return isValid;
       }
     },
-    type: [String, Object],
+    type: {
+      type: [String, Object],
+      default: "is-default"
+    },
     size: {
-      default: "is-default",
       type: String,
-      validator: value =>
-        ["is-default", "is-xs", "is-sm", "is-semi"].includes(value)
+      default: "is-default"
     }
   }
 };

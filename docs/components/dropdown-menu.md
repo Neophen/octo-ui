@@ -1,6 +1,4 @@
-# Dropdown Menu
-
-## Example
+# Dropdown menu
 
 <Demo componentName="examples-dropdown-menu-doc" />
 

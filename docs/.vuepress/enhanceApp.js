@@ -11,6 +11,7 @@ export default ({ Vue }) => {
   Vue.use(OctoUI, {
     iconPacks: {
       dashboard: '/svg/icons_dashboard.svg',
+      site_logos: '/svg/icons_site-logos.svg',
     }
   });
 }

@@ -1,4 +1,4 @@
-# Card Settings
+# Card settings
 
 <Demo componentName="examples-card-settings-doc" />
 

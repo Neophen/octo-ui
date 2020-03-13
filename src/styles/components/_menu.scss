@@ -4,7 +4,6 @@
   box-shadow: var(--octo-shadow-idle);
   padding: 1.5rem 1.25rem;
   width: 257px;
-
 }
 
 .octo-menu-item {
@@ -35,5 +34,65 @@
 
   + .octo-menu-item {
     margin-top: 0.5rem;
+  }
+}
+
+.octo-menu-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--octo-text-default);
+
+  .octo-menu-header__icon {
+    max-width: 140px;
+    height: 48px;
+    .octo-icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .octo-menu-header__label {
+    margin-top: 7px;
+  }
+}
+
+.octo-menu-user {
+  background-color: var(--octo-inverted-500);
+  border-radius: var(--octo-radius-large);
+  box-shadow: var(--octo-shadow-idle);
+  width: 257px;
+
+  padding: 1.5rem 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--octo-text-default);
+
+  .octo-menu-user__avatar {
+    margin-bottom: 1rem;
+  }
+
+  .octo-menu-user__username {
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .octo-menu-user__description {
+    width: 100%;
+    text-align: center;
   }
 }
