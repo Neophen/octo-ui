@@ -37,13 +37,7 @@ import Calendar from "../Calendar/Calendar";
 
 import { _monthLabels } from "../../utils/CalendarData.js";
 
-import {
-  reactive,
-  toRefs,
-  computed,
-  onBeforeUnmount,
-  ref
-} from "@vue/composition-api";
+import { reactive, toRefs, computed } from "@vue/composition-api";
 import { usePopper } from "../../utils/usePopper";
 
 export default {
@@ -73,18 +67,21 @@ export default {
     placeholder: String
   },
   setup(props, { emit, root }) {
-    const { setupPopper, destroyPopper, refTrigger, refDropdown } = usePopper(
-      root
-    );
-    const popperOffset = [0, 10];
-    const popperPlacement = "bottom-start";
-
-    const state = reactive({
-      newValue: props.value,
-      showCalendar: false
+    const {
+      isPopperOpen: showCalendar,
+      refContainer,
+      refTrigger,
+      refDropdown,
+      open: openCalendar,
+      close
+    } = usePopper(root, {
+      offset: [0, 10],
+      placement: "bottom-start"
     });
 
-    const refContainer = ref(null);
+    const state = reactive({
+      newValue: props.value
+    });
 
     const computedValue = computed({
       get() {
@@ -97,24 +94,14 @@ export default {
     });
 
     const toggleCalendar = () => {
-      state.showCalendar ? closeCalendar() : openCalendar();
-    };
-
-    const openCalendar = () => {
-      if (state.showCalendar) return;
-      state.showCalendar = true;
-
-      setupPopper(popperOffset, popperPlacement);
-      window.addEventListener("click", handleClickOutside, true);
+      console.log("toggling");
+      console.log(showCalendar.value);
+      showCalendar.value ? closeCalendar() : openCalendar();
     };
 
     const closeCalendar = () => {
-      if (!state.showCalendar) return;
-      state.showCalendar = false;
-      destroyPopper();
-      window.removeEventListener("click", handleClickOutside, true);
       refTrigger.value.focus();
-      // refTrigger.value.$el.focus();
+      close();
     };
 
     const formatedValue = computed(() => {
@@ -126,30 +113,17 @@ export default {
       )} ${date.getFullYear()}`;
     });
 
-    const handleClickOutside = event => {
-      const containedInContainer = refContainer.value.contains(event.target);
-      const containedInDropdown = refDropdown.value.contains(event.target);
-      requestAnimationFrame(() => {
-        if (!containedInDropdown && !containedInContainer) {
-          closeCalendar();
-        }
-      });
-    };
-
-    onBeforeUnmount(() => {
-      window.removeEventListener("click", handleClickOutside, true);
-    });
-
     return {
       ...toRefs(state),
-      computedValue,
       refTrigger,
       refDropdown,
       refContainer,
-      formatedValue,
+      showCalendar,
       toggleCalendar,
       openCalendar,
-      closeCalendar
+      closeCalendar,
+      computedValue,
+      formatedValue
     };
   }
 };

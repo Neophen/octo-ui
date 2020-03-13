@@ -1,6 +1,7 @@
 .octo-title {
   font-family: var(--octo-title-font);
   font-weight: 800;
+  line-height: 1.2;
 
   &.is-1 {
     font-size: 2.5rem;
@@ -51,6 +52,7 @@
   font-family: var(--octo-text-font);
   font-weight: normal;
   font-size: 1.125rem;
+  line-height: 1.2;
 
   &.is-default {
     color: var(--octo-text-default);

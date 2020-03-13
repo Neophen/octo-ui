@@ -1,67 +1,119 @@
 import { reactive, toRefs, ref, onBeforeUnmount } from "@vue/composition-api";
+
 import { createPopper } from "@popperjs/core";
 
-export const usePopper = (root = null) => {
+const baseConfig = {
+  offset: [0, 0],
+  placement: "bottom",
+  shouldTimeout: false,
+  time: 200
+};
+
+export const usePopper = (root, setupConfig = baseConfig) => {
+  const config = {
+    ...baseConfig,
+    ...setupConfig
+  };
   const refTrigger = ref(null);
   const refDropdown = ref(null);
+  const refContainer = ref(null);
 
   const state = reactive({
     popper: null,
-    destroyPopperTimeout: null
+    destroyPopperTimeout: null,
+    isPopperOpen: false
   });
 
   const isElement = element =>
     element instanceof Element || element instanceof HTMLDocument;
 
-  const setupPopper = (offset = [0, 0], placement = "bottom") => {
+  const getElement = reference =>
+    isElement(reference.value) ? reference.value : reference.value.$el;
+
+  const checkAndGetElement = reference =>
+    reference.value ? getElement(reference) : null;
+
+  const setupPopper = () => {
     root.$nextTick(() => {
-      const reference = isElement(refTrigger.value)
-        ? refTrigger.value
-        : refTrigger.value.$el;
+      let reference = checkAndGetElement(refTrigger);
+      let dropdown = checkAndGetElement(refDropdown);
 
-      const dropdown = isElement(refDropdown.value)
-        ? refDropdown.value
-        : refDropdown.value.$el;
+      if (!reference || !dropdown) {
+        // we try another loop just in-case
+        root.$nextTick(() => {
+          let reference = checkAndGetElement(refTrigger);
+          let dropdown = checkAndGetElement(refDropdown);
 
-      state.popper = createPopper(reference, dropdown, {
-        placement,
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset
-            }
+          if (!reference || !dropdown) {
+            state.isPopperOpen = false;
+            return;
           }
-        ]
-      });
+          initPopper(reference, dropdown);
+        });
+      } else {
+        initPopper(reference, dropdown);
+      }
     });
   };
 
-  const setupPopperWithTimeout = (offset = [0, 0], placement = "bottom") => {
+  const initPopper = (reference, dropdown) => {
+    state.popper = createPopper(reference, dropdown, {
+      placement: config.placement,
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: config.offset
+          }
+        }
+      ]
+    });
+  };
+
+  const setupPopperWithTimeout = () => {
     if (state.destroyPopperTimeout) {
       clearTimeout(state.destroyPopperTimeout);
       state.destroyPopperTimeout = null;
     }
-    root.$nextTick(() => {
-      setupPopper(offset, placement);
-    });
+    setupPopper();
   };
 
   const destroyPopper = () => {
     if (state.popper) {
       state.popper.destroy();
       state.popper = null;
+      state.destroyPopperTimeout = null;
     }
   };
 
-  const destroyPopperWithTimeout = (time = 200) => {
+  const destroyPopperWithTimeout = (time = config.time) => {
     if (state.popper) {
-      state.destroyPopperTimeout = setTimeout(function() {
-        state.popper.destroy();
-        state.popper = null;
-        state.destroyPopperTimeout = null;
-      }, time);
+      state.destroyPopperTimeout = setTimeout(destroyPopper, time);
     }
+  };
+
+  const handleGlobalClick = event => {
+    const targetInContainer = refContainer.value
+      ? getElement(refContainer).contains(event.target)
+      : false;
+
+    const targetInDropdown = refDropdown.value
+      ? getElement(refDropdown).contains(event.target)
+      : false;
+
+    requestAnimationFrame(() => {
+      const isCloseMenuDirective = event.closeOctoMenu && targetInDropdown;
+      if (isCloseMenuDirective) {
+        close();
+        return;
+      }
+
+      const isOutsideBounds = !targetInContainer && !targetInDropdown;
+      if (isOutsideBounds) {
+        close();
+        return;
+      }
+    });
   };
 
   onBeforeUnmount(() => {
@@ -70,15 +122,34 @@ export const usePopper = (root = null) => {
     } else {
       destroyPopper();
     }
+    window.removeEventListener("click", handleGlobalClick, true);
   });
+
+  const open = () => {
+    if (state.isPopperOpen) return;
+    state.isPopperOpen = true;
+    config.shouldTimeout ? setupPopperWithTimeout() : setupPopper();
+
+    window.addEventListener("click", handleGlobalClick, true);
+  };
+
+  const close = () => {
+    if (!state.isPopperOpen) return;
+    state.isPopperOpen = false;
+    config.shouldTimeout ? destroyPopperWithTimeout() : destroyPopper();
+
+    window.removeEventListener("click", handleGlobalClick, true);
+  };
+
+  const toggle = () => (state.isPopperOpen ? close() : open());
 
   return {
     ...toRefs(state),
     refTrigger,
     refDropdown,
-    setupPopper,
-    destroyPopper,
-    setupPopperWithTimeout,
-    destroyPopperWithTimeout
+    refContainer,
+    open,
+    close,
+    toggle
   };
 };

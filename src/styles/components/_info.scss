@@ -1,0 +1,22 @@
+.octo-info {
+  position: relative;
+
+  .octo-info__icon {
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      color: var(--octo-text-primary);
+    }
+  }
+
+  .octo-info__container {
+    position: absolute;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    border-radius: var(--octo-radius-default);
+    width: 240px;
+    padding: 20px;
+    background-color: var(--octo-primary-500);
+  }
+}

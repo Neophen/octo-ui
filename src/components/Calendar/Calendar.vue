@@ -16,7 +16,7 @@
         </button>
         <button
           ref="refTrigger"
-          @click="toggleMonths"
+          @click="toggle"
           type="button"
           class="header__open-months-btn"
         >
@@ -24,7 +24,7 @@
             {{ header.month.label }}
           </o-h>
         </button>
-        <div v-if="showMonths" ref="refDropdown" class="months__dropdown">
+        <div v-if="isPopperOpen" ref="refDropdown" class="months__dropdown">
           <div class="months__dropdown-container">
             <button
               v-for="monthOption in months"
@@ -77,12 +77,7 @@
 </template>
 
 <script>
-import {
-  computed,
-  reactive,
-  toRefs,
-  onBeforeUnmount
-} from "@vue/composition-api";
+import { computed, reactive, toRefs } from "@vue/composition-api";
 
 import {
   _todayComps,
@@ -107,10 +102,13 @@ export default {
     value: [String, Date]
   },
   setup(props, { emit, root }) {
-    const { setupPopper, destroyPopper, refTrigger, refDropdown } = usePopper(
-      root
+    const { isPopperOpen, refTrigger, refDropdown, toggle, close } = usePopper(
+      root,
+      {
+        offset: [0, 10],
+        placement: "bottom"
+      }
     );
-    const popperOffset = [0, 10];
 
     const state = reactive({
       newValue: props.value ? props.value : new Date(),
@@ -321,71 +319,35 @@ export default {
       const { month, year } = nextMonthComps.value;
       state.month = month;
       state.year = year;
-      emit("update:month", month);
-      emit("update:year", year);
     };
 
     const movePrevMonth = () => {
       const { month, year } = previousMonthComps.value;
       state.month = month;
       state.year = year;
-      emit("update:month", month);
-      emit("update:year", year);
     };
 
     const moveNextYear = () => {
       state.year++;
-      emit("update:year", state.year + 1);
       if (!computedMaxDate.value) return;
       selectMonth(computedMaxDate.value.getMonth() + 1);
     };
 
     const movePrevYear = () => {
       state.year--;
-      emit("update:year", state.year - 1);
       if (!computedMinDate.value) return;
       selectMonth(computedMinDate.value.getMonth() + 1);
     };
 
     const selectMonth = month => {
       state.month = month;
-      closeMonths();
+      close();
     };
 
     const seletDay = day => {
       emit("input", day.date);
       emit("select", day.date);
     };
-
-    const toggleMonths = () =>
-      state.showMonths ? closeMonths() : openMonths();
-
-    const openMonths = () => {
-      if (state.showMonths) return;
-      state.showMonths = true;
-      setupPopper(popperOffset);
-      window.addEventListener("click", handleClickOutside, true);
-    };
-
-    const closeMonths = () => {
-      if (!state.showMonths) return;
-      state.showMonths = false;
-      destroyPopper();
-      window.removeEventListener("click", handleClickOutside, true);
-    };
-
-    const handleClickOutside = event => {
-      const containedInDropdown = refDropdown.value.contains(event.target);
-      requestAnimationFrame(() => {
-        if (!containedInDropdown) {
-          closeMonths();
-        }
-      });
-    };
-
-    onBeforeUnmount(() => {
-      window.removeEventListener("click", handleClickOutside, true);
-    });
 
     // header year
     const showNextYear = computed(() => {
@@ -460,6 +422,12 @@ export default {
     };
 
     return {
+      // Popper
+      toggle,
+      isPopperOpen,
+      refTrigger,
+      refDropdown,
+      // Local
       ...toRefs(state),
       monthIndex,
       isLeapYear,
@@ -478,10 +446,6 @@ export default {
       movePrevYear,
       selectMonth,
       seletDay,
-      toggleMonths,
-      refTrigger,
-      refDropdown,
-
       // Year header
       showNextYear,
       showPrevYear,

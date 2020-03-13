@@ -35,10 +35,11 @@
     }
 
     &:disabled {
+      pointer-events: none;
       box-shadow: none;
       border-color: transparent;
       cursor: not-allowed;
-      color: var(--octo-muted-500);
+      color: var(--octo-inverted-500);
       background: var(--octo-inverted-500);
     }
   }

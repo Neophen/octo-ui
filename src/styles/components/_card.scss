@@ -1,0 +1,118 @@
+.octo-card {
+  .octo-card__accent-muted,
+  > .octo-card__accent-muted {
+    color: var(--octo-muted-300);
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    // @apply shadow-focus;
+    // border: 1px solid var(--primary);
+    // .accent {
+    //   color: var(--primary);
+    // }
+
+    // .accent-secondary {
+    //   color: black;
+    //   .accent-secondary__image {
+    //     opacity: 1;
+    //   }
+    //   .accent-secondary__text {
+    //     color: black;
+    //   }
+    // }
+
+    .octo-card__accent-muted,
+    > .octo-card__accent-muted {
+      color: var(--octo-text-default);
+      &:hover,
+      &:focus {
+        color: var(--octo-primary-500);
+      }
+    }
+  }
+}
+
+// .small-card {
+//   @apply w-full p-4 rounded bg-white shadow-card border border-transparent relative;
+
+//   &.--user {
+//     min-height: 220px;
+//   }
+
+//   &.--page {
+//     min-height: 164px;
+//   }
+
+//   .accent-muted {
+//     color: var(--muted-300);
+//   }
+
+//   &:hover,
+//   &:focus {
+//     @apply shadow-focus;
+//     border: 1px solid var(--primary);
+//     .accent {
+//       color: var(--primary);
+//     }
+
+//     .accent-secondary {
+//       color: black;
+//       .accent-secondary__image {
+//         opacity: 1;
+//       }
+//       .accent-secondary__text {
+//         color: black;
+//       }
+//     }
+
+//     .accent-muted {
+//       color: black;
+//       &:hover,
+//       &:focus {
+//         color: var(--primary);
+//         @apply outline-none;
+//       }
+//     }
+//   }
+
+//   .accent-secondary {
+//     .accent-secondary__image {
+//       opacity: 0.2;
+//     }
+
+//     .accent-secondary__text {
+//       @apply text-secondary;
+//     }
+
+//     &:hover {
+//       .accent-secondary__image {
+//         opacity: 1;
+//       }
+
+//       .accent-secondary__text {
+//         @apply outline-none text-highlight;
+//       }
+//     }
+//   }
+
+//   &.--add {
+//     @apply shadow-card border-dashed border-muted-700;
+
+//     &:hover,
+//     &:focus {
+//       @apply shadow-focus;
+//       border: 1px dashed var(--primary);
+//       .border-accent {
+//         border: 1px dashed var(--primary);
+//       }
+//       .accent {
+//         color: var(--primary);
+//         fill: var(--primary);
+//       }
+//     }
+//   }
+// }

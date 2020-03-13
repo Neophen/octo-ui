@@ -1,4 +1,4 @@
-describe("DropdownMenu test", () => {
+describe("CardSettings test", () => {
   it("is truthy", () => {
     expect(true).toBeTruthy();
   });
