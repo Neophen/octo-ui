@@ -73,12 +73,17 @@
       </div>
     </div>
 
-    <small v-if="hasCounter && (maxtags || maxlength)" class="help counter">
-      <template v-if="maxlength && valueLength > 0"
-        >{{ valueLength }} / {{ maxlength }}</template
-      >
+    <o-h
+      size="5"
+      v-if="hasCounter && (maxtags || maxlength)"
+      class="help counter"
+      :class="{ 'is-invisible': !isFocused }"
+    >
+      <template v-if="maxlength && valueLength > 0">
+        {{ valueLength }} / {{ maxlength }}
+      </template>
       <template v-else-if="maxtags">{{ tagsLength }} / {{ maxtags }}</template>
-    </small>
+    </o-h>
   </div>
 </template>
 

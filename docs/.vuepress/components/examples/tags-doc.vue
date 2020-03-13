@@ -20,6 +20,7 @@
           v-model="tagsAutocomplete"
           :data="filteredTags"
           autocomplete
+          maxtags="3"
           :allow-new="allowNew"
           :open-on-focus="openOnFocus"
           field="user.first_name"

@@ -59,8 +59,9 @@
       v-if="maxlength && hasCounter && type !== 'number'"
       class="help counter"
       :class="{ 'is-invisible': !isFocused }"
-      >{{ valueLength }} / {{ maxlength }}</o-h
     >
+      {{ valueLength }} / {{ maxlength }}
+    </o-h>
   </div>
 </template>
 
