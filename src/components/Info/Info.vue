@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: "OSample"
+  name: "OInfo"
 };
 </script>
