@@ -22,3 +22,4 @@ export { OTabs, OTab } from "./Tabs";
 export { OTagList, OTag } from "./Tag";
 export { default as Info } from "./Info";
 export { default as CardSettings } from "./CardSettings";
+export { default as UserAvatar } from "./UserAvatar";
