@@ -15,7 +15,7 @@
     margin-right: 0.5rem;
     background-color: transparent;
     border-radius: 50%;
-    background: white;
+    background: var(--octo-inverted-500);
     border: 2px solid var(--octo-muted-500);
 
     &:after {
@@ -63,7 +63,7 @@
       &.is-danger {
         border: 2px solid var(--octo-secondary-500);
         color: var(--octo-text-default);
-        background: white;
+        background: var(--octo-inverted-500);
         box-shadow: var(--octo-shadow-danger);
         &:after {
           display: block;
@@ -89,9 +89,9 @@
   &.is-disabled {
     cursor: not-allowed;
     .octo-radio__mark {
-      background: white;
+      background: var(--octo-inverted-500);
       border: 2px solid var(--octo-muted-500) !important;
-      background: white;
+      background: var(--octo-inverted-500);
       box-shadow: none !important;
       &:after {
         display: none !important;

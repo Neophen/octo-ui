@@ -1,0 +1,10 @@
+.octo-transition-expand-enter-active,
+.octo-transition-expand-leave-active {
+  transition: height 0.1s ease-in-out;
+  overflow: hidden;
+}
+
+.octo-transition-expand-enter,
+.octo-transition-expand-leave-to {
+  height: 0;
+}

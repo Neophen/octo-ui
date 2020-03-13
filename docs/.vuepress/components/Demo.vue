@@ -1,7 +1,6 @@
 <template>
   <div>
     <component :is="componentName" />
-
   </div>
 </template>
 
@@ -28,10 +27,6 @@ export default {
   border: none;
   margin: 0;
   padding: 0;
-}
-
-.container {
-  // padding: 1rem;
 }
 
 .row {
@@ -68,13 +63,20 @@ export default {
 .m-2 {
   margin: 0.5rem;
 }
-
 .mb-2 {
   margin-bottom: 0.5rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .mt-6 {
@@ -109,13 +111,13 @@ export default {
 }
 
 .mr-2 {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .ml-2 {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 .field {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 </style>

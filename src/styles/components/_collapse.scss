@@ -1,0 +1,32 @@
+.octo-collapse {
+  .octo-collapse__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+  
+    background: var(--octo-inverted-500);
+    box-shadow: var(--octo-shadow-black);
+    border-radius: var(--octo-radius-default);
+  
+    .octo-collapse__icon {
+      width: 0.5rem;
+      height: 1rem;
+      transition: transform 0.1s;
+    }
+  
+    &:hover {
+      color: var(--octo-text-primary);
+      box-shadow: var(--octo-shadow-focus-200);
+    }
+  
+    &:focus {
+      outline: none;
+    }
+  
+    &:active {
+      background: var(--octo-primary-200);
+    }
+  }
+}

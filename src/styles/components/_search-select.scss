@@ -27,7 +27,7 @@
     position: absolute;
     right: 0 !important;
     left: 0 !important;
-    background-color: white;
+    background-color: var(--octo-inverted-500);
     border: var(--octo-border-black);
     padding: 0.5rem;
     border-radius: var(--octo-radius-default);
@@ -38,8 +38,8 @@
     display: block;
     width: 100%;
     padding: 0.5rem 0.75rem;
-    background-color: white;
-    color: black;
+    background-color: var(--octo-inverted-500);
+    color: var(--octo-text-default);
     border-radius: var(--octo-radius-default);
     box-shadow: var(--octo-shadow-black);
 

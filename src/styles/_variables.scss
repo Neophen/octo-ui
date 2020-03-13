@@ -24,7 +24,7 @@ $octo-alpha-lg: 0.4;
   --octo-primary-600: #2757ff;
   --octo-primary-700: #0f33b3;
 
-  --octo-inverted: #fff;
+  --octo-inverted-500: #fff;
 
   --octo-secondary-100: rgba(254, 69, 135, 0.1);
   --octo-secondary-200: rgba(254, 69, 135, 0.4);
@@ -43,6 +43,7 @@ $octo-alpha-lg: 0.4;
   --octo-shadow-black: 0px 0px 10px rgba(0, 0, 0, 0.05);
   --octo-shadow-idle: 0px 0px 10px rgba(120, 120, 120, 0.4);
   --octo-shadow-focus: 0px 0px 10px var(--octo-primary-100);
+  --octo-shadow-focus-200: 0px 0px 10px var(--octo-primary-200);
   --octo-shadow-danger: 0px 0px 10px var(--octo-secondary-200);
 
   // border
@@ -50,12 +51,14 @@ $octo-alpha-lg: 0.4;
   --octo-border-black: 0.5px solid black;
   --octo-border-primary: 0.5px solid var(--octo-primary-500);
   --octo-border-danger: 0.5px solid var(--octo-secondary-500);
+  --octo-border-muted: 0.5px solid var(--octo-muted-500);
+  
   // border-radius
   --octo-radius-default: 10px;
   --octo-radius-large: 20px;
+  --octo-radius-full: 9999px;
 
   // Shadows
-  // --octo-shadow-focus: 0px 0px 10px rgba(24, 68, 224, 1);
   // --octo-shadow-default: 0px 0px 10px rgba(120, 120, 120, 1);
   // --octo-shadow-modal: 0px 0px 20px rgba(0, 0, 0, 1);
   // --octo-shadow-sidebar: 0px 0px 10px rgba(0, 0, 0, 0.25);

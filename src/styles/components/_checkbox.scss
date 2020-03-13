@@ -21,7 +21,7 @@
     &.is-danger {
       border: 1px solid var(--octo-secondary-500);
       color: var(--octo-text-muted);
-      background: white;
+      background: var(--octo-inverted-500);
     }
   }
 
@@ -41,13 +41,13 @@
   &:hover {
     .octo-checkbox__mark {
       border: 1px solid var(--octo-primary-500);
-      background: white;
+      background: var(--octo-inverted-500);
       color: var(--octo-primary-500);
       box-shadow: var(--octo-shadow-focus);
       &.is-danger {
         border: 1px solid var(--octo-secondary-500);
         color: var(--octo-text-default);
-        background: white;
+        background: var(--octo-inverted-500);
         box-shadow: var(--octo-shadow-danger);
       }
     }
@@ -69,7 +69,7 @@
     .octo-checkbox__mark {
       border: 1px solid var(--octo-muted-500);
       color: var(--octo-text-muted);
-      background: white;
+      background: var(--octo-inverted-500);
       box-shadow: none;
     }
   }

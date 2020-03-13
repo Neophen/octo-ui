@@ -1,7 +1,5 @@
 # Sample
 
-## Example
-
 <Demo componentName="examples-sample-doc" />
 
 ## Code

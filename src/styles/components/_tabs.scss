@@ -1,7 +1,7 @@
 .octo-tabs {
   border-radius: var(--octo-radius-default);
   box-shadow: var(--octo-shadow-black);
-  background: white;
+  background: var(--octo-inverted-500);
 
   &:hover {
     box-shadow: var(--octo-shadow-focus);

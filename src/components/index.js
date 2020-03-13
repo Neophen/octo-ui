@@ -14,6 +14,8 @@ export { default as Tags } from "./Tags";
 export { default as Calendar } from "./Calendar";
 export { default as Datepicker } from "./Datepicker";
 export { default as Select } from "./Select";
+export { default as Collapse } from "./Collapse";
+export { default as TransitionExpand } from "./TransitionExpand";
 export { OModal, OModalTransition } from "./Modal";
 export { OTabs, OTab } from "./Tabs";
 export { ODropdownMenu, ODropdownMenuItem } from "./DropdownMenu";

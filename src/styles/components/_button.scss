@@ -1,10 +1,10 @@
 .octo-button {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  border-radius: 100px;
   box-sizing: border-box;
   cursor: pointer;
-  border-radius: 100px;
+  display: flex;
+  justify-content: center;
 
   .is-icon {
     margin-right: 0.875rem;
@@ -26,15 +26,15 @@
   }
 
   &.has-content {
-    width: auto;
     min-width: 200px;
     padding: 0 1.25rem;
+    width: auto;
 
     &.is-squared {
-      width: auto;
+      border-radius: 10px;
       min-width: 0;
       padding: 0 0.875rem;
-      border-radius: 10px;
+      width: auto;
     }
   }
 
@@ -44,28 +44,28 @@
 
   &.is-default,
   &.is-dashed {
-    color: black;
-    background: white;
-    border: 0.5px solid black;
+    background: var(--octo-inverted-500);
+    border: var(--octo-border-black);
     box-shadow: var(--octo-shadow-black);
+    color: var(--octo-text-default);
     .octo-loader__bar {
       background: black;
     }
   }
 
   &.is-dashed {
-    border: 0.5px solid var(--octo-muted-500);
+    border: var(--octo-border-muted);
     color: var(--octo-muted-500);
     border-style: dashed !important;
   }
 
   &.is-primary {
     border: none;
-    color: white;
+    color: var(--octo-inverted-500);
     background: var(--octo-primary-500);
     box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
-      background: white;
+      background: var(--octo-inverted-500);
     }
   }
 
@@ -75,16 +75,16 @@
   }
   &.is-danger {
     border: none;
-    color: white;
+    color: var(--octo-inverted-500);
     background: var(--octo-secondary-500);
     box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
-      background: white;
+      background: var(--octo-inverted-500);
     }
 
     &.is-inverted {
       color: var(--octo-secondary-500);
-      background: white;
+      background: var(--octo-inverted-500);
       border: var(--octo-border-danger);
 
       .octo-loader__bar {
@@ -121,7 +121,7 @@
       box-shadow: var(--octo-shadow-danger);
       &.is-inverted {
         color: var(--octo-secondary-500);
-        background: white;
+        background: var(--octo-inverted-500);
         border: var(--octo-border-danger);
       }
     }
@@ -146,7 +146,7 @@
       &.is-inverted {
         color: var(--octo-secondary-600);
         border: 0.5px solid var(--octo-secondary-600);
-        background: white;
+        background: var(--octo-inverted-500);
       }
     }
   }
@@ -167,7 +167,7 @@
     &.is-danger {
       background: var(--octo-secondary-700);
       &.is-inverted {
-        color: white;
+        color: var(--octo-inverted-500);
         background: var(--octo-secondary-500);
         border: 0.5px solid var(--octo-secondary-700);
       }
@@ -179,12 +179,12 @@
     border: none !important;
     box-shadow: none !important;
     color: var(--octo-muted-500) !important;
+    cursor: not-allowed;
 
     .octo-loader__bar {
       background: var(--octo-muted-500) !important;
     }
 
-    cursor: not-allowed;
 
     &:hover,
     &:focus,
@@ -215,24 +215,26 @@
     left: $offset;
     width: $width;
 
-    animation: octo-loader__bars--animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    animation: octo-loader__bars-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   }
 
   .octo-loader__bar:nth-child(1) {
     left: $offset;
     animation-delay: -0.24s;
   }
+
   .octo-loader__bar:nth-child(2) {
     left: 16px;
     animation-delay: -0.12s;
   }
+
   .octo-loader__bar:nth-child(3) {
     left: 28px;
     animation-delay: 0;
   }
 }
 
-@keyframes octo-loader__bars--animation {
+@keyframes octo-loader__bars-animation {
   0% {
     top: 2px;
     height: 14px;
