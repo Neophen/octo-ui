@@ -4,26 +4,9 @@
 
 ## Code
 ```html
-
-<o-user-login-type :user="user" type="email" />
-<o-user-login-type :user="user" type="facebook" />
-<o-user-login-type :user="user" type="google" />
-
-<script>
-import { reactive, toRefs } from "@vue/composition-api";
-
-export default {
-  setup() {
-    const state = reactive({
-      user: {
-        email: 'Eliane_Gleason@yahoo.com'
-      }
-    });
-
-    return { ...toRefs(state) };
-  }
-};
-</script>
+<o-user-login-type class="mb-4" email="Eliane_Gleason@yahoo.com" type="email" />
+<o-user-login-type class="mb-4" email="Declan.Effertz@yahoo.com" type="facebook" />
+<o-user-login-type class="mb-4" email="Katlyn.Langworth@gmail.com" type="google" />
 ```
 
 ## props

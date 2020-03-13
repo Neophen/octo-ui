@@ -24,3 +24,4 @@ export { default as Info } from "./Info";
 export { default as CardSettings } from "./CardSettings";
 export { default as UserAvatar } from "./UserAvatar";
 export { default as UserLoginType } from "./UserLoginType";
+export { default as Menu } from "./Menu";

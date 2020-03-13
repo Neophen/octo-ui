@@ -1,28 +1,37 @@
 .octo-user-login-type {
-    display: flex;
-    align-items: center;
-    border-radius: var(--octo-radius-default);
-    background-color: var(--octo-inverted-500);
-    box-shadow: var(--octo-shadow-idle);
-    padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: var(--octo-radius-default);
+  background-color: var(--octo-inverted-500);
+  box-shadow: var(--octo-shadow-idle);
+  padding: 0.75rem 1rem;
 
-    color: var(--octo-text-default);
-    
-    &:hover {
-      box-shadow: var(--octo-shadow-focus);
-  
-      .octo-user-login-type__label {
-        color: var(--octo-text-primary);
-      }
+  width: 100%;
+  max-width: 250px;
+
+  color: var(--octo-text-default);
+
+  &:hover {
+    box-shadow: var(--octo-shadow-focus);
+
+    .octo-user-login-type__label {
+      color: var(--octo-text-primary);
     }
-  
+  }
+
   .octo-user-login-type__label {
     margin-bottom: 0.5rem;
   }
+
   .octo-user-login-type__icon {
     margin-right: 1rem;
     width: 2.5rem;
     height: 2.5rem;
   }
 
+  .octo-user-login-type__email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

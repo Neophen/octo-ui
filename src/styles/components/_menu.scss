@@ -1,0 +1,39 @@
+.octo-menu {
+  background-color: var(--octo-inverted-500);
+  border-radius: var(--octo-radius-large);
+  box-shadow: var(--octo-shadow-idle);
+  padding: 1.5rem 1.25rem;
+  width: 257px;
+
+}
+
+.octo-menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--octo-radius-default);
+
+  &:hover {
+    background-color: var(--octo-muted-100);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.is-active {
+    color: var(--octo-text-inverted);
+    background-color: var(--octo-primary-500);
+  }
+
+  .octo-menu-item__icon {
+    margin-right: 0.5rem;
+    width: 18px;
+    height: 18px;
+  }
+
+  + .octo-menu-item {
+    margin-top: 0.5rem;
+  }
+}

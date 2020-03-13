@@ -10,7 +10,9 @@
       <o-h type="is-inherit" size="5" class="octo-user-login-type__label">
         {{ config.label }}
       </o-h>
-      <o-text size="is-xs">{{ email }}</o-text>
+      <o-text size="is-xs" class="octo-user-login-type__email">{{
+        maskedEmail
+      }}</o-text>
     </div>
   </div>
 </template>
@@ -19,8 +21,8 @@
 export default {
   name: "OUserLoginType",
   props: {
-    user: {
-      type: Object,
+    email: {
+      type: String,
       required: true
     },
     type: {
@@ -39,7 +41,7 @@ export default {
         return `${start}${xxx}@${end}`;
       });
 
-    const email = maskEmail(props.user.email);
+    const maskedEmail = maskEmail(props.email);
 
     const typeConfigs = {
       email: {
@@ -57,7 +59,7 @@ export default {
 
     const config = typeConfigs[props.type];
 
-    return { email, config };
+    return { maskedEmail, config };
   }
 };
 </script>
