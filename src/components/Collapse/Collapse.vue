@@ -9,7 +9,7 @@
       <o-icon
         :dir="isOpen ? 'down' : 'right'"
         class="octo-collapse__icon"
-        icon="arrow-collapsible"
+        icon="arrow-collapse"
       />
     </button>
     <o-transition-expand :aria-id="ariaId" :aria-expanded="isOpen">

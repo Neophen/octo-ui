@@ -3,8 +3,8 @@
     <title>arrow</title>
     <path d="M24 12l-12-8v5h-12v6h12v5z"/>
   </symbol>
-  <symbol id="arrow-collapsible" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41421" clip-rule="evenodd" viewBox="0 0 10 14">
-    <title>arrow-collapsible</title>
+  <symbol id="arrow-collapse" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41421" clip-rule="evenodd" viewBox="0 0 10 14">
+    <title>arrow-collapse</title>
     <path fill-rule="nonzero" d="M9.121 7l-6.06 6.061-2.122-2.122L4.879 7 .939 3.061 3.061.939C5.081 2.96 7.101 4.98 9.121 7z"/>
   </symbol>
   <symbol id="arrow-y" viewBox="0 0 10 24">

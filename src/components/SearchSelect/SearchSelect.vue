@@ -14,7 +14,7 @@
         <span v-else class="octo-search-select__placeholder">
           {{ placeholder }}
         </span>
-        <o-icon icon="arrow-collapsible" dir="down" size="is-md" />
+        <o-icon icon="arrow-collapse" dir="down" size="is-md" />
       </button>
       <div ref="refDropdown" v-if="isOpen" class="octo-search-select__dropdown">
         <input
