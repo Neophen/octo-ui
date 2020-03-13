@@ -94,8 +94,6 @@ export default {
     });
 
     const toggleCalendar = () => {
-      console.log("toggling");
-      console.log(showCalendar.value);
       showCalendar.value ? closeCalendar() : openCalendar();
     };
 
