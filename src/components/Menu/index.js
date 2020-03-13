@@ -1,3 +1,4 @@
+import MenuItem from "./MenuItem.vue";
 import Menu from "./Menu.vue";
 
-export default Menu;
+export { MenuItem as OMenuItem, Menu as OMenu };
