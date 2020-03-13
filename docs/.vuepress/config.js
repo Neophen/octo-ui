@@ -38,7 +38,6 @@ module.exports = {
               title: 'Components',
               collapsable: false,
               children: [
-                'user-avatar',
                 'autocomplete',
                 'button',
                 'calendar',
@@ -60,6 +59,8 @@ module.exports = {
                 'tag',
                 'tags',
                 'typography',
+                'user-avatar',
+                'user-login-type',
               ]
             }
           ]
