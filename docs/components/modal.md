@@ -1,10 +1,8 @@
 # Modal
 
-## Example
-
 <Demo componentName="examples-modal-doc" />
 
-## Code
+#### Code
 ```html
 <template>
   <div class="container">
@@ -53,13 +51,13 @@ export default {
 </script>
 ```
 
-## props
+#### props
 
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |**prop_name**|description|type|values|default|
 
-## slots
+#### slots
 
 |Name|Description|
 |---|---|

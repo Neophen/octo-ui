@@ -2,7 +2,7 @@
 
 <Demo componentName="examples-user-avatar-doc" />
 
-## Code
+#### Code
 ```html
 // With Image, will fallback to no image if src is null
 <o-user-avatar avatar="/user-avatar.jpeg" size="is-tiny" />
@@ -13,13 +13,13 @@
 <o-user-avatar />
 ```
 
-## props
+#### props
 
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |**prop_name**|description|type|values|default|
 
-## slots
+#### slots
 
 |Name|Description|
 |---|---|

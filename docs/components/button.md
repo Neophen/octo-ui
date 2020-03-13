@@ -2,7 +2,7 @@
 
 <Demo componentName="examples-button-doc" />
 
-## Code
+#### Code
 ```html
 <o-button type="is-primary" size="is-sm" squared class="mb-2">Squared small</o-button>
 <o-button type="is-primary" squared class="mb-2">Squared normal</o-button>
@@ -23,7 +23,7 @@
 <o-button icon="gear" type="is-primary" size="is-lg" class="m-2" />
 ```
 
-## props
+#### props
 
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
@@ -34,7 +34,7 @@
 |**icon**|icon on the left|String|-|-|
 |**iconRight**|icon on the right|String|-|-|
 
-## slots
+#### slots
 
 |Name|Description|
 |---|---|

@@ -2,7 +2,7 @@
 
 <Demo componentName="examples-menu-user-doc" />
 
-## Code
+#### Code
 ```html
 // With description
 <o-menu-user :user="user" />
@@ -47,13 +47,13 @@ export default {
 </script>
 ```
 
-## props
+#### props
 
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |**prop_name**|description|type|values|default|
 
-## slots
+#### slots
 
 |Name|Description|
 |---|---|

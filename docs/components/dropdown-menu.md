@@ -2,7 +2,7 @@
 
 <Demo componentName="examples-dropdown-menu-doc" />
 
-## Code
+#### Code
 ```html
 <template>
 <div>
@@ -37,13 +37,13 @@ export default {
 </script>
 ```
 
-## props
+#### props
 
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |**prop_name**|description|type|values|default|
 
-## slots
+#### slots
 
 |Name|Description|
 |---|---|

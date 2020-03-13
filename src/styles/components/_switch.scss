@@ -51,9 +51,11 @@
     &.is-right {
       margin-left: 7px;
     }
+
     &.is-left {
       margin-right: 7px;
     }
+    
     &:empty {
       margin-left: 0;
       margin-right: 0;

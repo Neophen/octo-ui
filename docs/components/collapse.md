@@ -2,7 +2,7 @@
 
 <Demo componentName="examples-collapse-doc" />
 
-## Code
+#### Code
 ```html
 <template>
   <o-collapse 
@@ -32,13 +32,13 @@ export default {
 </script>
 ```
 
-## props
+#### props
 
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |**prop_name**|description|type|values|default|
 
-## slots
+#### slots
 
 |Name|Description|
 |---|---|

@@ -2,20 +2,20 @@
 
 <Demo componentName="examples-user-login-type-doc" />
 
-## Code
+#### Code
 ```html
 <o-user-login-type class="mb-4" email="Eliane_Gleason@yahoo.com" type="email" />
 <o-user-login-type class="mb-4" email="Declan.Effertz@yahoo.com" type="facebook" />
 <o-user-login-type class="mb-4" email="Katlyn.Langworth@gmail.com" type="google" />
 ```
 
-## props
+#### props
 
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |**prop_name**|description|type|values|default|
 
-## slots
+#### slots
 
 |Name|Description|
 |---|---|

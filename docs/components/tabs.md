@@ -2,7 +2,7 @@
 
 <Demo componentName="examples-tabs-doc" />
 
-## Code
+#### Code
 ```html
 <template>
   <div class="container">
@@ -66,13 +66,13 @@ export default {
 ```
 
 
-## props
+#### props
 
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |**prop_name**|description|type|values|default|
 
-## slots
+#### slots
 
 |Name|Description|
 |---|---|

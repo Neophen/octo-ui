@@ -46,6 +46,7 @@ export default {
   border: 1px dashed black;
   padding: 1rem;
   border-radius: 10px;
+  height: 100%;
 }
 
 .col-1 {
