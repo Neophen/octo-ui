@@ -44,7 +44,26 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--octo-text-default);
+
+  &.is-default {
+    color: var(--octo-text-default);
+  }
+
+  &.is-primary {
+    color: var(--octo-text-primary);
+  }
+
+  &.is-danger {
+    color: var(--octo-text-danger);
+  }
+
+  &.is-muted {
+    color: var(--octo-text-muted);
+  }
+  
+  &.is-inverted {
+    color: var(--octo-text-inverted);
+  }
 
   .octo-menu-header__icon {
     max-width: 140px;

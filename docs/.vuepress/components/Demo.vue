@@ -92,6 +92,10 @@ export default {
   background: black;
 }
 
+.bg-primary {
+  background: var(--octo-primary-500);
+}
+
 .h-500 {
   height: 500px;
 }
