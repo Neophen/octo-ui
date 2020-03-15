@@ -27,3 +27,4 @@ export { OTabs, OTab } from "./Tabs";
 export { OTagList, OTag } from "./Tag";
 export { default as MenuHeader } from "./MenuHeader";
 export { default as MenuUser } from "./MenuUser";
+export { default as ItemGrid } from "./ItemGrid";

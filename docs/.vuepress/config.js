@@ -50,6 +50,7 @@ module.exports = {
                 'icon',
                 'info',
                 'input',
+                'item-grid',
                 'menu-header',
                 'menu-user',
                 'menu',
