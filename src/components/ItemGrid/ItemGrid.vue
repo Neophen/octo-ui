@@ -1,5 +1,5 @@
 <template>
-  <div class="octo-col-grid" :style="style">
+  <div class="octo-item-grid" :style="style">
     <slot></slot>
   </div>
 </template>
@@ -13,8 +13,19 @@ import {
 } from "@vue/composition-api";
 export default {
   name: "OItemGrid",
+  props: {
+    colFirst: {
+      type: Boolean,
+      default: false
+    },
+    height: [String, Number],
+    minWidth: {
+      type: [String, Number],
+      default: "280px"
+    }
+  },
 
-  setup() {
+  setup(props) {
     const instance = getCurrentInstance();
 
     const state = reactive({
@@ -26,9 +37,9 @@ export default {
     });
 
     const columnStyle = count =>
-      `grid-template-columns: repeat( ${count}, ${count > 3 ? "1fr" : "25%"});`;
+      `grid-template-columns: repeat( ${count}, ${count > 2 ? "1fr" : "25%"});`;
 
-    const style = computed(() => {
+    const getColumnStyles = () => {
       if (state.children.length < 5) {
         return columnStyle(1);
       }
@@ -40,6 +51,23 @@ export default {
       } else {
         return columnStyle(4);
       }
+    };
+
+    const style = computed(() => {
+      const styles = [];
+      if (props.colFirst) {
+        styles.push(getColumnStyles());
+      } else {
+        const cols = `grid-template-columns: repeat(auto-fill, minmax(${props.minWidth}, 1fr));`;
+        styles.push(cols);
+      }
+
+      if (props.height) {
+        const rows = `grid-auto-rows: minmax(${props.height}, auto);`;
+        styles.push(rows);
+      }
+
+      return styles.join(" ");
     });
 
     return { style };

@@ -45,8 +45,8 @@ let config = {
   defaultButtonRounded: false,
   defaultCarouselInterval: 3500,
   defaultLinkTags: [
-    "a",
     "button",
+    "a",
     "input",
     "router-link",
     "nuxt-link",

@@ -24,15 +24,12 @@
 
 <script>
 import { usePopper } from "../../utils/usePopper.js";
+import { typeValidator } from "../../utils/typeValidator";
 
 export default {
   name: "ODropdownMenu",
   props: {
-    type: {
-      type: String,
-      default: "is-default",
-      validator: value => ["is-default", "is-primary"].includes(value)
-    }
+    ...typeValidator("type", ["is-default", "is-primary"], "ODropdownMenu")
   },
   setup(_, { root }) {
     const {

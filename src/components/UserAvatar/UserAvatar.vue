@@ -14,15 +14,12 @@
 </template>
 
 <script>
+import { typeValidator } from "../../utils/typeValidator";
 export default {
   name: "OUserAvatar",
   props: {
     avatar: null,
-    size: {
-      type: String,
-      default: "is-large",
-      validator: value => ["is-tiny", "is-large"].includes(value)
-    }
+    ...typeValidator("size", ["is-large", "is-tiny"], "OUserAvatar")
   },
   setup(props) {
     const sizes = {

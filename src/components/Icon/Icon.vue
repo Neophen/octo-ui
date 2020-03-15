@@ -6,6 +6,7 @@
 
 <script>
 import { computed } from "@vue/composition-api";
+import { typeValidator } from "../../utils/typeValidator";
 
 export default {
   name: "OIcon",
@@ -16,29 +17,22 @@ export default {
       default: "dashboard"
     },
     icon: String,
-    size: {
-      type: String,
-      default: "is-custom",
-      validator: value =>
-        [
-          "is-sm",
-          "is-small",
-          "is-medium",
-          "is-md",
-          "is-large",
-          "is-lg",
-          "is-xl",
-          "is-custom",
-          "is-undefined"
-        ].includes(value)
-    },
-    dir: {
-      type: String,
-      default: "right",
-      validator: value => {
-        return ["up", "left", "right", "down"].includes(value);
-      }
-    }
+    ...typeValidator(
+      "size",
+      [
+        "is-custom",
+        "is-sm",
+        "is-small",
+        "is-medium",
+        "is-md",
+        "is-large",
+        "is-lg",
+        "is-xl",
+        "is-undefined"
+      ],
+      "OIcon"
+    ),
+    ...typeValidator("dir", ["right", "up", "left", "down"], "OIcon")
   },
   setup(props, { root }) {
     const iconPath = computed(() => {

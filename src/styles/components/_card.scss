@@ -1,118 +1,101 @@
 .octo-card {
-  .octo-card__accent-muted,
-  > .octo-card__accent-muted {
-    color: var(--octo-muted-300);
+  padding: 1rem;
+  position: relative;
+  border-width: 1px;
+  border-color: transparent;
+  background-color: var(--octo-inverted-500);
+  border-radius: var(--octo-radius-default);
+  box-shadow: var(--octo-shadow-black);
+
+  button,
+  * > button {
     &:focus {
       outline: none;
     }
   }
 
-  &:hover,
-  &:focus {
-    // @apply shadow-focus;
-    // border: 1px solid var(--primary);
-    // .accent {
-    //   color: var(--primary);
-    // }
+  &.is-default {
+    border-style: solid;
+    border-color: transparent;
+  }
 
-    // .accent-secondary {
-    //   color: black;
-    //   .accent-secondary__image {
-    //     opacity: 1;
-    //   }
-    //   .accent-secondary__text {
-    //     color: black;
-    //   }
-    // }
+  &.is-dashed {
+    border-color: var(--octo-muted-500);
+    border-style: dashed;
+  }
+
+  .octo-card__accent,
+  > .octo-card__accent {
+    &.is-muted {
+      color: var(--octo-text-muted);
+    }
+  }
+
+  .octo-card__accent-muted,
+  > .octo-card__accent-muted {
+    color: var(--octo-text-muted);
+  }
+
+  .octo-card__underlay-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .octo-card__settings-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 1rem 1rem 0 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .octo-card__action {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0 1rem 1rem 0;
+    cursor: pointer;
+    pointer-events: none;
+
+    .octo-card__action-label {
+      .is-underline {
+        text-decoration: underline;
+      }
+      .octo-card__action-icon {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  &:hover {
+    border-color: var(--octo-primary-500);
+    box-shadow: var(--octo-shadow-focus);
+
+    .octo-card__accent,
+    > .octo-card__accent {
+      color: var(--octo-primary-500);
+    }
 
     .octo-card__accent-muted,
     > .octo-card__accent-muted {
       color: var(--octo-text-default);
-      &:hover,
-      &:focus {
-        color: var(--octo-primary-500);
-      }
     }
+  }
+  
+  &:focus,
+  &:focus-within {
+    border-color: var(--octo-primary-500);
   }
 }
 
-// .small-card {
-//   @apply w-full p-4 rounded bg-white shadow-card border border-transparent relative;
-
-//   &.--user {
-//     min-height: 220px;
-//   }
-
-//   &.--page {
-//     min-height: 164px;
-//   }
-
-//   .accent-muted {
-//     color: var(--muted-300);
-//   }
-
-//   &:hover,
-//   &:focus {
-//     @apply shadow-focus;
-//     border: 1px solid var(--primary);
-//     .accent {
-//       color: var(--primary);
-//     }
-
-//     .accent-secondary {
-//       color: black;
-//       .accent-secondary__image {
-//         opacity: 1;
-//       }
-//       .accent-secondary__text {
-//         color: black;
-//       }
-//     }
-
-//     .accent-muted {
-//       color: black;
-//       &:hover,
-//       &:focus {
-//         color: var(--primary);
-//         @apply outline-none;
-//       }
-//     }
-//   }
-
-//   .accent-secondary {
-//     .accent-secondary__image {
-//       opacity: 0.2;
-//     }
-
-//     .accent-secondary__text {
-//       @apply text-secondary;
-//     }
-
-//     &:hover {
-//       .accent-secondary__image {
-//         opacity: 1;
-//       }
-
-//       .accent-secondary__text {
-//         @apply outline-none text-highlight;
-//       }
-//     }
-//   }
-
-//   &.--add {
-//     @apply shadow-card border-dashed border-muted-700;
-
-//     &:hover,
-//     &:focus {
-//       @apply shadow-focus;
-//       border: 1px dashed var(--primary);
-//       .border-accent {
-//         border: 1px dashed var(--primary);
-//       }
-//       .accent {
-//         color: var(--primary);
-//         fill: var(--primary);
-//       }
-//     }
-//   }
-// }
+.octo-card__settings {
+  &:hover,
+  &:focus {
+    color: var(--octo-primary-500);
+  }
+}

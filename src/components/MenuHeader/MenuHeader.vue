@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { typeValidator } from "../../utils/typeValidator";
 export default {
   name: "OMenuHeader",
   props: {
@@ -19,27 +20,18 @@ export default {
       type: String,
       default: "v-1.0"
     },
-    type: {
-      type: String,
-      default: "is-default",
-      validator(value) {
-        const items = [
-          "is-default",
-          "is-primary",
-          "is-danger",
-          "is-muted",
-          "is-inverted",
-          "is-custom"
-        ];
-        const isValid = items.includes(value);
-        if (!isValid) {
-          const message = `[Vue warn]: <OMenuHeader> type "${value}", is not a valid type`;
-          console.error(message);
-        }
-
-        return isValid;
-      }
-    }
+    ...typeValidator(
+      "type",
+      [
+        "is-default",
+        "is-primary",
+        "is-danger",
+        "is-muted",
+        "is-inverted",
+        "is-custom"
+      ],
+      "OMenuHeader"
+    )
   }
 };
 </script>

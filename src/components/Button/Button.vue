@@ -52,8 +52,8 @@
 
 <script>
 import Icon from "../Icon/Icon";
-import config from "../../utils/config.js";
 import { computed } from "@vue/composition-api";
+import { typeValidator } from "../../utils/typeValidator";
 
 export default {
   name: "OButton",
@@ -62,31 +62,16 @@ export default {
   },
   inheritAttrs: false,
   props: {
-    type: {
-      type: String,
-      default: "is-default",
-      validator: value =>
-        [
-          "is-default",
-          "is-primary",
-          "is-link",
-          "is-danger",
-          "is-dashed"
-        ].includes(value)
-    },
-    size: {
-      type: String,
-      default: "is-md",
-      validator: value =>
-        [
-          "is-sm",
-          "is-small",
-          "is-medium",
-          "is-md",
-          "is-large",
-          "is-lg"
-        ].includes(value)
-    },
+    ...typeValidator(
+      "type",
+      ["is-default", "is-primary", "is-link", "is-danger", "is-dashed"],
+      "OButton"
+    ),
+    ...typeValidator(
+      "size",
+      ["is-md", "is-sm", "is-small", "is-medium", "is-large", "is-lg"],
+      "OButton"
+    ),
     label: String,
     iconPack: {
       type: String,
@@ -107,20 +92,8 @@ export default {
     active: Boolean,
     hovered: Boolean,
     selected: Boolean,
-    nativeType: {
-      type: String,
-      default: "button",
-      validator: value => {
-        return ["button", "submit", "reset"].indexOf(value) >= 0;
-      }
-    },
-    tag: {
-      type: String,
-      default: "button",
-      validator: value => {
-        return config.defaultLinkTags.indexOf(value) >= 0;
-      }
-    }
+    ...typeValidator("nativeType", ["button", "submit", "reset"], "OButton"),
+    ...typeValidator("tag", ["button", "a", "input", "inertia-link"], "OButton")
   },
   setup(props, { attrs }) {
     const iconSize = computed(() => props.size);

@@ -53,7 +53,7 @@
           placeholder="Email"
           v-model="email"
           type="email"
-          icon="contact-mail"
+          icon="contact-email"
           icon-right="close-circle"
           icon-right-clickable
           @icon-right-click="clearIconClick"

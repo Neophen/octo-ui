@@ -26,16 +26,12 @@
 </template>
 
 <script>
+import { typeValidator } from "../../utils/typeValidator";
+
 export const Heading = {
   name: "OH",
   props: {
-    size: {
-      default: "1",
-      type: String,
-      validator(value) {
-        return ["1", "2", "3", "4", "5"].includes(value);
-      }
-    },
+    ...typeValidator("size", ["1", "2", "3", "4", "5"], "OHeading"),
     truncateLines: {
       default: 0,
       type: Number

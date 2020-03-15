@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { typeValidator } from "../../utils/typeValidator";
 export default {
   name: "OUserLoginType",
   props: {
@@ -25,10 +26,7 @@ export default {
       type: String,
       required: true
     },
-    type: {
-      type: String,
-      required: true
-    }
+    ...typeValidator("type", ["email", "facebook", "google"], "OUserLoginType")
   },
   setup(props) {
     const maskEmail = email =>
@@ -45,7 +43,8 @@ export default {
 
     const typeConfigs = {
       email: {
-        label: "Email"
+        label: "Email",
+        icon: "contact-email"
       },
       facebook: {
         label: "Facebook connect",

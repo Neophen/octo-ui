@@ -38,7 +38,7 @@
         <o-input v-model="name"></o-input>
       </o-field>
 
-      <o-field class="mb-4" icon="contact-mail" :hasValue="!!email" label="Email" type="is-danger" message="This email is invalid">
+      <o-field class="mb-4" icon="contact-email" :hasValue="!!email" label="Email" type="is-danger" message="This email is invalid">
         <o-input type="email" v-model="email" maxlength="30"></o-input>
       </o-field>
 
@@ -50,7 +50,7 @@
         <o-input v-model="name"></o-input>
       </o-field>
 
-      <o-field class="mb-4" icon="contact-mail" number="2" :hasValue="!!email" label="Email" type="is-danger" message="This email is invalid">
+      <o-field class="mb-4" icon="contact-email" number="2" :hasValue="!!email" label="Email" type="is-danger" message="This email is invalid">
         <o-input type="email" v-model="email" maxlength="30"></o-input>
       </o-field>
 

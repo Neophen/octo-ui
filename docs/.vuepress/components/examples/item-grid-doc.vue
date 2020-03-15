@@ -6,7 +6,7 @@
         <o-input type="number" min="1" v-model.number="count" />
       </o-field>
     </div>
-    <o-item-grid>
+    <o-item-grid col-first>
       <o-checkbox v-for="i of count" :key="i" v-model="selectedItems" :native-value="i">Option {{ i }}</o-checkbox>
     </o-item-grid>
   </div>

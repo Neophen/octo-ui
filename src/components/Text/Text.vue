@@ -13,31 +13,21 @@
 </template>
 
 <script>
+import { typeValidator } from "../../utils/typeValidator";
+
 export const Text = {
   name: "OText",
   props: {
-    tag: {
-      default: "p",
-      type: String,
-      validator(value) {
-        const tags = ["p", "span"];
-        const isValid = tags.includes(value);
-        if (!isValid) {
-          const message = `[Vue warn]: <OText> tag "${value}", is not a valid tag`;
-          console.error(message);
-        }
-
-        return isValid;
-      }
-    },
+    ...typeValidator("tag", ["p", "span"], "OText"),
     type: {
       type: [String, Object],
       default: "is-default"
     },
-    size: {
-      type: String,
-      default: "is-default"
-    }
+    ...typeValidator(
+      "size",
+      ["is-default", "is-semi", "is-tiny", "is-xs", "is-sm"],
+      "OText"
+    )
   }
 };
 

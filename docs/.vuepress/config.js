@@ -41,7 +41,7 @@ module.exports = {
                 'autocomplete',
                 'button',
                 'calendar',
-                'card-settings',
+                'card',
                 'checkbox',
                 'collapse',
                 'datepicker',

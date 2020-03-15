@@ -1,15 +1,15 @@
 <template>
   <o-dropdown-menu type="is-primary">
-    <button slot="trigger" class="octo-card__accent-muted">
+    <button slot="trigger" class="octo-card__settings">
       <o-icon icon="gear" size="is-md" />
     </button>
     <o-dropdown-menu-item
-      v-for="(action, i) in actions"
+      v-for="(item, i) in items"
       :key="i"
-      @click="$emit(action.action)"
-      :type="action.type ? action.type : 'is-default'"
+      @click="item.action"
+      :type="item.type ? item.type : 'is-default'"
     >
-      {{ action.label }}
+      {{ item.label }}
     </o-dropdown-menu-item>
   </o-dropdown-menu>
 </template>
@@ -18,7 +18,7 @@
 export default {
   name: "OCardSettings",
   props: {
-    actions: {
+    items: {
       type: Array,
       required: true
     }
