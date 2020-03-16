@@ -57,7 +57,8 @@
     "vue": "^2.6.11",
     "@vue/composition-api": "^0.4.0",
     "@popperjs/core": "^2.0.6",
-    "portal-vue": "^2.1.7"
+    "portal-vue": "^2.1.7",
+    "core-js": "^3.6.4"
   },
   "keywords": [
     "vue",
