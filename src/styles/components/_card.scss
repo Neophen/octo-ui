@@ -8,10 +8,14 @@
   box-shadow: var(--octo-shadow-black);
 
   button,
-  * > button {
+  * button {
     &:focus {
       outline: none;
     }
+  }
+
+  .octo-card__title {
+    padding-right: 1.5rem;
   }
 
   &.is-default {
@@ -24,16 +28,19 @@
     border-style: dashed;
   }
 
-  .octo-card__accent,
-  > .octo-card__accent {
-    &.is-muted {
+  *.has-accent {
+    color: var(--octo-text-default);
+
+    &.is-muted,
+    *.is-muted,
+    &.is-muted-primary,
+    *.is-muted-primary {
       color: var(--octo-text-muted);
     }
-  }
 
-  .octo-card__accent-muted,
-  > .octo-card__accent-muted {
-    color: var(--octo-text-muted);
+    *.is-faded {
+      opacity: 0.2;
+    }
   }
 
   .octo-card__underlay-btn {
@@ -42,6 +49,16 @@
     top: 0;
     width: 100%;
     height: 100%;
+    padding: 1rem;
+    display: block;
+    text-align: left;
+  }
+
+  .octo-card__footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 0 1rem 1rem;
   }
 
   .octo-card__settings-container {
@@ -57,7 +74,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    margin: 0 1rem 1rem 0;
+    margin: 0 1rem 1rem;
     cursor: pointer;
     pointer-events: none;
 
@@ -76,26 +93,29 @@
     border-color: var(--octo-primary-500);
     box-shadow: var(--octo-shadow-focus);
 
-    .octo-card__accent,
-    > .octo-card__accent {
+    *.has-accent {
       color: var(--octo-primary-500);
-    }
 
-    .octo-card__accent-muted,
-    > .octo-card__accent-muted {
-      color: var(--octo-text-default);
+      &.is-muted,
+      *.is-muted {
+        color: var(--octo-text-default);
+      }
+
+      *.is-faded {
+        opacity: 1;
+      }
+
+      &.is-hoverable:hover,
+      &.is-hoverable:focus,
+      *.is-hoverable:hover,
+      *.is-hoverable:focus {
+        color: var(--octo-primary-500);
+      }
     }
   }
-  
+
   &:focus,
   &:focus-within {
     border-color: var(--octo-primary-500);
-  }
-}
-
-.octo-card__settings {
-  &:hover,
-  &:focus {
-    color: var(--octo-primary-500);
   }
 }

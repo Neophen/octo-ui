@@ -85,8 +85,20 @@
     align-items: center;
     justify-content: center;
 
+    color: var(--octo-muted-500);
+
+    &.is-large {
+      padding: 0 1rem;
+    }
+
     &.is-right {
       right: 0;
+      &.has-text {
+        .octo-input__icon,
+        .octo-icon {
+          margin-left: 0.5rem;
+        }
+      }
     }
     &.is-left {
       left: 0;
@@ -99,6 +111,32 @@
 
     &.is-clickable {
       cursor: pointer;
+      &:hover {
+        color: var(--octo-primary-600);
+      }
     }
+  }
+
+  .show-on-focus {
+    opacity: 0;
+  }
+
+  &.is-focused,
+  &:focus,
+  &:focus-within {
+    .show-on-focus {
+      opacity: 1;
+    }
+    .octo-input__icon-container {
+      &.is-left {
+        color: var(--octo-primary-500);
+      }
+    }
+  }
+
+  .octo-search-input {
+    padding-left: 2.8rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
   }
 }

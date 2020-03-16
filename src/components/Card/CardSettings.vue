@@ -1,6 +1,10 @@
 <template>
   <o-dropdown-menu type="is-primary">
-    <button slot="trigger" class="octo-card__settings">
+    <button
+      v-bind="$attrs"
+      slot="trigger"
+      class="has-accent is-muted is-hoverable"
+    >
       <o-icon icon="gear" size="is-md" />
     </button>
     <o-dropdown-menu-item
@@ -17,6 +21,7 @@
 <script>
 export default {
   name: "OCardSettings",
+  inheritAttrs: false,
   props: {
     items: {
       type: Array,

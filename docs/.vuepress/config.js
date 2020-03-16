@@ -56,6 +56,7 @@ module.exports = {
                 'menu',
                 'modal',
                 'radio',
+                'search-input',
                 'search-select',
                 'select',
                 'switch',

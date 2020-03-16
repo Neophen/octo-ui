@@ -7,7 +7,7 @@
     :style="[
       data.style,
       data.staticStyle,
-      props.truncateLines > 0
+      Number(props.truncateLines) > 0
         ? {
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -34,7 +34,7 @@ export const Heading = {
     ...typeValidator("size", ["1", "2", "3", "4", "5"], "OHeading"),
     truncateLines: {
       default: 0,
-      type: Number
+      type: [Number, String]
     },
     type: [String, Object]
   }

@@ -7,14 +7,18 @@
     <div
       v-if="hasSettingsSlot"
       @click.stop
-      class="octo-card__settings-container octo-card__accent-muted"
+      class="octo-card__settings-container"
     >
       <slot name="settings" />
     </div>
 
+    <div class="octo-card__footer">
+      <slot name="footer" />
+    </div>
+
     <div class="octo-card__action">
       <slot name="action">
-        <div v-if="action" class="octo-card__accent is-muted">
+        <div v-if="action" class="has-accent is-muted-primary">
           <o-h size="4" type="is-inherit" class="octo-card__action-label">
             <span class="is-underline">{{ action }}</span>
             <o-icon icon="arrow-collapse" class="octo-card__action-icon" />
