@@ -11,11 +11,12 @@
       </p>
     </div>
     <div class="control-box mb-4">
-      <div class="block mb-4">
+      <o-item-grid min-width="150px" class="mb-4">
         <o-switch v-model="allowNew">Allow new tags</o-switch>
         <o-switch v-model="openOnFocus">Open on focus</o-switch>
-      </div>
-      <o-field label="Enter some tags" class="mb-4">
+        <o-switch v-model="isDanger">Is danger</o-switch>
+      </o-item-grid>
+      <o-field label="Enter some tags" class="mb-4" :type="isDanger ? 'is-danger' : ''">
         <o-tags
           v-model="tagsAutocomplete"
           :data="filteredTags"
@@ -414,7 +415,8 @@ export default {
       isSelectOnly: false,
       tagsAutocomplete: [],
       allowNew: false,
-      openOnFocus: false
+      openOnFocus: false,
+      isDanger: false,
     });
 
     const getFilteredTags = computed(() => text => {
