@@ -27,6 +27,7 @@
       v-if="icon"
       :pack="iconPack"
       :icon="icon"
+      :dir="iconDir"
       :size="iconSize"
       :class="{ 'is-icon': $slots.default || label }"
     />
@@ -78,6 +79,7 @@ export default {
       default: "dashboard"
     },
     icon: String,
+    ...typeValidator("iconDir", ["right", "up", "left", "down"], "OButton"),
     iconRight: String,
     disabled: Boolean,
     squared: {
