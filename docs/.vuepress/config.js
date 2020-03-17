@@ -51,6 +51,7 @@ module.exports = {
                 'info',
                 'input',
                 'item-grid',
+                'label-select',
                 'menu-header',
                 'menu-user',
                 'menu',

@@ -1,0 +1,35 @@
+.octo-label-select {
+  .octo-label-select__btn {
+    &:hover {
+      color: var(--octo-primary-500);
+    }
+
+    &:focus {
+      color: var(--octo-primary-700);
+      outline: none;
+    }
+  }
+
+  .octo-label-select__icon {
+    width: 7px;
+    height: 7px;
+  }
+
+  .octo-label-select__item {
+    padding: 7px 10px 7px 7px;
+    border-radius: 20px;
+    background-color: var(--octo-inverted-500);
+
+    &.is-active {
+      color: var(--octo-primary-500);
+    }
+
+    &:hover {
+      background-color: var(--octo-muted-100);
+    }
+
+    + .octo-label-select__item {
+      margin-top: 0.5rem;
+    }
+  }
+}
