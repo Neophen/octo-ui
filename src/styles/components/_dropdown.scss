@@ -12,7 +12,8 @@
     padding: 1.25rem;
 
     &.is-default {
-      background-color: var(--octo-muted-100);
+      background-color: var(--octo-inverted-500);
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
     }
 
     &.is-primary {
