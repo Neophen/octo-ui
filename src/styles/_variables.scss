@@ -1,11 +1,3 @@
-$shadow-size-xs: 0px 0px 4px;
-$shadow-size-md: 0px 0px 10px;
-$shadow-size-lg: 0px 0px 30px;
-
-$octo-alpha-xs: 0.1;
-$octo-alpha-md: 0.25;
-$octo-alpha-lg: 0.4;
-
 :root {
   // Typography
   --octo-title-font: "Gilroy", sans-serif;
@@ -40,6 +32,7 @@ $octo-alpha-lg: 0.4;
   --octo-muted-700: #7a7a7a;
   --octo-muted-800: #78787866;
 
+  // shadows
   --octo-shadow-black: 0px 0px 10px rgba(0, 0, 0, 0.05);
   --octo-shadow-idle: 0px 0px 10px rgba(120, 120, 120, 0.4);
   --octo-shadow-focus: 0px 0px 10px var(--octo-primary-100);
@@ -52,31 +45,10 @@ $octo-alpha-lg: 0.4;
   --octo-border-primary: 0.5px solid var(--octo-primary-500);
   --octo-border-danger: 0.5px solid var(--octo-secondary-500);
   --octo-border-muted: 0.5px solid var(--octo-muted-500);
+  --octo-shadow-modal: 0px 0px 20px rgba(0, 0, 0, 0.25);
   
   // border-radius
   --octo-radius-default: 10px;
   --octo-radius-large: 20px;
   --octo-radius-full: 9999px;
-
-  // Shadows
-  // --octo-shadow-default: 0px 0px 10px rgba(120, 120, 120, 1);
-  // --octo-shadow-modal: 0px 0px 20px rgba(0, 0, 0, 1);
-  // --octo-shadow-sidebar: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  // --octo-shadow-card: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  // --octo-shadow-focus: 0px 0px 10px rgba(24, 68, 224, 0.4);
-  // --octo-shadow-default: 0px 0px 10px rgba(120, 120, 120, 0.4);
-  --octo-shadow-modal: 0px 0px 20px rgba(0, 0, 0, 0.25);
-  // --octo-shadow-sidebar: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  // --octo-shadow-card: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
-  // Checkbox
-  // --octo-shadow-check-empty: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  // --octo-shadow-check-hover: 0px 0px 10px rgba(62, 46, 245, 0.4);
-  // --octo-shadow-check-hover: 0px 0px 10px #3e2ef5;
-  // --octo-shadow-check-idle: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  // --octo-shadow-check-error-hover: 0px 0px 10px rgba(250, 53, 109, 0.4);
-
-  // // border-radius
-  // --octo-b-default: 10px;
-  // --octo-b-large: 20px;
 }
