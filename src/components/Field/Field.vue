@@ -20,6 +20,7 @@
         v-model="canInput"
         class="octo_field__switch"
       />
+      <o-info v-if="tooltip" :tooltip="tooltip" class="octo_field__tooltip" />
     </label>
     <template v-if="canToggle">
       <slot v-if="canInput" />
@@ -60,6 +61,7 @@ export default {
       type: Boolean,
       default: false
     },
+    tooltip: String,
     // original
     type: [String, Object],
     label: String,

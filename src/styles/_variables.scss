@@ -38,6 +38,7 @@
   --octo-shadow-focus: 0px 0px 10px var(--octo-primary-100);
   --octo-shadow-focus-200: 0px 0px 10px var(--octo-primary-200);
   --octo-shadow-danger: 0px 0px 10px var(--octo-secondary-200);
+  --octo-shadow-modal: 0px 0px 20px rgba(0, 0, 0, 0.25);
 
   // border
 
@@ -45,7 +46,6 @@
   --octo-border-primary: 0.5px solid var(--octo-primary-500);
   --octo-border-danger: 0.5px solid var(--octo-secondary-500);
   --octo-border-muted: 0.5px solid var(--octo-muted-500);
-  --octo-shadow-modal: 0px 0px 20px rgba(0, 0, 0, 0.25);
   
   // border-radius
   --octo-radius-default: 10px;
