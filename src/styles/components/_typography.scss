@@ -79,6 +79,9 @@
   }
 
   // Sizes
+  &.is-initial {
+    font-size: initial;
+  }
 
   &.is-semi {
     font-weight: 500;

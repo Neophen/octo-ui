@@ -121,5 +121,42 @@
       <o-h size="3" class="mt-6 mb-4">Text + Icon</o-h>
       <o-button icon="gear" type="is-dashed" class="mb-2">Dashed with icon</o-button>
     </div>
+    <div class="col-1/2">
+      <o-h size="2" class="mb-4 b-0">Link button</o-h>
+      <o-h size="3" class="mb-4">Text</o-h>
+      <div class="link-block">
+
+      <o-button type="is-link" size="is-sm" squared class="mb-2">Sqaurish small</o-button>
+      <o-button type="is-link" squared class="mb-2">Sqaurish normal</o-button>
+      <o-button type="is-link" size="is-lg" squared class="mb-2">Sqaurish large</o-button>
+      <o-button type="is-link" size="is-sm" class="mb-2">Link small</o-button>
+      <o-button type="is-link" class="mb-2">Link normal</o-button>
+      <o-button type="is-link" size="is-lg" class="mb-2">Link large</o-button>
+      <o-button type="is-link" hovered class="mb-2">Link hovered</o-button>
+      <o-button type="is-link" focused class="mb-2">Link focused</o-button>
+      <o-button type="is-link" active class="mb-2">Link active</o-button>
+      <o-button type="is-link" disabled class="mb-2">Link disabled</o-button>
+      <o-button type="is-link" loading class="mb-2">Link loading</o-button>
+      </div>
+
+      <o-h size="5" class="mt-6 mb-4">Do not use bellow, for testing purposes only</o-h>
+      <o-h size="3" class="mt-6 mb-4">Icon</o-h>
+      <div class="row">
+        <o-button icon="gear" type="is-link" size="is-sm" class="m-2"></o-button>
+        <o-button icon="gear" type="is-link" class="m-2"></o-button>
+        <o-button icon="gear" type="is-link" size="is-lg" class="m-2"></o-button>
+      </div>
+      <o-h size="3" class="mt-6 mb-4">Text + Icon</o-h>
+      <o-button icon="gear" type="is-link" class="mb-2">Link with icon</o-button>
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+
+.link-block {
+  display: flex;
+  flex-direction: column;
+}
+
+</style>

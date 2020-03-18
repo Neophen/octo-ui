@@ -36,6 +36,12 @@
       padding: 0 0.875rem;
       width: auto;
     }
+
+    &.is-link {
+      border-radius: 0;
+      min-width: 0;
+      padding: 0;
+    }
   }
 
   &.is-fullwidth {
@@ -60,8 +66,7 @@
   }
 
   &.is-primary {
-    border: none;
-    color: var(--octo-inverted-500);
+    color: var(--octo-text-inverted);
     background: var(--octo-primary-500);
     box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
@@ -70,12 +75,26 @@
   }
 
   &.is-link {
+    border: none;
+    min-width: 0;
+    height: auto;
+    width: auto;
+    padding: 0;
+    border-radius: 0;
+    display: inline;
+    text-align: left;
+    color: var(--octo-text-primary);
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    .octo-loader {
+      display: none;
+    }
   }
-  &.is-text {
-  }
+
   &.is-danger {
     border: none;
-    color: var(--octo-inverted-500);
+    color: var(--octo-text-inverted);
     background: var(--octo-secondary-500);
     box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
@@ -125,6 +144,11 @@
         border: var(--octo-border-danger);
       }
     }
+
+    &.is-link {
+      text-decoration: underline;
+      color: var(--octo-primary-600);
+    }
   }
 
   &.is-focused,
@@ -149,6 +173,11 @@
         background: var(--octo-inverted-500);
       }
     }
+
+    &.is-link {
+      text-decoration: underline;
+      color: var(--octo-primary-700);
+    }
   }
 
   &.is-active,
@@ -167,10 +196,15 @@
     &.is-danger {
       background: var(--octo-secondary-700);
       &.is-inverted {
-        color: var(--octo-inverted-500);
+        color: var(--octo-text-inverted);
         background: var(--octo-secondary-500);
         border: 0.5px solid var(--octo-secondary-700);
       }
+    }
+
+    &.is-link {
+      text-decoration: underline;
+      color: var(--octo-primary-700);
     }
   }
 
@@ -185,7 +219,6 @@
       background: var(--octo-muted-500) !important;
     }
 
-
     &:hover,
     &:focus,
     &:active {
@@ -193,6 +226,17 @@
       border: none;
       box-shadow: none;
       color: var(--octo-muted-500);
+    }
+  }
+  &.is-link {
+    &:disabled {
+      background: transparent !important;
+      text-decoration: none;
+      &:hover,
+      &:focus,
+      &:active {
+        background: transparent ;
+      }
     }
   }
 }

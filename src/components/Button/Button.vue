@@ -31,21 +31,25 @@
       :size="iconSize"
       :class="{ 'is-icon': $slots.default || label }"
     />
-    <div v-if="loading" class="octo-loader">
+    <div v-if="loading && !isLink" class="octo-loader">
       <div class="octo-loader__bars">
         <div class="octo-loader__bar"></div>
         <div class="octo-loader__bar"></div>
         <div class="octo-loader__bar"></div>
       </div>
     </div>
-    <o-h :size="fontSize" type="inherit" v-else-if="label">{{ label }}</o-h>
-    <o-h :size="fontSize" type="inherit" v-else-if="$slots.default">
-      <slot />
+    <o-text type="is-inherit" v-else-if="isLink">
+      <template v-if="label">{{ label }}</template>
+      <slot v-else />
+    </o-text>
+    <o-h :size="fontSize" type="inherit" v-else>
+      <template v-if="label">{{ label }}</template>
+      <slot v-else />
     </o-h>
     <o-icon
-      v-if="disabled && ($slots.default || label)"
+      v-if="disabled && ($slots.default || label) && !isLink"
       icon="lock"
-      class="ml-auto"
+      class="octo-button__lock"
       :size="iconSize"
     />
   </component>
@@ -107,7 +111,9 @@ export default {
       return props.tag;
     });
 
-    return { iconSize, fontSize, computedTag };
+    const isLink = computed(() => props.type === "is-link");
+
+    return { iconSize, fontSize, computedTag, isLink };
   }
 };
 </script>

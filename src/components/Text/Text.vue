@@ -25,7 +25,7 @@ export const Text = {
     },
     ...typeValidator(
       "size",
-      ["is-default", "is-semi", "is-tiny", "is-xs", "is-sm"],
+      ["is-initial", "is-semi", "is-tiny", "is-xs", "is-sm"],
       "OText"
     )
   }
