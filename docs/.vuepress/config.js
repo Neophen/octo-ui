@@ -38,6 +38,7 @@ module.exports = {
               title: 'Components',
               collapsable: false,
               children: [
+                'dialog',
                 'autocomplete',
                 'button',
                 'calendar',

@@ -32,3 +32,4 @@ export { default as SearchInput } from "./SearchInput";
 export { default as LabelSelect } from "./LabelSelect";
 export { default as Loading } from "./Loading";
 export { default as ModalContent } from "./ModalContent";
+export { default as Dialog } from "./Dialog";

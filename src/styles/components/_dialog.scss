@@ -1,0 +1,20 @@
+.octo-dialog {
+  text-align: center;
+  .octo-dialog__title {
+  }
+
+  .octo-dialog__message {
+    margin-top: 1.25rem;
+  }
+
+  .octo-dialog__buttons {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    * + * {
+      margin-left: 1rem;
+    }
+  }
+}

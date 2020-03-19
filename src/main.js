@@ -15,6 +15,50 @@ const OctoUI = {
       Vue.prototype.$octoIconPacks = iconPacks;
     }
 
+    Vue.prototype.$modalo = {
+      show(name) {
+        location.hash = name;
+      },
+
+      hide() {
+        location.hash = "#";
+      }
+    };
+
+    OctoUI.events = new Vue();
+
+    Vue.prototype.$dialog = {
+      confirm(params) {
+        return this.show({
+          ...params,
+          ...{ state: "confirm" }
+        });
+      },
+
+      danger(params) {
+        return this.show({
+          ...params,
+          ...{ state: "danger" }
+        });
+      },
+
+      message(params) {
+        return this.show({
+          ...{ state: "message", confirm: "ok" },
+          ...params
+        });
+      },
+
+      show(params) {
+        return new Promise(resolve => {
+          OctoUI.events.$emit("show-dialog", params);
+          OctoUI.events.$on("confirmed", confirmed => {
+            resolve(confirmed);
+          });
+        });
+      }
+    };
+
     Vue.directive(closeDirective, closeMenu);
   }
 };

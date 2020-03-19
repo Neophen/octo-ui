@@ -1,6 +1,6 @@
 <template>
   <div class="octo-modal-box__container">
-    <div class="octo-box is-expanded" :style="style">
+    <div class="octo-box" :style="style">
       <slot />
     </div>
   </div>
@@ -17,11 +17,12 @@ export default {
   },
   setup(props) {
     const sizes = {
-      small: "581px",
-      large: "1060px"
+      auto: "max-width: 581px;",
+      small: "width: 100vw; max-width: 581px;",
+      large: "width: 100vw; max-width: 1060px;"
     };
 
-    const style = `max-width: ${sizes[props.size]};`;
+    const style = sizes[props.size];
     return { style };
   }
 };
