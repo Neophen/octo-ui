@@ -1,17 +1,13 @@
 <template>
   <portal to="octo-modals" slim>
     <div v-if="active" :key="modalHash" class="octo-modal__overlay">
-      <button @mousedown="clickOutside" class="octo-modal__overlay-close" />
-      <div @click.stop class="octo-modal__content">
-        <o-transition-expand>
-          <slot v-bind:cancel="cancel" v-bind:success="success">
-            <div class="octo-box" key="loading">
-              <div class="octo-box__container">
-                <o-loading type="is-default" />
-              </div>
-            </div>
-          </slot>
-        </o-transition-expand>
+      <div class="octo-modal__inner">
+        <button @mousedown="clickOutside" class="octo-modal__overlay-close" />
+        <div class="octo-modal__spacer"></div>
+        <div @click.stop class="octo-modal__content">
+          <slot v-bind:cancel="cancel" v-bind:success="success" />
+        </div>
+        <div class="octo-modal__spacer"></div>
       </div>
     </div>
   </portal>
