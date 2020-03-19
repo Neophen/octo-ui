@@ -10,7 +10,7 @@
             v-bind:success="success"
           >
             <div class="octo-box" key="loading">
-              <div class="flex-center">
+              <div class="octo-box__container">
                 <o-loading type="is-default" />
               </div>
             </div>
