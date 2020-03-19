@@ -2,6 +2,12 @@
 export default {
   name: `OTransitionExpand`,
   functional: true,
+  props: {
+    grouped: {
+      type: Boolean,
+      default: false
+    }
+  },
   render(createElement, context) {
     const data = {
       props: {
@@ -49,7 +55,11 @@ export default {
       }
     };
 
-    return createElement(`transition`, data, context.children);
+    return createElement(
+      context.props.grouped ? "transition-group" : "transition",
+      data,
+      context.children
+    );
   }
 };
 </script>
