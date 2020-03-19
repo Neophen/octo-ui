@@ -21,7 +21,7 @@
   }
 
   .octo-search-select__placeholder {
-    color: #8795a1;
+    color: var(--octo-text-muted);
   }
   .octo-search-select__dropdown {
     position: absolute;
