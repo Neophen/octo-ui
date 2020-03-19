@@ -1,11 +1,16 @@
 <template>
-  <portal to="octo-modals" slim>
-    <div v-if="active" :key="modalHash" class="octo-modal__overlay">
+  <portal v-if="active" to="octo-modals" slim>
+    <div
+      :key="modalHash"
+      class="octo-modal__overlay"
+      :class="{ 'is-clickable': !preventClickOutside }"
+    >
       <div class="octo-modal__inner">
-        <button @mousedown="clickOutside" class="octo-modal__overlay-close" />
         <div class="octo-modal__spacer"></div>
-        <div @click.stop class="octo-modal__content">
-          <slot v-bind:cancel="cancel" v-bind:success="success" />
+        <div class="octo-modal__content">
+          <div ref="refContainer" class="octo-modal-box__container">
+            <slot :cancel="cancel" :success="success" />
+          </div>
         </div>
         <div class="octo-modal__spacer"></div>
       </div>
@@ -19,7 +24,9 @@ import {
   watch,
   reactive,
   toRefs,
-  onMounted
+  onMounted,
+  ref,
+  onBeforeUnmount
 } from "@vue/composition-api";
 
 import { generateID } from "../../utils/id-generator.js";
@@ -41,7 +48,9 @@ export default {
       required: true
     }
   },
-  setup(props, { emit, root }) {
+  setup(props, { emit }) {
+    const refContainer = ref(null);
+
     const state = reactive({
       isAnotherModalOpen: false,
       previousHash: ""
@@ -51,15 +60,19 @@ export default {
       props.name ? `#${props.name}` : `#modal-${generateID()}`
     );
 
-    const close = message => {
+    const close = event => {
       emit("update:active", false);
-      message && emit(message);
+      event && emit(event);
     };
 
     const cancel = () => close("cancel");
     const success = () => close("success");
+
     const clickOutside = () => {
-      !props.preventClickOutside && close("cancel");
+      if (window.location.hash !== modalHash.value) return;
+      if (props.preventClickOutside) return;
+
+      close("cancel");
     };
 
     const changeHash = hash => {
@@ -103,23 +116,40 @@ export default {
       { lazy: true }
     );
 
+    const escapeHandler = event => {
+      if (event.key === "Escape") {
+        clickOutside();
+      }
+    };
+
+    const handleGlobalClick = event => {
+      if (!refContainer.value) return;
+
+      const clickedInside = refContainer.value.contains(event.target);
+
+      if (!clickedInside) {
+        clickOutside();
+        return;
+      }
+    };
+
     onMounted(() => {
-      const escapeHandler = e => {
-        if (e.key === "Escape") {
-          if (window.location.hash === modalHash.value) {
-            clickOutside();
-          }
-        }
-      };
-
-      document.addEventListener("keydown", escapeHandler);
-
-      root.$once("hook:destroyed", () => {
-        document.removeEventListener("keydown", escapeHandler);
-      });
+      window.addEventListener("click", handleGlobalClick, true);
+      window.addEventListener("keydown", escapeHandler, true);
     });
 
-    return { ...toRefs(state), modalHash, cancel, success, clickOutside };
+    onBeforeUnmount(() => {
+      window.removeEventListener("click", handleGlobalClick, true);
+      window.removeEventListener("keydown", escapeHandler, true);
+    });
+
+    return {
+      ...toRefs(state),
+      refContainer,
+      modalHash,
+      cancel,
+      success
+    };
   }
 };
 </script>

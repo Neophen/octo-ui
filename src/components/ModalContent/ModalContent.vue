@@ -1,8 +1,6 @@
 <template>
-  <div class="octo-modal-box__container">
-    <div class="octo-box" :style="style">
-      <slot />
-    </div>
+  <div class="octo-box" :style="style">
+    <slot />
   </div>
 </template>
 

@@ -116,15 +116,6 @@ export const usePopper = (root, setupConfig = baseConfig) => {
     });
   };
 
-  onBeforeUnmount(() => {
-    if (state.destroyPopperTimeout) {
-      destroyPopperWithTimeout();
-    } else {
-      destroyPopper();
-    }
-    window.removeEventListener("click", handleGlobalClick, true);
-  });
-
   const open = () => {
     if (state.isPopperOpen) return;
     state.isPopperOpen = true;
@@ -142,6 +133,15 @@ export const usePopper = (root, setupConfig = baseConfig) => {
   };
 
   const toggle = () => (state.isPopperOpen ? close() : open());
+
+  onBeforeUnmount(() => {
+    if (state.destroyPopperTimeout) {
+      destroyPopperWithTimeout();
+    } else {
+      destroyPopper();
+    }
+    window.removeEventListener("click", handleGlobalClick, true);
+  });
 
   return {
     ...toRefs(state),

@@ -12,24 +12,14 @@
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
 
-  will-change: opacity;
-}
-
-.octo-modal__overlay-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  &:focus {
-    outline: none;
+  .is-clickable {
+    cursor: pointer;
   }
 }
 
 .octo-modal__inner {
   height: 100vh;
   position: relative;
-  will-change: transform;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,24 +34,32 @@
 }
 
 .octo-modal__spacer {
+  width: 100%;
   height: 100px;
   flex-shrink: 0;
 }
 
 .octo-modal__content {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   flex-grow: 1;
 }
 
 .octo-modal-box__container {
+  cursor: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+}
+
+.octo-modal-transition-enter {
+  opacity: 0;
+  will-change: opacity;
+  .octo-modal__inner {
+    will-change: transform;
+  }
 }
 
 .octo-modal-transition-enter-active {
@@ -78,9 +76,12 @@
   }
 }
 
-.octo-modal-transition-enter,
-.octo-modal-transition-leave-active {
+.octo-modal-transition-leave-to {
   opacity: 0;
+  will-change: auto;
+  .octo-modal__inner {
+    will-change: auto;
+  }
 }
 
 @keyframes octo-modal-transition-up {

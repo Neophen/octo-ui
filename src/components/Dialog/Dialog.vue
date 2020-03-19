@@ -1,5 +1,5 @@
 <template>
-  <o-modal :active.sync="isOpen">
+  <o-modal :active.sync="isOpen" @cancel="handleClick(false)">
     <o-modal-content size="auto" class="octo-dialog">
       <o-h v-if="title" type="is-default" class="octo-dialog__title">{{
         title
