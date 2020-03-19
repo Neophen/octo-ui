@@ -6,7 +6,7 @@
           <o-button @click="isOpen = true">open modal</o-button>
           <ClientOnly>
             <o-modal :active.sync="isOpen">
-              <div class="octo-box">
+              <div class="octo-box" key="main">
                 <o-h class="mb-4">First modal</o-h>
                 <div>
                   <o-datepicker v-model="date" />
@@ -19,7 +19,6 @@
             </o-modal>
 
             <o-modal :active.sync="isOtherOpen">
-              <o-transition-expand>
                 <div v-if="showContent" class="octo-box" key="other">
                   <div>
                     <o-h class="mb-4">Other modal</o-h>
@@ -31,10 +30,6 @@
                     <o-button @click="isOtherOpen = false" class="mr-4">Cancel</o-button>
                   </div>
                 </div>
-                <div v-else class="octo-box" key="loading">
-                  <o-h>Loading...</o-h>
-                </div>
-              </o-transition-expand>
             </o-modal>
           </ClientOnly>
         </div>

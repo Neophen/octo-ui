@@ -3,7 +3,19 @@
     <div v-if="active" :key="modalHash" class="octo-modal__overlay">
       <button @mousedown="clickOutside" class="octo-modal__overlay-close" />
       <div @click.stop class="octo-modal__content">
-        <slot v-bind:cancel="cancel" v-bind:success="success"></slot>
+        <o-transition-expand>
+          <slot
+            v-bind:cancel="cancel"
+            v-bind:hash="hash"
+            v-bind:success="success"
+          >
+            <div class="octo-box" key="loading">
+              <div class="flex-center">
+                <o-loading type="is-default" />
+              </div>
+            </div>
+          </slot>
+        </o-transition-expand>
       </div>
     </div>
   </portal>

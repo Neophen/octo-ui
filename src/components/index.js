@@ -30,3 +30,4 @@ export { OTabs, OTab } from "./Tabs";
 export { OTagList, OTag } from "./Tag";
 export { default as SearchInput } from "./SearchInput";
 export { default as LabelSelect } from "./LabelSelect";
+export { default as Loading } from "./Loading";
