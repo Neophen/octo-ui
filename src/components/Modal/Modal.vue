@@ -1,10 +1,7 @@
 <template>
   <portal to="octo-modals" slim>
     <div v-if="active" :key="modalHash" class="octo-modal__overlay">
-      <button
-        @mousedown="clickOutside"
-        class="octo-modal__overlay-close"
-      ></button>
+      <button @mousedown="clickOutside" class="octo-modal__overlay-close" />
       <div @click.stop class="octo-modal__content">
         <slot v-bind:cancel="cancel" v-bind:success="success"></slot>
       </div>
@@ -26,10 +23,7 @@ import { generateID } from "../../utils/id-generator.js";
 export default {
   name: "OModal",
   props: {
-    name: {
-      type: String,
-      default: null
-    },
+    name: String,
     preventClickOutside: {
       type: Boolean,
       default: false

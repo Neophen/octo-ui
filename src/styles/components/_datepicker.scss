@@ -1,8 +1,11 @@
 .octo-datepicker {
   position: relative;
-  .octo-datepicker__dropdown {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
+}
+
+// This is not nested since it's in portal target
+.octo-datepicker__dropdown {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
 }
