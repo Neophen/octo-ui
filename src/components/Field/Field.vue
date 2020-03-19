@@ -24,9 +24,13 @@
     </label>
     <o-transition-expand>
       <template v-if="canToggle">
-        <slot v-if="canInput" />
+        <div v-if="canInput">
+          <slot />
+        </div>
       </template>
-      <slot v-else />
+      <div v-else>
+        <slot />
+      </div>
     </o-transition-expand>
     <o-text
       v-if="newMessage"
