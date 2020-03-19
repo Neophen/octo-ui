@@ -4,11 +4,7 @@
       <button @mousedown="clickOutside" class="octo-modal__overlay-close" />
       <div @click.stop class="octo-modal__content">
         <o-transition-expand>
-          <slot
-            v-bind:cancel="cancel"
-            v-bind:hash="hash"
-            v-bind:success="success"
-          >
+          <slot v-bind:cancel="cancel" v-bind:success="success">
             <div class="octo-box" key="loading">
               <div class="octo-box__container">
                 <o-loading type="is-default" />

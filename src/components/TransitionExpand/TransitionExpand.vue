@@ -49,7 +49,7 @@ export default {
       }
     };
 
-    return createElement(`transition-group`, data, context.children);
+    return createElement(`transition`, data, context.children);
   }
 };
 </script>

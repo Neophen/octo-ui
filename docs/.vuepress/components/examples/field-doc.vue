@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="control-box mb-4">
-      <o-field class="mb-4" label="Name">
+      <o-field class="mb-4" label="Name" :can-toggle="true">
         <o-input value="Kevin Garvey"></o-input>
       </o-field>
 

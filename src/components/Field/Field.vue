@@ -22,10 +22,12 @@
       />
       <o-info v-if="tooltip" :tooltip="tooltip" class="octo_field__tooltip" />
     </label>
-    <template v-if="canToggle">
-      <slot v-if="canInput" />
-    </template>
-    <slot v-else />
+    <o-transition-expand>
+      <template v-if="canToggle">
+        <slot v-if="canInput" />
+      </template>
+      <slot v-else />
+    </o-transition-expand>
     <o-text
       v-if="newMessage"
       class="octo-field__help"
