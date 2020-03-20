@@ -9,16 +9,13 @@
     >
       <slot name="trigger" />
     </div>
-    <transition name="octo-fade-out-quick">
-      <ul
-        ref="refDropdown"
-        v-show="isPopperOpen"
-        class="octo-dropdown__menu"
-        :class="type"
-      >
-        <slot />
-      </ul>
-    </transition>
+    <portal v-if="isPopperOpen" to="octo-datepicker" slim>
+      <transition name="octo-fade-out-quick">
+        <ul ref="refDropdown" class="octo-dropdown__menu" :class="type">
+          <slot />
+        </ul>
+      </transition>
+    </portal>
   </div>
 </template>
 

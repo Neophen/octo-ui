@@ -1,28 +1,29 @@
 .octo-dropdown {
   position: relative;
   display: inline-block;
-  
+
   .octo-dropdown__trigger {
     display: inline-block;
   }
-  .octo-dropdown__menu {
-    position: absolute;
-    z-index: 10;
-    border-radius: var(--octo-radius-default);
-    padding: 1.25rem;
+}
 
-    &.is-default {
-      background-color: var(--octo-inverted-500);
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-    }
+.octo-dropdown__menu {
+  position: absolute;
+  z-index: 10;
+  border-radius: var(--octo-radius-default);
+  padding: 1.25rem;
 
-    &.is-primary {
-      background-color: var(--octo-primary-500);
-    }
+  &.is-default {
+    background-color: var(--octo-inverted-500);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  }
 
-    li + li {
-      margin-top: 0.6rem;
-    }
+  &.is-primary {
+    background-color: var(--octo-primary-500);
+  }
+
+  li + li {
+    margin-top: 0.6rem;
   }
 }
 
