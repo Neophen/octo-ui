@@ -12,7 +12,7 @@
 
 ```html
 <portal-target name="octo-modals" transition="o-modal-transition" multiple />
-<portal-target name="octo-datepicker" />
+<portal-target name="octo-popups" />
 ```
 
 [Download default icons and add them to your server somewhere](https://raw.githubusercontent.com/Neophen/octo-ui/master/docs/.vuepress/public/svg/icons_dashboard.svg)

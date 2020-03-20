@@ -15,7 +15,7 @@
       @keyup.native.enter="openCalendar"
       @click.native="toggleCalendar"
     />
-    <portal v-if="showCalendar" to="octo-datepicker" slim>
+    <portal v-if="showCalendar" to="octo-popups" slim>
       <div ref="refDropdown" class="octo-datepicker__dropdown">
         <o-calendar
           v-model="computedValue"
