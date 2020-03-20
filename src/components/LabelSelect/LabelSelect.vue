@@ -29,12 +29,18 @@ export default {
     value: [String, Object],
     options: {
       type: [Array, Object]
+    },
+    placeholder: {
+      type: String,
+      default: "Please select an option..."
     }
   },
   setup(props, { emit }) {
     const computedValue = computed({
       get() {
-        return props.value;
+        return props.value
+          ? props.value
+          : { label: props.placeholder, value: "placeholder" };
       },
       set(value) {
         emit("input", value);

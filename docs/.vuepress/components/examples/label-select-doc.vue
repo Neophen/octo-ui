@@ -11,10 +11,7 @@ import { reactive, toRefs } from "@vue/composition-api";
 export default {
   setup() {
     const state = reactive({
-      currentLocale: {
-        label: "English",
-        value: "en"
-      },
+      currentLocale: null,
       availableLocales: [
         {
           label: "English",
