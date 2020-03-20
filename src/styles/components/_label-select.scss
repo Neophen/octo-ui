@@ -14,22 +14,22 @@
     width: 7px;
     height: 7px;
   }
+}
 
-  .octo-label-select__item {
-    padding: 7px 10px 7px 7px;
-    border-radius: 20px;
-    background-color: var(--octo-inverted-500);
+.octo-label-select__item {
+  padding: 7px 10px 7px 7px;
+  border-radius: 20px;
+  background-color: var(--octo-inverted-500);
 
-    &.is-active {
-      color: var(--octo-primary-500);
-    }
+  &.is-active {
+    color: var(--octo-primary-500);
+  }
 
-    &:hover {
-      background-color: var(--octo-muted-100);
-    }
+  &:hover {
+    background-color: var(--octo-muted-100);
+  }
 
-    + .octo-label-select__item {
-      margin-top: 0.5rem;
-    }
+  + .octo-label-select__item {
+    margin-top: 0.5rem;
   }
 }
