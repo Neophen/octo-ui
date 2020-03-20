@@ -16,7 +16,6 @@
       </o-h>
       <o-switch
         v-if="canToggle"
-        :name="`switch-${labelFor}`"
         v-model="canInput"
         class="octo_field__switch"
       />
