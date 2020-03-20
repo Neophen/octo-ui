@@ -38,7 +38,7 @@
         <div class="octo-loader__bar"></div>
       </div>
     </div>
-    <o-text type="is-inherit" v-else-if="isLink">
+    <o-text type="is-inherit" v-else-if="isLink && (label || $slots.default)">
       <template v-if="label">{{ label }}</template>
       <slot v-else />
     </o-text>
