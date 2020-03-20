@@ -8,15 +8,16 @@
       color: var(--octo-text-primary);
     }
   }
+}
 
-  .octo-info__container {
-    position: absolute;
-    z-index: 10;
-    left: 0;
-    top: 0;
-    border-radius: var(--octo-radius-default);
-    max-width: 240px;
-    padding: 20px;
-    background-color: var(--octo-primary-500);
-  }
+.octo-info__container {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  border-radius: var(--octo-radius-default);
+  width: max-content;
+  max-width: 240px;
+  padding: 20px;
+  background-color: var(--octo-primary-500);
 }
