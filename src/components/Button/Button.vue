@@ -42,7 +42,7 @@
       <template v-if="label">{{ label }}</template>
       <slot v-else />
     </o-text>
-    <o-h :size="fontSize" type="inherit" v-else>
+    <o-h :size="fontSize" type="inherit" v-else-if="label || $slots.default">
       <template v-if="label">{{ label }}</template>
       <slot v-else />
     </o-h>
