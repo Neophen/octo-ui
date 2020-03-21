@@ -1,10 +1,11 @@
 .octo-field {
   .octo-field__label {
-    display: flex;
     align-items: center;
     color: var(--octo-text-default);
-    width: 100%;
+    display: flex;
     margin-bottom: 0.5rem;
+    text-align: left;
+    width: 100%;
 
     &.has-value {
       .octo_field__icon {
@@ -25,6 +26,7 @@
   }
 
   .octo-field__help {
+    text-align: left;
     margin-top: 0.75rem;
   }
 
