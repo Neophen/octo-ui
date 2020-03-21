@@ -20,8 +20,8 @@
       <slot name="action">
         <div v-if="action" class="has-accent is-muted-primary">
           <o-h size="4" type="is-inherit" class="octo-card__action-label">
-            <span class="is-underline">{{ action }}</span>
-            <o-icon icon="arrow-collapse" class="octo-card__action-icon" />
+            <span class="is-underline">{{ action }}</span> &gt;
+            <!-- <o-icon icon="arrow-collapse" class="octo-card__action-icon" /> -->
           </o-h>
         </div>
       </slot>
