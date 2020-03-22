@@ -36,15 +36,6 @@ export default {
 
 #### props
 
-    colFirst: {
-      type: Boolean,
-      default: false
-    },
-    height: [String, Number],
-    minWidth: {
-      type: [String, Number],
-      default: "280px"
-    }
 |Name|Description|Type|Values|Default|
 |---|---|---|---|---|
 |**colFirst**|should it put items in column first order|Boolean|-|`false`|
