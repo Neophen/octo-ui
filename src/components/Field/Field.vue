@@ -201,6 +201,9 @@ export default {
     /**
      * Set internal type when prop change.
      */
+    canInput(value) {
+      this.$emit("show-input", value);
+    },
     type(value) {
       this.newType = value;
     },
