@@ -47,7 +47,7 @@ export default {
     };
     
     const showSeriousDanger = async () => {
-      const confirmed = await root.$dialog.dangerSerious({
+      const confirmed = await root.$dialog.serious({
         title: "Are you sure?",
         message: "You will delete this user.",
         validate: "neophen/octo-ui",

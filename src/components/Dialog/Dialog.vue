@@ -32,10 +32,7 @@
           </o-button>
         </template>
       </div>
-      <div
-        v-else-if="state === 'danger-serious'"
-        class="octo-dialog__serious-danger"
-      >
+      <div v-else-if="state === 'serious'" class="octo-dialog__serious-danger">
         <o-field :label="`Enter: ${validate}`">
           <o-input v-model="validateInput" type="text" />
         </o-field>
@@ -73,7 +70,7 @@ export default {
       validate: "",
       validateInput: "",
       invalid: computed(() => data.validate !== data.validateInput),
-      isNotSerious: computed(() => data.state !== "danger-serious")
+      isNotSerious: computed(() => data.state !== "serious")
     });
 
     const open = () => {

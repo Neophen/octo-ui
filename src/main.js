@@ -47,10 +47,10 @@ const OctoUI = {
         });
       },
 
-      dangerSerious(params) {
+      serious(params) {
         return this.show({
           ...params,
-          ...{ state: "danger-serious" }
+          ...{ state: "serious" }
         });
       },
 
