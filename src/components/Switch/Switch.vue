@@ -1,5 +1,6 @@
 <template>
   <label
+    tabindex="0"
     class="octo-switch"
     :class="newClass"
     ref="label"
@@ -15,6 +16,7 @@
       <slot />
     </span>
     <input
+      @focus="isMouseDown = true"
       v-model="computedValue"
       type="checkbox"
       ref="input"
@@ -26,6 +28,7 @@
       :value="nativeValue"
       :true-value="trueValue"
       :false-value="falseValue"
+      hidden
     />
     <span
       class="octo-switch__check"

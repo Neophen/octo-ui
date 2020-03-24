@@ -10,6 +10,13 @@
     visibility: hidden;
   }
 
+  &:focus {
+    outline: none;
+    .octo-switch__check {
+      box-shadow: var(--octo-shadow-focus);
+    }  
+  }
+
   .octo-switch__check:after {
     content: "";
     position: absolute;
@@ -55,7 +62,7 @@
     &.is-left {
       margin-right: 7px;
     }
-    
+
     &:empty {
       margin-left: 0;
       margin-right: 0;
