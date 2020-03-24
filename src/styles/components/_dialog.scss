@@ -1,8 +1,16 @@
 .octo-dialog {
   text-align: center;
 
+  &.is-serious {
+    text-align: left;
+  }
+  
   .octo-dialog__message {
     margin-top: 1.25rem;
+  }
+
+  .octo-dialog__serious-danger {
+    margin-top: 2.5rem;
   }
 
   .octo-dialog__buttons {

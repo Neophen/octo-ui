@@ -15,34 +15,47 @@ const OctoUI = {
       Vue.prototype.$octoIconPacks = iconPacks;
     }
 
-    Vue.prototype.$modalo = {
-      show(name) {
-        location.hash = name;
-      },
-
-      hide() {
-        location.hash = "#";
-      }
-    };
-
     OctoUI.events = new Vue();
 
+    const normalizeParams = (message, params) => {
+      if (typeof message === "string") {
+        return {
+          title: message,
+          ...params
+        };
+      }
+      return {
+        ...params,
+        ...message
+      };
+    };
+
     Vue.prototype.$dialog = {
-      confirm(params) {
+      confirm(message, params = {}) {
+        params = normalizeParams(message, params);
         return this.show({
           ...params,
           ...{ state: "confirm" }
         });
       },
 
-      danger(params) {
+      danger(message, params = {}) {
+        params = normalizeParams(message, params);
         return this.show({
           ...params,
           ...{ state: "danger" }
         });
       },
 
-      message(params) {
+      dangerSerious(params) {
+        return this.show({
+          ...params,
+          ...{ state: "danger-serious" }
+        });
+      },
+
+      message(message, params = {}) {
+        params = normalizeParams(message, params);
         return this.show({
           ...{ state: "message", confirm: "ok" },
           ...params

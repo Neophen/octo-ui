@@ -10,11 +10,13 @@
     >
       <o-icon icon="info-circle" size="is-md" />
     </span>
-    <div v-show="showTooltip" ref="refDropdown" class="octo-info__container">
-      <o-text type="is-inverted" size="is-sm">
-        <span v-html="tooltip"></span>
-      </o-text>
-    </div>
+    <portal v-if="showTooltip" to="octo-popups" slim>
+      <div ref="refDropdown" class="octo-info__container">
+        <o-text type="is-inverted" size="is-sm">
+          <span v-html="tooltip"></span>
+        </o-text>
+      </div>
+    </portal>
   </span>
 </template>
 
