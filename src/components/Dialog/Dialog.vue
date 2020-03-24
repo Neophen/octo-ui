@@ -99,6 +99,13 @@ export default {
       OctoUi.events.$emit("confirmed", confirmed);
       data.isOpen = false;
       data.validateInput = "";
+      data.title = "";
+      data.message = "";
+      data.state = "confirm";
+      data.confirm = "Continue";
+      data.cancel = "Cancel";
+      data.validate = "";
+      data.validateInput = "";
     };
 
     onMounted(() => {
