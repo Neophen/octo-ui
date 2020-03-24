@@ -16,7 +16,6 @@
       <slot />
     </span>
     <input
-      @focus="isMouseDown = true"
       v-model="computedValue"
       type="checkbox"
       ref="input"
