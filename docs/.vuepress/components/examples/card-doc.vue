@@ -13,6 +13,20 @@
 
       <o-card-settings slot="settings" :items="items" />
     </o-card>
+    
+    <o-card action="View" @click="showMessage('View some item')">
+      <div slot="media">
+        <img src="/user-avatar.jpeg" />
+      </div>
+      <o-card-heading>{{ longTitle }}</o-card-heading>
+
+      <div slot="footer" class="flex has-accent">
+        <o-user-avatar class="mr-2 is-faded" avatar="/user-avatar.jpeg" size="is-tiny" />
+        <o-text size="is-sm" class="is-muted is-hoverable">Some hoverable text</o-text>
+      </div>
+
+      <o-card-settings slot="settings" :items="items" />
+    </o-card>
   </o-item-grid>
 </template>
 
