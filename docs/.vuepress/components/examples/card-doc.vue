@@ -13,10 +13,12 @@
 
       <o-card-settings slot="settings" :items="items" />
     </o-card>
-    
+
     <o-card action="View" @click="showMessage('View some item')">
       <div slot="media">
-        <img src="/user-avatar.jpeg" />
+        <div>
+          <img src="/user-avatar.jpeg" />
+        </div>
       </div>
       <o-card-heading>{{ longTitle }}</o-card-heading>
 
