@@ -1,10 +1,10 @@
 <template>
   <div class="octo-card" :class="[type]">
+    <button class="octo-card__underlay-btn" @click="$emit('click')"></button>
     <div class="octo-card__media">
       <slot name="media" />
     </div>
     <div class="octo-card__content">
-      <button class="octo-card__underlay-btn" @click="$emit('click')"></button>
       <slot />
 
       <div
