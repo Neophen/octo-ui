@@ -43,7 +43,7 @@
           <o-button
             @click.prevent="handleClick(true)"
             :disabled="invalid"
-            type="is-danger"
+            :type="validateType"
           >
             {{ confirm }}
           </o-button>
@@ -69,6 +69,7 @@ export default {
       cancel: "Cancel",
       validate: "",
       validateInput: "",
+      validateType: "is-danger",
       invalid: computed(() => data.validate !== data.validateInput),
       isNotSerious: computed(() => data.state !== "serious")
     });
@@ -83,7 +84,8 @@ export default {
       state,
       confirm,
       cancel,
-      validate
+      validate,
+      validateType
     }) => {
       data.title = title;
       data.message = message;
@@ -91,6 +93,7 @@ export default {
       confirm && (data.confirm = confirm);
       cancel && (data.cancel = cancel);
       validate && (data.validate = validate);
+      validateType && (data.validateType = validateType);
       data.state = state;
       open();
     };
@@ -105,6 +108,7 @@ export default {
       data.confirm = "Continue";
       data.cancel = "Cancel";
       data.validate = "";
+      data.validateType = "is-danger";
       data.validateInput = "";
     };
 
