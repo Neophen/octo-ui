@@ -15,10 +15,8 @@
     </o-card>
 
     <o-card action="View" @click="showMessage('View some item')">
-      <div slot="media">
-        <div>
-          <img src="/user-avatar.jpeg" />
-        </div>
+      <div slot="media" style="height: 200px overflow:hidden;">
+        <img src="/user-avatar.jpeg" style="object-fit: cover;" />
       </div>
       <o-card-heading>{{ longTitle }}</o-card-heading>
 

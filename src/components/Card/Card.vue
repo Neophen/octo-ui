@@ -1,7 +1,10 @@
 <template>
   <div class="octo-card" :class="[type]">
     <div v-if="$slots.media" class="octo-card__media">
-      <button class="octo-card__underlay-btn" @click="$emit('click')"></button>
+      <button
+        class="octo-card__underlay-btn is-media"
+        @click="$emit('click')"
+      ></button>
       <slot name="media" />
     </div>
     <div class="octo-card__content">

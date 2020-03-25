@@ -64,6 +64,9 @@
     height: 100%;
     display: block;
     z-index: 0;
+    &.is-media {
+      z-index: 1;
+    }
   }
 
   .octo-card__footer {
