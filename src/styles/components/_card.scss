@@ -6,6 +6,8 @@
   background-color: var(--octo-inverted-500);
   border-radius: var(--octo-radius-default);
   box-shadow: var(--octo-shadow-black);
+  display: flex;
+  flex-direction: column;
 
   button,
   * button {
@@ -15,11 +17,12 @@
   }
 
   .octo-card__media {
+    flex-shrink: 0;
     position: relative;
   }
 
   .octo-card__content {
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -69,13 +72,18 @@
     }
   }
 
-  .octo-card__footer {
+  .__content {
+    flex: 1;
+  }
+
+  .__footer {
+    flex-shrink: 0;
     width: fit-content;
     margin-top: 1rem;
     z-index: 1;
   }
 
-  .octo-card__settings-container {
+  .octo-card__settings {
     position: absolute;
     right: 0;
     top: 0;

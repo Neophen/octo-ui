@@ -1,5 +1,5 @@
 <template>
-  <o-item-grid height="160px">
+  <o-item-grid height="200px">
     <o-card action="Create" @click="showMessage('Creating item')" type="is-dashed">
       <o-card-heading>Create new item</o-card-heading>
     </o-card>
@@ -15,8 +15,8 @@
     </o-card>
 
     <o-card action="View" @click="showMessage('View some item')">
-      <div slot="media" style="height: 200px overflow:hidden;">
-        <img src="/user-avatar.jpeg" style="object-fit: cover;" />
+      <div slot="media" style="height: 100px;">
+        <img src="/user-avatar.jpeg" style="object-fit: cover; height: 100%" />
       </div>
       <o-card-heading>{{ longTitle }}</o-card-heading>
 

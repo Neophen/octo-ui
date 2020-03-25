@@ -9,31 +9,27 @@
     </div>
     <div class="octo-card__content">
       <button class="octo-card__underlay-btn" @click="$emit('click')"></button>
-      <slot />
-
-      <div
-        v-if="hasSettingsSlot"
-        @click.stop
-        class="octo-card__settings-container"
-      >
+      <div v-if="$slots.settings" @click.stop class="octo-card__settings">
         <slot name="settings" />
       </div>
 
-      <div class="octo-card__footer">
+      <div class="__content">
+        <slot />
+      </div>
+      <div class="__footer">
         <slot name="footer" />
       </div>
-
-      <button
-        v-if="action"
-        class="octo-card__action has-accent is-muted-primary"
-        @click="$emit('click')"
-      >
-        <o-h size="4" type="is-inherit" class="octo-card__action-label">
-          <span class="is-underline">{{ action }}</span> &gt;
-          <!-- <o-icon icon="arrow-collapse" class="octo-card__action-icon" /> -->
-        </o-h>
-      </button>
     </div>
+    <button
+      v-if="action"
+      class="octo-card__action has-accent is-muted-primary"
+      @click="$emit('click')"
+    >
+      <o-h size="4" type="is-inherit" class="octo-card__action-label">
+        <span class="is-underline">{{ action }}</span> &gt;
+        <!-- <o-icon icon="arrow-collapse" class="octo-card__action-icon" /> -->
+      </o-h>
+    </button>
   </div>
 </template>
 
