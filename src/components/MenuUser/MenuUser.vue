@@ -1,11 +1,11 @@
 <template>
   <div class="octo-menu-user">
-    <o-user-avatar :avatar="user.avatar" class="octo-menu-user__avatar" />
+    <o-user-avatar :avatar="avatar" class="octo-menu-user__avatar" />
     <o-h size="4" dusk="username" class="octo-menu-user__username">
-      {{ user.name }}
+      {{ name }}
     </o-h>
     <o-text size="is-sm" class="octo-menu-user__description">
-      {{ user.description || "-" }}
+      {{ description }}
     </o-text>
     <slot />
   </div>
@@ -20,9 +20,11 @@ export default {
     [UserAvatar.name]: UserAvatar
   },
   props: {
-    user: {
-      type: Object,
-      required: true
+    avatar: String,
+    name: String,
+    description: {
+      type: String,
+      default: "-"
     }
   }
 };

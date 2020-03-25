@@ -1,13 +1,13 @@
 <template>
   <div class="row">
     <div class="col-1/2">
-      <o-menu-user :user="user" />
+      <o-menu-user :avatar="user.avatar" :name="user.name" :description="user.description" />
     </div>
     <div class="col-1/2">
-      <o-menu-user :user="user2" />
+      <o-menu-user :avatar="user2.avatar" :name="user2.name" :description="user2.description" />
     </div>
     <div class="col-1/2">
-      <o-menu-user :user="user3">
+      <o-menu-user :avatar="user3.avatar" :name="user3.name" :description="user3.description">
         <div class="mt-2 flex">
           <o-icon icon="gear" size="is-lg" class="mr-2" />
           <o-icon icon="nav-log-out" size="is-lg" />
