@@ -3,7 +3,7 @@ module.exports = {
     '/': {
       lang: 'en-US',
       title: 'Octo UI',
-      description: 'Documentation site for the Octo UI library plugin'
+      description: 'A simple vue, ui library'
     }
   },
 
