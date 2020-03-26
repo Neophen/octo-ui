@@ -16,7 +16,7 @@
       <div class="__content">
         <slot />
       </div>
-      <div class="__footer">
+      <div v-if="$slots.footer" class="__footer">
         <slot name="footer" />
       </div>
     </div>
