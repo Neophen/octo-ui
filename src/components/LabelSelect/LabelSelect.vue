@@ -1,6 +1,6 @@
 <template>
   <o-dropdown-menu class="octo-label-select">
-    <button squared slot="trigger" class="octo-label-select__btn">
+    <button squared slot="trigger" class="octo-label-select__btn" type="button">
       <o-h size="4" type="is-inherit">
         {{ computedValue.label }}
         <o-icon icon="triangle" dir="down" class="octo-label-select__icon" />

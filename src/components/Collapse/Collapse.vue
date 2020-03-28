@@ -4,6 +4,7 @@
       :aria-controls="ariaId"
       class="octo-collapse__trigger"
       @click="toggle"
+      type="button"
     >
       <o-h type="inherit" size="5">{{ title }}</o-h>
       <o-icon

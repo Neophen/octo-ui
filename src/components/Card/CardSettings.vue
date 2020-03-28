@@ -4,6 +4,7 @@
       v-bind="$attrs"
       slot="trigger"
       class="has-accent is-muted is-hoverable"
+      type="button"
     >
       <o-icon icon="gear" size="is-md" />
     </button>

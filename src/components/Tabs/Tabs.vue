@@ -7,6 +7,7 @@
             @click="selectTab(tab)"
             class="octo-tabs__tab"
             :class="{ 'is-active': tab.isActive }"
+            type="button"
           >
             <o-h size="5" type="inherit">{{ tab.name }}</o-h>
           </button>

@@ -2,16 +2,31 @@
   <div class="octo-calendar">
     <div class="header">
       <div class="header__year-row">
-        <button :disabled="!showPrevYear" class="arrow" @click="movePrevYear">
+        <button
+          :disabled="!showPrevYear"
+          class="arrow"
+          @click="movePrevYear"
+          type="button"
+        >
           <o-icon icon="arrow-right" dir="left" class="arrow-icon" />
         </button>
         <o-h size="4" class="header__year-label">{{ header.year }}</o-h>
-        <button :disabled="!showNextYear" class="arrow" @click="moveNextYear">
+        <button
+          :disabled="!showNextYear"
+          class="arrow"
+          @click="moveNextYear"
+          type="button"
+        >
           <o-icon icon="arrow-right" class="arrow-icon" />
         </button>
       </div>
       <div class="header__month-row">
-        <button :disabled="!showPrevMonth" class="arrow" @click="movePrevMonth">
+        <button
+          :disabled="!showPrevMonth"
+          class="arrow"
+          @click="movePrevMonth"
+          type="button"
+        >
           <o-icon icon="arrow-right" dir="left" class="arrow-icon" />
         </button>
         <button
@@ -33,13 +48,19 @@
               @click="selectMonth(monthOption.number)"
               :disabled="monthOption.isDisabled"
               :key="monthOption.number"
+              type="button"
             >
               <o-h size="5" class="month__label">{{ monthOption.label_3 }}</o-h>
             </button>
           </div>
         </div>
 
-        <button :disabled="!showNextMonth" class="arrow" @click="moveNextMonth">
+        <button
+          :disabled="!showNextMonth"
+          class="arrow"
+          @click="moveNextMonth"
+          type="button"
+        >
           <o-icon icon="arrow-right" class="arrow-icon" />
         </button>
       </div>
@@ -68,6 +89,7 @@
           class="day-button"
           :disabled="day.isDisabled"
           @click="seletDay(day)"
+          type="button"
         >
           <p class="day-text">{{ day.day }}</p>
         </button>

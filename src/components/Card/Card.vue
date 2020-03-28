@@ -4,11 +4,16 @@
       <button
         class="octo-card__underlay-btn is-media"
         @click="$emit('click')"
+        type="button"
       ></button>
       <slot name="media" />
     </div>
     <div class="octo-card__content">
-      <button class="octo-card__underlay-btn" @click="$emit('click')"></button>
+      <button
+        class="octo-card__underlay-btn"
+        @click="$emit('click')"
+        type="button"
+      ></button>
       <div v-if="$slots.settings" @click.stop class="octo-card__settings">
         <slot name="settings" />
       </div>
@@ -24,6 +29,7 @@
       v-if="action"
       class="octo-card__action has-accent is-muted-primary"
       @click="$emit('click')"
+      type="button"
     >
       <o-h size="4" type="is-inherit" class="octo-card__action-label">
         <span class="is-underline">{{ action }}</span> &gt;
