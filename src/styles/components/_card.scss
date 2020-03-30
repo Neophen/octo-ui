@@ -45,6 +45,10 @@
     border-style: dashed;
   }
 
+  *.has-border {
+    border-color: var(--octo-text-default);
+  }
+
   *.has-accent {
     color: var(--octo-text-default);
 
@@ -119,6 +123,10 @@
   &:hover {
     border-color: var(--octo-primary-500);
     box-shadow: var(--octo-shadow-focus);
+
+    *.has-border {
+      border-color: var(--octo-primary-500);
+    }
 
     *.has-accent {
       color: var(--octo-primary-500);
