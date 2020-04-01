@@ -28,9 +28,13 @@ export { OMenuItem, OMenu } from "./Menu";
 export { OModal, OModalTransition } from "./Modal";
 export { OTabs, OTab } from "./Tabs";
 export { OTagList, OTag } from "./Tag";
+export {
+  ORenderlessTags,
+  OInlineTagInput,
+  OStackedTagInput,
+} from "./TagInputs";
 export { default as SearchInput } from "./SearchInput";
 export { default as LabelSelect } from "./LabelSelect";
 export { default as Loading } from "./Loading";
 export { default as ModalContent } from "./ModalContent";
 export { default as Dialog } from "./Dialog";
-export { default as RenderlessTags } from "./RenderlessTags";

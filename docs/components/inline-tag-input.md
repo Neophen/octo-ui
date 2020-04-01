@@ -1,6 +1,6 @@
-# Tags
+# Inline Tag Input
 
-<Demo componentName="examples-renderless-tags-doc" />
+<Demo componentName="examples-inline-tag-input-doc" />
 
 #### Code
 ```html

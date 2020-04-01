@@ -1,67 +1,22 @@
 <template>
   <div>
-    <div class="control-box">
-      <o-h size="3" class="mb-2">Stacked</o-h>
+    <div class="control-box" style="background: var(--octo-muted-100)">
+      <o-field label="Max tags" class="mb-4">
+        <o-input v-model="maxtags" />
+      </o-field>
+      <o-h size="1" class="mb-2 mt-6">Simple</o-h>
+      <o-h size="3" class="mb-2 mt-6">Stacked</o-h>
+     <o-stacked-tag-input v-model="simpleTags" :has-counter="true" :maxtags="maxtags" />
 
-      <o-renderless-tags v-model="tags" :removeOnBackspace="false">
-        <div
-          class="octo-control"
-          slot-scope="{
-          tags, 
-          inputProps,
-          inputEvents,
-          removeTag,
-          removeTagBtnEvents, 
-          }"
-        >
-          <div class="mb-4">
-            <input class="input" placeholder="Add..." v-bind="inputProps" v-on="inputEvents" />
-          </div>
+      <o-h size="3" class="mb-2 mt-6">Inline Tag Input</o-h>
+      <o-inline-tag-input v-model="simpleTags" :has-counter="true" :maxtags="maxtags" />
+      <p class="control-box mt-6 mb-4">{{ simpleTags }}</p>
 
-          <ul>
-            <li v-for="tag in tags" :key="tag" class="flex">
-              <span>{{ tag }}</span>
-              <button v-on="removeTagBtnEvents(tag)" class="ml-auto">
-                <o-icon icon="close-circle" size="is-sm" />
-              </button>
-            </li>
-          </ul>
-        </div>
-      </o-renderless-tags>
-    </div>
-    <div class="control-box">
-      <o-h size="3" class="mb-2">Simple</o-h>
-
-      <o-renderless-tags v-model="tags" :inputRef="inputRef">
-        <div
-          class="octo-control"
-          slot-scope="{
-            tags, 
-            inputProps,
-            inputEvents,
-            removeTag,
-            removeTagBtnEvents, 
-            focusInput,
-          }"
-        >
-          <div @click="focusInput" class="input octo-tags">
-            <div class="octo-tags__flex-row">
-              <div v-for="tag in tags" :key="tag" class="octo-tags__flex-item">
-                <o-tag @close="removeTag(tag)" closable>{{ tag }}</o-tag>
-              </div>
-              <div class="octo-tags__flex-item is-input">
-                <input
-                  ref="inputRef"
-                  class="__input"
-                  placeholder="Add..."
-                  v-bind="inputProps"
-                  v-on="inputEvents"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </o-renderless-tags>
+      <o-h size="1" class="mb-2 mt-6">Object</o-h>
+      <o-h size="3" class="mb-2 mt-6">Stacked</o-h>
+      <o-h size="3" class="mb-2">Inline Tag Input</o-h>
+      <o-inline-tag-input v-model="objectTags" :has-counter="true" :maxtags="maxtags" />
+      <p class="control-box mt-6 ">{{ objectTags }}</p>
     </div>
   </div>
 </template>
@@ -72,11 +27,12 @@ import { reactive, toRefs, ref } from "@vue/composition-api";
 export default {
   setup() {
     const state = reactive({
-      tags: ["Implemented", "Baby"],
-      inputRef: ref(null)
+      simpleTags: ["Implemented", "Baby"],
+      objectTags: [{value: 'hey', label: "Ho"}],
+      maxtags: 0,
     });
 
     return { ...toRefs(state) };
-  }
+  },
 };
 </script>

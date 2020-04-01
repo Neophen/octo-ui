@@ -4,16 +4,33 @@ export default {
   name: "ORenderlessTags",
   model: {
     prop: "tags",
-    event: "update"
+    event: "update",
   },
   props: {
-    tags: { required: true },
-    inputRef: { default: null },
-    removeOnBackspace: { default: true }
+    tags: {
+      type: Array,
+      required: true,
+    },
+    inputRef: {
+      default: null,
+    },
+    maxtags: {
+      type: [Number, String],
+      required: false,
+    },
+    removeOnBackspace: {
+      type: Boolean,
+      default: true,
+    },
+    field: {
+      type: String,
+      default: "label",
+    },
   },
   setup(props, { emit }) {
     const state = reactive({
-      inputValue: ""
+      inputValue: "",
+      isFocused: false,
     });
 
     const newTag = computed(() => state.inputValue.trim());
@@ -21,13 +38,18 @@ export default {
     const removeTag = tag =>
       emit(
         "update",
-        props.tags.filter(t => t !== tag)
+        props.tags.filter(t => t !== tag),
       );
 
     const addTag = () => {
       if (newTag.value.length === 0 || props.tags.includes(newTag.value)) {
         return;
       }
+
+      if (props.maxtags && props.tags.length + 1 > props.maxtags) {
+        return;
+      }
+
       emit("update", [...props.tags, newTag.value]);
       clearInput();
     };
@@ -49,13 +71,14 @@ export default {
         props.inputRef.focus();
       }
     };
-    // const getNormalizedTagText = tag => {
-    //   if (typeof tag === "object") {
-    //     return getValueByPath(tag, this.field);
-    //   }
 
-    //   return tag;
-    // };
+    const getValueByPath = (obj, path) => {
+      const value = path.split(".").reduce((o, i) => (o ? o[i] : null), obj);
+      return value;
+    };
+
+    const tagText = tag =>
+      typeof tag === "object" ? getValueByPath(tag, props.field) : tag;
 
     return {
       ...toRefs(state),
@@ -65,23 +88,31 @@ export default {
       addTag,
       clearInput,
       handleBackspace,
-      focusInput
-      // getNormalizedTagText
+      focusInput,
+      tagText,
     };
   },
   render() {
     return this.$scopedSlots.default({
       tags: this.tags,
       removeTag: this.removeTag,
+      isFocused: this.isFocused,
+      tagText: this.tagText,
       removeTagBtnEvents: tag => ({
-        click: () => this.removeTag(tag)
+        click: () => this.removeTag(tag),
       }),
       inputProps: {
-        value: this.inputValue
+        value: this.inputValue,
       },
       inputEvents: {
         input: this.onInput,
-        blur: this.addTag,
+        focus: () => {
+          this.isFocused = true;
+        },
+        blur: () => {
+          this.isFocused = false;
+          this.addTag();
+        },
         keydown: e => {
           if (e.key === "Backspace" && this.removeOnBackspace) {
             this.handleBackspace();
@@ -90,10 +121,10 @@ export default {
             e.preventDefault();
             this.addTag();
           }
-        }
+        },
       },
-      focusInput: this.focusInput
+      focusInput: this.focusInput,
     });
-  }
+  },
 };
 </script>
