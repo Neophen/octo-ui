@@ -14,7 +14,7 @@
       @click="close"
       @keyup.delete.prevent="close"
     >
-      <o-icon icon="close" class="octo-tag__remove-icon" />
+      <o-icon icon="close-circle" class="octo-tag__remove-icon" />
     </button>
   </span>
 </template>
@@ -33,7 +33,10 @@ export default {
     size: String,
     rounded: Boolean,
     disabled: Boolean,
-    ellipsis: Boolean,
+    ellipsis: {
+      type: Boolean,
+      default: true
+    },
     tabstop: {
       type: Boolean,
       default: true
