@@ -66,7 +66,7 @@ export default {
     maxDate: Date,
     placeholder: String,
   },
-  setup(props, { emit, root }) {
+  setup(props, { emit }) {
     const {
       isPopperOpen: showCalendar,
       refContainer,
@@ -74,7 +74,7 @@ export default {
       refDropdown,
       open: openCalendar,
       close,
-    } = usePopper(root, {
+    } = usePopper({
       offset: [0, 10],
       placement: "bottom-start",
     });

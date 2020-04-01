@@ -1,4 +1,10 @@
-import { reactive, toRefs, ref, onBeforeUnmount } from "@vue/composition-api";
+import {
+  reactive,
+  toRefs,
+  ref,
+  onBeforeUnmount,
+  getCurrentInstance,
+} from "@vue/composition-api";
 
 import { createPopper } from "@popperjs/core";
 
@@ -9,7 +15,8 @@ const baseConfig = {
   time: 200,
 };
 
-export const usePopper = (root, setupConfig = baseConfig) => {
+export const usePopper = setupConfig => {
+  const instance = getCurrentInstance();
   const config = {
     ...baseConfig,
     ...setupConfig,
@@ -34,13 +41,13 @@ export const usePopper = (root, setupConfig = baseConfig) => {
     reference.value ? getElement(reference) : null;
 
   const setupPopper = () => {
-    root.$nextTick(() => {
+    instance.$nextTick(() => {
       let reference = checkAndGetElement(refTrigger);
       let dropdown = checkAndGetElement(refDropdown);
 
       if (!reference || !dropdown) {
         // we try another loop just in-case
-        root.$nextTick(() => {
+        instance.$nextTick(() => {
           let reference = checkAndGetElement(refTrigger);
           let dropdown = checkAndGetElement(refDropdown);
 
@@ -134,6 +141,8 @@ export const usePopper = (root, setupConfig = baseConfig) => {
 
   const toggle = () => (state.isPopperOpen ? close() : open());
 
+  const update = () => state.popper && state.popper.update();
+
   onBeforeUnmount(() => {
     if (state.destroyPopperTimeout) {
       destroyPopperWithTimeout();
@@ -151,5 +160,6 @@ export const usePopper = (root, setupConfig = baseConfig) => {
     open,
     close,
     toggle,
+    update,
   };
 };

@@ -31,7 +31,7 @@ export default {
       required: true,
     },
   },
-  setup(_, { root }) {
+  setup() {
     const {
       isPopperOpen: showTooltip,
       refTrigger,
@@ -39,7 +39,7 @@ export default {
       refContainer,
       open,
       close,
-    } = usePopper(root, {
+    } = usePopper({
       offset: [-7, 7],
       placement: "bottom-start",
       shouldTimeout: true,

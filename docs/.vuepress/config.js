@@ -38,7 +38,6 @@ module.exports = {
               title: 'Components',
               collapsable: false,
               children: [
-                'inline-tag-input',
                 'renderless-tags',
                 'dialog',
                 'autocomplete',

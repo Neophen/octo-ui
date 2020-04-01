@@ -123,14 +123,11 @@ export default {
     maxDate: [String, Date],
     value: [String, Date],
   },
-  setup(props, { emit, root }) {
-    const { isPopperOpen, refTrigger, refDropdown, toggle, close } = usePopper(
-      root,
-      {
-        offset: [0, 10],
-        placement: "bottom",
-      },
-    );
+  setup(props, { emit }) {
+    const { isPopperOpen, refTrigger, refDropdown, toggle, close } = usePopper({
+      offset: [0, 10],
+      placement: "bottom",
+    });
 
     const state = reactive({
       newValue: props.value ? props.value : new Date(),

@@ -28,7 +28,7 @@ export default {
   props: {
     ...typeValidator("type", ["is-default", "is-primary"], "ODropdownMenu"),
   },
-  setup(_, { root }) {
+  setup() {
     const {
       isPopperOpen,
       refTrigger,
@@ -36,7 +36,7 @@ export default {
       refContainer,
       toggle,
       close,
-    } = usePopper(root, {
+    } = usePopper({
       offset: [-7, 7],
       placement: "bottom-start",
       shouldTimeout: true,

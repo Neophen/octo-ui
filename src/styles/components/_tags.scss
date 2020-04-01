@@ -11,7 +11,10 @@
   }
   .octo-inline-tags__flex-item {
     padding: 0.25rem;
-    max-width: 12rem;
+
+    &.is-limited {
+      max-width: 12rem;
+    }
 
     &.is-input {
       max-width: 100%;
@@ -99,7 +102,7 @@
 
   .octo-stacked-tags__tag-row {
     // background: teal;
-    & + &.octo-stacked-tags__tag-row  {
+    & + & {
       margin-top: 1rem;
     }
 
@@ -138,6 +141,96 @@
         background-color: var(--octo-inverted-500);
         color: var(--octo-text-primary);
         .__close-icon {
+          color: var(--octo-text-danger);
+        }
+      }
+    }
+  }
+}
+
+.octo-select-tags {
+  position: relative;
+}
+
+.octo-tags-search {
+  position: absolute;
+  // right: 0 !important;
+  left: 0 !important;
+  background-color: var(--octo-inverted-500);
+  border-radius: var(--octo-radius-large);
+  box-shadow: var(--octo-shadow-black);
+  padding: 1rem;
+  list-style: none;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+
+  .octo-tags-search__row {
+    .__btn {
+      border-radius: var(--octo-radius-large);
+      padding: 8px 15px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      .__label {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+        line-height: 20px;
+        display: flex;
+        align-items: flex-end;
+
+        .__ml-2 {
+          margin-left: 0.25rem;
+        }
+
+        span {
+          background-color: var(--octo-text-mark);
+        }
+      }
+
+      .__info {
+        line-height: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: right;
+        color: var(--octo-muted-500);
+      }
+
+      .__label-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: 7px;
+        flex-shrink: 0;
+      }
+      .__close-icon {
+        color: var(--octo-text-muted);
+        margin-left: auto;
+        width: 1.25rem;
+        height: 1.25rem;
+        flex-shrink: 0;
+      }
+      &:focus {
+        outline: none;
+      }
+
+      &:hover,
+      &.is-active {
+        background-color: var(--octo-muted-100);
+        color: var(--octo-text-primary);
+        .__close-icon {
+          color: var(--octo-text-danger);
+        }
+
+        .__info {
+          line-height: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: right;
           color: var(--octo-text-danger);
         }
       }
