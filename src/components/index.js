@@ -17,7 +17,6 @@ export { default as Radio } from "./Radio";
 export { default as SearchSelect } from "./SearchSelect";
 export { default as Select } from "./Select";
 export { default as Switch } from "./Switch";
-export { default as Tags } from "./Tags";
 export { default as Text } from "./Text";
 export { default as TransitionExpand } from "./TransitionExpand";
 export { default as UserAvatar } from "./UserAvatar";

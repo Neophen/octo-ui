@@ -38,8 +38,6 @@ module.exports = {
               title: 'Components',
               collapsable: false,
               children: [
-                'renderless-tags',
-                'dialog',
                 'autocomplete',
                 'button',
                 'calendar',
@@ -47,6 +45,7 @@ module.exports = {
                 'checkbox',
                 'collapse',
                 'datepicker',
+                'dialog',
                 'dropdown-menu',
                 'field',
                 'icon',
