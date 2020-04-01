@@ -4,8 +4,8 @@ module.exports = {
   pluginOptions: {
     "style-resources-loader": {
       preProcessor: "scss",
-      patterns: [path.resolve(__dirname, "./src/styles/app.scss")]
-    }
+      patterns: [path.resolve(__dirname, "./src/styles/app.scss")],
+    },
   },
 
   configureWebpack: {
@@ -15,7 +15,7 @@ module.exports = {
       "@vue/composition-api",
       "@popperjs/core",
       "portal-vue",
-      "core-js"
-    ]
-  }
+      "core-js",
+    ],
+  },
 };

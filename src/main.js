@@ -21,12 +21,12 @@ const OctoUI = {
       if (typeof message === "string") {
         return {
           title: message,
-          ...params
+          ...params,
         };
       }
       return {
         ...params,
-        ...message
+        ...message,
       };
     };
 
@@ -35,7 +35,7 @@ const OctoUI = {
         params = normalizeParams(message, params);
         return this.show({
           ...params,
-          ...{ state: "confirm" }
+          ...{ state: "confirm" },
         });
       },
 
@@ -43,14 +43,14 @@ const OctoUI = {
         params = normalizeParams(message, params);
         return this.show({
           ...params,
-          ...{ state: "danger" }
+          ...{ state: "danger" },
         });
       },
 
       serious(params) {
         return this.show({
           ...params,
-          ...{ state: "serious" }
+          ...{ state: "serious" },
         });
       },
 
@@ -58,7 +58,7 @@ const OctoUI = {
         params = normalizeParams(message, params);
         return this.show({
           ...{ state: "message", confirm: "ok" },
-          ...params
+          ...params,
         });
       },
 
@@ -69,11 +69,11 @@ const OctoUI = {
             resolve(confirmed);
           });
         });
-      }
+      },
     };
 
     Vue.directive(closeDirective, closeMenu);
-  }
+  },
 };
 
 export default OctoUI;

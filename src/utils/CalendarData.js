@@ -8,7 +8,7 @@ export const _weekdayLabels = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
 ];
 export const _weekdayLength = 3;
 export const _weekdayCasing = "title";
@@ -24,7 +24,7 @@ export const _monthLabels = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 export const _monthLength = 0;
 export const _monthCasing = "title";
@@ -42,5 +42,5 @@ export const _today = new Date();
 export const _todayComps = {
   year: _today.getFullYear(),
   month: _today.getMonth() + 1,
-  day: _today.getDate()
+  day: _today.getDate(),
 };
