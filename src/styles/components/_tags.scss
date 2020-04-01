@@ -11,6 +11,7 @@
   }
   .octo-inline-tags__flex-item {
     padding: 0.25rem;
+    max-width: 100%;
 
     &.is-limited {
       max-width: 12rem;

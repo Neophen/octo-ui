@@ -24,7 +24,7 @@
             :key="i"
             class="octo-inline-tags__flex-item"
           >
-            <o-tag @close="removeTag(tag)" :ellipsis="ellipsis" closable>
+            <o-tag @close="removeTag(tag)" closable>
               {{ tagText(tag) }}
             </o-tag>
           </div>

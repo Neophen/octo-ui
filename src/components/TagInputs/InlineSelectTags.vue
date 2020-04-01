@@ -8,7 +8,7 @@
           class="octo-inline-tags__flex-item"
           :class="{ 'is-limited': ellipsis }"
         >
-          <o-tag @close="removeTag(tag)" :ellipsis="ellipsis" closable>
+          <o-tag @close="removeTag(tag)" closable>
             {{ tagText(tag) }}
           </o-tag>
         </div>
