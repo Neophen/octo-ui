@@ -226,13 +226,14 @@ export default {
       typeof tag === "object" ? getValueByPath(tag, props.field) : tag;
 
     const onFocus = () => {
+      state.isFocused = true;
       if (props.openOnFocus) {
         open();
       }
     };
 
     const onBlur = () => {
-      // close();
+      state.isFocused = false;
     };
 
     const close = () => {
