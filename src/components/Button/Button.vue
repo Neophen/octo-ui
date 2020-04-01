@@ -18,8 +18,8 @@
         'is-active': active,
         'is-hovered': hovered,
         'is-selected': selected,
-        'has-content': $slots.default || label
-      }
+        'has-content': $slots.default || label,
+      },
     ]"
     v-on="$listeners"
   >
@@ -63,24 +63,24 @@ import { typeValidator } from "../../utils/typeValidator";
 export default {
   name: "OButton",
   components: {
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
   },
   inheritAttrs: false,
   props: {
     ...typeValidator(
       "type",
       ["is-default", "is-primary", "is-link", "is-danger", "is-dashed"],
-      "OButton"
+      "OButton",
     ),
     ...typeValidator(
       "size",
       ["is-md", "is-sm", "is-small", "is-medium", "is-large", "is-lg"],
-      "OButton"
+      "OButton",
     ),
     label: String,
     iconPack: {
       type: String,
-      default: "dashboard"
+      default: "dashboard",
     },
     icon: String,
     ...typeValidator("iconDir", ["right", "up", "left", "down"], "OButton"),
@@ -88,7 +88,7 @@ export default {
     disabled: Boolean,
     squared: {
       type: Boolean,
-      default: false
+      default: false,
     },
     loading: Boolean,
     outlined: Boolean,
@@ -99,7 +99,11 @@ export default {
     hovered: Boolean,
     selected: Boolean,
     ...typeValidator("nativeType", ["button", "submit", "reset"], "OButton"),
-    ...typeValidator("tag", ["button", "a", "input", "inertia-link"], "OButton")
+    ...typeValidator(
+      "tag",
+      ["button", "a", "input", "inertia-link"],
+      "OButton",
+    ),
   },
   setup(props, { attrs }) {
     const iconSize = computed(() => props.size);
@@ -114,6 +118,6 @@ export default {
     const isLink = computed(() => props.type === "is-link");
 
     return { iconSize, fontSize, computedTag, isLink };
-  }
+  },
 };
 </script>

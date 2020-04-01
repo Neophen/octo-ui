@@ -14,9 +14,9 @@
             display: '-webkit-box',
             //height: `calc(${[2.5,1.875,1.25,1.125,0.875][props.size] * 1.6}rem * ${props.truncateLines})`,
             '-webkit-box-orient': 'vertical',
-            '-webkit-line-clamp': props.truncateLines
+            '-webkit-line-clamp': props.truncateLines,
           }
-        : {}
+        : {},
     ]"
     v-bind="data.attrs"
     v-on="listeners"
@@ -34,10 +34,10 @@ export const Heading = {
     ...typeValidator("size", ["1", "2", "3", "4", "5"], "OHeading"),
     truncateLines: {
       default: 0,
-      type: [Number, String]
+      type: [Number, String],
     },
-    type: [String, Object]
-  }
+    type: [String, Object],
+  },
 };
 
 export default Heading;

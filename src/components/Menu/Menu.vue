@@ -10,10 +10,10 @@ import MenuItem from "./MenuItem.vue";
 export default {
   name: "OMenu",
   components: {
-    [MenuItem.name]: MenuItem
+    [MenuItem.name]: MenuItem,
   },
   props: {
-    items: Array
-  }
+    items: Array,
+  },
 };
 </script>

@@ -47,24 +47,24 @@ import FormElementMixin from "../../utils/FormElementMixin";
 export default {
   name: "OSelect",
   components: {
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
   },
   mixins: [FormElementMixin],
   inheritAttrs: false,
   props: {
     value: {
       type: [String, Number, Boolean, Object, Array, Function],
-      default: null
+      default: null,
     },
     placeholder: String,
     multiple: Boolean,
-    nativeSize: [String, Number]
+    nativeSize: [String, Number],
   },
   data() {
     return {
       selected: this.value,
       // eslint-disable-next-line vue/no-reserved-keys
-      _elementRef: "select"
+      _elementRef: "select",
     };
   },
   computed: {
@@ -76,7 +76,7 @@ export default {
         this.selected = value;
         this.$emit("input", value);
         !this.isValid && this.checkHtml5Validity();
-      }
+      },
     },
     spanClasses() {
       return [
@@ -87,10 +87,10 @@ export default {
           "is-loading": this.loading,
           "is-multiple": this.multiple,
           "is-rounded": this.rounded,
-          "is-empty": this.selected === null
-        }
+          "is-empty": this.selected === null,
+        },
       ];
-    }
+    },
   },
   watch: {
     /**
@@ -101,7 +101,7 @@ export default {
     value(value) {
       this.selected = value;
       !this.isValid && this.checkHtml5Validity();
-    }
-  }
+    },
+  },
 };
 </script>

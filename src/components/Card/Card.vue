@@ -46,12 +46,12 @@ export default {
   name: "OCard",
   props: {
     ...typeValidator("type", ["is-default", "is-dashed"], "OCard"),
-    action: String
+    action: String,
   },
   computed: {
     hasSettingsSlot() {
       return !!this.$slots.settings;
-    }
-  }
+    },
+  },
 };
 </script>

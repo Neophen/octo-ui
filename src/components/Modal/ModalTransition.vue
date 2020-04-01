@@ -8,10 +8,10 @@ export default {
         name: "octo-modal-transition",
         mode: "out-in",
         duration: "400",
-        appear: true
-      }
+        appear: true,
+      },
     };
     return createElement("transition-group", data, context.children);
-  }
+  },
 };
 </script>

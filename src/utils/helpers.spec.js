@@ -3,7 +3,7 @@ import {
   indexOf,
   merge,
   escapeRegExpChars,
-  removeElement
+  removeElement,
 } from "./helpers";
 
 describe("helpers", () => {
@@ -12,13 +12,13 @@ describe("helpers", () => {
       const obj = {
         val1: "val1",
         val2: {
-          val21: "val21"
+          val21: "val21",
         },
         val3: {
           val31: {
-            val311: "val311"
-          }
-        }
+            val311: "val311",
+          },
+        },
       };
 
       expect(getValueByPath(obj, "val1")).toBe("val1");
@@ -30,19 +30,19 @@ describe("helpers", () => {
   describe("indexOf", () => {
     it("get index of an array element using equality function", () => {
       const obj1 = {
-        id: 1
+        id: 1,
       };
       const obj2 = {
-        id: 2
+        id: 2,
       };
       const obj3 = {
-        id: 3
+        id: 3,
       };
       const obj4 = {
-        id: 4
+        id: 4,
       };
       const obj5 = {
-        id: 5
+        id: 5,
       };
       const arr = [obj1, obj2, obj3, obj4];
       const fnc = (obj1, obj2) => {
@@ -103,7 +103,7 @@ describe("helpers", () => {
         const a = { test: { a: "test" } };
         const b = { test: { b: { c: "test" } } };
         expect(merge(a, b, true)).toEqual({
-          test: { a: "test", b: { c: "test" } }
+          test: { a: "test", b: { c: "test" } },
         });
       });
 
@@ -111,7 +111,7 @@ describe("helpers", () => {
         const a = { test: { b: "whatever", a: "test" } };
         const b = { test: { b: { c: "test" } } };
         expect(merge(a, b, true)).toEqual({
-          test: { a: "test", b: { c: "test" } }
+          test: { a: "test", b: { c: "test" } },
         });
       });
     });
@@ -132,7 +132,7 @@ describe("helpers", () => {
   describe("removeElement", () => {
     it("calls remove function from the element if it exists", () => {
       const elm = {
-        remove: jest.fn()
+        remove: jest.fn(),
       };
 
       removeElement(elm);
@@ -142,8 +142,8 @@ describe("helpers", () => {
     it("calls parentNode.removeChild function from the element if it exists", () => {
       const elm = {
         parentNode: {
-          removeChild: jest.fn()
-        }
+          removeChild: jest.fn(),
+        },
       };
 
       removeElement(elm);

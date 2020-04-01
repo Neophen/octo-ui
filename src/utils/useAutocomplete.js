@@ -5,7 +5,7 @@ import {
   watch,
   computed,
   onMounted,
-  onBeforeUnmount
+  onBeforeUnmount,
 } from "@vue/composition-api";
 
 import { getValueByPath } from "./helpers";
@@ -21,7 +21,7 @@ export const useAutocomplete = (props, { root, emit, slots }) => {
     isOpen: false,
     newValue: props.value,
     highlightedIndex: 0,
-    selected: null
+    selected: null,
   });
 
   // watch
@@ -30,14 +30,14 @@ export const useAutocomplete = (props, { root, emit, slots }) => {
     () => state.newValue,
     value => {
       emit("input", value);
-    }
+    },
   );
 
   watch(
     () => props.value,
     value => {
       state.newValue = value;
-    }
+    },
   );
 
   // Computed
@@ -45,7 +45,7 @@ export const useAutocomplete = (props, { root, emit, slots }) => {
   const filteredData = computed(() =>
     props.filterFunction
       ? props.filterFunction(state.newValue, props.data)
-      : props.data
+      : props.data,
   );
 
   const hasEmptySlot = computed(() => !!slots.empty);
@@ -97,7 +97,7 @@ export const useAutocomplete = (props, { root, emit, slots }) => {
   const scrollToHighlighted = () => {
     if (refOptions.value.children.length === 0) return;
     refOptions.value.children[state.highlightedIndex].scrollIntoView({
-      block: "nearest"
+      block: "nearest",
     });
   };
 
@@ -178,6 +178,6 @@ export const useAutocomplete = (props, { root, emit, slots }) => {
     highlightNext,
     highlightPrev,
     selectHighlighted,
-    highlightNextIfOpen
+    highlightNextIfOpen,
   };
 };

@@ -14,7 +14,7 @@ export default {
     type: [String, Object],
     pack: {
       type: String,
-      default: "dashboard"
+      default: "dashboard",
     },
     icon: String,
     ...typeValidator(
@@ -28,11 +28,11 @@ export default {
         "is-large",
         "is-lg",
         "is-xl",
-        "is-undefined"
+        "is-undefined",
       ],
-      "OIcon"
+      "OIcon",
     ),
-    ...typeValidator("dir", ["right", "up", "left", "down"], "OIcon")
+    ...typeValidator("dir", ["right", "up", "left", "down"], "OIcon"),
   },
   setup(props, { root }) {
     const iconPath = computed(() => {
@@ -43,7 +43,7 @@ export default {
       up: "270deg",
       right: "0deg",
       left: "180deg",
-      down: "90deg"
+      down: "90deg",
     };
 
     const iconRotation = computed(() => {
@@ -51,6 +51,6 @@ export default {
     });
 
     return { iconPath, iconRotation };
-  }
+  },
 };
 </script>

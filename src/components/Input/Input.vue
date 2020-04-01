@@ -75,7 +75,7 @@ export default {
   name: "OInput",
   components: {
     [Icon.name]: Icon,
-    [Heading.name]: Heading
+    [Heading.name]: Heading,
   },
   mixins: [FormElementMixin],
   inheritAttrs: false,
@@ -83,24 +83,24 @@ export default {
     value: [Number, String],
     type: {
       type: String,
-      default: "text"
+      default: "text",
     },
     passwordReveal: Boolean,
     iconClickable: Boolean,
     hasCounter: {
       type: Boolean,
-      default: () => config.defaultInputHasCounter
+      default: () => config.defaultInputHasCounter,
     },
     customClass: {
       type: String,
-      default: ""
+      default: "",
     },
     iconRight: String,
     iconRightDir: {
       type: String,
-      default: "right"
+      default: "right",
     },
-    iconRightClickable: Boolean
+    iconRightClickable: Boolean,
   },
   data() {
     return {
@@ -109,7 +109,7 @@ export default {
       newAutocomplete: this.autocomplete || config.defaultInputAutocomplete,
       isPasswordVisible: false,
       // eslint-disable-next-line vue/no-reserved-keys
-      _elementRef: this.type === "textarea" ? "textarea" : "input"
+      _elementRef: this.type === "textarea" ? "textarea" : "input",
     };
   },
   computed: {
@@ -121,7 +121,7 @@ export default {
         this.newValue = value;
         this.$emit("input", value);
         !this.isValid && this.checkHtml5Validity();
-      }
+      },
     },
     rootClasses() {
       return [
@@ -130,8 +130,8 @@ export default {
         {
           "is-expanded": this.expanded,
           "is-loading": this.loading,
-          "is-clearfix": !this.hasMessage
-        }
+          "is-clearfix": !this.hasMessage,
+        },
       ];
     },
     inputClasses() {
@@ -216,7 +216,7 @@ export default {
         return this.computedValue.toString().length;
       }
       return 0;
-    }
+    },
   },
   watch: {
     /**
@@ -225,7 +225,7 @@ export default {
      */
     value(value) {
       this.newValue = value;
-    }
+    },
   },
   methods: {
     /**
@@ -272,7 +272,7 @@ export default {
           this.$refs.input.focus();
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>

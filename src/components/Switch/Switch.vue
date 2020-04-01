@@ -52,29 +52,29 @@ export default {
     size: String,
     trueValue: {
       type: [String, Number, Boolean, Function, Object, Array, Date],
-      default: true
+      default: true,
     },
     falseValue: {
       type: [String, Number, Boolean, Function, Object, Array, Date],
-      default: false
+      default: false,
     },
     rounded: {
       type: Boolean,
-      default: true
+      default: true,
     },
     outlined: {
       type: Boolean,
-      default: false
+      default: false,
     },
     labelLeft: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       newValue: this.value,
-      isMouseDown: false
+      isMouseDown: false,
     };
   },
   computed: {
@@ -85,16 +85,16 @@ export default {
       set(value) {
         this.newValue = value;
         this.$emit("input", value);
-      }
+      },
     },
     newClass() {
       return [
         this.size,
         { "is-disabled": this.disabled },
         { "is-rounded": this.rounded },
-        { "is-outlined": this.outlined }
+        { "is-outlined": this.outlined },
       ];
-    }
+    },
   },
   watch: {
     /**
@@ -102,13 +102,13 @@ export default {
      */
     value(value) {
       this.newValue = value;
-    }
+    },
   },
   methods: {
     focus() {
       // MacOS FireFox and Safari do not focus when clicked
       this.$refs.input.focus();
-    }
-  }
+    },
+  },
 };
 </script>

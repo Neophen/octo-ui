@@ -16,9 +16,9 @@ export const CardHeading = {
   props: {
     truncate: {
       default: 3,
-      type: [String, Number]
-    }
-  }
+      type: [String, Number],
+    },
+  },
 };
 
 export default CardHeading;

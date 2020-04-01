@@ -19,17 +19,17 @@ export default {
   name: "OUserAvatar",
   props: {
     avatar: null,
-    ...typeValidator("size", ["is-large", "is-tiny"], "OUserAvatar")
+    ...typeValidator("size", ["is-large", "is-tiny"], "OUserAvatar"),
   },
   setup(props) {
     const sizes = {
       "is-tiny": 16,
-      "is-large": 64
+      "is-large": 64,
     };
 
     const imgSize = sizes[props.size];
 
     return { imgSize };
-  }
+  },
 };
 </script>

@@ -82,7 +82,7 @@
         :class="{
           'is-today': day.isToday,
           'is-selected': day.isSelected,
-          'is-disabled': day.isDisabled
+          'is-disabled': day.isDisabled,
         }"
       >
         <button
@@ -105,7 +105,7 @@ import {
   _todayComps,
   _monthLabels,
   _weekdayLabels,
-  _daysInMonths
+  _daysInMonths,
 } from "../../utils/CalendarData.js";
 import { usePopper } from "../../utils/usePopper";
 
@@ -116,20 +116,20 @@ export default {
   name: "OCalendar",
   components: {
     [Heading.name]: Heading,
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
   },
   props: {
     minDate: [String, Date],
     maxDate: [String, Date],
-    value: [String, Date]
+    value: [String, Date],
   },
   setup(props, { emit, root }) {
     const { isPopperOpen, refTrigger, refDropdown, toggle, close } = usePopper(
       root,
       {
         offset: [0, 10],
-        placement: "bottom"
-      }
+        placement: "bottom",
+      },
     );
 
     const state = reactive({
@@ -139,7 +139,7 @@ export default {
         ? props.value.getMonth() + 1
         : new Date().getMonth() + 1,
       day: props.value ? props.value.getDate() : new Date().getDate(),
-      showMonths: false
+      showMonths: false,
     });
 
     const computedValue = computed({
@@ -149,7 +149,7 @@ export default {
         } else {
           return props.value ? new Date(props.value) : new Date();
         }
-      }
+      },
     });
 
     const computedMinDate = computed(() => {
@@ -188,8 +188,8 @@ export default {
         label_2: monthLabel.substring(0, 2),
         label_3: monthLabel.substring(0, 3),
         isDisabled: isMonthDisabled(i),
-        number: i + 1
-      }))
+        number: i + 1,
+      })),
     );
     // State for weekday header (no dependencies yet...)
     const weekdays = computed(() =>
@@ -198,13 +198,13 @@ export default {
         label_1: weekLabel.substring(0, 1), // Monday => M
         label_2: weekLabel.substring(0, 2), // Monday => Mo
         label_3: weekLabel.substring(0, 3), // Monday => Mon
-        number: i + 1
-      }))
+        number: i + 1,
+      })),
     );
     // State for calendar header
     const header = computed(() => ({
       month: months.value[monthIndex.value],
-      year: state.year.toString()
+      year: state.year.toString(),
     }));
 
     const firstWeekdayInMonth = computed(() => {
@@ -226,7 +226,7 @@ export default {
         return {
           days: _daysInMonths[11],
           month: 12,
-          year: state.year - 1
+          year: state.year - 1,
         };
       return {
         days:
@@ -234,7 +234,7 @@ export default {
             ? 29
             : _daysInMonths[monthIndex.value - 1],
         month: state.month - 1,
-        year: state.year
+        year: state.year,
       };
     });
 
@@ -243,7 +243,7 @@ export default {
         return {
           days: _daysInMonths[0],
           month: 1,
-          year: state.year + 1
+          year: state.year + 1,
         };
       return {
         days:
@@ -251,7 +251,7 @@ export default {
             ? 29
             : _daysInMonths[monthIndex.value + 1],
         month: state.month + 1,
-        year: state.year
+        year: state.year,
       };
     });
 
@@ -311,7 +311,7 @@ export default {
               year === _todayComps.year,
             isSelected,
             isFirstDay: thisMonth && day === 1,
-            isLastDay: thisMonth && day === daysInMonth.value
+            isLastDay: thisMonth && day === daysInMonth.value,
           });
 
           // We've hit the last day of the month
@@ -416,7 +416,7 @@ export default {
         prevMonth,
         minDate.getDate(),
         23,
-        59
+        59,
       );
       return prevMonthDate >= minDate;
     });
@@ -473,8 +473,8 @@ export default {
       showPrevYear,
       // Month header
       showNextMonth,
-      showPrevMonth
+      showPrevMonth,
     };
-  }
+  },
 };
 </script>

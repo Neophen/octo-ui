@@ -98,39 +98,39 @@ export default {
   name: "OTags",
   components: {
     [Autocomplete.name]: Autocomplete,
-    [Tag.name]: Tag
+    [Tag.name]: Tag,
   },
   mixins: [FormElementMixin],
   inheritAttrs: false,
   props: {
     value: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     data: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     type: String,
     rounded: {
       type: Boolean,
-      default: false
+      default: false,
     },
     attached: {
       type: Boolean,
-      default: false
+      default: false,
     },
     maxtags: {
       type: [Number, String],
-      required: false
+      required: false,
     },
     hasCounter: {
       type: Boolean,
-      default: () => config.defaultTaginputHasCounter
+      default: () => config.defaultTaginputHasCounter,
     },
     field: {
       type: String,
-      default: "value"
+      default: "value",
     },
     autocomplete: Boolean,
     nativeAutocomplete: String,
@@ -139,33 +139,33 @@ export default {
     ellipsis: Boolean,
     closable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     confirmKeyCodes: {
       type: Array,
-      default: () => [13, 188]
+      default: () => [13, 188],
     },
     removeOnKeys: {
       type: Array,
-      default: () => [8]
+      default: () => [8],
     },
     allowNew: Boolean,
     onPasteSeparators: {
       type: Array,
-      default: () => [","]
+      default: () => [","],
     },
     beforeAdding: {
       type: Function,
-      default: () => true
+      default: () => true,
     },
     allowDuplicates: {
       type: Boolean,
-      default: false
+      default: false,
     },
     checkInfiniteScroll: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -174,20 +174,20 @@ export default {
       // eslint-disable-next-line vue/no-reserved-keys
       _elementRef: "input",
       // eslint-disable-next-line vue/no-reserved-keys
-      _isTaginput: true
+      _isTaginput: true,
     };
   },
   computed: {
     rootClasses() {
       return {
-        "is-expanded": this.expanded
+        "is-expanded": this.expanded,
       };
     },
 
     containerClasses() {
       return {
         "is-focused": this.isFocused,
-        "is-focusable": this.hasInput
+        "is-focusable": this.hasInput,
       };
     },
 
@@ -252,10 +252,10 @@ export default {
                 return s ? s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") : null;
               })
               .join("|"),
-            "g"
+            "g",
           )
         : null;
-    }
+    },
   },
   watch: {
     /**
@@ -267,7 +267,7 @@ export default {
 
     hasInput() {
       if (!this.hasInput) this.onBlur();
-    }
+    },
   },
   methods: {
     addTag(tag) {
@@ -368,7 +368,7 @@ export default {
 
     emitInfiniteScroll() {
       this.$emit("infinite-scroll");
-    }
-  }
+    },
+  },
 };
 </script>

@@ -9,6 +9,6 @@
 <script>
 export default {
   name: "ODropdownMenuItem",
-  inheritAttrs: false
+  inheritAttrs: false,
 };
 </script>

@@ -26,7 +26,7 @@ import { typeValidator } from "../../utils/typeValidator";
 export default {
   name: "ODropdownMenu",
   props: {
-    ...typeValidator("type", ["is-default", "is-primary"], "ODropdownMenu")
+    ...typeValidator("type", ["is-default", "is-primary"], "ODropdownMenu"),
   },
   setup(_, { root }) {
     const {
@@ -35,12 +35,12 @@ export default {
       refDropdown,
       refContainer,
       toggle,
-      close
+      close,
     } = usePopper(root, {
       offset: [-7, 7],
       placement: "bottom-start",
       shouldTimeout: true,
-      time: 200
+      time: 200,
     });
 
     return {
@@ -49,8 +49,8 @@ export default {
       refContainer,
       refDropdown,
       toggle,
-      close
+      close,
     };
-  }
+  },
 };
 </script>

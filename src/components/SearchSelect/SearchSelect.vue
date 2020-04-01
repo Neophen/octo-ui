@@ -59,7 +59,7 @@ import {
   toRefs,
   computed,
   ref,
-  onBeforeUnmount
+  onBeforeUnmount,
 } from "@vue/composition-api";
 import { createPopper } from "@popperjs/core";
 
@@ -68,26 +68,26 @@ import Icon from "../Icon/Icon";
 export default {
   name: "OSearchSelect",
   components: {
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
   },
   props: {
     value: {
       type: [String, Object],
-      required: true
+      required: true,
     },
     options: {
       type: Array,
-      required: true
+      required: true,
     },
     placeholder: {
       type: String,
-      default: "Please select an option..."
+      default: "Please select an option...",
     },
     isObject: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    filterFunction: null
+    filterFunction: null,
   },
   setup(props, { root, emit }) {
     const refSearch = ref(null);
@@ -100,7 +100,7 @@ export default {
       popper: null,
       search: "",
       newValue: props.value,
-      highlightedIndex: 0
+      highlightedIndex: 0,
     });
 
     const computedValue = computed({
@@ -108,11 +108,11 @@ export default {
       set: value => {
         state.newValue = value;
         emit("input", value);
-      }
+      },
     });
 
     const filteredOptions = computed(() =>
-      props.filterFunction(state.search, props.options)
+      props.filterFunction(state.search, props.options),
     );
 
     const setupPopper = () => {
@@ -122,10 +122,10 @@ export default {
           {
             name: "offset",
             options: {
-              offset: [0, 7]
-            }
-          }
-        ]
+              offset: [0, 7],
+            },
+          },
+        ],
       });
     };
 
@@ -168,7 +168,7 @@ export default {
     const scrollToHighlighted = () => {
       if (refOptions.value.children.length === 0) return;
       refOptions.value.children[state.highlightedIndex].scrollIntoView({
-        block: "nearest"
+        block: "nearest",
       });
     };
 
@@ -220,8 +220,8 @@ export default {
       highlightPrev,
       selectHighlighted,
       getOptionValue,
-      getOptionLabel
+      getOptionLabel,
     };
-  }
+  },
 };
 </script>

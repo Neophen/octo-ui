@@ -21,14 +21,14 @@ export const Text = {
     ...typeValidator("tag", ["p", "span"], "OText"),
     type: {
       type: [String, Object],
-      default: "is-default"
+      default: "is-default",
     },
     ...typeValidator(
       "size",
       ["is-initial", "is-semi", "is-tiny", "is-xs", "is-sm"],
-      "OText"
-    )
-  }
+      "OText",
+    ),
+  },
 };
 
 export default Text;

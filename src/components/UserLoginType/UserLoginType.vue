@@ -24,9 +24,9 @@ export default {
   props: {
     email: {
       type: String,
-      required: true
+      required: true,
     },
-    ...typeValidator("type", ["email", "facebook", "google"], "OUserLoginType")
+    ...typeValidator("type", ["email", "facebook", "google"], "OUserLoginType"),
   },
   setup(props) {
     const maskEmail = email =>
@@ -44,21 +44,21 @@ export default {
     const typeConfigs = {
       email: {
         label: "Email",
-        icon: "contact-email"
+        icon: "contact-email",
       },
       facebook: {
         label: "Facebook connect",
-        icon: "facebook-color"
+        icon: "facebook-color",
       },
       google: {
         label: "Google connect",
-        icon: "google-color"
-      }
+        icon: "google-color",
+      },
     };
 
     const config = typeConfigs[props.type];
 
     return { maskedEmail, config };
-  }
+  },
 };
 </script>

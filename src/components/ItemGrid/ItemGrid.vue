@@ -9,27 +9,27 @@ import {
   getCurrentInstance,
   computed,
   reactive,
-  onUpdated
+  onUpdated,
 } from "@vue/composition-api";
 export default {
   name: "OItemGrid",
   props: {
     colFirst: {
       type: Boolean,
-      default: false
+      default: false,
     },
     height: [String, Number],
     minWidth: {
       type: [String, Number],
-      default: "280px"
-    }
+      default: "280px",
+    },
   },
 
   setup(props) {
     const instance = getCurrentInstance();
 
     const state = reactive({
-      children: instance.$children
+      children: instance.$children,
     });
 
     onUpdated(() => {
@@ -71,6 +71,6 @@ export default {
     });
 
     return { style };
-  }
+  },
 };
 </script>

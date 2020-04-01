@@ -12,23 +12,23 @@ export default {
   props: {
     name: {
       type: String,
-      required: true
+      required: true,
     },
     selected: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup({ selected, name }) {
     const state = reactive({
-      isActive: false
+      isActive: false,
     });
 
     const kebabCase = str =>
       str &&
       str
         .match(
-          /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+          /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g,
         )
         .map(x => x.toLowerCase())
         .join("-");
@@ -40,6 +40,6 @@ export default {
     });
 
     return { ...toRefs(state), type };
-  }
+  },
 };
 </script>

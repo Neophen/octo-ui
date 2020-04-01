@@ -48,13 +48,13 @@ const mergeFn = (target, source, deep = false) => {
       .map(prop => ({
         [prop]: isDeep(prop)
           ? mergeFn(target[prop], source[prop], deep)
-          : source[prop]
+          : source[prop],
       }))
       .reduce((a, b) => ({ ...a, ...b }), {});
 
     return {
       ...target,
-      ...replaced
+      ...replaced,
     };
   } else {
     return Object.assign(target, source);
@@ -105,7 +105,7 @@ export const isMobile = {
       isMobile.Opera() ||
       isMobile.Windows()
     );
-  }
+  },
 };
 
 export function removeElement(el) {

@@ -28,8 +28,8 @@ export default {
   props: {
     tooltip: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(_, { root }) {
     const {
@@ -38,12 +38,12 @@ export default {
       refDropdown,
       refContainer,
       open,
-      close
+      close,
     } = usePopper(root, {
       offset: [-7, 7],
       placement: "bottom-start",
       shouldTimeout: true,
-      time: 200
+      time: 200,
     });
 
     return {
@@ -52,8 +52,8 @@ export default {
       refContainer,
       refDropdown,
       open,
-      close
+      close,
     };
-  }
+  },
 };
 </script>

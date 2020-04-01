@@ -25,7 +25,7 @@ import {
   onMounted,
   getCurrentInstance,
   reactive,
-  toRefs
+  toRefs,
 } from "@vue/composition-api";
 
 export default {
@@ -34,7 +34,7 @@ export default {
     const instance = getCurrentInstance();
 
     const state = reactive({
-      tabs: []
+      tabs: [],
     });
 
     const selectTab = selectedTab => {
@@ -49,6 +49,6 @@ export default {
     });
 
     return { ...toRefs(state), selectTab };
-  }
+  },
 };
 </script>

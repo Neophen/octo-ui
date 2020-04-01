@@ -11,7 +11,7 @@ export const typeValidator = (key, types, componentName) => {
         }
 
         return isValid;
-      }
-    }
+      },
+    },
   };
 };

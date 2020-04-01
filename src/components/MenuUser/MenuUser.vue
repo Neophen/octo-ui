@@ -17,15 +17,15 @@ import UserAvatar from "../UserAvatar/UserAvatar.vue";
 export default {
   name: "OMenuUser",
   components: {
-    [UserAvatar.name]: UserAvatar
+    [UserAvatar.name]: UserAvatar,
   },
   props: {
     avatar: String,
     name: String,
     description: {
       type: String,
-      default: "-"
-    }
-  }
+      default: "-",
+    },
+  },
 };
 </script>

@@ -28,12 +28,12 @@ export default {
   props: {
     value: [String, Object],
     options: {
-      type: [Array, Object]
+      type: [Array, Object],
     },
     placeholder: {
       type: String,
-      default: "Please select an option..."
-    }
+      default: "Please select an option...",
+    },
   },
   setup(props, { emit }) {
     const computedValue = computed({
@@ -44,10 +44,10 @@ export default {
       },
       set(value) {
         emit("input", value);
-      }
+      },
     });
 
     return { computedValue };
-  }
+  },
 };
 </script>

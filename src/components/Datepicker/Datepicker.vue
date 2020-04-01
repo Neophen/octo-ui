@@ -44,13 +44,13 @@ export default {
   name: "ODatepicker",
   components: {
     [Input.name]: Input,
-    [Calendar.name]: Calendar
+    [Calendar.name]: Calendar,
   },
   mixins: [FormElementMixin],
   inheritAttrs: false,
   props: {
     value: {
-      type: Date
+      type: Date,
     },
     firstDayOfWeek: {
       type: Number,
@@ -60,11 +60,11 @@ export default {
         } else {
           return 0;
         }
-      }
+      },
     },
     minDate: Date,
     maxDate: Date,
-    placeholder: String
+    placeholder: String,
   },
   setup(props, { emit, root }) {
     const {
@@ -73,14 +73,14 @@ export default {
       refTrigger,
       refDropdown,
       open: openCalendar,
-      close
+      close,
     } = usePopper(root, {
       offset: [0, 10],
-      placement: "bottom-start"
+      placement: "bottom-start",
     });
 
     const state = reactive({
-      newValue: props.value
+      newValue: props.value,
     });
 
     const computedValue = computed({
@@ -90,7 +90,7 @@ export default {
       set(value) {
         state.newValue = value;
         emit("input", value);
-      }
+      },
     });
 
     const toggleCalendar = () => {
@@ -107,7 +107,7 @@ export default {
       const date = computedValue.value;
       return `${date.getDate()} ${_monthLabels[date.getMonth()].substring(
         0,
-        3
+        3,
       )} ${date.getFullYear()}`;
     });
 
@@ -121,8 +121,8 @@ export default {
       openCalendar,
       closeCalendar,
       computedValue,
-      formatedValue
+      formatedValue,
     };
-  }
+  },
 };
 </script>

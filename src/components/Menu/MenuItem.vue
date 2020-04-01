@@ -20,7 +20,7 @@
 export default {
   name: "OMenuItem",
   props: {
-    item: Object
-  }
+    item: Object,
+  },
 };
 </script>

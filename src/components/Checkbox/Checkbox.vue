@@ -39,18 +39,18 @@ export default {
   name: "OCheckbox",
   mixins: [CheckRadioMixin],
   components: {
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
   },
   props: {
     indeterminate: Boolean,
     trueValue: {
       type: [String, Number, Boolean, Function, Object, Array],
-      default: true
+      default: true,
     },
     falseValue: {
       type: [String, Number, Boolean, Function, Object, Array],
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 };
 </script>

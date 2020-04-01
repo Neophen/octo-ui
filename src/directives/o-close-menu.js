@@ -27,5 +27,5 @@ export default {
   },
   unbind(el) {
     removeListeners(el);
-  }
+  },
 };

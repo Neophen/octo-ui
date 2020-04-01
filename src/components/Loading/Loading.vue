@@ -14,8 +14,8 @@ export default {
     ...typeValidator(
       "type",
       ["is-default", "is-primary", "is-danger", "is-muted", "is-inverted"],
-      "OLoading"
-    )
-  }
+      "OLoading",
+    ),
+  },
 };
 </script>

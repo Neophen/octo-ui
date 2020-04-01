@@ -28,6 +28,6 @@ import CheckRadioMixin from "../../utils/CheckRadioMixin.js";
 
 export default {
   name: "ORadio",
-  mixins: [CheckRadioMixin]
+  mixins: [CheckRadioMixin],
 };
 </script>

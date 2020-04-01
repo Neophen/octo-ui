@@ -18,7 +18,7 @@ export default {
   props: {
     version: {
       type: String,
-      default: "v-1.0"
+      default: "v-1.0",
     },
     ...typeValidator(
       "type",
@@ -28,10 +28,10 @@ export default {
         "is-danger",
         "is-muted",
         "is-inverted",
-        "is-custom"
+        "is-custom",
       ],
-      "OMenuHeader"
-    )
-  }
+      "OMenuHeader",
+    ),
+  },
 };
 </script>

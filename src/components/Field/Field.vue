@@ -52,7 +52,7 @@ export default {
   name: "OField",
   components: {
     [Icon.name]: Icon,
-    [Text.name]: Text
+    [Text.name]: Text,
   },
   props: {
     // custom
@@ -60,11 +60,11 @@ export default {
     icon: String,
     hasValue: {
       type: Boolean,
-      default: true
+      default: true,
     },
     canToggle: {
       type: Boolean,
-      default: false
+      default: false,
     },
     tooltip: String,
     // original
@@ -79,15 +79,15 @@ export default {
     horizontal: Boolean,
     addons: {
       type: Boolean,
-      default: true
+      default: true,
     },
     customClass: String,
     labelPosition: {
       type: String,
       default: () => {
         return config.defaultFieldLabelPosition;
-      }
-    }
+      },
+    },
   },
   data() {
     return {
@@ -96,7 +96,7 @@ export default {
       fieldLabelSize: null,
       canInput: this.hasValue,
       // eslint-disable-next-line vue/no-reserved-keys
-      _isField: true // Used internally by Input and Select
+      _isField: true, // Used internally by Input and Select
     };
   },
   computed: {
@@ -114,9 +114,9 @@ export default {
           "is-floating-label":
             this.hasLabel &&
             !this.horizontal &&
-            this.labelPosition === "on-border"
+            this.labelPosition === "on-border",
         },
-        this.numberInputClasses
+        this.numberInputClasses,
       ];
     },
     /**
@@ -178,7 +178,7 @@ export default {
     numberInputClasses() {
       if (this.$slots.default) {
         const numberinput = this.$slots.default.filter(
-          node => node.tag && node.tag.toLowerCase().indexOf("numberinput") >= 0
+          n => n.tag && n.tag.toLowerCase().indexOf("numberinput") >= 0,
         )[0];
         if (numberinput) {
           const classes = ["has-numberinput"];
@@ -195,7 +195,7 @@ export default {
         }
       }
       return null;
-    }
+    },
   },
   watch: {
     /**
@@ -213,7 +213,7 @@ export default {
      */
     message(value) {
       this.newMessage = value;
-    }
+    },
   },
   methods: {
     /**
@@ -229,24 +229,24 @@ export default {
       if (this.$slots.default) {
         renderedNode = this.$slots.default.reduce(
           (i, node) => (node.tag ? i + 1 : i),
-          0
+          0,
         );
       }
       if (renderedNode > 1 && this.addons && !this.horizontal) {
         return "has-addons";
       }
-    }
+    },
   },
   mounted() {
     if (this.horizontal) {
       // Bulma docs: .is-normal for any .input or .button
       const elements = this.$el.querySelectorAll(
-        ".input, .select, .button, .textarea, .b-slider"
+        ".input, .select, .button, .textarea, .b-slider",
       );
       if (elements.length > 0) {
         this.fieldLabelSize = "is-normal";
       }
     }
-  }
+  },
 };
 </script>

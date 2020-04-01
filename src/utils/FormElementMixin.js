@@ -13,15 +13,15 @@ export default {
     maxlength: [Number, String],
     useHtml5Validation: {
       type: Boolean,
-      default: () => config.defaultUseHtml5Validation
+      default: () => config.defaultUseHtml5Validation,
     },
-    validationMessage: String
+    validationMessage: String,
   },
   data() {
     return {
       isValid: true,
       isFocused: false,
-      newIconPack: this.iconPack || config.defaultIconPack
+      newIconPack: this.iconPack || config.defaultIconPack,
     };
   },
   computed: {
@@ -76,7 +76,7 @@ export default {
         case "is-large":
           return this.newIconPack === "mdi" ? "is-medium" : "";
       }
-    }
+    },
   },
   methods: {
     /**
@@ -147,6 +147,6 @@ export default {
       }
 
       return this.isValid;
-    }
-  }
+    },
+  },
 };

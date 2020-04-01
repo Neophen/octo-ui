@@ -29,20 +29,20 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     open: {
       type: Boolean,
-      required: true
+      required: true,
     },
     ariaId: {
       type: String,
-      default: "no-id-provided"
-    }
+      default: "no-id-provided",
+    },
   },
   setup(props, { emit }) {
     const state = reactive({
-      isOpen: false
+      isOpen: false,
     });
 
     const toggle = () => {
@@ -56,11 +56,11 @@ export default {
       open => {
         state.isOpen = open;
       },
-      { lazy: true }
+      { lazy: true },
     );
 
     return { ...toRefs(state), toggle };
-  }
+  },
 };
 </script>
 

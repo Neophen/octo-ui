@@ -71,7 +71,7 @@ export default {
       validateInput: "",
       validateType: "is-danger",
       invalid: computed(() => data.validate !== data.validateInput),
-      isNotSerious: computed(() => data.state !== "serious")
+      isNotSerious: computed(() => data.state !== "serious"),
     });
 
     const open = () => {
@@ -85,7 +85,7 @@ export default {
       confirm,
       cancel,
       validate,
-      validateType
+      validateType,
     }) => {
       data.title = title;
       data.message = message;
@@ -119,6 +119,6 @@ export default {
     });
 
     return { ...toRefs(data), handleClick };
-  }
+  },
 };
 </script>

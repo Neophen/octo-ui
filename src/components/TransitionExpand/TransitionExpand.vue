@@ -5,13 +5,13 @@ export default {
   props: {
     grouped: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   render(createElement, context) {
     const data = {
       props: {
-        name: `octo-transition-expand`
+        name: `octo-transition-expand`,
       },
       on: {
         afterEnter(element) {
@@ -51,16 +51,16 @@ export default {
           setTimeout(() => {
             element.style.height = 0;
           });
-        }
-      }
+        },
+      },
     };
 
     return createElement(
       context.props.grouped ? "transition-group" : "transition",
       data,
-      context.children
+      context.children,
     );
-  }
+  },
 };
 </script>
 

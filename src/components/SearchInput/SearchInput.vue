@@ -27,13 +27,13 @@ export default {
   props: {
     value: {
       type: null,
-      required: true
+      required: true,
     },
     placeholder: {
       type: String,
-      default: "Search..."
-    }
+      default: "Search...",
+    },
   },
-  setup() {}
+  setup() {},
 };
 </script>

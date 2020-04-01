@@ -26,7 +26,7 @@ import {
   toRefs,
   onMounted,
   ref,
-  onBeforeUnmount
+  onBeforeUnmount,
 } from "@vue/composition-api";
 
 import { generateID } from "../../utils/id-generator.js";
@@ -37,27 +37,27 @@ export default {
     name: String,
     preventClickOutside: {
       type: Boolean,
-      default: false
+      default: false,
     },
     preventScrolling: {
       type: Boolean,
-      default: true
+      default: true,
     },
     active: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props, { emit }) {
     const refContainer = ref(null);
 
     const state = reactive({
       isAnotherModalOpen: false,
-      previousHash: ""
+      previousHash: "",
     });
 
     const modalHash = computed(() =>
-      props.name ? `#${props.name}` : `#modal-${generateID()}`
+      props.name ? `#${props.name}` : `#modal-${generateID()}`,
     );
 
     const close = event => {
@@ -95,7 +95,7 @@ export default {
     const setOtherModalActive = active => {
       if (active) {
         state.isAnotherModalOpen = document.body.classList.contains(
-          "octo-modal__stop-scroll"
+          "octo-modal__stop-scroll",
         );
       }
     };
@@ -113,7 +113,7 @@ export default {
           document.body.classList.remove("octo-modal__stop-scroll");
         }
       },
-      { lazy: true }
+      { lazy: true },
     );
 
     const escapeHandler = event => {
@@ -148,8 +148,8 @@ export default {
       refContainer,
       modalHash,
       cancel,
-      success
+      success,
     };
-  }
+  },
 };
 </script>

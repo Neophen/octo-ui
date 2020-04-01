@@ -63,19 +63,19 @@ export default {
     value: [Number, String],
     data: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     placeholder: {
       type: String,
-      default: "Please select an option..."
+      default: "Please select an option...",
     },
     field: {
       type: String,
-      default: "value"
+      default: "value",
     },
     iconDir: String,
     filterFunction: null,
-    clearOnSelect: Boolean
+    clearOnSelect: Boolean,
   },
   setup(props, context) {
     const autocomplete = useAutocomplete(props, context);
@@ -84,13 +84,13 @@ export default {
       // eslint-disable-next-line vue/no-reserved-keys
       _isAutocomplete: true,
       // eslint-disable-next-line vue/no-reserved-keys
-      _elementRef: "input"
+      _elementRef: "input",
     });
 
     return {
       ...toRefs(state),
-      ...autocomplete
+      ...autocomplete,
     };
-  }
+  },
 };
 </script>

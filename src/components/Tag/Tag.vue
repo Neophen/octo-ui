@@ -25,7 +25,7 @@ import Icon from "../Icon/Icon";
 export default {
   name: "OTag",
   components: {
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
   },
   props: {
     closable: Boolean,
@@ -35,13 +35,13 @@ export default {
     disabled: Boolean,
     ellipsis: {
       type: Boolean,
-      default: true
+      default: true,
     },
     tabstop: {
       type: Boolean,
-      default: true
+      default: true,
     },
-    ariaCloseLabel: String
+    ariaCloseLabel: String,
   },
   methods: {
     /**
@@ -52,7 +52,7 @@ export default {
       if (this.disabled) return;
 
       this.$emit("close", event);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -75,7 +75,7 @@ import Input from "../Input/Input";
 export default {
   name: "OAutocomplete",
   components: {
-    [Input.name]: Input
+    [Input.name]: Input,
   },
   mixins: [FormElementMixin],
   inheritAttrs: false,
@@ -83,11 +83,11 @@ export default {
     value: [Number, String],
     data: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     field: {
       type: String,
-      default: "value"
+      default: "value",
     },
     keepFirst: Boolean,
     clearOnSelect: Boolean,
@@ -95,7 +95,7 @@ export default {
     customFormatter: Function,
     checkInfiniteScroll: Boolean,
     keepOpen: Boolean,
-    clearable: Boolean
+    clearable: Boolean,
   },
   data() {
     return {
@@ -109,7 +109,7 @@ export default {
       // eslint-disable-next-line vue/no-reserved-keys
       _isAutocomplete: true,
       // eslint-disable-next-line vue/no-reserved-keys
-      _elementRef: "input"
+      _elementRef: "input",
     };
   },
   computed: {
@@ -173,7 +173,7 @@ export default {
         return "close-circle";
       }
       return "";
-    }
+    },
   },
   watch: {
     /**
@@ -229,7 +229,7 @@ export default {
       if (this.keepFirst) {
         this.selectFirstOption(value);
       }
-    }
+    },
   },
   methods: {
     /**
@@ -370,10 +370,10 @@ export default {
         this.setHovered(this.data[index]);
 
         const list = this.$refs.dropdown.querySelector(
-          ".octo-autocomplete__options"
+          ".octo-autocomplete__options",
         );
         const element = list.querySelectorAll(
-          "a.octo-autocomplete__option:not(.is-disabled)"
+          "a.octo-autocomplete__option:not(.is-disabled)",
         )[index];
 
         if (!element) return;
@@ -425,7 +425,7 @@ export default {
     },
     clearInputText() {
       this.newValue = "";
-    }
+    },
   },
   created() {
     if (typeof window !== "undefined") {
@@ -440,10 +440,10 @@ export default {
       this.$refs.dropdown.querySelector(".octo-autocomplete__options")
     ) {
       const list = this.$refs.dropdown.querySelector(
-        ".octo-autocomplete__options"
+        ".octo-autocomplete__options",
       );
       list.addEventListener("scroll", () =>
-        this.checkIfReachedTheEndOfScroll(list)
+        this.checkIfReachedTheEndOfScroll(list),
       );
     }
   },
@@ -458,10 +458,10 @@ export default {
       this.$refs.dropdown.querySelector(".octo-autocomplete__options")
     ) {
       const list = this.$refs.dropdown.querySelector(
-        ".octo-autocomplete__options"
+        ".octo-autocomplete__options",
       );
       list.removeEventListener("scroll", this.checkIfReachedTheEndOfScroll);
     }
-  }
+  },
 };
 </script>

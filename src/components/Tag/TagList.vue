@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: "OTaglist"
+  name: "OTaglist",
 };
 </script>

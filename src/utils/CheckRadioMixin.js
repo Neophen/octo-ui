@@ -6,11 +6,11 @@ export default {
     disabled: Boolean,
     required: Boolean,
     name: String,
-    size: String
+    size: String,
   },
   data() {
     return {
-      newValue: this.value
+      newValue: this.value,
     };
   },
   computed: {
@@ -21,8 +21,8 @@ export default {
       set(value) {
         this.newValue = value;
         this.$emit("input", value);
-      }
-    }
+      },
+    },
   },
   watch: {
     /**
@@ -30,12 +30,12 @@ export default {
      */
     value(value) {
       this.newValue = value;
-    }
+    },
   },
   methods: {
     focus() {
       // MacOS FireFox and Safari do not focus when clicked
       this.$refs.input.focus();
-    }
-  }
+    },
+  },
 };

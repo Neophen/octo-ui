@@ -6,13 +6,13 @@ const baseConfig = {
   offset: [0, 0],
   placement: "bottom",
   shouldTimeout: false,
-  time: 200
+  time: 200,
 };
 
 export const usePopper = (root, setupConfig = baseConfig) => {
   const config = {
     ...baseConfig,
-    ...setupConfig
+    ...setupConfig,
   };
   const refTrigger = ref(null);
   const refDropdown = ref(null);
@@ -21,7 +21,7 @@ export const usePopper = (root, setupConfig = baseConfig) => {
   const state = reactive({
     popper: null,
     destroyPopperTimeout: null,
-    isPopperOpen: false
+    isPopperOpen: false,
   });
 
   const isElement = element =>
@@ -63,10 +63,10 @@ export const usePopper = (root, setupConfig = baseConfig) => {
         {
           name: "offset",
           options: {
-            offset: config.offset
-          }
-        }
-      ]
+            offset: config.offset,
+          },
+        },
+      ],
     });
   };
 
@@ -150,6 +150,6 @@ export const usePopper = (root, setupConfig = baseConfig) => {
     refContainer,
     open,
     close,
-    toggle
+    toggle,
   };
 };

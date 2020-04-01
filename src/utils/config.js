@@ -53,10 +53,10 @@ let config = {
     "n-link",
     "RouterLink",
     "NuxtLink",
-    "NLink"
+    "NLink",
   ],
 
-  customIconPacks: null
+  customIconPacks: null,
 }; // TODO defaultTrapFocus to true in the next breaking change
 
 export { config as default };
