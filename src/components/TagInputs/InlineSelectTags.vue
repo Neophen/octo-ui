@@ -18,6 +18,7 @@
             class="__input"
             :placeholder="placeholder"
             v-model="inputValue"
+            autocomplete="off"
             @keydown.backspace="handleBackspace"
             @keydown.esc="close"
             @keydown.down="highlightNextOrOpen"
