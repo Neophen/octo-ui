@@ -127,6 +127,16 @@
         margin-right: 7px;
         flex-shrink: 0;
       }
+      .__info {
+        max-width: 20%;
+        line-height: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: right;
+        color: var(--octo-muted-500);
+        margin: 0 0.5rem;
+      }
       .__close-icon {
         color: var(--octo-text-muted);
         margin-left: auto;

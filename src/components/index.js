@@ -32,6 +32,7 @@ export {
   OInlineTagInput,
   OStackedTagInput,
   OInlineSelectTags,
+  OStackedSelectTags,
 } from "./TagInputs";
 export { default as SearchInput } from "./SearchInput";
 export { default as LabelSelect } from "./LabelSelect";

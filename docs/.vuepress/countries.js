@@ -1,5 +1,5 @@
 export const countries = [
-  { value: "AF", label: "Afghanistan", icon: "star", info: "limit" },
+  { value: "AF", label: "Afghanistan", icon: "star", info: "limit", disabled: true },
   { value: "AX", label: "Åland Islands", icon: "star" },
   { value: "AL", label: "Albania", icon: "star" },
   { value: "DZ", label: "Algeria", icon: "star" },
