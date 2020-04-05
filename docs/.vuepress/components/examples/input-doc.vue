@@ -1,6 +1,41 @@
 <template>
-  <div class="container">
-    <div class="control-box">
+  <div class="grid grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 gap-4">
+      <o-field class="mb-4" label="Input status">
+        <o-switch v-model="isDanger">Danger</o-switch>
+      </o-field>
+      <o-field class="mb-4" label="Name" :type="isDanger ? 'is-danger' : ''">
+        <onput v-model="name" placeholder="Enter your name...">
+          <o-icon icon="search" class="w-6 h-6" slot="right" />
+        </onput>
+      </o-field>
+      <o-field
+        class="mb-4"
+        label="Email"
+        :type="isDanger ? 'is-danger' : ''"
+        message="This email is invalid"
+      >
+        <onput type="email" value="john@" maxlength="30" placeholder="Enter your email...">
+          <o-icon icon="contact-email" class="w-6 h-6" slot="left" />
+        </onput>
+      </o-field>
+
+      <o-field
+        class="mb-4"
+        label="Password"
+        :type="isDanger ? 'is-danger' : ''"
+        message="Password is too short"
+      >
+        <onput :type="passwordType" value="mykolas" placeholder="Enter your password...">
+          <button @click="togglePasswordType" slot="right" class="hover:text-default focus:text-default">
+            <o-icon
+              class="w-6 h-6"
+              :icon="passwordType === 'text' ? 'eye-off' : 'eye'"
+            />
+          </button>
+        </onput>
+      </o-field>
+
       <o-field class="mb-4" label="Name">
         <o-input v-model="name"></o-input>
       </o-field>
@@ -20,9 +55,7 @@
       <o-field class="mb-4" label="Message">
         <o-input maxlength="200" type="textarea"></o-input>
       </o-field>
-    </div>
-    <div class="control-box mt-6">
-      <o-h size="3" class="mb-2">Types and states</o-h>
+      <o-h size="3" type="is-muted" class="mb-2">Types and states</o-h>
 
       <o-field class="mb-4">
         <o-input placeholder="No label"></o-input>
@@ -35,9 +68,7 @@
       <o-field class="mb-4" label="Disabled">
         <o-input placeholder="Disabled" disabled></o-input>
       </o-field>
-    </div>
-    <div class="control-box mt-6">
-      <o-h size="3" class="mb-4">Icons</o-h>
+      <o-h size="3" type="is-muted" class="mb-4">Icons</o-h>
       <o-field class="mb-4">
         <o-input
           placeholder="Search..."
@@ -75,17 +106,30 @@ export default {
     const state = reactive({
       name: "John silver",
       email: "",
+      isDanger: false,
+      passwordType: "password",
     });
 
     const searchIconClick = () => {
       alert("You wanna make a search?");
     };
+
+    const togglePasswordType = () => {
+      console.log("toggle");
+      state.passwordType = state.passwordType === "text" ? "password" : "text";
+    };
+
     const clearIconClick = () => {
       state.email = "";
       alert("Email cleared!");
     };
 
-    return { ...toRefs(state), searchIconClick, clearIconClick };
-  }
+    return {
+      ...toRefs(state),
+      searchIconClick,
+      clearIconClick,
+      togglePasswordType,
+    };
+  },
 };
 </script>

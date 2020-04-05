@@ -1,4 +1,7 @@
 module.exports = {
+  postcss: {
+    plugins: [require('tailwindcss')('./tailwind.config.js'), require('autoprefixer')],
+  },
   locales: {
     '/': {
       lang: 'en-US',
@@ -6,7 +9,49 @@ module.exports = {
       description: 'A simple vue, ui library'
     }
   },
+  octoConfig: {
+    nav: [
+      { text: 'Home', icon: 'home', link: '/' },
+      { text: 'Guide', icon: 'setup', link: '/guide' },
+      { text: 'Components', icon: 'components', link: '/components' },
+      { text: 'GitHub', icon: 'git', link: 'https://github.com/Neophen/octo-ui' }
+    ],
+    sidebar: [
+      'autocomplete',
+      'button',
+      'calendar',
+      'card',
+      'checkbox',
+      'collapse',
+      'datepicker',
+      'dialog',
+      'dropdown-menu',
+      'field',
+      'icon',
+      'info',
+      'input',
+      'item-grid',
+      'label-select',
+      'loading',
+      'menu-header',
+      'menu-user',
+      'menu',
+      'modal-content',
+      'modal',
+      'radio',
+      'search-input',
+      'search-select',
+      'select',
+      'switch',
+      'tabs',
+      'tag',
+      'tags',
+      'typography',
+      'user-avatar',
+      'user-login-type',
+    ]
 
+  },
   themeConfig: {
     repoLabel: 'Contribute!',
     repo: 'https://github.com/Neophen/octo-ui',
@@ -28,9 +73,10 @@ module.exports = {
           }
         },
         nav: [
-          { text: 'Getting Started', link: '/guide' },
-          { text: 'Components', link: '/components/' },
-          { text: 'GitHub', link: 'https://github.com/Neophen/octo-ui' }
+          { text: 'Home', icon: 'home', link: '/' },
+          { text: 'Guide', icon: 'setup', link: '/guide' },
+          { text: 'Components', icon: 'components', link: '/components' },
+          { text: 'GitHub', icon: 'git', link: 'https://github.com/Neophen/octo-ui' }
         ],
         sidebar: {
           '/components/': [

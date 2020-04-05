@@ -149,7 +149,7 @@
       }
 
       &:hover {
-        background-color: var(--octo-inverted-500);
+        background-color: var(--octo-inverted);
         color: var(--octo-text-primary);
         .__close-icon {
           color: var(--octo-text-danger);
@@ -167,7 +167,7 @@
   position: absolute;
   // right: 0 !important;
   left: 0 !important;
-  background-color: var(--octo-inverted-500);
+  background-color: var(--octo-inverted);
   border-radius: var(--octo-radius-large);
   box-shadow: var(--octo-shadow-black);
   padding: 1rem;
@@ -198,7 +198,7 @@
         }
 
         span {
-          background-color: var(--octo-text-mark);
+          background-color: var(--octo-mark);
         }
       }
 

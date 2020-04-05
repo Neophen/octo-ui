@@ -1,7 +1,7 @@
 <template>
-  <div class="row">
-    <div class="col-1/2">
-      <o-h size="2" class="mb-4 b-0">Default button</o-h>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+    <div class="mb-10">
+      <o-h size="2" class="mb-4">Default button</o-h>
       <o-h size="3" class="mb-4">Text</o-h>
       <o-button icon="gear" size="is-sm" squared class="mb-2">Sqaurish small</o-button>
       <o-button icon="gear" squared class="mb-2">Sqaurish normal</o-button>
@@ -16,7 +16,7 @@
       <o-button loading class="mb-2">Default loading</o-button>
 
       <o-h size="3" class="mt-6 mb-4">Icon</o-h>
-      <div class="row">
+      <div class="flex items-center">
         <o-button icon="gear" size="is-sm" class="m-2"></o-button>
         <o-button icon="gear" class="m-2"></o-button>
         <o-button icon="gear" size="is-lg" class="m-2"></o-button>
@@ -24,8 +24,8 @@
       <o-h size="3" class="mt-6 mb-4">Text + Icon</o-h>
       <o-button icon="gear" class="mb-2">Default with icon</o-button>
     </div>
-    <div class="col-1/2">
-      <o-h size="2" class="mb-4 b-0">Primary button</o-h>
+    <div class="mb-10">
+      <o-h size="2" class="mb-4">Primary button</o-h>
       <o-h size="3" class="mb-4">Text</o-h>
       <o-button type="is-primary" size="is-sm" squared class="mb-2">Sqaurish small</o-button>
       <o-button type="is-primary" squared class="mb-2">Sqaurish normal</o-button>
@@ -40,7 +40,7 @@
       <o-button type="is-primary" loading class="mb-2">Primary loading</o-button>
 
       <o-h size="3" class="mt-6 mb-4">Icon</o-h>
-      <div class="row">
+      <div class="flex items-center">
         <o-button icon="gear" type="is-primary" size="is-sm" class="m-2"></o-button>
         <o-button icon="gear" type="is-primary" class="m-2"></o-button>
         <o-button icon="gear" type="is-primary" size="is-lg" class="m-2"></o-button>
@@ -49,8 +49,8 @@
       <o-button icon="gear" type="is-primary" class="mb-2">Primary with icon</o-button>
     </div>
 
-    <div class="col-1/2">
-      <o-h size="2" class="mb-4 b-0">Danger button</o-h>
+    <div class="mb-10">
+      <o-h size="2" class="mb-4">Danger button</o-h>
       <o-h size="3" class="mb-4">Text</o-h>
       <o-button type="is-danger" size="is-sm" squared class="mb-2">Sqaurish small</o-button>
       <o-button type="is-danger" squared class="mb-2">Sqaurish normal</o-button>
@@ -65,7 +65,7 @@
       <o-button type="is-danger" loading class="mb-2">Danger loading</o-button>
 
       <o-h size="3" class="mt-6 mb-4">Icon</o-h>
-      <div class="row">
+      <div class="flex items-center">
         <o-button icon="gear" type="is-danger" size="is-sm" class="m-2"></o-button>
         <o-button icon="gear" type="is-danger" class="m-2"></o-button>
         <o-button icon="gear" type="is-danger" size="is-lg" class="m-2"></o-button>
@@ -73,8 +73,8 @@
       <o-h size="3" class="mt-6 mb-4">Text + Icon</o-h>
       <o-button icon="gear" type="is-danger" class="mb-2">Danger with icon</o-button>
     </div>
-    <div class="col-1/2">
-      <o-h size="2" class="mb-4 b-0">Danger inverted</o-h>
+    <div class="mb-10">
+      <o-h size="2" class="mb-4">Danger inverted</o-h>
       <o-h size="3" class="mb-4">Text</o-h>
       <o-button type="is-danger" inverted size="is-sm" squared class="mb-2">Sqaurish small</o-button>
       <o-button type="is-danger" inverted squared class="mb-2">Sqaurish normal</o-button>
@@ -89,7 +89,7 @@
       <o-button type="is-danger" inverted loading class="mb-2">Danger loading</o-button>
 
       <o-h size="3" class="mt-6 mb-4">Icon</o-h>
-      <div class="row">
+      <div class="flex items-center">
         <o-button icon="gear" inverted type="is-danger" size="is-sm" class="m-2"></o-button>
         <o-button icon="gear" inverted type="is-danger" class="m-2"></o-button>
         <o-button icon="gear" inverted type="is-danger" size="is-lg" class="m-2"></o-button>
@@ -97,8 +97,8 @@
       <o-h size="3" class="mt-6 mb-4">Text + Icon</o-h>
       <o-button icon="gear" type="is-danger" inverted class="mb-2">Danger with icon</o-button>
     </div>
-    <div class="col-1/2">
-      <o-h size="2" class="mb-4 b-0">Dashed button</o-h>
+    <div class="mb-10">
+      <o-h size="2" class="mb-4">Dashed button</o-h>
       <o-h size="3" class="mb-4">Text</o-h>
       <o-button type="is-dashed" size="is-sm" squared class="mb-2">Sqaurish small</o-button>
       <o-button type="is-dashed" squared class="mb-2">Sqaurish normal</o-button>
@@ -113,7 +113,7 @@
       <o-button type="is-dashed" loading class="mb-2">Dashed loading</o-button>
 
       <o-h size="3" class="mt-6 mb-4">Icon</o-h>
-      <div class="row">
+      <div class="flex items-center">
         <o-button icon="gear" type="is-dashed" size="is-sm" class="m-2"></o-button>
         <o-button icon="gear" type="is-dashed" class="m-2"></o-button>
         <o-button icon="gear" type="is-dashed" size="is-lg" class="m-2"></o-button>
@@ -121,42 +121,12 @@
       <o-h size="3" class="mt-6 mb-4">Text + Icon</o-h>
       <o-button icon="gear" type="is-dashed" class="mb-2">Dashed with icon</o-button>
     </div>
-    <div class="col-1/2">
-      <o-h size="2" class="mb-4 b-0">Link button</o-h>
-      <o-h size="3" class="mb-4">Text</o-h>
-      <div class="link-block">
-
-      <o-button type="is-link" size="is-sm" squared class="mb-2">Sqaurish small</o-button>
-      <o-button type="is-link" squared class="mb-2">Sqaurish normal</o-button>
-      <o-button type="is-link" size="is-lg" squared class="mb-2">Sqaurish large</o-button>
-      <o-button type="is-link" size="is-sm" class="mb-2">Link small</o-button>
-      <o-button type="is-link" class="mb-2">Link normal</o-button>
-      <o-button type="is-link" size="is-lg" class="mb-2">Link large</o-button>
-      <o-button type="is-link" hovered class="mb-2">Link hovered</o-button>
-      <o-button type="is-link" focused class="mb-2">Link focused</o-button>
-      <o-button type="is-link" active class="mb-2">Link active</o-button>
-      <o-button type="is-link" disabled class="mb-2">Link disabled</o-button>
-      <o-button type="is-link" loading class="mb-2">Link loading</o-button>
-      </div>
-
-      <o-h size="5" class="mt-6 mb-4">Do not use bellow, for testing purposes only</o-h>
-      <o-h size="3" class="mt-6 mb-4">Icon</o-h>
-      <div class="row">
-        <o-button icon="gear" type="is-link" size="is-sm" class="m-2"></o-button>
-        <o-button icon="gear" type="is-link" class="m-2"></o-button>
-        <o-button icon="gear" type="is-link" size="is-lg" class="m-2"></o-button>
-      </div>
-      <o-h size="3" class="mt-6 mb-4">Text + Icon</o-h>
-      <o-button icon="gear" type="is-link" class="mb-2">Link with icon</o-button>
-    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 .link-block {
   display: flex;
   flex-direction: column;
 }
-
 </style>

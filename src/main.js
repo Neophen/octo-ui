@@ -1,6 +1,7 @@
 import * as components from "./components";
 import closeMenu from "./directives/o-close-menu.js";
 import "./styles/app.scss";
+import "./styles/app.css";
 
 const OctoUI = {
   install(Vue, { iconPacks, closeDirective = "close-menu" }) {

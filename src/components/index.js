@@ -39,3 +39,7 @@ export { default as LabelSelect } from "./LabelSelect";
 export { default as Loading } from "./Loading";
 export { default as ModalContent } from "./ModalContent";
 export { default as Dialog } from "./Dialog";
+
+// Tailwind
+
+export { default as TwInput } from "./Input/TwInput.vue";

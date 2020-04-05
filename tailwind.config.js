@@ -1,0 +1,103 @@
+module.exports = {
+  corePlugins: {
+    responsive: false,
+  },
+  theme: {
+    fontFamily: {
+      body: "var(--octo-text-font)",
+      title: "var(--octo-title-font)",
+    },
+    textColor: {
+      default: "var(--octo-text-default)",
+      muted: "var(--octo-text-muted)",
+      primary: "var(--octo-text-primary)",
+      danger: "var(--octo-text-danger)",
+      inverted: "var(--octo-text-inverted)",
+    },
+    fontSize: {
+      xs: ".75rem",
+      sm: ".875rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.5rem",
+    },
+    lineHeight: {
+      base: "1.2",
+    },
+    extend: {
+      colors: {
+        mark: "var(--octo-mark)",
+        inverted: "var(--octo-inverted)",
+        "primary-100": "var(--octo-primary-100)",
+        "primary-200": "var(--octo-primary-200)",
+        "primary-500": "var(--octo-primary-500)",
+        "primary-600": "var(--octo-primary-600)",
+        "primary-700": "var(--octo-primary-700)",
+
+        "secondary-100": "var(--octo-secondary-100)",
+        "secondary-200": "var(--octo-secondary-200)",
+        "secondary-500": "var(--octo-secondary-500)",
+        "secondary-600": "var(--octo-secondary-600)",
+        "secondary-700": "var(--octo-secondary-700)",
+
+        "muted-100": "var(--octo-muted-100)",
+        "muted-200": "var(--octo-muted-200)",
+        "muted-300": "var(--octo-muted-300)",
+        "muted-500": "var(--octo-muted-500)",
+        "muted-600": "var(--octo-muted-600)",
+        "muted-700": "var(--octo-muted-700)",
+        "muted-800": "var(--octo-muted-800)",
+      },
+    },
+    boxShadow: {
+      default: "var(--octo-shadow-black)",
+      idle: "var(--octo-shadow-idle)",
+      focus: "var(--octo-shadow-focus)",
+      "focus-200": "var(--octo-shadow-focus-200)",
+      danger: "var(--octo-shadow-danger)",
+      modal: "var(--octo-shadow-modal)",
+      none: "none",
+    },
+    borderRadius: {
+      default: "var(--octo-radius-default)",
+      large: "var(--octo-radius-large)",
+      full: "9999px",
+    },
+    borderColor: theme => ({
+      default: theme("colors.primary-300"),
+      transparent: "transparent",
+      primary: theme("colors.primary-500"),
+      danger: theme("colors.secondary-500"),
+      muted: theme("colors.muted-500"),
+    }),
+  },
+  variants: {
+    boxShadow: [
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+      "active",
+      "disabled",
+    ],
+    textColor: [
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+      "active",
+      "disabled",
+    ],
+    borderColor: [
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+      "active",
+      "disabled",
+    ],
+  },
+};

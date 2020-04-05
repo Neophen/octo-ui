@@ -89,8 +89,16 @@ export default {
       },
     },
   },
+  provide() {
+    return {
+      octoFieldState: this.fieldState,
+    };
+  },
   data() {
     return {
+      fieldState: {
+        state: this.type,
+      },
       newType: this.type,
       newMessage: this.message,
       fieldLabelSize: null,
@@ -206,6 +214,7 @@ export default {
     },
     type(value) {
       this.newType = value;
+      this.fieldState.state = value;
     },
 
     /**

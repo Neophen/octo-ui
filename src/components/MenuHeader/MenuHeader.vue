@@ -4,9 +4,11 @@
       <slot />
     </div>
     <o-text size="is-xs" type="is-inherit" class="octo-menu-header__label">
-      Runs easy on
-      <strong>Octafest</strong>
-      {{ version }}
+      <slot name="subtext">
+        Runs easy on
+        <strong>{{ title }}</strong>
+        {{ version }}
+      </slot>
     </o-text>
   </div>
 </template>
@@ -19,6 +21,10 @@ export default {
     version: {
       type: String,
       default: "v-1.0",
+    },
+    title: {
+      type: String,
+      default: "Octo UI",
     },
     ...typeValidator(
       "type",

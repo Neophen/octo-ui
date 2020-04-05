@@ -1,7 +1,7 @@
 <template>
   <div class="control-box">
-    <o-h size="3" class="mb-2">ModalContent</o-h>
-    <o-modal-content v-model="valueModalContent">ModalContent</o-modal-content>
+    <o-h size="3" class="mb-2">Modal Content</o-h>
+    <o-modal-content v-model="valueModalContent">Modal Content</o-modal-content>
   </div>
 </template>
 

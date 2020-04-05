@@ -1,6 +1,6 @@
 .octo-calendar {
   border-radius: var(--octo-radius-default);
-  background-color: var(--octo-inverted-500);
+  background-color: var(--octo-inverted);
   padding: 22px 20px;
   width: 390px;
   box-shadow: var(--octo-shadow-idle);
@@ -9,13 +9,13 @@
   .arrow {
     width: 1.5rem;
     height: 1.5rem;
-    background-color: var(--octo-inverted-500);
+    background-color: var(--octo-inverted);
     display: flex;
     align-items: center;
     justify-content: center;
     border-width: 1px;
-    border-color: var(--octo-inverted-500);
-    border-radius: var(--octo-radius-full);
+    border-color: var(--octo-inverted);
+    border-radius: 9999px;
 
     .arrow-icon {
       width: 10px;
@@ -39,8 +39,8 @@
       box-shadow: none;
       border-color: transparent;
       cursor: not-allowed;
-      color: var(--octo-inverted-500);
-      background: var(--octo-inverted-500);
+      color: var(--octo-inverted);
+      background: var(--octo-inverted);
     }
   }
 
@@ -87,7 +87,7 @@
   }
 
   .bg-white {
-    background-color: var(--octo-inverted-500);
+    background-color: var(--octo-inverted);
   }
 
   .weekdays {
@@ -108,7 +108,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--octo-inverted-500);
+    background: var(--octo-inverted);
     box-shadow: var(--octo-shadow-idle);
     border-radius: var(--octo-radius-default);
     width: 200px;
@@ -143,7 +143,7 @@
 
     &:disabled {
       color: var(--octo-muted-500);
-      background-color: var(--octo-inverted-500);
+      background-color: var(--octo-inverted);
       cursor: not-allowed;
     }
   }
@@ -169,7 +169,7 @@
         align-items: center;
         border-width: 1px;
         border-color: var(--octo-muted-200);
-        border-radius: var(--octo-radius-full);
+        border-radius: 9999px;
         &:hover,
         &:focus {
           background: var(--octo-muted-200);

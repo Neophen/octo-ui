@@ -22,7 +22,7 @@
     &.is-danger {
       border: 1px solid var(--octo-secondary-500);
       color: var(--octo-text-muted);
-      background: var(--octo-inverted-500);
+      background: var(--octo-inverted);
     }
   }
 
@@ -43,13 +43,13 @@
   &:focus-within {
     .octo-checkbox__mark {
       border: 1px solid var(--octo-primary-500);
-      background: var(--octo-inverted-500);
+      background: var(--octo-inverted);
       color: var(--octo-primary-500);
       box-shadow: var(--octo-shadow-focus);
       &.is-danger {
         border: 1px solid var(--octo-secondary-500);
         color: var(--octo-text-default);
-        background: var(--octo-inverted-500);
+        background: var(--octo-inverted);
         box-shadow: var(--octo-shadow-danger);
       }
     }
@@ -71,7 +71,7 @@
     .octo-checkbox__mark {
       border: 1px solid var(--octo-muted-500);
       color: var(--octo-text-muted);
-      background: var(--octo-inverted-500);
+      background: var(--octo-inverted);
       box-shadow: none;
     }
   }

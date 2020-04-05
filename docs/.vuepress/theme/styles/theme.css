@@ -1,0 +1,10 @@
+/* Reset */
+/* purgecss start ignore */
+@import "tailwindcss/base";
+
+/* Components */
+@import "tailwindcss/components";
+/* purgecss end ignore */
+
+/* Utilities */
+@import "tailwindcss/utilities";

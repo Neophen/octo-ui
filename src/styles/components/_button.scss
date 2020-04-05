@@ -50,8 +50,8 @@
 
   &.is-default,
   &.is-dashed {
-    background: var(--octo-inverted-500);
-    border: var(--octo-border-black);
+    background: var(--octo-inverted);
+    border: 0.5px solid black;
     box-shadow: var(--octo-shadow-black);
     color: var(--octo-text-default);
     .octo-loader__bar {
@@ -60,7 +60,7 @@
   }
 
   &.is-dashed {
-    border: var(--octo-border-muted);
+    border: 0.5px solid var(--octo-muted-500);
     color: var(--octo-muted-500);
     border-style: dashed !important;
   }
@@ -70,7 +70,7 @@
     background: var(--octo-primary-500);
     box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
-      background: var(--octo-inverted-500);
+      background: var(--octo-inverted);
     }
   }
 
@@ -98,13 +98,13 @@
     background: var(--octo-secondary-500);
     box-shadow: var(--octo-shadow-black);
     .octo-loader__bar {
-      background: var(--octo-inverted-500);
+      background: var(--octo-inverted);
     }
 
     &.is-inverted {
       color: var(--octo-secondary-500);
-      background: var(--octo-inverted-500);
-      border: var(--octo-border-danger);
+      background: var(--octo-inverted);
+      border: 0.5px solid var(--octo-secondary-500);
 
       .octo-loader__bar {
         background: var(--octo-secondary-500);
@@ -126,7 +126,7 @@
   &:hover {
     &.is-default,
     &.is-dashed {
-      border: var(--octo-border-primary);
+      border: 0.5px solid var(--octo-primary-500);
       box-shadow: var(--octo-shadow-focus);
       color: var(--octo-primary-500);
     }
@@ -140,8 +140,8 @@
       box-shadow: var(--octo-shadow-danger);
       &.is-inverted {
         color: var(--octo-secondary-500);
-        background: var(--octo-inverted-500);
-        border: var(--octo-border-danger);
+        background: var(--octo-inverted);
+        border: 0.5px solid var(--octo-secondary-500);
       }
     }
 
@@ -170,7 +170,7 @@
       &.is-inverted {
         color: var(--octo-secondary-600);
         border: 0.5px solid var(--octo-secondary-600);
-        background: var(--octo-inverted-500);
+        background: var(--octo-inverted);
       }
     }
 
@@ -185,7 +185,7 @@
     &.is-default,
     &.is-dashed {
       background: var(--octo-primary-200);
-      border: var(--octo-border-primary);
+      border: 0.5px solid var(--octo-primary-500);
       box-shadow: none;
       color: var(--octo-primary-500);
     }
