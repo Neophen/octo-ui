@@ -31,7 +31,11 @@
           :key="i"
           class="octo-stacked-tags__tag-row"
         >
-          <button class="__btn" v-on="removeTagBtnEvents(tag, true)">
+          <button
+            type="button"
+            class="__btn"
+            v-on="removeTagBtnEvents(tag, true)"
+          >
             <o-icon v-if="tag.icon" :icon="tag.icon" class="__label-icon" />
             <o-text type="is-inherit" class="__label">
               {{ tagText(tag) }}

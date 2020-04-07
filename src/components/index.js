@@ -43,3 +43,4 @@ export { default as Dialog } from "./Dialog";
 // Tailwind
 
 export { default as TwInput } from "./Input/TwInput.vue";
+export { default as Flash } from "./Flash";

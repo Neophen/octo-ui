@@ -1,10 +1,10 @@
 <template>
   <div
-    class="leading-base bg-inverted border border-transparent rounded py-2 px-3 w-full flex items-center cursor-text text-muted focus-within:shadow-none"
+    class="flex items-center w-full px-3 py-2 border border-transparent rounded leading-base bg-inverted cursor-text text-muted focus-within:shadow-none"
     :class="
       statusType === 'is-danger'
-        ? 'shadow-danger focus-within:border-danger active:border-danger focus-within:text-danger active:text-danger hover:shadow-danger hover:border-danger'
-        : 'shadow-idle focus-within:border-primary active:border-primary focus-within:text-primary active:text-primary hover:shadow-focus hover:border-primary'
+        ? 'shadow-danger active:border-danger active:text-danger hover:shadow-danger hover:border-danger focus-within:text-danger focus-within:border-danger'
+        : 'shadow-idle active:border-primary active:text-primary hover:shadow-focus hover:border-primary focus-within:text-primary focus-within:border-primary'
     "
     @click="focus"
   >
@@ -13,7 +13,7 @@
     </div>
     <input
       ref="input"
-      class="flex-1 font-body text-lg leading-base text-default"
+      class="flex-1 text-lg font-body leading-base text-default"
       :type="type"
       :autocomplete="newAutocomplete"
       :maxlength="maxlength"

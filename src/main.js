@@ -18,6 +18,10 @@ const OctoUI = {
 
     OctoUI.events = new Vue();
 
+    Vue.prototype.$flash = message => {
+      OctoUI.events.$emit("flash", message);
+    };
+
     const normalizeParams = (message, params) => {
       if (typeof message === "string") {
         return {

@@ -81,5 +81,10 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "headwind.classRegex": {
+    "type": "object",
+    "description": "An object with language IDs as keys and their values determining the regex to search for Tailwind CSS classes.",
+    "scope": "window"
   }
 }

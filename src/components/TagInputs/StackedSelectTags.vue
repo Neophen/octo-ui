@@ -67,7 +67,7 @@
 
     <ul class="octo-stacked-tags" v-if="tags.length > 0">
       <li v-for="(tag, i) in tags" :key="i" class="octo-stacked-tags__tag-row">
-        <button class="__btn" @click="removeTag(tag)">
+        <button type="button" class="__btn" @click="removeTag(tag)">
           <o-icon v-if="tag.icon" :icon="tag.icon" class="__label-icon" />
           <o-text type="is-inherit" class="__label">
             {{ tagText(tag) }}
