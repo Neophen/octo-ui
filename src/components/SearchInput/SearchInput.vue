@@ -8,12 +8,12 @@
       :placeholder="placeholder"
       @keyup.esc="() => $emit('input', '')"
     />
-    <div class="octo-input__icon-container is-left is-large">
+    <div class="h-full octo-input__icon-container is-left is-large">
       <o-icon icon="search" size="is-lg" />
     </div>
     <div
       v-if="value"
-      class="octo-input__icon-container is-right is-large has-text show-on-focus"
+      class="h-full octo-input__icon-container is-right is-large has-text show-on-focus"
     >
       <o-text type="is-muted">Press ‘ESC’ to cancel</o-text>
       <o-icon icon="close" size="is-lg" />
