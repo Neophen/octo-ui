@@ -3,6 +3,7 @@ import PortalVue from 'portal-vue';
 
 import OctoUI from '../../src/main.js';
 import "../../src/styles/app.scss";
+import "../../src/styles/tw-app.css";
 
 const { version } = require('../../package');
 

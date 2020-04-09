@@ -1,32 +1,32 @@
 <template>
-  <div class="w-screen h-screen flex flex-col" style="background: #FBFBFB">
-    <nav class="h-16 bg-white border-b flex-shrink-0 flex items-center">
+  <div class="flex flex-col w-screen h-screen" style="background: #FBFBFB">
+    <nav class="flex items-center flex-shrink-0 h-16 bg-white border-b">
       <div class="flex items-center mx-4">
         <o-icon icon="octafest" pack="site_logos" class="w-10 h-10 mr-4" />
         <o-h size="3">Octo UI</o-h>
         <p class="ml-2">{{version}}</p>
       </div>
-      <o-button squared class="ml-auto" icon="home" icon-pack="site" :type="buttonType('home')">Home</o-button>
-      <o-button squared class="mx-2" icon="setup" icon-pack="site" :type="buttonType('setup')">Setup</o-button>
-      <o-button
+      <btn squared class="ml-auto" label icon="home" icon-pack="site" :type="buttonType('home')">Home</btn>
+      <btn squared class="ml-2" label icon="setup" icon-pack="site" :type="buttonType('setup')">Setup</btn>
+      <btn
         squared
         class="ml-2"
-        icon="components"
+        label icon="components"
         icon-pack="site"
         :type="buttonType('components')"
-      >Components</o-button>
-      <o-button squared class="mx-2" icon="git" icon-pack="site" :type="buttonType('git')">Git</o-button>
+      >Components</btn>
+      <btn squared class="mx-2" label icon="git" icon-pack="site" :type="buttonType('git')">Git</btn>
     </nav>
-    <div class="flex-1 flex min-h-0">
-      <aside class="mr-8 py-6 pl-6 flex">
+    <div class="flex flex-1 min-h-0">
+      <aside class="flex py-6 pl-6 mr-8">
         <o-menu :items="menuItems" class="overflow-y-auto" />
       </aside>
-      <main class="flex-1 overflow-y-auto py-6" scroll-region>
-        <div class="mr-6 bg-muted-100 rounded-large p-10 min-h-full">
+      <main class="flex-1 py-6 overflow-y-auto" scroll-region>
+        <div class="min-h-full p-10 mr-6 bg-muted-100 rounded-large">
           <Content class="theme-default-content" />
         </div>
       </main>
-      <aside v-if="$slots.aside" class="ml-8 py-6 pr-6 flex flex-col flex-shrink-0">
+      <aside v-if="$slots.aside" class="flex flex-col flex-shrink-0 py-6 pr-6 ml-8">
         <slot name="aside" />
       </aside>
     </div>
@@ -48,7 +48,7 @@ export default {
     const state = reactive({
       selectedItem: "overview",
       buttonType: computed(() => type => {
-        return "is-default";
+        return "default";
       }),
     });
 

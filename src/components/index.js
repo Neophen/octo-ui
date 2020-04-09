@@ -44,3 +44,4 @@ export { default as Dialog } from "./Dialog";
 
 export { default as TwInput } from "./Input/TwInput.vue";
 export { default as Flash } from "./Flash";
+export { default as Btn } from "./Btn";

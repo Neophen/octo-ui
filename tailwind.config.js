@@ -72,9 +72,18 @@ module.exports = {
       primary: theme("colors.primary-500"),
       danger: theme("colors.secondary-500"),
       muted: theme("colors.muted-500"),
+      "muted-200": theme("colors.muted-200"),
     }),
   },
   variants: {
+    backgroundColor: [
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+      "active",
+      "disabled",
+    ],
     boxShadow: [
       "group-hover",
       "focus-within",
