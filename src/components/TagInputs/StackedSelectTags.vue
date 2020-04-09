@@ -13,7 +13,6 @@
       :placeholder="placeholder"
       v-model="inputValue"
       autocomplete="off"
-      @keydown.backspace="handleBackspace"
       @keydown.esc="close"
       @keydown.down="highlightNextOrOpen"
       @keydown.up="highlightPrev"
@@ -49,15 +48,15 @@
               type="is-inherit"
               size="is-xs"
               class="__info"
+              >{{ option.info }}</o-text
             >
-              {{ option.info }}
-            </o-text>
           </button>
         </li>
         <li v-if="filteredOptions.length === 0" class="octo-tags-search__row">
           <div class="__btn">
             <o-text type="is-inherit" class="__label">
-              Nothing found for "<span>{{ inputValue }}</span
+              Nothing found for "
+              <span>{{ inputValue }}</span
               >"
             </o-text>
           </div>
@@ -69,12 +68,14 @@
       <li v-for="(tag, i) in tags" :key="i" class="octo-stacked-tags__tag-row">
         <button type="button" class="__btn" @click="removeTag(tag)">
           <o-icon v-if="tag.icon" :icon="tag.icon" class="__label-icon" />
-          <o-text type="is-inherit" class="__label">
-            {{ tagText(tag) }}
-          </o-text>
-          <o-text v-if="tag.info" type="is-inherit" size="is-xs" class="__info">
-            {{ tag.info }}
-          </o-text>
+          <o-text type="is-inherit" class="__label">{{ tagText(tag) }}</o-text>
+          <o-text
+            v-if="tag.info"
+            type="is-inherit"
+            size="is-xs"
+            class="__info"
+            >{{ tag.info }}</o-text
+          >
           <o-icon icon="close-circle" class="__close-icon" />
         </button>
       </li>
@@ -84,9 +85,8 @@
       v-if="hasCounter && maxtags"
       class="help counter"
       :class="{ 'is-invisible': !isFocused }"
+      >{{ tags.length }} / {{ maxtags }}</o-h
     >
-      {{ tags.length }} / {{ maxtags }}
-    </o-h>
   </div>
 </template>
 
@@ -133,7 +133,7 @@ export default {
       default: true,
     },
   },
-  setup(props, { emit, root }) {
+  setup(props, { emit }) {
     const {
       isPopperOpen,
       refTrigger,
@@ -141,7 +141,6 @@ export default {
       refContainer,
       open,
       close: closePopper,
-      update,
     } = usePopper({
       offset: [0, 8],
       placement: "bottom",
@@ -190,15 +189,6 @@ export default {
 
     const clearInput = () => {
       state.inputValue = "";
-    };
-
-    const handleBackspace = () => {
-      if (newTag.value.length === 0) {
-        emit("update", props.tags.slice(0, -1));
-        root.$nextTick(() => {
-          update();
-        });
-      }
     };
 
     const onInput = e => (state.inputValue = e.target.value);
@@ -330,7 +320,6 @@ export default {
       removeTag,
       addTag,
       clearInput,
-      handleBackspace,
       tagText,
       optionText,
       onFocus,
