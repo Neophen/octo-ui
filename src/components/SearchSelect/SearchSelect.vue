@@ -179,7 +179,6 @@ export default {
     };
 
     const select = option => {
-      console.log(option);
       if (option.disabled) {
         return;
       }
