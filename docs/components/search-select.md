@@ -5,60 +5,8 @@
 #### Code
 ```html
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-1">
-        <div class="control-box h-500">
-          <o-h size="3" class="mb-2">Spacer to test out popper</o-h>
-        </div>
-      </div>
-      <div class="col-1">
-        <div class="control-box mb-4">
-          <o-h size="3" class="mb-2">Field controls</o-h>
-          <div class="row">
-            <div class="col-1">
-              <o-field label="Is danger" class="mb-2">
-                <o-switch v-model="testDanger"></o-switch>
-              </o-field>
-            </div>
-          </div>
-        </div>
-        <div class="control-box mb-4">
-          <o-h size="3" class="mb-2">Simple Search select</o-h>
-          <div class="row">
-            <div class="col-1">
-              <o-search-select
-                v-model="selectedBand"
-                :options="bands"
-                :filter-function="filterFuction"
-              />
-            </div>
-            <div class="col-1">
-              <o-h size="3" class="mb-2">Output</o-h>
-              <p>{{ JSON.stringify(selectedBand) }}</p>
-            </div>
-          </div>
-        </div>
-        <div class="control-box mb-4">
-          <o-h size="3" class="mb-2">Object Search select</o-h>
-          <div class="row">
-            <div class="col-1">
-              <o-search-select
-                v-model="selectedObjectBand"
-                :options="complexOptions"
-                is-object
-                :filter-function="filterComplexFuction"
-              />
-            </div>
-            <div class="col-1">
-              <o-h size="3" class="mb-2">Output</o-h>
-              <p>{{ JSON.stringify(selectedObjectBand) }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<o-search-select class="w-32" @select="selectItem" :options="bands" :filterFunction="filterFunction" />
+<o-search-select @select="selectObjectItem" :options="complexOptions" :filterFunction="filterComplexFunction" />
 </template>
 
 <script>
@@ -103,12 +51,12 @@ export default {
       ]
     });
 
-    const filterFuction = (search, options) => {
+    const filterFunction = (search, options) => {
       return options.filter(option =>
         option.toLowerCase().startsWith(search.toLowerCase())
       );
     };
-    const filterComplexFuction = (search, options) => {
+    const filterComplexFunction = (search, options) => {
       return options.filter(option =>
         option.label.toLowerCase().startsWith(search.toLowerCase())
       );

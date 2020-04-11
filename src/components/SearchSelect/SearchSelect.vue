@@ -1,186 +1,219 @@
 <template>
-  <o-on-click-outside :do="close">
-    <div
-      class="octo-search-select octo-control"
-      :class="{ 'is-active': isOpen }"
-    >
-      <button
-        ref="refButton"
-        type="button"
-        @click="toggle"
-        class="octo-search-select__input input"
-      >
-        <span v-if="newValue">{{ getOptionLabel(newValue) }}</span>
-        <span v-else class="octo-search-select__placeholder">
-          {{ placeholder }}
-        </span>
-        <o-icon icon="arrow-collapse" dir="down" size="is-md" />
-      </button>
-      <div ref="refDropdown" v-if="isOpen" class="octo-search-select__dropdown">
-        <input
-          ref="refSearch"
-          v-model="search"
-          @keydown.esc="close"
-          @keydown.down="highlightNext"
-          @keydown.up="highlightPrev"
-          @keydown.enter.prevent="selectHighlighted"
-          @keydown.tab.prevent="highlightNext"
-          class="octo-search-select__search"
-        />
-        <ul
-          ref="refOptions"
-          v-show="filteredOptions.length > 0"
-          class="octo-search-select__options"
-        >
-          <li
-            v-for="(option, i) in filteredOptions"
-            :class="{ 'is-active': i === highlightedIndex }"
-            :key="getOptionValue(option)"
-            @click="select(option)"
-            class="octo-search-select__option"
-          >
-            {{ getOptionLabel(option) }}
-          </li>
-        </ul>
-        <div
-          v-if="filteredOptions.length === 0"
-          class="octo-search-select__empty"
-        >
-          No results found for "{{ search }}"
-        </div>
-      </div>
+  <div
+    ref="refContainer"
+    class="octo-control octo-select-stacked-tags has-icons-left"
+  >
+    <div class="octo-input__icon-container is-left">
+      <o-icon class="octo-input__icon" icon="search" />
     </div>
-  </o-on-click-outside>
+    <input
+      class="input __input"
+      ref="refTrigger"
+      :placeholder="placeholder"
+      v-model="search"
+      autocomplete="off"
+      @keydown.esc="close"
+      @keydown.down="highlightNextOrOpen"
+      @keydown.up="highlightPrev"
+      @keydown.enter.prevent="selectHighlighted"
+      @keydown.tab="close"
+      @focus="onFocus"
+      @blur="onBlur"
+    />
+
+    <portal v-if="isPopperOpen" to="octo-popups" slim>
+      <ul ref="refDropdown" class="octo-tags-search" :style="searchWidth">
+        <li
+          class="octo-tags-search__row"
+          v-for="(option, i) in filteredOptions"
+          :key="option.value"
+        >
+          <button
+            @click="() => select(option)"
+            :class="{ 'is-active': i === highlightedIndex }"
+            type="button"
+            class="__btn"
+          >
+            <o-icon
+              v-if="option.icon"
+              :icon="option.icon"
+              class="__label-icon"
+            />
+            <o-text type="is-inherit" class="__label">
+              <div v-html="optionText(option)"></div>
+            </o-text>
+            <o-text
+              v-if="option.info"
+              type="is-inherit"
+              size="is-xs"
+              class="__info"
+              >{{ option.info }}</o-text
+            >
+          </button>
+        </li>
+        <li v-if="options.length === 0" class="octo-options-tags__row">
+          <div class="__btn">
+            <o-text type="is-inherit" class="__label">
+              Nothing found for "
+              <span>{{ search }}</span
+              >"
+            </o-text>
+          </div>
+        </li>
+      </ul>
+    </portal>
+  </div>
 </template>
 
 <script>
-import {
-  reactive,
-  toRefs,
-  computed,
-  ref,
-  onBeforeUnmount,
-} from "@vue/composition-api";
-import { createPopper } from "@popperjs/core";
-
-import Icon from "../Icon/Icon";
+import { reactive, toRefs, ref, computed, watch } from "@vue/composition-api";
+import { usePopper } from "../../utils/usePopper";
 
 export default {
   name: "OSearchSelect",
-  components: {
-    [Icon.name]: Icon,
-  },
   props: {
-    value: {
-      type: [String, Object],
-      required: true,
-    },
-    options: {
-      type: Array,
-      required: true,
-    },
-    placeholder: {
-      type: String,
-      default: "Please select an option...",
-    },
-    isObject: {
+    options: { required: true },
+    data: Array,
+    filterFunction: Function,
+    openOnFocus: {
       type: Boolean,
-      default: false,
+      default: true,
     },
-    filterFunction: null,
+    dropdownWidth: {
+      default: "400px",
+    },
+    field: {
+      type: String,
+      default: "label",
+    },
+    disabled: Boolean,
+    placeholder: {
+      default: "Add...",
+    },
+    ellipsis: {
+      type: Boolean,
+      default: true,
+    },
   },
-  setup(props, { root, emit }) {
-    const refSearch = ref(null);
-    const refButton = ref(null);
-    const refOptions = ref(null);
-    const refDropdown = ref(null);
+  setup(props, { emit }) {
+    const {
+      isPopperOpen,
+      refTrigger,
+      refDropdown,
+      refContainer,
+      open,
+      close: closePopper,
+    } = usePopper({
+      offset: [0, 8],
+      placement: "bottom-start",
+    });
 
     const state = reactive({
-      isOpen: false,
-      popper: null,
+      inputRef: ref(null),
       search: "",
-      newValue: props.value,
+      isFocused: false,
       highlightedIndex: 0,
+      filteredOptions: computed(() =>
+        props.filterFunction(state.search, props.options),
+      ),
+      optionText: computed(() => option =>
+        highlightText(
+          typeof option === "object"
+            ? getValueByPath(option, props.field)
+            : option,
+        ),
+      ),
+      searchWidth: computed(() => `width: ${props.dropdownWidth}`),
     });
 
-    const computedValue = computed({
-      get: () => state.newValue,
-      set: value => {
-        state.newValue = value;
-        emit("input", value);
-      },
-    });
-
-    const filteredOptions = computed(() =>
-      props.filterFunction(state.search, props.options),
+    watch(
+      () => state.search,
+      val => (val ? open() : closePopper()),
     );
 
-    const setupPopper = () => {
-      state.popper = createPopper(refButton.value, refDropdown.value, {
-        placement: "bottom",
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset: [0, 7],
-            },
-          },
-        ],
-      });
+    const clearInput = () => {
+      state.search = "";
     };
 
-    const destroyPopper = () => {
-      if (state.popper) {
-        state.popper.destroy();
-        state.popper = null;
+    const onInput = e => (state.search = e.target.value);
+
+    const focusInput = () => {
+      if (props.inputRef) {
+        props.inputRef.focus();
+      }
+      if (props.openOnFocus) {
+        open();
       }
     };
 
-    const open = () => {
-      if (state.isOpen) return;
-      state.isOpen = true;
-      root.$nextTick(() => {
-        setupPopper();
-        refSearch.value.focus();
-        scrollToHighlighted();
-      });
+    const getValueByPath = (obj, path) => {
+      const value = path.split(".").reduce((o, i) => (o ? o[i] : null), obj);
+      return value;
+    };
+
+    const addHighlightSpan = val => `<span>${val}</span>`;
+
+    const highlightText = text =>
+      state.search
+        ? text.replace(new RegExp(state.search, "ig"), match =>
+            addHighlightSpan(match),
+          )
+        : text;
+
+    const onFocus = () => {
+      state.isFocused = true;
+      if (props.openOnFocus) {
+        open();
+      }
+    };
+
+    const onBlur = () => {
+      state.isFocused = false;
     };
 
     const close = () => {
-      if (!state.isOpen) return;
-      state.isOpen = false;
+      if (!isPopperOpen.value) return;
       state.search = "";
       state.highlightedIndex = 0;
-      refButton.value.focus();
-      destroyPopper();
-    };
-
-    const toggle = () => {
-      state.isOpen ? close() : open();
+      closePopper();
     };
 
     const select = option => {
-      computedValue.value = option;
-      emit("selected", option);
+      console.log(option);
+      if (option.disabled) {
+        return;
+      }
+      state.search = option;
+      emit("select", option);
+      clearInput();
       close();
     };
 
     const scrollToHighlighted = () => {
-      if (refOptions.value.children.length === 0) return;
-      refOptions.value.children[state.highlightedIndex].scrollIntoView({
+      if (!refDropdown.value) return;
+      if (refDropdown.value.children.length === 0) return;
+      refDropdown.value.children[state.highlightedIndex].scrollIntoView({
         block: "nearest",
       });
     };
 
     const highlight = index => {
       state.highlightedIndex = index;
-      if (state.highlightedIndex > filteredOptions.value.length - 1) {
+      if (state.highlightedIndex > state.filteredOptions.length - 1) {
         state.highlightedIndex = 0;
       }
       if (state.highlightedIndex < 0) {
-        state.highlightedIndex = filteredOptions.value.length - 1;
+        state.highlightedIndex = state.filteredOptions.length - 1;
       }
       scrollToHighlighted();
+    };
+
+    const highlightNextOrOpen = () => {
+      if (!isPopperOpen.value) {
+        open();
+        return;
+      }
+      highlightNext();
     };
 
     const highlightNext = () => {
@@ -192,35 +225,30 @@ export default {
     };
 
     const selectHighlighted = () => {
-      if (filteredOptions.value.length > 0) {
-        select(filteredOptions.value[state.highlightedIndex]);
+      if (state.filteredOptions.length > 0) {
+        select(state.filteredOptions[state.highlightedIndex]);
       }
     };
 
-    const getOptionValue = object => (props.isObject ? object.value : object);
-    const getOptionLabel = object => (props.isObject ? object.label : object);
-
-    onBeforeUnmount(() => {
-      destroyPopper();
-    });
-
     return {
       ...toRefs(state),
-      refSearch,
-      refButton,
-      refOptions,
-      refDropdown,
-      computedValue,
-      filteredOptions,
-      open,
-      close,
-      toggle,
+      onInput,
+      clearInput,
+      onFocus,
+      onBlur,
+      focusInput,
+      // search
       select,
-      highlightNext,
       highlightPrev,
+      highlightNext,
+      highlightNextOrOpen,
       selectHighlighted,
-      getOptionValue,
-      getOptionLabel,
+      // popper
+      isPopperOpen,
+      refTrigger,
+      refDropdown,
+      refContainer,
+      close,
     };
   },
 };

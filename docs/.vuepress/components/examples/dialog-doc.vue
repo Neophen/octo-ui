@@ -7,7 +7,6 @@
     <o-button class="mb-4" @click="showMessage">Show simple message</o-button>
     <o-button class="mb-4" @click="(e) => showMessage(e, 'confirm')">Show simple confirm</o-button>
     <o-button class="mb-4" @click="(e) => showMessage(e, 'danger')">Show simple danger</o-button>
-    <o-dialog />
   </div>
 </template>
 
