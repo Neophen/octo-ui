@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-screen h-screen" style="background: #FBFBFB">
+  <div class="flex flex-col w-screen h-screen bg-muted-400" style="background: #fbfbfb;">
     <nav class="flex items-center flex-shrink-0 h-16 bg-white border-b">
       <div class="flex items-center mx-4">
         <o-icon icon="octafest" pack="site_logos" class="w-10 h-10 mr-4" />
