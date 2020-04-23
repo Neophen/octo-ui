@@ -24,7 +24,6 @@
       :disabled="disabled"
       :name="name"
       :required="required"
-      :value="nativeValue"
       :true-value="trueValue"
       :false-value="falseValue"
       hidden
