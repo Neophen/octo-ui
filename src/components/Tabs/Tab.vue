@@ -14,12 +14,16 @@ export default {
       type: String,
       required: true,
     },
+    type: {
+      type: String,
+      default: null,
+    },
     selected: {
       type: Boolean,
       default: false,
     },
   },
-  setup({ selected, name }) {
+  setup(props) {
     const state = reactive({
       isActive: false,
     });
@@ -33,10 +37,10 @@ export default {
         .map(x => x.toLowerCase())
         .join("-");
 
-    const type = kebabCase(name);
+    const type = props.type ? props.type : kebabCase(props.name);
 
     onMounted(() => {
-      state.isActive = selected;
+      state.isActive = props.selected;
     });
 
     return { ...toRefs(state), type };
