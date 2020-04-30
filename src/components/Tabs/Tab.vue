@@ -14,7 +14,7 @@ export default {
       type: String,
       required: true,
     },
-    type: {
+    value: {
       type: String,
       default: null,
     },
@@ -37,7 +37,7 @@ export default {
         .map(x => x.toLowerCase())
         .join("-");
 
-    const type = props.type ? props.type : kebabCase(props.name);
+    const type = props.value ? props.value : kebabCase(props.name);
 
     onMounted(() => {
       state.isActive = props.selected;
