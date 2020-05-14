@@ -26,7 +26,6 @@
       :required="required"
       :true-value="trueValue"
       :false-value="falseValue"
-      :value="computedValue"
       hidden
     />
     <span

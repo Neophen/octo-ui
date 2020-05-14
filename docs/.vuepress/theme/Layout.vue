@@ -52,9 +52,6 @@ export default {
       }),
     });
 
-    // console.log(root.$site.pages);
-    // console.log(root.$themeLocaleConfig.sidebar['/components/'][0].children);
-
     const goTo = (route, key) => () => {
       state.selectedItem = key;
       root.$router.push(route);
