@@ -1,5 +1,5 @@
 <template>
-  <ModalTransition v-if="active" to="octo-modals" slim>
+  <portal v-if="active" to="octo-modals" slim>
     <div
       :key="modalHash"
       class="octo-modal__overlay"
@@ -15,7 +15,7 @@
         <div class="octo-modal__spacer"></div>
       </div>
     </div>
-  </ModalTransition>
+  </portal>
 </template>
 
 <script>
@@ -31,13 +31,8 @@ import {
 
 import { generateID } from "../../utils/id-generator.js";
 
-import ModalTransition from "./ModalTransition.vue";
-
 export default {
   name: "OModal",
-  components: {
-    ModalTransition,
-  },
   props: {
     name: String,
     preventClickOutside: {
