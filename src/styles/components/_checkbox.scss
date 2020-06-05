@@ -39,8 +39,7 @@
     }
   }
 
-  &:hover,
-  &:focus-within {
+  &:hover {
     .octo-checkbox__mark {
       border: 1px solid var(--octo-primary-500);
       background: var(--octo-inverted);

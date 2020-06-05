@@ -3,7 +3,7 @@
     class="octo-control"
     :class="{ 'is-expanded': expanded, 'has-icons-left': icon }"
   >
-    <span class="select" :class="spanClasses">
+    <span class="octo-select" :class="spanClasses">
       <select
         v-model="computedValue"
         ref="select"
@@ -27,7 +27,7 @@
 
         <slot />
       </select>
-      <div class="select__arrow"></div>
+      <div class="octo-select__arrow"></div>
     </span>
 
     <!-- <o-icon
