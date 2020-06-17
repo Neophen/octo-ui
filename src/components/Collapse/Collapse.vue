@@ -56,7 +56,6 @@ export default {
       open => {
         state.isOpen = open;
       },
-      { lazy: true },
     );
 
     return { ...toRefs(state), toggle };

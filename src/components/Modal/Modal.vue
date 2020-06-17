@@ -113,7 +113,6 @@ export default {
           document.body.classList.remove("octo-modal__stop-scroll");
         }
       },
-      { lazy: true },
     );
 
     const escapeHandler = event => {

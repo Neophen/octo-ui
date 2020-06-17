@@ -31,6 +31,7 @@ export const useAutocomplete = (props, { root, emit, slots }) => {
     value => {
       emit("input", value);
     },
+    { immediate: true },
   );
 
   watch(
@@ -38,6 +39,7 @@ export const useAutocomplete = (props, { root, emit, slots }) => {
     value => {
       state.newValue = value;
     },
+    { immediate: true },
   );
 
   // Computed

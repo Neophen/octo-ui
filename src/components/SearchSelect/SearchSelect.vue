@@ -129,6 +129,7 @@ export default {
     watch(
       () => state.search,
       val => (val ? open() : closePopper()),
+      { immediate: true },
     );
 
     const clearInput = () => {

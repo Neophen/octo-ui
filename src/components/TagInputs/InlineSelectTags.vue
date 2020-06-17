@@ -150,6 +150,7 @@ export default {
     watch(
       () => state.inputValue,
       val => (val ? open() : closePopper()),
+      { immediate: true },
     );
 
     const newTag = computed(() =>
