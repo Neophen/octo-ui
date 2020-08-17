@@ -31,10 +31,9 @@
       @click="$emit('click')"
       type="button"
     >
-      <o-h size="4" type="is-inherit" class="octo-card__action-label">
+      <o-text type="is-inherit" class="octo-card__action-label">
         <span class="is-underline">{{ action }}</span> &gt;
-        <!-- <o-icon icon="arrow-collapse" class="octo-card__action-icon" /> -->
-      </o-h>
+      </o-text>
     </button>
   </div>
 </template>
