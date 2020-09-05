@@ -2,13 +2,13 @@
 export const _daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 // export const _weekdayLabels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 export const _weekdayLabels = [
-  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
+  "Sunday",
 ];
 export const _weekdayLength = 3;
 export const _weekdayCasing = "title";
