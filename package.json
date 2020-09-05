@@ -1,6 +1,6 @@
 {
   "name": "@mykolasm/octo-ui",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "main": "dist/octo-ui.umd.min.js",
   "unpkg": "dist/octo-ui.umd.min.js",
