@@ -43,8 +43,6 @@
     &:invalid {
       color: var(--octo-muted-500);
     }
-    
-
 
     &::-ms-expand {
       display: none;
@@ -87,6 +85,9 @@
       box-shadow: none;
       border-radius: var(--octo-radius-default);
       cursor: not-allowed;
+    }
+    :not(:disabled) {
+      color: var(--octo-text-default);
     }
   }
 
