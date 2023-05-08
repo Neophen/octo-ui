@@ -33,7 +33,7 @@
     "@popperjs/core": "^2.4.4",
     "@vue/cli-plugin-babel": "~4.2.0",
     "@vue/cli-plugin-eslint": "~4.2.0",
-    "@vue/cli-plugin-unit-jest": "~4.2.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.8",
     "@vue/cli-service": "~4.2.0",
     "@vue/composition-api": "^0.6.7",
     "@vue/eslint-config-prettier": "^6.0.0",
